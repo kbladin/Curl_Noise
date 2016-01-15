@@ -1,0 +1,24 @@
+#ifndef SHADER_LOADER_H
+#define SHADER_LOADER_H
+
+#include <vector>
+#include <string>
+
+#include <GL/glew.h>
+//#include <GLFW/glfw3.h>
+
+//! Load and compile a shader program.
+/*!
+ Function referenced from www.opengl-tutorials.org.
+*/
+class ShaderLoader {
+public:
+  static GLuint loadShaders(
+     const char * vertex_file_path,
+     const char * tesselation_control_file_path,
+     const char * tesselation_eval_file_path,
+     const char * geometry_file_path,
+     const char * fragment_file_path);
+};
+
+#endif
