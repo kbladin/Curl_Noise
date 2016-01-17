@@ -23,7 +23,7 @@ void main(){
 	vec3 center_of_mass = vec3(0,0,0);
 	vec3 F = vec3(0,0,0);
 
-	/*
+	
 	for (int i=0; i<size; i++)
 	{
 		for (int j=0; j<size; j++)
@@ -38,7 +38,7 @@ void main(){
 					gravity += 0.3 * m * m / pow(dist,2) * G * normalize(diff);
 					F += gravity;
 				}
-				*/
+				
 				/*
 				else if (dist > 0.005)
 				{
@@ -59,18 +59,18 @@ void main(){
 					vec3 anti_gravity = - normalize(diff) * 3;
 					F += anti_gravity;
 				}*/
-				/*
+				
 			}
 			//center_of_mass += texelFetch( positionSampler2D, ivec2(i,j), 0).xyz;
 		}
-	}*/
-	
-	vec3 center_diff = center_of_mass - p;
-	float center_dist = length(center_diff);
-	if (center_dist > 0.03)
-	{
-		F += m * m_dark / pow(center_dist,2) * G * normalize(center_diff);
 	}
+	
+	//vec3 center_diff = center_of_mass - p;
+	//float center_dist = length(center_diff);
+	//if (center_dist > 0.03)
+	//{
+	//	F += m * m_dark / pow(center_dist,2) * G * normalize(center_diff);
+	//}
 
 	a = F/m;
     acceleration_out = vec4(a.xyz,1);

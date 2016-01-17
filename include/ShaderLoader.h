@@ -5,12 +5,7 @@
 #include <string>
 
 #include <GL/glew.h>
-//#include <GLFW/glfw3.h>
 
-//! Load and compile a shader program.
-/*!
- Function referenced from www.opengl-tutorials.org.
-*/
 class ShaderLoader {
 public:
   static GLuint loadShaders(

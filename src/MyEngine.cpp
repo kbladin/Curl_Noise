@@ -1,72 +1,66 @@
 #include "MyEngine.h"
-#include "ModelLoader.h"
 #include <iostream>
 #include <sstream>
 
 MyEngine::MyEngine() : SimpleGraphicsEngine()
 {
-  rotation_point = glm::vec3(0,0,-3);
-  /*
-  std::vector<glm::vec3> vertices;
-  std::vector<glm::vec3> normals;
-  std::vector<unsigned short> elements;
-  
-  bool loaded;
-  do{
-    // Load file
-    std::cout << "Load file: ";
-    std::string file_name = "../../data/testmodels/bunny.m";
-    //std::cin >> file_name;
-    loaded = ModelLoader::load(file_name.c_str(), &vertices, &normals, &elements);
-  } while (!loaded);
-  
-  // "../../data/testmodels/bunny.m"
-  // "../../data/testmodels/gargoyle.m"
-  
-  // Initialize all objects
-  bunny_material_ = new PhongMaterial();
-  bunny_mesh_ = new TriangleMesh(vertices, normals, elements, bunny_material_);
-  
-  light_ = new LightSource(ShaderManager::instance()->getShader("SHADER_PHONG"));
-  light_mesh_ = new LightMesh3D(1);
-  bunny_ = new Object3D();
-  bb_ = new BoundingBox(bunny_mesh_);
-  
-  // Change properties
-  light_->transform_.translate(glm::vec3(4, 4, 4));
-  light_->intensity_ = 20;
-*/
-  camera_->transform_.translate(rotation_point);
-  
-  // Hierarchies
-  //bunny_mesh_->normalizeScale();
-  //bunny_->addChild(bunny_mesh_);
-  //bunny_mesh_->addChild(bb_);
-  
-  //light_->addChild(light_mesh_);
+  //rotation_point = glm::vec3(0,0,-3);
+  //camera_->transform_.translate(rotation_point);
 
-  //Add objects to scene
-  //scene_->addChild(bunny_);
-  //scene_->addChild(light_);
+
+  background_material_ = new BackgroundMaterial();
+  grid_mesh_material_ = new OneColorMaterial();
   
+  basic_cam_ = new PerspectiveCamera(ShaderManager::instance()->getShader("SHADER_PHONG"), window_);
+  one_color_cam_ = new PerspectiveCamera(ShaderManager::instance()->getShader("SHADER_ONE_COLOR"), window_);
+  background_ortho_cam_ = new OrthoCamera(ShaderManager::instance()->getShader("SHADER_BACKGROUND"), window_);
+  point_cloud_cam_ = new PerspectiveCamera(ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"), window_);
+  
+  camera_->addChild(basic_cam_);
+  camera_->addChild(one_color_cam_);
+  camera_->addChild(point_cloud_cam_);
+  viewspace_ortho_camera_->addChild(background_ortho_cam_);
+  
+  background_plane_ = new TriangleMesh(background_material_);
+  background_plane_->initPlane(glm::vec3(0,0,0), glm::vec3(0,0,1), glm::vec3(10,2,2));
+  
+  point_cloud_ = new PointCloudGPU(1000);
+  
+  
+  scene_->addChild(point_cloud_);
+  background_space_->addChild(background_plane_);
+
+
+
   // Set callback functions
   glfwSetScrollCallback(window_, mouseScrollCallback);
 }
 
 MyEngine::~MyEngine()
 {
-  delete bunny_material_;
-  delete bunny_;
-  delete bunny_mesh_;
-  delete light_;
-  delete bb_;
-  delete light_mesh_;
+
+delete point_cloud_;
+  
+  delete basic_cam_;
+  delete one_color_cam_;
+  delete viewspace_ortho_camera_;
+  delete background_ortho_cam_;
+  delete point_cloud_cam_;
+  
+  delete grid_mesh_material_;
+  delete background_material_;
+
+    delete background_plane_;
+
 }
 
 void MyEngine::update()
 {
   SimpleGraphicsEngine::update();
   
+  point_cloud_->update(dt_);
+
+
   frame_counter_ ++;
   delay_counter_ += dt_;
   
@@ -81,6 +75,8 @@ void MyEngine::update()
 
 void MyEngine::mouseScrollCallback(GLFWwindow * window, double dx, double dy)
 {
+
+  /*
   glm::vec3 prev_position = camera_->transform_.getPosition();
 
   // Transform back
@@ -97,4 +93,5 @@ void MyEngine::mouseScrollCallback(GLFWwindow * window, double dx, double dy)
   
   // Do transform again
   camera_->transform_.translate(prev_position);
+  */
 }

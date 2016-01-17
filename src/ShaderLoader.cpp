@@ -2,7 +2,6 @@
 #include <fstream>
 
 #include <GL/glew.h>
-//#include <GLFW/glfw3.h>
 
 // https://www.omniref.com/ruby/gems/opengl-bindings/1.3.5/symbols/OpenGL::GL_TESS_CONTROL_SHADER
 #ifndef GL_TESS_CONTROL_SHADER
@@ -18,6 +17,10 @@
     #define GL_PATCHES 0x000E
 #endif
 
+//! Load and compile a shader program.
+/*!
+ Function referenced from www.opengl-tutorials.org.
+*/
 GLuint ShaderLoader::loadShaders(
   const char * vertex_file_path,
   const char * tesselation_control_file_path,
@@ -51,6 +54,10 @@ GLuint ShaderLoader::loadShaders(
       VertexShaderCode += "\n" + Line;
     VertexShaderStream.close();
   }
+  else
+  {
+    printf("ERROR : %s could not be opened.\n", vertex_file_path);
+  }
   
   std::string TesselationControlShaderCode;
   if (tesselation_control_file_path){
@@ -61,6 +68,10 @@ GLuint ShaderLoader::loadShaders(
       while(getline(TesselationControlShaderStream, Line))
         TesselationControlShaderCode += "\n" + Line;
       TesselationControlShaderStream.close();
+    }
+    else
+    {
+      printf("ERROR : %s could not be opened.\n", tesselation_control_file_path);
     }
   }
 
@@ -74,6 +85,10 @@ GLuint ShaderLoader::loadShaders(
         TesselationEvaluationShaderCode += "\n" + Line;
       TesselationEvalStream.close();
     }
+    else
+    {
+      printf("ERROR : %s could not be opened.\n", tesselation_eval_file_path);
+    }
   }
 
   std::string GeometryShaderCode;
@@ -86,6 +101,10 @@ GLuint ShaderLoader::loadShaders(
         GeometryShaderCode += "\n" + Line;
       GeomatryShaderStream.close();
     }
+    else
+    {
+      printf("ERROR : %s could not be opened.\n", geometry_file_path);
+    }
   }
 
   // Read the Fragment Shader code from the file
@@ -96,6 +115,10 @@ GLuint ShaderLoader::loadShaders(
     while(getline(FragmentShaderStream, Line))
       FragmentShaderCode += "\n" + Line;
     FragmentShaderStream.close();
+  }
+  else
+  {
+    printf("ERROR : %s could not be opened.\n", fragment_file_path);
   }
   
   GLint Result = GL_FALSE;
@@ -113,8 +136,6 @@ GLuint ShaderLoader::loadShaders(
   std::vector<char> VertexShaderErrorMessage(InfoLogLength);
   glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
   fprintf(stdout, "%s\n", &VertexShaderErrorMessage[0]);
-  
-
 
   if (tesselation_control_file_path){
     // Compile Tesselation Control Shader
