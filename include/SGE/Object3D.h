@@ -2,7 +2,7 @@
 #define OBJECT_3D_H
 
 #include <vector>
-#include "../ext/glm/include/glm/glm.hpp"
+#include "../../ext/glm/include/glm/glm.hpp"
 
 
 //! An object positioned in 3D space.

@@ -3,7 +3,7 @@
 PointCloudGPU::PointCloudGPU(unsigned long size) : size_(int(sqrt(size)))
 {
   material_ = new PointCloudMaterial(size_);
-  mesh_ = new PointCloudMesh(material_, size_);
+  mesh_ = new PointCloudMesh(size_);
   
   // Three shaders. One for each attribute
   update_accelerations_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS");
@@ -131,7 +131,8 @@ PointCloudGPU::~PointCloudGPU()
 
 void PointCloudGPU::render(glm::mat4 M)
 {
-  mesh_->render(M);
+  material_->render();
+  mesh_->render(M, ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"));
 }
 
 void PointCloudGPU::updateAccelerations(float dt)

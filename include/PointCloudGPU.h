@@ -1,8 +1,10 @@
 #ifndef POINT_CLOUD_GPU_H
 #define POINT_CLOUD_GPU_H
 
-#include "../include/Object3D.h"
-#include "../include/Mesh.h"
+#include "../include/SGE/Object3D.h"
+#include "../include/SGE/Mesh.h"
+
+#include "../include/Material.h"
 
 class PointCloudGPU : public Object3D {
 public:

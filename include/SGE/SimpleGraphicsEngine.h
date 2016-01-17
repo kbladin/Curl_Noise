@@ -1,19 +1,18 @@
 #ifndef SIMPLE_GRAPHICS_ENGINE_H
 #define SIMPLE_GRAPHICS_ENGINE_H
 
-#include "../include/PointCloudGPU.h"
-#include "../include/ShaderManager.h"
-#include "../include/Material.h"
-#include "../include/Object3D.h"
-#include "../include/Mesh.h"
-#include "../include/Camera.h"
+#include "../../include/SGE/ShaderManager.h"
+//#include "../../include/Material.h"
+#include "../../include/SGE/Object3D.h"
+#include "../../include/SGE/Mesh.h"
+#include "../../include/SGE/Camera.h"
 
 #include <vector>
 #include <map>
 
-#include "../ext/glm/include/glm/glm.hpp"
-#include "../ext/glm/include/glm/gtc/matrix_transform.hpp"
-#include "../ext/glm/include/glm/gtx/transform.hpp"
+#include "../../ext/glm/include/glm/glm.hpp"
+#include "../../ext/glm/include/glm/gtc/matrix_transform.hpp"
+#include "../../ext/glm/include/glm/gtx/transform.hpp"
 #include <gl/glew.h>
 #include <gl/glfw3.h>
 

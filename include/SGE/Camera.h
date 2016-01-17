@@ -1,14 +1,14 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "../include/Object3D.h"
+#include "../../include/SGE/Object3D.h"
 
 #include <gl/glew.h>
 #include <gl/glfw3.h>
 
-#include "../ext/glm/include/glm/glm.hpp"
-#include "../ext/glm/include/glm/gtc/matrix_transform.hpp"
-#include "../ext/glm/include/glm/gtx/transform.hpp"
+#include "../../ext/glm/include/glm/glm.hpp"
+#include "../../ext/glm/include/glm/gtc/matrix_transform.hpp"
+#include "../../ext/glm/include/glm/gtx/transform.hpp"
 
 //! A camera defined in 3D space
 class AbstractCamera : public Object3D {

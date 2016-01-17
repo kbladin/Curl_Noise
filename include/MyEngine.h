@@ -1,8 +1,18 @@
 #ifndef MY_ENGINE_H
 #define MY_ENGINE_H
 
-#include "SimpleGraphicsEngine.h"
+#include "../include/SGE/SimpleGraphicsEngine.h"
+#include "../include/PointCloudGPU.h"
 
+class MyBGObject3D : public Object3D {
+public:
+  MyBGObject3D();
+  ~MyBGObject3D();
+  void render(glm::mat4 M);
+protected:
+  BackgroundMaterial* material_;
+  TriangleMesh* background_plane_;
+};
 
 //! The actual program extending SimpleGraphicsEngine
 /*!
@@ -28,7 +38,10 @@ private:
   int frame_counter_;
 
 
-  TriangleMesh* background_plane_;
+  //TriangleMesh* background_plane_;
+  
+  MyBGObject3D* background_;
+
   PointCloudGPU* point_cloud_;
   
   // One camera for each render shader

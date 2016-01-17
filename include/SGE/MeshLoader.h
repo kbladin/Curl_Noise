@@ -2,7 +2,7 @@
 #define MESH_LOADER
 
 #include <vector>
-#include "../ext/glm/include/glm/glm.hpp"
+#include "../../ext/glm/include/glm/glm.hpp"
 
 bool loadMesh_assimp(
 	const char * path,

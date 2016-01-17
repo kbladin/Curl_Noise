@@ -1,7 +1,8 @@
-#include "../include/Mesh.h"
+#include "../../include/SGE/Mesh.h"
 
-AbstractMesh::AbstractMesh(Material* material) : material_(material)
+AbstractMesh::AbstractMesh()
 {
+  //program_ID_ = program_ID;
 }
 
 AbstractMesh::~AbstractMesh()
@@ -13,7 +14,7 @@ AbstractMesh::~AbstractMesh()
 
 void AbstractMesh::initialize()
 {
-  glUseProgram(material_->getProgramID());
+  //glUseProgram(program_ID_);
   
   glGenVertexArrays(1, &vertex_array_ID_);
   glBindVertexArray(vertex_array_ID_);
@@ -27,7 +28,7 @@ void AbstractMesh::initialize()
     GL_STATIC_DRAW);
   
   // Get a handle for our matrix uniform
-  model_matrix_ID_ = glGetUniformLocation(material_->getProgramID(), "M");
+  //glGetUniformLocation(program_ID, "M") = glGetUniformLocation(program_ID_, "M");
 }
 
 //! Create a TriangleMesh from file.
@@ -35,8 +36,7 @@ void AbstractMesh::initialize()
     \param file_name is the file path for the model, for example "bunny.obj".
     \param material is the material of the mesh
   */
-TriangleMesh::TriangleMesh(const char *file_name, Material* material) :
-  AbstractMesh(material)
+TriangleMesh::TriangleMesh(const char *file_name)
 {
   loadMesh_assimp(file_name, &elements_, &vertices_, NULL, &normals_);
   initialize();
@@ -52,8 +52,7 @@ TriangleMesh::TriangleMesh(const char *file_name, Material* material) :
   */
 TriangleMesh::TriangleMesh(std::vector<glm::vec3> vertices,
            std::vector<glm::vec3> normals,
-           std::vector<unsigned short> elements,
-           Material* material) : AbstractMesh(material)
+           std::vector<unsigned short> elements)
 {
   vertices_ = vertices;
   normals_ = normals;
@@ -70,7 +69,7 @@ TriangleMesh::TriangleMesh(std::vector<glm::vec3> vertices,
     (eg: initPlane, initBox).
     \param material is the material of the mesh
   */
-TriangleMesh::TriangleMesh(Material* material) : AbstractMesh(material)
+TriangleMesh::TriangleMesh()
 {
 }
 
@@ -419,7 +418,7 @@ void TriangleMesh::initialize()
 {
   AbstractMesh::initialize();
   
-  glUseProgram(material_->getProgramID());
+  //glUseProgram(program_ID_);
 
   glGenBuffers(1, &normal_buffer_);
   glBindBuffer(GL_ARRAY_BUFFER, normal_buffer_);
@@ -434,16 +433,15 @@ void TriangleMesh::initialize()
 /*!
   \param M is the transformation matrix of the parent.
 */
-void TriangleMesh::render(glm::mat4 M)
+void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
 {
   Object3D::render(M);
-  material_->render();
   
   glm::mat4 total_transform = M * transform_matrix_;
   
   // Use our shader
-  glUseProgram(material_->getProgramID());
-  glUniformMatrix4fv(model_matrix_ID_, 1, GL_FALSE, &total_transform[0][0]);
+  glUseProgram(program_ID);
+  glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
   
@@ -493,7 +491,7 @@ void TriangleMesh::render(glm::mat4 M)
   First construct the LineMesh, then call one of the init-functions
   (eg: initAxes, initGridPlane).
 */
-LineMesh::LineMesh(Material* material) : AbstractMesh(material)
+LineMesh::LineMesh()
 {
   //initialize();
 }
@@ -624,7 +622,7 @@ void LineMesh::initialize()
 {
   AbstractMesh::initialize();
   
-  glUseProgram(material_->getProgramID());
+  //glUseProgram(program_ID_);
 
   glGenBuffers(1, &element_buffer_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
@@ -635,16 +633,15 @@ void LineMesh::initialize()
 /*!
   \param M is the transformation matrix of the parent.
 */
-void LineMesh::render(glm::mat4 M)
+void LineMesh::render(glm::mat4 M, GLuint program_ID)
 {
-  material_->render();
   Object3D::render(M);
   
   glm::mat4 total_transform = M * transform_matrix_;
   
   // Use our shader
-  glUseProgram(material_->getProgramID());
-  glUniformMatrix4fv(model_matrix_ID_, 1, GL_FALSE, &total_transform[0][0]);
+  glUseProgram(program_ID);
+  glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
   
@@ -675,7 +672,7 @@ void LineMesh::render(glm::mat4 M)
   glDisableVertexAttribArray(1);
 }
 
-PointCloudMesh::PointCloudMesh(Material* material, int size) : AbstractMesh(material), size_(size)
+PointCloudMesh::PointCloudMesh(int size) : size_(size)
 {
   initialize();
 }
@@ -701,16 +698,15 @@ PointCloudMesh::~PointCloudMesh()
   glDeleteBuffers(1, &index_buffer_);
 }
 
-void PointCloudMesh::render(glm::mat4 M)
+void PointCloudMesh::render(glm::mat4 M, GLuint program_ID)
 {
-  material_->render();
   Object3D::render(M);
   
   glm::mat4 total_transform = M * transform_matrix_;
   
   // Use our shader
-  glUseProgram(material_->getProgramID());
-  glUniformMatrix4fv(model_matrix_ID_, 1, GL_FALSE, &total_transform[0][0]);
+  glUseProgram(program_ID);
+  glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
 

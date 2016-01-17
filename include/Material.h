@@ -5,7 +5,7 @@
 #include <gl/glfw3.h>
 #include "../ext/glm/include/glm/glm.hpp"
 
-#include "../include/ShaderManager.h"
+#include "../include/SGE/ShaderManager.h"
 
 
 //! Every Mesh has a material which specifies parameters for shading.

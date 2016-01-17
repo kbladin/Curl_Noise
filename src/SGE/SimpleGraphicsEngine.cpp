@@ -1,4 +1,4 @@
-#include "../include/SimpleGraphicsEngine.h"
+#include "../../include/SGE/SimpleGraphicsEngine.h"
 
 //! Creates a LightSource bound to a specific shader.
 /*!

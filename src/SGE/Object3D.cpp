@@ -1,4 +1,4 @@
-#include "../include/Object3D.h"
+#include "../../include/SGE/Object3D.h"
 
 //! Destructor
 /*!

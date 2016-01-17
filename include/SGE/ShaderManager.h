@@ -1,7 +1,7 @@
 #ifndef SHADER_MANAGER_H
 #define SHADER_MANAGER_H
 
-#include "../include/ShaderLoader.h"
+#include "../../include/SGE/ShaderLoader.h"
 
 #include <map>
 #include <iostream>
@@ -19,6 +19,13 @@ class ShaderManager {
 public:
   static ShaderManager* instance();
   ~ShaderManager();
+  void loadShader(
+    std::string name,
+    const char* vs_src,
+    const char* tcs_src,
+    const char* tes_src,
+    const char* gs_src,
+    const char* fs_src);
   GLuint getShader(std::string name);
 private:
   ShaderManager();

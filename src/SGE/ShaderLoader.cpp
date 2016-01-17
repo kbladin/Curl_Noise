@@ -1,4 +1,4 @@
-#include "../include/ShaderLoader.h"
+#include "../../include/SGE/ShaderLoader.h"
 #include <fstream>
 
 #include <GL/glew.h>

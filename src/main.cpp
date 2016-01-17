@@ -4,7 +4,7 @@
 #include <gl/glew.h>
 #include <gl/glfw3.h>
 
-#include "MyEngine.h"
+#include "../include/MyEngine.h"
 
 int main(int argc, char const *argv[])
 {

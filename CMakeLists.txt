@@ -28,7 +28,6 @@ include_directories(${GLEW_INCLUDE_DIR})
 include_directories(${GLFW_INCLUDE_DIRS})
 #include_directories(${ANT_TWEAK_BAR_INCLUDE_PATH})
 include_directories(${ASSIMP_INCLUDE_DIRS})
-include_directories("cinder_0.8.6_mac/include")
 
 # Our own include directory
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
@@ -37,8 +36,8 @@ include_directories(${COMMON_INCLUDES})
 set(CMAKE_CXX_FLAGS "-g")
 
 # Creating our own library
-file(GLOB Curl_Noise_lib_SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
-file(GLOB Curl_Noise_lib_HEADERS ${PROJECT_SOURCE_DIR}/include/*.h)
+file(GLOB Curl_Noise_lib_SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/SGE/*.cpp)
+file(GLOB Curl_Noise_lib_HEADERS ${PROJECT_SOURCE_DIR}/include/*.h ${PROJECT_SOURCE_DIR}/include/SGE/*.h)
 # We do not want main.cpp in the library
 file(GLOB to_remove ${PROJECT_SOURCE_DIR}/src/main.cpp)
 list(REMOVE_ITEM Curl_Noise_lib_SOURCES ${to_remove})
