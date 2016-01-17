@@ -1,0 +1,45 @@
+\hypertarget{structai_bone}{\section{ai\-Bone Struct Reference}
+\label{structai_bone}\index{ai\-Bone@{ai\-Bone}}
+}
+
+
+A single bone of a mesh.  
+
+
+
+
+{\ttfamily \#include $<$mesh.\-h$>$}
+
+
+
+Collaboration diagram for ai\-Bone\-:
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structai_bone_acfb9bfd2a2c6302181d7c3cc1bb8bbf0}{C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_string}{ai\-String} \hyperlink{structai_bone_acfb9bfd2a2c6302181d7c3cc1bb8bbf0}{m\-Name}}\label{structai_bone_acfb9bfd2a2c6302181d7c3cc1bb8bbf0}
+
+\begin{DoxyCompactList}\small\item\em The name of the bone. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{structai_bone_a87a79d42a0132753aac66397ad6f9b71}{m\-Num\-Weights}
+\item 
+\hypertarget{structai_bone_ade36319714b58c03ad46aae30a2724a4}{C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vertex_weight}{ai\-Vertex\-Weight} $\ast$ \hyperlink{structai_bone_ade36319714b58c03ad46aae30a2724a4}{m\-Weights}}\label{structai_bone_ade36319714b58c03ad46aae30a2724a4}
+
+\begin{DoxyCompactList}\small\item\em The vertices affected by this bone. \end{DoxyCompactList}\item 
+\hypertarget{structai_bone_a1dd6c4f24a1384c05da281692be3e78d}{C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_matrix4x4}{ai\-Matrix4x4} \hyperlink{structai_bone_a1dd6c4f24a1384c05da281692be3e78d}{m\-Offset\-Matrix}}\label{structai_bone_a1dd6c4f24a1384c05da281692be3e78d}
+
+\begin{DoxyCompactList}\small\item\em Matrix that transforms from mesh space to bone space in bind pose. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A single bone of a mesh. 
+
+A bone has a name by which it can be found in the frame hierarchy and by which it can be addressed by animations. In addition it has a number of influences on vertices. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_bone_a87a79d42a0132753aac66397ad6f9b71}{\index{ai\-Bone@{ai\-Bone}!m\-Num\-Weights@{m\-Num\-Weights}}
+\index{m\-Num\-Weights@{m\-Num\-Weights}!aiBone@{ai\-Bone}}
+\subsubsection[{m\-Num\-Weights}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ai\-Bone\-::m\-Num\-Weights}}\label{structai_bone_a87a79d42a0132753aac66397ad6f9b71}
+The number of vertices affected by this bone The maximum value for this member is \#\-A\-I\-\_\-\-M\-A\-X\-\_\-\-B\-O\-N\-E\-\_\-\-W\-E\-I\-G\-H\-T\-S. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/mesh.\-h\end{DoxyCompactItemize}

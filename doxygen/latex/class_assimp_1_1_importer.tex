@@ -1,0 +1,762 @@
+\hypertarget{class_assimp_1_1_importer}{\section{Assimp\-:\-:Importer Class Reference}
+\label{class_assimp_1_1_importer}\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}}
+}
+
+
+{\ttfamily \#include $<$Importer.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_importer_a2c207299ed05f1db1ad1e6dab005f719}{Importer} ()
+\item 
+\hyperlink{class_assimp_1_1_importer_a69743664b5a7a8c195be48265144317b}{Importer} (const \hyperlink{class_assimp_1_1_importer}{Importer} \&other)
+\item 
+\hyperlink{class_assimp_1_1_importer_a3d65af5286ba22f46220a72a6eb2a1c9}{$\sim$\-Importer} ()
+\item 
+\hyperlink{types_8h_a1f78dfb65090aa930cabb984c8abe711}{ai\-Return} \hyperlink{class_assimp_1_1_importer_a3846294ffe76d91a1d3096d22d7c6b7d}{Register\-Loader} (Base\-Importer $\ast$p\-Imp)
+\item 
+\hyperlink{types_8h_a1f78dfb65090aa930cabb984c8abe711}{ai\-Return} \hyperlink{class_assimp_1_1_importer_a3b1f5af2c763b13aca0f324b19001722}{Unregister\-Loader} (Base\-Importer $\ast$p\-Imp)
+\item 
+\hyperlink{types_8h_a1f78dfb65090aa930cabb984c8abe711}{ai\-Return} \hyperlink{class_assimp_1_1_importer_a102650d3648c0e414a1e73bdad9bed35}{Register\-P\-P\-Step} (Base\-Process $\ast$p\-Imp)
+\item 
+\hyperlink{types_8h_a1f78dfb65090aa930cabb984c8abe711}{ai\-Return} \hyperlink{class_assimp_1_1_importer_a3a683671c7c40638b1103c5d3648d86c}{Unregister\-P\-P\-Step} (Base\-Process $\ast$p\-Imp)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{Set\-Property\-Integer} (const char $\ast$sz\-Name, int i\-Value)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a4af22a88eddf464d949a761149c72825}{Set\-Property\-Bool} (const char $\ast$sz\-Name, bool value)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_ab1854be9aa766a748804a69c69fe4901}{Set\-Property\-Float} (const char $\ast$sz\-Name, float f\-Value)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a854087b213981108e3e464cf4d293fed}{Set\-Property\-String} (const char $\ast$sz\-Name, const std\-::string \&s\-Value)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_acd128e5fb5777ef238b8bd1454a9c3ad}{Set\-Property\-Matrix} (const char $\ast$sz\-Name, const \hyperlink{structai_matrix4x4}{ai\-Matrix4x4} \&s\-Value)
+\item 
+int \hyperlink{class_assimp_1_1_importer_a3e796a0758a9f10f13107f44c542ad41}{Get\-Property\-Integer} (const char $\ast$sz\-Name, int i\-Error\-Return=0xffffffff) const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a90f5d35d25e5d2a0ef8bc0c6545b2010}{Get\-Property\-Bool} (const char $\ast$sz\-Name, bool b\-Error\-Return=false) const 
+\item 
+float \hyperlink{class_assimp_1_1_importer_a9a99a3467d6386ddcfbe2823f16b6640}{Get\-Property\-Float} (const char $\ast$sz\-Name, float f\-Error\-Return=10e10f) const 
+\item 
+const std\-::string \hyperlink{class_assimp_1_1_importer_aa31cc1aa8f83056fe097b149354ddfd3}{Get\-Property\-String} (const char $\ast$sz\-Name, const std\-::string \&s\-Error\-Return=\char`\"{}\char`\"{}) const 
+\item 
+const \hyperlink{structai_matrix4x4}{ai\-Matrix4x4} \hyperlink{class_assimp_1_1_importer_a1b2e36eab7155233846b24ec30e7e273}{Get\-Property\-Matrix} (const char $\ast$sz\-Name, const \hyperlink{structai_matrix4x4}{ai\-Matrix4x4} \&s\-Error\-Return=\hyperlink{structai_matrix4x4}{ai\-Matrix4x4}()) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_a1161f46318af18bb86dfe0fc3edea4df}{Set\-I\-O\-Handler} (\hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} $\ast$p\-I\-O\-Handler)
+\item 
+\hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} $\ast$ \hyperlink{class_assimp_1_1_importer_abe3af30f4c5eae2e875b0f32068be44d}{Get\-I\-O\-Handler} () const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_ae3f26466cf7756594216ffedbc247563}{Is\-Default\-I\-O\-Handler} () const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_a6a4d830ffb3f77a3c7c919e0af006920}{Set\-Progress\-Handler} (\hyperlink{class_assimp_1_1_progress_handler}{Progress\-Handler} $\ast$p\-Handler)
+\item 
+\hyperlink{class_assimp_1_1_progress_handler}{Progress\-Handler} $\ast$ \hyperlink{class_assimp_1_1_importer_a1fa669f0edc504fdf9178e8e22c728ad}{Get\-Progress\-Handler} () const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a2d60d970eddf8f9d35b6e9b54214cedd}{Is\-Default\-Progress\-Handler} () const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a780329e2dd0406e930291cf8ab9deb99}{Validate\-Flags} (unsigned int p\-Flags) const 
+\begin{DoxyCompactList}\small\item\em Check whether a given set of postprocessing flags is supported. \end{DoxyCompactList}\item 
+const \hyperlink{structai_scene}{ai\-Scene} $\ast$ \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File} (const char $\ast$p\-File, unsigned int p\-Flags)
+\item 
+const \hyperlink{structai_scene}{ai\-Scene} $\ast$ \hyperlink{class_assimp_1_1_importer_a9b3c5e8b1042702f449e84a95b3324f6}{Read\-File\-From\-Memory} (const void $\ast$p\-Buffer, size\-\_\-t p\-Length, unsigned int p\-Flags, const char $\ast$p\-Hint=\char`\"{}\char`\"{})
+\item 
+const \hyperlink{structai_scene}{ai\-Scene} $\ast$ \hyperlink{class_assimp_1_1_importer_a5872e749c1451fee64183fc14f1fc81d}{Apply\-Post\-Processing} (unsigned int p\-Flags)
+\item 
+const \hyperlink{structai_scene}{ai\-Scene} $\ast$ \hyperlink{class_assimp_1_1_importer_a339882c7acb47d5b5110bbd078d870a9}{Read\-File} (const std\-::string \&p\-File, unsigned int p\-Flags)
+\begin{DoxyCompactList}\small\item\em Reads the given file and returns its contents if successful. \end{DoxyCompactList}\item 
+void \hyperlink{class_assimp_1_1_importer_a53dafc3046abc33365a07c605716c5d4}{Free\-Scene} ()
+\item 
+const char $\ast$ \hyperlink{class_assimp_1_1_importer_a23bab5ba8cb9b6886c690a610766668b}{Get\-Error\-String} () const 
+\item 
+const \hyperlink{structai_scene}{ai\-Scene} $\ast$ \hyperlink{class_assimp_1_1_importer_a26fd479a6a955969c1377fa59f92db66}{Get\-Scene} () const 
+\item 
+\hyperlink{structai_scene}{ai\-Scene} $\ast$ \hyperlink{class_assimp_1_1_importer_a60eb9042fb85bfbd61a863e131a56ecd}{Get\-Orphaned\-Scene} ()
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a9146ea75c33c0aac0310195346877388}{Is\-Extension\-Supported} (const char $\ast$sz\-Extension) const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_a5b01905366f5bf8d1f89d51f755bf7d2}{Is\-Extension\-Supported} (const std\-::string \&sz\-Extension) const 
+\begin{DoxyCompactList}\small\item\em Returns whether a given file extension is supported by A\-S\-S\-I\-M\-P. \end{DoxyCompactList}\item 
+void \hyperlink{class_assimp_1_1_importer_a23c85647f7977012d9fef20b36c2d579}{Get\-Extension\-List} (\hyperlink{structai_string}{ai\-String} \&sz\-Out) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_a6ab684351c55e170de3c5b7d730b306d}{Get\-Extension\-List} (std\-::string \&sz\-Out) const 
+\begin{DoxyCompactList}\small\item\em Get a full list of all file extensions supported by A\-S\-S\-I\-M\-P. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{class_assimp_1_1_importer_afe982451f1a1c9b0b59c788f9329ccc1}{Get\-Importer\-Count} () const 
+\item 
+const \hyperlink{structai_importer_desc}{ai\-Importer\-Desc} $\ast$ \hyperlink{class_assimp_1_1_importer_a857dd22e071521c7747dc909f6a8f6f9}{Get\-Importer\-Info} (size\-\_\-t index) const 
+\item 
+Base\-Importer $\ast$ \hyperlink{class_assimp_1_1_importer_a712a0545a11c9d198392867552ba6646}{Get\-Importer} (size\-\_\-t index) const 
+\item 
+Base\-Importer $\ast$ \hyperlink{class_assimp_1_1_importer_a18921ab411273fa95961f60848ad6007}{Get\-Importer} (const char $\ast$sz\-Extension) const 
+\item 
+size\-\_\-t \hyperlink{class_assimp_1_1_importer_aee103460f66b9cbe3143400ec92ffc56}{Get\-Importer\-Index} (const char $\ast$sz\-Extension) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_aba2eacd0b627cb481b6d66d9ca55eac9}{Get\-Memory\-Requirements} (\hyperlink{structai_memory_info}{ai\-Memory\-Info} \&in) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_a9bb793072c84c784279d0f6e870bb42d}{Set\-Extra\-Verbose} (bool b\-Do)
+\item 
+Importer\-Pimpl $\ast$ \hyperlink{class_assimp_1_1_importer_ac112839f323a630f83395acb74746827}{Pimpl} ()
+\item 
+\hypertarget{class_assimp_1_1_importer_a6bf9560ac8b1353ae809ff1d99c9c661}{const Importer\-Pimpl $\ast$ {\bfseries Pimpl} () const }\label{class_assimp_1_1_importer_a6bf9560ac8b1353ae809ff1d99c9c661}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_importer_a3affe8f98fc9a3b75fc3cb4c4415b37c}{static const unsigned int \hyperlink{class_assimp_1_1_importer_a3affe8f98fc9a3b75fc3cb4c4415b37c}{Max\-Len\-Hint} = 200}\label{class_assimp_1_1_importer_a3affe8f98fc9a3b75fc3cb4c4415b37c}
+
+\begin{DoxyCompactList}\small\item\em The upper limit for hints. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_importer_a3928bb8d375fd676dd5dbe33382e46ce}{Importer\-Pimpl $\ast$ {\bfseries pimpl}}\label{class_assimp_1_1_importer_a3928bb8d375fd676dd5dbe33382e46ce}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\-P\-P-\/\-A\-P\-I\-: The \hyperlink{class_assimp_1_1_importer}{Importer} class forms an C++ interface to the functionality of the Open Asset Import Library.
+
+Create an object of this class and call \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} to import a file. If the import succeeds, the function returns a pointer to the imported data. The data remains property of the object, it is intended to be accessed read-\/only. The imported data will be destroyed along with the \hyperlink{class_assimp_1_1_importer}{Importer} object. If the import fails, \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} returns a N\-U\-L\-L pointer. In this case you can retrieve a human-\/readable error description be calling \hyperlink{class_assimp_1_1_importer_a23bab5ba8cb9b6886c690a610766668b}{Get\-Error\-String()}. You can call \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} multiple times with a single \hyperlink{class_assimp_1_1_importer}{Importer} instance. Actually, constructing \hyperlink{class_assimp_1_1_importer}{Importer} objects involves quite many allocations and may take some time, so it's better to reuse them as often as possible.
+
+If you need the \hyperlink{class_assimp_1_1_importer}{Importer} to do custom file handling to access the files, implement \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} and \hyperlink{class_assimp_1_1_i_o_stream}{I\-O\-Stream} and supply an instance of your custom \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} implementation by calling \hyperlink{class_assimp_1_1_importer_a1161f46318af18bb86dfe0fc3edea4df}{Set\-I\-O\-Handler()} before calling \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}. If you do not assign a custion I\-O handler, a default handler using the standard C++ I\-O logic will be used.
+
+\begin{DoxyNote}{Note}
+One \hyperlink{class_assimp_1_1_importer}{Importer} instance is not thread-\/safe. If you use multiple threads for loading, each thread should maintain its own \hyperlink{class_assimp_1_1_importer}{Importer} instance. 
+\end{DoxyNote}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_importer_a2c207299ed05f1db1ad1e6dab005f719}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Importer@{Importer}}
+\index{Importer@{Importer}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Importer}]{\setlength{\rightskip}{0pt plus 5cm}Assimp\-::\-Importer\-::\-Importer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a2c207299ed05f1db1ad1e6dab005f719}
+Constructor. Creates an empty importer object.
+
+Call \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} to start the import process. The configuration property table is initially empty. \hypertarget{class_assimp_1_1_importer_a69743664b5a7a8c195be48265144317b}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Importer@{Importer}}
+\index{Importer@{Importer}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Importer}]{\setlength{\rightskip}{0pt plus 5cm}Assimp\-::\-Importer\-::\-Importer (
+\begin{DoxyParamCaption}
+\item[{const {\bf Importer} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a69743664b5a7a8c195be48265144317b}
+Copy constructor.
+
+This copies the configuration properties of another \hyperlink{class_assimp_1_1_importer}{Importer}. If this \hyperlink{class_assimp_1_1_importer}{Importer} owns a scene it won't be copied. Call \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} to start the import process. \hypertarget{class_assimp_1_1_importer_a3d65af5286ba22f46220a72a6eb2a1c9}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!$\sim$\-Importer@{$\sim$\-Importer}}
+\index{$\sim$\-Importer@{$\sim$\-Importer}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{$\sim$\-Importer}]{\setlength{\rightskip}{0pt plus 5cm}Assimp\-::\-Importer\-::$\sim$\-Importer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a3d65af5286ba22f46220a72a6eb2a1c9}
+Destructor. The object kept ownership of the imported data, which now will be destroyed along with the object. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_importer_a5872e749c1451fee64183fc14f1fc81d}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Apply\-Post\-Processing@{Apply\-Post\-Processing}}
+\index{Apply\-Post\-Processing@{Apply\-Post\-Processing}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Apply\-Post\-Processing}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf ai\-Scene}$\ast$ Assimp\-::\-Importer\-::\-Apply\-Post\-Processing (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{p\-Flags}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a5872e749c1451fee64183fc14f1fc81d}
+Apply post-\/processing to an already-\/imported scene.
+
+This is strictly equivalent to calling \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} with the same flags. However, you can use this separate function to inspect the imported scene first to fine-\/tune your post-\/processing setup. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Flags} & Provide a bitwise combination of the \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410}{ai\-Post\-Process\-Steps} flags. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the post-\/processed data. This is still the same as the pointer returned by \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}. However, if post-\/processing fails, the scene could now be N\-U\-L\-L. That's quite a rare case, post processing steps are not really designed to 'fail'. To be exact, the \#ai\-Process\-\_\-\-Validate\-D\-S flag is currently the only post processing step which can actually cause the scene to be reset to N\-U\-L\-L.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The method does nothing if no scene is currently bound to the \hyperlink{class_assimp_1_1_importer_a2c207299ed05f1db1ad1e6dab005f719}{Importer} instance. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a53dafc3046abc33365a07c605716c5d4}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Free\-Scene@{Free\-Scene}}
+\index{Free\-Scene@{Free\-Scene}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Free\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}void Assimp\-::\-Importer\-::\-Free\-Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a53dafc3046abc33365a07c605716c5d4}
+Frees the current scene.
+
+The function does nothing if no scene has previously been read via \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}. \hyperlink{class_assimp_1_1_importer_a53dafc3046abc33365a07c605716c5d4}{Free\-Scene()} is called automatically by the destructor and \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} itself. \hypertarget{class_assimp_1_1_importer_a23bab5ba8cb9b6886c690a610766668b}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Error\-String@{Get\-Error\-String}}
+\index{Get\-Error\-String@{Get\-Error\-String}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Error\-String}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Assimp\-::\-Importer\-::\-Get\-Error\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a23bab5ba8cb9b6886c690a610766668b}
+Returns an error description of an error that occurred in \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}.
+
+Returns an empty string if no error occurred. \begin{DoxyReturn}{Returns}
+A description of the last error, an empty string if no error occurred. The string is never N\-U\-L\-L.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The returned function remains valid until one of the following methods is called\-: \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}, \hyperlink{class_assimp_1_1_importer_a53dafc3046abc33365a07c605716c5d4}{Free\-Scene()}. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a23c85647f7977012d9fef20b36c2d579}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Extension\-List@{Get\-Extension\-List}}
+\index{Get\-Extension\-List@{Get\-Extension\-List}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Extension\-List}]{\setlength{\rightskip}{0pt plus 5cm}void Assimp\-::\-Importer\-::\-Get\-Extension\-List (
+\begin{DoxyParamCaption}
+\item[{{\bf ai\-String} \&}]{sz\-Out}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a23c85647f7977012d9fef20b36c2d579}
+Get a full list of all file extensions supported by A\-S\-S\-I\-M\-P.
+
+If a file extension is contained in the list this does of course not mean that A\-S\-S\-I\-M\-P is able to load all files with this extension --- it simply means there is an importer loaded which claims to handle files with this file extension. 
+\begin{DoxyParams}{Parameters}
+{\em sz\-Out} & String to receive the extension list. Format of the list\-: \char`\"{}$\ast$.\-3ds;$\ast$.\-obj;$\ast$.\-dae\char`\"{}. This is useful for use with the Win\-A\-P\-I call Get\-Open\-File\-Name(\-Ex). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_assimp_1_1_importer_a6ab684351c55e170de3c5b7d730b306d}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Extension\-List@{Get\-Extension\-List}}
+\index{Get\-Extension\-List@{Get\-Extension\-List}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Extension\-List}]{\setlength{\rightskip}{0pt plus 5cm}A\-I\-\_\-\-F\-O\-R\-C\-E\-\_\-\-I\-N\-L\-I\-N\-E void Assimp\-::\-Importer\-::\-Get\-Extension\-List (
+\begin{DoxyParamCaption}
+\item[{std\-::string \&}]{sz\-Out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_assimp_1_1_importer_a6ab684351c55e170de3c5b7d730b306d}
+
+
+Get a full list of all file extensions supported by A\-S\-S\-I\-M\-P. 
+
+This function is provided for backward compatibility. See the \hyperlink{structai_string}{ai\-String} version for detailed and up-\/to-\/date docs. \begin{DoxySeeAlso}{See Also}
+Get\-Extension\-List(ai\-String\&) 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a712a0545a11c9d198392867552ba6646}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Importer@{Get\-Importer}}
+\index{Get\-Importer@{Get\-Importer}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Importer}]{\setlength{\rightskip}{0pt plus 5cm}Base\-Importer$\ast$ Assimp\-::\-Importer\-::\-Get\-Importer (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a712a0545a11c9d198392867552ba6646}
+Find the importer corresponding to a specific index.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index to query, must be within \mbox{[}0,\hyperlink{class_assimp_1_1_importer_afe982451f1a1c9b0b59c788f9329ccc1}{Get\-Importer\-Count()}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_assimp_1_1_importer}{Importer} instance. N\-U\-L\-L if the index does not exist. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a18921ab411273fa95961f60848ad6007}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Importer@{Get\-Importer}}
+\index{Get\-Importer@{Get\-Importer}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Importer}]{\setlength{\rightskip}{0pt plus 5cm}Base\-Importer$\ast$ Assimp\-::\-Importer\-::\-Get\-Importer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Extension}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a18921ab411273fa95961f60848ad6007}
+Find the importer corresponding to a specific file extension.
+
+This is quite similar to \hyperlink{class_assimp_1_1_importer_a9146ea75c33c0aac0310195346877388}{Is\-Extension\-Supported} except a Base\-Importer instance is returned. 
+\begin{DoxyParams}{Parameters}
+{\em sz\-Extension} & Extension to check for. The following formats are recognized (B\-A\-H being the file extension)\-: \char`\"{}\-B\-A\-H\char`\"{} (comparison is case-\/insensitive), \char`\"{}.\-bah\char`\"{}, \char`\"{}$\ast$.\-bah\char`\"{} (wild card and dot characters at the beginning of the extension are skipped). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\-U\-L\-L if no importer is found 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_afe982451f1a1c9b0b59c788f9329ccc1}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Importer\-Count@{Get\-Importer\-Count}}
+\index{Get\-Importer\-Count@{Get\-Importer\-Count}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Importer\-Count}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t Assimp\-::\-Importer\-::\-Get\-Importer\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_afe982451f1a1c9b0b59c788f9329ccc1}
+Get the number of importrs currently registered with \hyperlink{namespace_assimp}{Assimp}. \hypertarget{class_assimp_1_1_importer_aee103460f66b9cbe3143400ec92ffc56}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Importer\-Index@{Get\-Importer\-Index}}
+\index{Get\-Importer\-Index@{Get\-Importer\-Index}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Importer\-Index}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t Assimp\-::\-Importer\-::\-Get\-Importer\-Index (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Extension}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_aee103460f66b9cbe3143400ec92ffc56}
+Find the importer index corresponding to a specific file extension.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sz\-Extension} & Extension to check for. The following formats are recognized (B\-A\-H being the file extension)\-: \char`\"{}\-B\-A\-H\char`\"{} (comparison is case-\/insensitive), \char`\"{}.\-bah\char`\"{}, \char`\"{}$\ast$.\-bah\char`\"{} (wild card and dot characters at the beginning of the extension are skipped). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(size\-\_\-t)-\/1 if no importer is found 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a857dd22e071521c7747dc909f6a8f6f9}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Importer\-Info@{Get\-Importer\-Info}}
+\index{Get\-Importer\-Info@{Get\-Importer\-Info}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Importer\-Info}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf ai\-Importer\-Desc}$\ast$ Assimp\-::\-Importer\-::\-Get\-Importer\-Info (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a857dd22e071521c7747dc909f6a8f6f9}
+Get meta data for the importer corresponding to a specific index..
+
+For the declaration of \hyperlink{structai_importer_desc}{ai\-Importer\-Desc}, include $<$\hyperlink{importerdesc_8h}{assimp/importerdesc.\-h}$>$. 
+\begin{DoxyParams}{Parameters}
+{\em index} & Index to query, must be within \mbox{[}0,\hyperlink{class_assimp_1_1_importer_afe982451f1a1c9b0b59c788f9329ccc1}{Get\-Importer\-Count()}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_assimp_1_1_importer}{Importer} meta data structure, N\-U\-L\-L if the index does not exist or if the importer doesn't offer meta information ( importers may do this at the cost of being hated by their peers). 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_abe3af30f4c5eae2e875b0f32068be44d}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-I\-O\-Handler@{Get\-I\-O\-Handler}}
+\index{Get\-I\-O\-Handler@{Get\-I\-O\-Handler}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-I\-O\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-O\-System}$\ast$ Assimp\-::\-Importer\-::\-Get\-I\-O\-Handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_abe3af30f4c5eae2e875b0f32068be44d}
+Retrieves the I\-O handler that is currently set. You can use \hyperlink{class_assimp_1_1_importer_ae3f26466cf7756594216ffedbc247563}{Is\-Default\-I\-O\-Handler()} to check whether the returned interface is the default I\-O handler provided by A\-S\-S\-I\-M\-P. The default handler is active as long the application doesn't supply its own custom I\-O handler via \hyperlink{class_assimp_1_1_importer_a1161f46318af18bb86dfe0fc3edea4df}{Set\-I\-O\-Handler()}. \begin{DoxyReturn}{Returns}
+A valid \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} interface, never N\-U\-L\-L. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_aba2eacd0b627cb481b6d66d9ca55eac9}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Memory\-Requirements@{Get\-Memory\-Requirements}}
+\index{Get\-Memory\-Requirements@{Get\-Memory\-Requirements}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Memory\-Requirements}]{\setlength{\rightskip}{0pt plus 5cm}void Assimp\-::\-Importer\-::\-Get\-Memory\-Requirements (
+\begin{DoxyParamCaption}
+\item[{{\bf ai\-Memory\-Info} \&}]{in}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_aba2eacd0b627cb481b6d66d9ca55eac9}
+Returns the storage allocated by A\-S\-S\-I\-M\-P to hold the scene data in memory.
+
+This refers to the currently loaded file, see \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}. 
+\begin{DoxyParams}{Parameters}
+{\em in} & Data structure to be filled. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The returned memory statistics refer to the actual size of the use data of the \hyperlink{structai_scene}{ai\-Scene}. Heap-\/related overhead is (naturally) not included. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a60eb9042fb85bfbd61a863e131a56ecd}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Orphaned\-Scene@{Get\-Orphaned\-Scene}}
+\index{Get\-Orphaned\-Scene@{Get\-Orphaned\-Scene}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Orphaned\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ai\-Scene}$\ast$ Assimp\-::\-Importer\-::\-Get\-Orphaned\-Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a60eb9042fb85bfbd61a863e131a56ecd}
+Returns the scene loaded by the last successful call to \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} and releases the scene from the ownership of the \hyperlink{class_assimp_1_1_importer}{Importer} instance. The application is now responsible for deleting the scene. Any further calls to \hyperlink{class_assimp_1_1_importer_a26fd479a6a955969c1377fa59f92db66}{Get\-Scene()} or \hyperlink{class_assimp_1_1_importer_a60eb9042fb85bfbd61a863e131a56ecd}{Get\-Orphaned\-Scene()} will return N\-U\-L\-L -\/ until a new scene has been loaded via \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}.
+
+\begin{DoxyReturn}{Returns}
+Current scene or N\-U\-L\-L if there is currently no scene loaded 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Use this method with maximal caution, and only if you have to. By design, \hyperlink{structai_scene}{ai\-Scene}'s are exclusively maintained, allocated and deallocated by \hyperlink{namespace_assimp}{Assimp} and no one else. The reasoning behind this is the golden rule that deallocations should always be done by the module that did the original allocation because heaps are not necessarily shared. \hyperlink{class_assimp_1_1_importer_a60eb9042fb85bfbd61a863e131a56ecd}{Get\-Orphaned\-Scene()} enforces you to delete the returned scene by yourself, but this will only be fine if and only if you're using the same heap as assimp. On Windows, it's typically fine provided everything is linked against the multithreaded-\/dll version of the runtime library. It will work as well for static linkage with \hyperlink{namespace_assimp}{Assimp}. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a1fa669f0edc504fdf9178e8e22c728ad}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Progress\-Handler@{Get\-Progress\-Handler}}
+\index{Get\-Progress\-Handler@{Get\-Progress\-Handler}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Progress\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Progress\-Handler}$\ast$ Assimp\-::\-Importer\-::\-Get\-Progress\-Handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a1fa669f0edc504fdf9178e8e22c728ad}
+Retrieves the progress handler that is currently set. You can use \hyperlink{class_assimp_1_1_importer_a2d60d970eddf8f9d35b6e9b54214cedd}{Is\-Default\-Progress\-Handler()} to check whether the returned interface is the default handler provided by A\-S\-S\-I\-M\-P. The default handler is active as long the application doesn't supply its own custom handler via \hyperlink{class_assimp_1_1_importer_a6a4d830ffb3f77a3c7c919e0af006920}{Set\-Progress\-Handler()}. \begin{DoxyReturn}{Returns}
+A valid \hyperlink{class_assimp_1_1_progress_handler}{Progress\-Handler} interface, never N\-U\-L\-L. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a90f5d35d25e5d2a0ef8bc0c6545b2010}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Property\-Bool@{Get\-Property\-Bool}}
+\index{Get\-Property\-Bool@{Get\-Property\-Bool}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Property\-Bool}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Get\-Property\-Bool (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{bool}]{b\-Error\-Return = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_assimp_1_1_importer_a90f5d35d25e5d2a0ef8bc0c6545b2010}
+Get a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via \hyperlink{class_assimp_1_1_importer_a4af22a88eddf464d949a761149c72825}{Set\-Property\-Bool} and query them with \hyperlink{class_assimp_1_1_importer_a90f5d35d25e5d2a0ef8bc0c6545b2010}{Get\-Property\-Bool} and vice versa. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a3e796a0758a9f10f13107f44c542ad41}{Get\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a9a99a3467d6386ddcfbe2823f16b6640}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Property\-Float@{Get\-Property\-Float}}
+\index{Get\-Property\-Float@{Get\-Property\-Float}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Property\-Float}]{\setlength{\rightskip}{0pt plus 5cm}float Assimp\-::\-Importer\-::\-Get\-Property\-Float (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{float}]{f\-Error\-Return = {\ttfamily 10e10f}}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a9a99a3467d6386ddcfbe2823f16b6640}
+Get a floating-\/point configuration property \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a3e796a0758a9f10f13107f44c542ad41}{Get\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a3e796a0758a9f10f13107f44c542ad41}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Property\-Integer@{Get\-Property\-Integer}}
+\index{Get\-Property\-Integer@{Get\-Property\-Integer}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Property\-Integer}]{\setlength{\rightskip}{0pt plus 5cm}int Assimp\-::\-Importer\-::\-Get\-Property\-Integer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{int}]{i\-Error\-Return = {\ttfamily 0xffffffff}}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a3e796a0758a9f10f13107f44c542ad41}
+Get a configuration property. 
+\begin{DoxyParams}{Parameters}
+{\em sz\-Name} & Name of the property. All supported properties are defined in the ai\-Config.\-g header (all constants share the prefix A\-I\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-X\-X\-X). \\
+\hline
+{\em i\-Error\-Return} & Value that is returned if the property is not found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Current value of the property 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Property of different types (float, int, string ..) are kept on different lists, so calling \hyperlink{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{Set\-Property\-Integer()} for a floating-\/point property has no effect -\/ the loader will call \hyperlink{class_assimp_1_1_importer_a9a99a3467d6386ddcfbe2823f16b6640}{Get\-Property\-Float()} to read the property, but it won't be there. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a1b2e36eab7155233846b24ec30e7e273}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Property\-Matrix@{Get\-Property\-Matrix}}
+\index{Get\-Property\-Matrix@{Get\-Property\-Matrix}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Property\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf ai\-Matrix4x4} Assimp\-::\-Importer\-::\-Get\-Property\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{const {\bf ai\-Matrix4x4} \&}]{s\-Error\-Return = {\ttfamily {\bf ai\-Matrix4x4}()}}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a1b2e36eab7155233846b24ec30e7e273}
+Get a matrix configuration property
+
+The return value remains valid until the property is modified. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a3e796a0758a9f10f13107f44c542ad41}{Get\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_aa31cc1aa8f83056fe097b149354ddfd3}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Property\-String@{Get\-Property\-String}}
+\index{Get\-Property\-String@{Get\-Property\-String}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Property\-String}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::string Assimp\-::\-Importer\-::\-Get\-Property\-String (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{const std\-::string \&}]{s\-Error\-Return = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_aa31cc1aa8f83056fe097b149354ddfd3}
+Get a string configuration property
+
+The return value remains valid until the property is modified. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a3e796a0758a9f10f13107f44c542ad41}{Get\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a26fd479a6a955969c1377fa59f92db66}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Get\-Scene@{Get\-Scene}}
+\index{Get\-Scene@{Get\-Scene}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Get\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf ai\-Scene}$\ast$ Assimp\-::\-Importer\-::\-Get\-Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a26fd479a6a955969c1377fa59f92db66}
+Returns the scene loaded by the last successful call to \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()}
+
+\begin{DoxyReturn}{Returns}
+Current scene or N\-U\-L\-L if there is currently no scene loaded 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_ae3f26466cf7756594216ffedbc247563}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Is\-Default\-I\-O\-Handler@{Is\-Default\-I\-O\-Handler}}
+\index{Is\-Default\-I\-O\-Handler@{Is\-Default\-I\-O\-Handler}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Is\-Default\-I\-O\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Is\-Default\-I\-O\-Handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_ae3f26466cf7756594216ffedbc247563}
+Checks whether a default I\-O handler is active A default handler is active as long the application doesn't supply its own custom I\-O handler via \hyperlink{class_assimp_1_1_importer_a1161f46318af18bb86dfe0fc3edea4df}{Set\-I\-O\-Handler()}. \begin{DoxyReturn}{Returns}
+true by default 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a2d60d970eddf8f9d35b6e9b54214cedd}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Is\-Default\-Progress\-Handler@{Is\-Default\-Progress\-Handler}}
+\index{Is\-Default\-Progress\-Handler@{Is\-Default\-Progress\-Handler}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Is\-Default\-Progress\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Is\-Default\-Progress\-Handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a2d60d970eddf8f9d35b6e9b54214cedd}
+Checks whether a default progress handler is active A default handler is active as long the application doesn't supply its own custom progress handler via \hyperlink{class_assimp_1_1_importer_a6a4d830ffb3f77a3c7c919e0af006920}{Set\-Progress\-Handler()}. \begin{DoxyReturn}{Returns}
+true by default 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a9146ea75c33c0aac0310195346877388}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Is\-Extension\-Supported@{Is\-Extension\-Supported}}
+\index{Is\-Extension\-Supported@{Is\-Extension\-Supported}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Is\-Extension\-Supported}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Is\-Extension\-Supported (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Extension}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a9146ea75c33c0aac0310195346877388}
+Returns whether a given file extension is supported by A\-S\-S\-I\-M\-P.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sz\-Extension} & Extension to be checked. Must include a trailing dot '.'. Example\-: \char`\"{}.\-3ds\char`\"{}, \char`\"{}.\-md3\char`\"{}. Cases-\/insensitive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the extension is supported, false otherwise 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a5b01905366f5bf8d1f89d51f755bf7d2}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Is\-Extension\-Supported@{Is\-Extension\-Supported}}
+\index{Is\-Extension\-Supported@{Is\-Extension\-Supported}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Is\-Extension\-Supported}]{\setlength{\rightskip}{0pt plus 5cm}A\-I\-\_\-\-F\-O\-R\-C\-E\-\_\-\-I\-N\-L\-I\-N\-E bool Assimp\-::\-Importer\-::\-Is\-Extension\-Supported (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{sz\-Extension}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_assimp_1_1_importer_a5b01905366f5bf8d1f89d51f755bf7d2}
+
+
+Returns whether a given file extension is supported by A\-S\-S\-I\-M\-P. 
+
+This function is provided for backward compatibility. See the const char$\ast$ version for detailed and up-\/to-\/date docs. \begin{DoxySeeAlso}{See Also}
+Is\-Extension\-Supported(const char$\ast$) 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_ac112839f323a630f83395acb74746827}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Pimpl@{Pimpl}}
+\index{Pimpl@{Pimpl}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Pimpl}]{\setlength{\rightskip}{0pt plus 5cm}Importer\-Pimpl$\ast$ Assimp\-::\-Importer\-::\-Pimpl (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_assimp_1_1_importer_ac112839f323a630f83395acb74746827}
+Private, do not use. \hypertarget{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Read\-File@{Read\-File}}
+\index{Read\-File@{Read\-File}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Read\-File}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf ai\-Scene}$\ast$ Assimp\-::\-Importer\-::\-Read\-File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{p\-File, }
+\item[{unsigned int}]{p\-Flags}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}
+Reads the given file and returns its contents if successful.
+
+If the call succeeds, the contents of the file are returned as a pointer to an \hyperlink{structai_scene}{ai\-Scene} object. The returned data is intended to be read-\/only, the importer object keeps ownership of the data and will destroy it upon destruction. If the import fails, N\-U\-L\-L is returned. A human-\/readable error description can be retrieved by calling \hyperlink{class_assimp_1_1_importer_a23bab5ba8cb9b6886c690a610766668b}{Get\-Error\-String()}. The previous scene will be deleted during this call. 
+\begin{DoxyParams}{Parameters}
+{\em p\-File} & Path and filename to the file to be imported. \\
+\hline
+{\em p\-Flags} & Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410}{ai\-Post\-Process\-Steps} flags. If you wish to inspect the imported scene first in order to fine-\/tune your post-\/processing setup, consider to use \hyperlink{class_assimp_1_1_importer_a5872e749c1451fee64183fc14f1fc81d}{Apply\-Post\-Processing()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the imported data, N\-U\-L\-L if the import failed. The pointer to the scene remains in possession of the \hyperlink{class_assimp_1_1_importer}{Importer} instance. Use \hyperlink{class_assimp_1_1_importer_a60eb9042fb85bfbd61a863e131a56ecd}{Get\-Orphaned\-Scene()} to take ownership of it.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+\hyperlink{namespace_assimp}{Assimp} is able to determine the file format of a file automatically. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a339882c7acb47d5b5110bbd078d870a9}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Read\-File@{Read\-File}}
+\index{Read\-File@{Read\-File}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Read\-File}]{\setlength{\rightskip}{0pt plus 5cm}A\-I\-\_\-\-F\-O\-R\-C\-E\-\_\-\-I\-N\-L\-I\-N\-E const {\bf ai\-Scene} $\ast$ Assimp\-::\-Importer\-::\-Read\-File (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{p\-File, }
+\item[{unsigned int}]{p\-Flags}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a339882c7acb47d5b5110bbd078d870a9}
+
+
+Reads the given file and returns its contents if successful. 
+
+class \hyperlink{class_assimp_1_1_importer}{Importer}
+
+This function is provided for backward compatibility. See the const char$\ast$ version for detailled docs. \begin{DoxySeeAlso}{See Also}
+Read\-File(const char$\ast$, p\-Flags) 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a9b3c5e8b1042702f449e84a95b3324f6}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Read\-File\-From\-Memory@{Read\-File\-From\-Memory}}
+\index{Read\-File\-From\-Memory@{Read\-File\-From\-Memory}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Read\-File\-From\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf ai\-Scene}$\ast$ Assimp\-::\-Importer\-::\-Read\-File\-From\-Memory (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{p\-Buffer, }
+\item[{size\-\_\-t}]{p\-Length, }
+\item[{unsigned int}]{p\-Flags, }
+\item[{const char $\ast$}]{p\-Hint = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a9b3c5e8b1042702f449e84a95b3324f6}
+Reads the given file from a memory buffer and returns its contents if successful.
+
+If the call succeeds, the contents of the file are returned as a pointer to an \hyperlink{structai_scene}{ai\-Scene} object. The returned data is intended to be read-\/only, the importer object keeps ownership of the data and will destroy it upon destruction. If the import fails, N\-U\-L\-L is returned. A human-\/readable error description can be retrieved by calling \hyperlink{class_assimp_1_1_importer_a23bab5ba8cb9b6886c690a610766668b}{Get\-Error\-String()}. The previous scene will be deleted during this call. Calling this method doesn't affect the active \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System}. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Buffer} & Pointer to the file data \\
+\hline
+{\em p\-Length} & Length of p\-Buffer, in bytes \\
+\hline
+{\em p\-Flags} & Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410}{ai\-Post\-Process\-Steps} flags. If you wish to inspect the imported scene first in order to fine-\/tune your post-\/processing setup, consider to use \hyperlink{class_assimp_1_1_importer_a5872e749c1451fee64183fc14f1fc81d}{Apply\-Post\-Processing()}. \\
+\hline
+{\em p\-Hint} & An additional hint to the library. If this is a non empty string, the library looks for a loader to support the file extension specified by p\-Hint and passes the file to the first matching loader. If this loader is unable to completely the request, the library continues and tries to determine the file format on its own, a task that may or may not be successful. Check the return value, and you'll know ... \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the imported data, N\-U\-L\-L if the import failed. The pointer to the scene remains in possession of the \hyperlink{class_assimp_1_1_importer}{Importer} instance. Use \hyperlink{class_assimp_1_1_importer_a60eb9042fb85bfbd61a863e131a56ecd}{Get\-Orphaned\-Scene()} to take ownership of it.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is a straightforward way to decode models from memory buffers, but it doesn't handle model formats that spread their data across multiple files or even directories. Examples include O\-B\-J or M\-D3, which outsource parts of their material info into external scripts. If you need full functionality, provide a custom \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} to make \hyperlink{namespace_assimp}{Assimp} find these files and use the regular \hyperlink{class_assimp_1_1_importer_a174418ab41d5b8bc51a044895cb991e5}{Read\-File()} A\-P\-I. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a3846294ffe76d91a1d3096d22d7c6b7d}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Register\-Loader@{Register\-Loader}}
+\index{Register\-Loader@{Register\-Loader}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Register\-Loader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ai\-Return} Assimp\-::\-Importer\-::\-Register\-Loader (
+\begin{DoxyParamCaption}
+\item[{Base\-Importer $\ast$}]{p\-Imp}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a3846294ffe76d91a1d3096d22d7c6b7d}
+Registers a new loader.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Imp} & \hyperlink{class_assimp_1_1_importer}{Importer} to be added. The \hyperlink{class_assimp_1_1_importer}{Importer} instance takes ownership of the pointer, so it will be automatically deleted with the \hyperlink{class_assimp_1_1_importer}{Importer} instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S if the loader has been added. The registration fails if there is already a loader for a specific file extension. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a102650d3648c0e414a1e73bdad9bed35}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Register\-P\-P\-Step@{Register\-P\-P\-Step}}
+\index{Register\-P\-P\-Step@{Register\-P\-P\-Step}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Register\-P\-P\-Step}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ai\-Return} Assimp\-::\-Importer\-::\-Register\-P\-P\-Step (
+\begin{DoxyParamCaption}
+\item[{Base\-Process $\ast$}]{p\-Imp}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a102650d3648c0e414a1e73bdad9bed35}
+Registers a new post-\/process step.
+
+At the moment, there's a small limitation\-: new post processing steps are added to end of the list, or in other words, executed last, after all built-\/in steps. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Imp} & Post-\/process step to be added. The \hyperlink{class_assimp_1_1_importer}{Importer} instance takes ownership of the pointer, so it will be automatically deleted with the \hyperlink{class_assimp_1_1_importer}{Importer} instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S if the step has been added correctly. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a9bb793072c84c784279d0f6e870bb42d}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-Extra\-Verbose@{Set\-Extra\-Verbose}}
+\index{Set\-Extra\-Verbose@{Set\-Extra\-Verbose}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-Extra\-Verbose}]{\setlength{\rightskip}{0pt plus 5cm}void Assimp\-::\-Importer\-::\-Set\-Extra\-Verbose (
+\begin{DoxyParamCaption}
+\item[{bool}]{b\-Do}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a9bb793072c84c784279d0f6e870bb42d}
+Enables \char`\"{}extra verbose\char`\"{} mode.
+
+'Extra verbose' means the data structure is validated after {\itshape every} single post processing step to make sure everyone modifies the data structure in a well-\/defined manner. This is a debug feature and not intended for use in production environments. \hypertarget{class_assimp_1_1_importer_a1161f46318af18bb86dfe0fc3edea4df}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-I\-O\-Handler@{Set\-I\-O\-Handler}}
+\index{Set\-I\-O\-Handler@{Set\-I\-O\-Handler}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-I\-O\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Assimp\-::\-Importer\-::\-Set\-I\-O\-Handler (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-O\-System} $\ast$}]{p\-I\-O\-Handler}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a1161f46318af18bb86dfe0fc3edea4df}
+Supplies a custom I\-O handler to the importer to use to open and access files. If you need the importer to use custion I\-O logic to access the files, you need to provide a custom implementation of \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} and I\-O\-File to the importer. Then create an instance of your custion \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} implementation and supply it by this function.
+
+The \hyperlink{class_assimp_1_1_importer}{Importer} takes ownership of the object and will destroy it afterwards. The previously assigned handler will be deleted. Pass N\-U\-L\-L to take again ownership of your \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} and reset \hyperlink{namespace_assimp}{Assimp} to use its default implementation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-I\-O\-Handler} & The I\-O handler to be used in all file accesses of the \hyperlink{class_assimp_1_1_importer}{Importer}. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_assimp_1_1_importer_a6a4d830ffb3f77a3c7c919e0af006920}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-Progress\-Handler@{Set\-Progress\-Handler}}
+\index{Set\-Progress\-Handler@{Set\-Progress\-Handler}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-Progress\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Assimp\-::\-Importer\-::\-Set\-Progress\-Handler (
+\begin{DoxyParamCaption}
+\item[{{\bf Progress\-Handler} $\ast$}]{p\-Handler}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a6a4d830ffb3f77a3c7c919e0af006920}
+Supplies a custom progress handler to the importer. This interface exposes a \#\-Update() callback, which is called more or less periodically (please don't sue us if it isn't as periodically as you'd like it to have ...). This can be used to implement progress bars and loading timeouts. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Handler} & Progress callback interface. Pass N\-U\-L\-L to disable progress reporting. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Progress handlers can be used to abort the loading at almost any time. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_a4af22a88eddf464d949a761149c72825}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-Property\-Bool@{Set\-Property\-Bool}}
+\index{Set\-Property\-Bool@{Set\-Property\-Bool}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-Property\-Bool}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Set\-Property\-Bool (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_assimp_1_1_importer_a4af22a88eddf464d949a761149c72825}
+Set a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via \hyperlink{class_assimp_1_1_importer_a4af22a88eddf464d949a761149c72825}{Set\-Property\-Bool} and query them with \hyperlink{class_assimp_1_1_importer_a90f5d35d25e5d2a0ef8bc0c6545b2010}{Get\-Property\-Bool} and vice versa. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{Set\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_ab1854be9aa766a748804a69c69fe4901}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-Property\-Float@{Set\-Property\-Float}}
+\index{Set\-Property\-Float@{Set\-Property\-Float}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-Property\-Float}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Set\-Property\-Float (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{float}]{f\-Value}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_ab1854be9aa766a748804a69c69fe4901}
+Set a floating-\/point configuration property. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{Set\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-Property\-Integer@{Set\-Property\-Integer}}
+\index{Set\-Property\-Integer@{Set\-Property\-Integer}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-Property\-Integer}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Set\-Property\-Integer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{int}]{i\-Value}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}
+Set an integer configuration property. 
+\begin{DoxyParams}{Parameters}
+{\em sz\-Name} & Name of the property. All supported properties are defined in the ai\-Config.\-g header (all constants share the prefix A\-I\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-X\-X\-X and are simple strings). \\
+\hline
+{\em i\-Value} & New value of the property \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the property was set before. The new value replaces the previous value in this case. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Property of different types (float, int, string ..) are kept on different stacks, so calling \hyperlink{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{Set\-Property\-Integer()} for a floating-\/point property has no effect -\/ the loader will call \hyperlink{class_assimp_1_1_importer_a9a99a3467d6386ddcfbe2823f16b6640}{Get\-Property\-Float()} to read the property, but it won't be there. 
+\end{DoxyNote}
+\hypertarget{class_assimp_1_1_importer_acd128e5fb5777ef238b8bd1454a9c3ad}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-Property\-Matrix@{Set\-Property\-Matrix}}
+\index{Set\-Property\-Matrix@{Set\-Property\-Matrix}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-Property\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Set\-Property\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{const {\bf ai\-Matrix4x4} \&}]{s\-Value}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_acd128e5fb5777ef238b8bd1454a9c3ad}
+Set a matrix configuration property. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{Set\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a854087b213981108e3e464cf4d293fed}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Set\-Property\-String@{Set\-Property\-String}}
+\index{Set\-Property\-String@{Set\-Property\-String}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Set\-Property\-String}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Set\-Property\-String (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sz\-Name, }
+\item[{const std\-::string \&}]{s\-Value}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a854087b213981108e3e464cf4d293fed}
+Set a string configuration property. \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_assimp_1_1_importer_a2542eed3d5f491025c4095b4e55fa068}{Set\-Property\-Integer()} 
+\end{DoxySeeAlso}
+\hypertarget{class_assimp_1_1_importer_a3b1f5af2c763b13aca0f324b19001722}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Unregister\-Loader@{Unregister\-Loader}}
+\index{Unregister\-Loader@{Unregister\-Loader}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Unregister\-Loader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ai\-Return} Assimp\-::\-Importer\-::\-Unregister\-Loader (
+\begin{DoxyParamCaption}
+\item[{Base\-Importer $\ast$}]{p\-Imp}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a3b1f5af2c763b13aca0f324b19001722}
+Unregisters a loader.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Imp} & \hyperlink{class_assimp_1_1_importer}{Importer} to be unregistered. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S if the loader has been removed. The function fails if the loader is currently in use (this could happen if the \hyperlink{class_assimp_1_1_importer_a2c207299ed05f1db1ad1e6dab005f719}{Importer} instance is used by more than one thread) or if it has not yet been registered. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a3a683671c7c40638b1103c5d3648d86c}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Unregister\-P\-P\-Step@{Unregister\-P\-P\-Step}}
+\index{Unregister\-P\-P\-Step@{Unregister\-P\-P\-Step}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Unregister\-P\-P\-Step}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ai\-Return} Assimp\-::\-Importer\-::\-Unregister\-P\-P\-Step (
+\begin{DoxyParamCaption}
+\item[{Base\-Process $\ast$}]{p\-Imp}
+\end{DoxyParamCaption}
+)}}\label{class_assimp_1_1_importer_a3a683671c7c40638b1103c5d3648d86c}
+Unregisters a post-\/process step.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Imp} & Step to be unregistered. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A\-I\-\_\-\-S\-U\-C\-C\-E\-S\-S if the step has been removed. The function fails if the step is currently in use (this could happen if the \hyperlink{class_assimp_1_1_importer_a2c207299ed05f1db1ad1e6dab005f719}{Importer} instance is used by more than one thread) or if it has not yet been registered. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_importer_a780329e2dd0406e930291cf8ab9deb99}{\index{Assimp\-::\-Importer@{Assimp\-::\-Importer}!Validate\-Flags@{Validate\-Flags}}
+\index{Validate\-Flags@{Validate\-Flags}!Assimp::Importer@{Assimp\-::\-Importer}}
+\subsubsection[{Validate\-Flags}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Importer\-::\-Validate\-Flags (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{p\-Flags}
+\end{DoxyParamCaption}
+) const}}\label{class_assimp_1_1_importer_a780329e2dd0406e930291cf8ab9deb99}
+
+
+Check whether a given set of postprocessing flags is supported. 
+
+Some flags are mutually exclusive, others are probably not available because your excluded them from your \hyperlink{namespace_assimp}{Assimp} builds. Calling this function is recommended if you're unsure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Flags} & Bitwise combination of the ai\-Post\-Process flags. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this flag combination is fine. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/\hyperlink{_importer_8hpp}{Importer.\-hpp}\end{DoxyCompactItemize}

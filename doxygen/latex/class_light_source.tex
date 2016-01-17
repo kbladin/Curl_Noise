@@ -1,0 +1,83 @@
+\hypertarget{class_light_source}{\section{Light\-Source Class Reference}
+\label{class_light_source}\index{Light\-Source@{Light\-Source}}
+}
+
+
+A light source defined in 3\-D space.  
+
+
+
+
+{\ttfamily \#include $<$Simple\-Graphics\-Engine.\-h$>$}
+
+
+
+Inherits \hyperlink{class_object3_d}{Object3\-D}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_light_source_a720778d22df1d0ef3315f4ebf6136fba}{Light\-Source} (G\-Luint program\-\_\-\-I\-D)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{class_light_source}{Light\-Source} bound to a specific shader. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_light_source_a32245b583ceb37d47b9c169ddfb77e86}{render} (glm\-::mat4 M)
+\begin{DoxyCompactList}\small\item\em Render the \hyperlink{class_light_source}{Light\-Source}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_light_source_a1a62623c420ee653e737e585e71da1aa}{float {\bfseries intensity\-\_\-}}\label{class_light_source_a1a62623c420ee653e737e585e71da1aa}
+
+\item 
+\hypertarget{class_light_source_aaaaa54449c7054fd4bb45be7d4067851}{glm\-::vec3 {\bfseries color\-\_\-}}\label{class_light_source_aaaaa54449c7054fd4bb45be7d4067851}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A light source defined in 3\-D space. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_light_source_a720778d22df1d0ef3315f4ebf6136fba}{\index{Light\-Source@{Light\-Source}!Light\-Source@{Light\-Source}}
+\index{Light\-Source@{Light\-Source}!LightSource@{Light\-Source}}
+\subsubsection[{Light\-Source}]{\setlength{\rightskip}{0pt plus 5cm}Light\-Source\-::\-Light\-Source (
+\begin{DoxyParamCaption}
+\item[{G\-Luint}]{program\-\_\-\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_light_source_a720778d22df1d0ef3315f4ebf6136fba}
+
+
+Creates a \hyperlink{class_light_source}{Light\-Source} bound to a specific shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em program\-\_\-\-I\-D} & is the shader program that this \hyperlink{class_light_source}{Light\-Source} will be bound to. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_light_source_a32245b583ceb37d47b9c169ddfb77e86}{\index{Light\-Source@{Light\-Source}!render@{render}}
+\index{render@{render}!LightSource@{Light\-Source}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}void Light\-Source\-::render (
+\begin{DoxyParamCaption}
+\item[{glm\-::mat4}]{M}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_light_source_a32245b583ceb37d47b9c169ddfb77e86}
+
+
+Render the \hyperlink{class_light_source}{Light\-Source}. 
+
+Setting all the uniforms of the lightsource for rendering. 
+\begin{DoxyParams}{Parameters}
+{\em M} & is the transformation matrix of the parent. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_object3_d_afa3e765f12707f3dd0fb8d24de9a68b7}{Object3\-D}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/include/\-S\-G\-E/Simple\-Graphics\-Engine.\-h\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/src/\-S\-G\-E/Simple\-Graphics\-Engine.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{structai_anim_mesh}{\section{ai\-Anim\-Mesh Struct Reference}
+\label{structai_anim_mesh}\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}}
+}
+
+
+N\-O\-T C\-U\-R\-R\-E\-N\-T\-L\-Y I\-N U\-S\-E. An Anim\-Mesh is an attachment to an \hyperlink{structai_mesh}{ai\-Mesh} stores per-\/vertex animations for a particular frame.  
+
+
+
+
+{\ttfamily \#include $<$mesh.\-h$>$}
+
+
+
+Collaboration diagram for ai\-Anim\-Mesh\-:
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vector3_d}{ai\-Vector3\-D} $\ast$ \hyperlink{structai_anim_mesh_a0ac2dd4c1afd23e6a9293b1d0ded3060}{m\-Vertices}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vector3_d}{ai\-Vector3\-D} $\ast$ \hyperlink{structai_anim_mesh_a64a07a8c5c419b1e006c5302bca4d334}{m\-Normals}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vector3_d}{ai\-Vector3\-D} $\ast$ \hyperlink{structai_anim_mesh_a95dcc49c6d5ecc570ceb54552a0a9625}{m\-Tangents}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vector3_d}{ai\-Vector3\-D} $\ast$ \hyperlink{structai_anim_mesh_a7d60acf4d2b4b59dcc6c88956bfae85f}{m\-Bitangents}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_color4_d}{ai\-Color4\-D} $\ast$ \hyperlink{structai_anim_mesh_a4f062d9fac71c6b367fdf0f8638e1ca5}{m\-Colors} \mbox{[}A\-I\-\_\-\-M\-A\-X\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-C\-O\-L\-O\-R\-\_\-\-S\-E\-T\-S\mbox{]}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vector3_d}{ai\-Vector3\-D} $\ast$ \hyperlink{structai_anim_mesh_ad24a0451adeb845a53eb2351b9462e0a}{m\-Texture\-Coords} \mbox{[}A\-I\-\_\-\-M\-A\-X\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-T\-E\-X\-T\-U\-R\-E\-C\-O\-O\-R\-D\-S\mbox{]}
+\item 
+unsigned int \hyperlink{structai_anim_mesh_a6bb0d45317a1bbea7f2b7f8191d0c436}{m\-Num\-Vertices}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+N\-O\-T C\-U\-R\-R\-E\-N\-T\-L\-Y I\-N U\-S\-E. An Anim\-Mesh is an attachment to an \hyperlink{structai_mesh}{ai\-Mesh} stores per-\/vertex animations for a particular frame. 
+
+You may think of an \hyperlink{structai_anim_mesh}{ai\-Anim\-Mesh} as a {\ttfamily patch} for the host mesh, which replaces only certain vertex data streams at a particular time. Each mesh stores n attached attached meshes (\hyperlink{structai_mesh_a5078f7db7e99ed05db89dfa412f0e990}{ai\-Mesh\-::m\-Anim\-Meshes}). The actual relationship between the time line and anim meshes is established by \hyperlink{structai_mesh_anim}{ai\-Mesh\-Anim}, which references singular mesh attachments by their I\-D and binds them to a time offset. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_anim_mesh_a7d60acf4d2b4b59dcc6c88956bfae85f}{\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}!m\-Bitangents@{m\-Bitangents}}
+\index{m\-Bitangents@{m\-Bitangents}!aiAnimMesh@{ai\-Anim\-Mesh}}
+\subsubsection[{m\-Bitangents}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Vector3\-D}$\ast$ ai\-Anim\-Mesh\-::m\-Bitangents}}\label{structai_anim_mesh_a7d60acf4d2b4b59dcc6c88956bfae85f}
+Replacement for \hyperlink{structai_mesh_ab2a81bfe1731f01271ebab274a8f01c4}{ai\-Mesh\-::m\-Bitangents}. \hypertarget{structai_anim_mesh_a4f062d9fac71c6b367fdf0f8638e1ca5}{\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}!m\-Colors@{m\-Colors}}
+\index{m\-Colors@{m\-Colors}!aiAnimMesh@{ai\-Anim\-Mesh}}
+\subsubsection[{m\-Colors}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Color4\-D}$\ast$ ai\-Anim\-Mesh\-::m\-Colors\mbox{[}A\-I\-\_\-\-M\-A\-X\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-C\-O\-L\-O\-R\-\_\-\-S\-E\-T\-S\mbox{]}}}\label{structai_anim_mesh_a4f062d9fac71c6b367fdf0f8638e1ca5}
+Replacement for \hyperlink{structai_mesh_ad9215f67bd0c2277b10775a8adb66b96}{ai\-Mesh\-::m\-Colors} \hypertarget{structai_anim_mesh_a64a07a8c5c419b1e006c5302bca4d334}{\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}!m\-Normals@{m\-Normals}}
+\index{m\-Normals@{m\-Normals}!aiAnimMesh@{ai\-Anim\-Mesh}}
+\subsubsection[{m\-Normals}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Vector3\-D}$\ast$ ai\-Anim\-Mesh\-::m\-Normals}}\label{structai_anim_mesh_a64a07a8c5c419b1e006c5302bca4d334}
+Replacement for \hyperlink{structai_mesh_aec81b496b4d93838cef038933dabe9b9}{ai\-Mesh\-::m\-Normals}. \hypertarget{structai_anim_mesh_a6bb0d45317a1bbea7f2b7f8191d0c436}{\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}!m\-Num\-Vertices@{m\-Num\-Vertices}}
+\index{m\-Num\-Vertices@{m\-Num\-Vertices}!aiAnimMesh@{ai\-Anim\-Mesh}}
+\subsubsection[{m\-Num\-Vertices}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ai\-Anim\-Mesh\-::m\-Num\-Vertices}}\label{structai_anim_mesh_a6bb0d45317a1bbea7f2b7f8191d0c436}
+The number of vertices in the \hyperlink{structai_anim_mesh}{ai\-Anim\-Mesh}, and thus the length of all the member arrays.
+
+This has always the same value as the m\-Num\-Vertices property in the corresponding \hyperlink{structai_mesh}{ai\-Mesh}. It is duplicated here merely to make the length of the member arrays accessible even if the \hyperlink{structai_mesh}{ai\-Mesh} is not known, e.\-g. from language bindings. \hypertarget{structai_anim_mesh_a95dcc49c6d5ecc570ceb54552a0a9625}{\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}!m\-Tangents@{m\-Tangents}}
+\index{m\-Tangents@{m\-Tangents}!aiAnimMesh@{ai\-Anim\-Mesh}}
+\subsubsection[{m\-Tangents}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Vector3\-D}$\ast$ ai\-Anim\-Mesh\-::m\-Tangents}}\label{structai_anim_mesh_a95dcc49c6d5ecc570ceb54552a0a9625}
+Replacement for \hyperlink{structai_mesh_af367ff78bd69f3e83d7edc8ad67dc5df}{ai\-Mesh\-::m\-Tangents}. \hypertarget{structai_anim_mesh_ad24a0451adeb845a53eb2351b9462e0a}{\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}!m\-Texture\-Coords@{m\-Texture\-Coords}}
+\index{m\-Texture\-Coords@{m\-Texture\-Coords}!aiAnimMesh@{ai\-Anim\-Mesh}}
+\subsubsection[{m\-Texture\-Coords}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Vector3\-D}$\ast$ ai\-Anim\-Mesh\-::m\-Texture\-Coords\mbox{[}A\-I\-\_\-\-M\-A\-X\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-T\-E\-X\-T\-U\-R\-E\-C\-O\-O\-R\-D\-S\mbox{]}}}\label{structai_anim_mesh_ad24a0451adeb845a53eb2351b9462e0a}
+Replacement for \hyperlink{structai_mesh_a4a50b11d00ef50f419c75cab0f6bddd6}{ai\-Mesh\-::m\-Texture\-Coords} \hypertarget{structai_anim_mesh_a0ac2dd4c1afd23e6a9293b1d0ded3060}{\index{ai\-Anim\-Mesh@{ai\-Anim\-Mesh}!m\-Vertices@{m\-Vertices}}
+\index{m\-Vertices@{m\-Vertices}!aiAnimMesh@{ai\-Anim\-Mesh}}
+\subsubsection[{m\-Vertices}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Vector3\-D}$\ast$ ai\-Anim\-Mesh\-::m\-Vertices}}\label{structai_anim_mesh_a0ac2dd4c1afd23e6a9293b1d0ded3060}
+Replacement for \hyperlink{structai_mesh_afd4588abb3e1c72821ae0234a3850662}{ai\-Mesh\-::m\-Vertices}. If this array is non-\/\-N\-U\-L\-L, it {\itshape must} contain m\-Num\-Vertices entries. The corresponding array in the host mesh must be non-\/\-N\-U\-L\-L as well -\/ animation meshes may neither add or nor remove vertex components (if a replacement array is N\-U\-L\-L and the corresponding source array is not, the source data is taken instead) 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/mesh.\-h\end{DoxyCompactItemize}

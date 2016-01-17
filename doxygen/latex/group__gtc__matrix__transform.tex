@@ -1,0 +1,743 @@
+\hypertarget{group__gtc__matrix__transform}{\section{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}
+\label{group__gtc__matrix__transform}\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+}
+
+
+Defines functions that generate common transformation matrices.  
+
+
+Collaboration diagram for G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform\-:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_gaee134ab77c6c5548a6ebf4e8e476c6ed}{glm\-::translate} (tmat4x4$<$ T, P $>$ const \&m, tvec3$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_ga161b1df124348f232d994ba7958e4815}{glm\-::rotate} (tmat4x4$<$ T, P $>$ const \&m, T angle, tvec3$<$ T, P $>$ const \&axis)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_ga8f062fcc07e2445500793f2803afebb0}{glm\-::scale} (tmat4x4$<$ T, P $>$ const \&m, tvec3$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_ga65280251de6e38580110a0577a43d8f8}{glm\-::ortho} (T left, T right, T bottom, T top, T z\-Near, T z\-Far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_ga45b1b64f99255c07119b4f1aaed04dd7}{glm\-::ortho} (T left, T right, T bottom, T top)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_gada6deb989d4b553fe0f7e3279f3afae1}{glm\-::frustum} (T left, T right, T bottom, T top, T near, T far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_gac3613dcb6c6916465ad5b7ad5a786175}{glm\-::perspective} (T fovy, T aspect, T near, T far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_ga5a4fa9f8ffabb2294e48a18bf8fa2f5f}{glm\-::perspective\-R\-H} (T fovy, T aspect, T near, T far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_ga34048da27c559f1ac8e9550d169dd6f3}{glm\-::perspective\-L\-H} (T fovy, T aspect, T near, T far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_gae9146e2c550fc8646299e4b900238145}{glm\-::perspective\-Fov} (T fov, T width, T height, T near, T far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_ga07cd8df791bf90dcb782645fe0b21261}{glm\-::perspective\-Fov\-R\-H} (T fov, T width, T height, T near, T far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_gae705a2f19c3ef5ef880bd6c92759cf2d}{glm\-::perspective\-Fov\-L\-H} (T fov, T width, T height, T near, T far)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_ga79f704ad91a5f0d68abd88c66c8186e5}{glm\-::infinite\-Perspective} (T fovy, T aspect, T near)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_gaed64bd81f5ecdab52fecbdf7f6b58194}{glm\-::tweaked\-Infinite\-Perspective} (T fovy, T aspect, T near)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtc__matrix__transform_gaa50fce7f50b5d5da881ed30f5532a921}{glm\-::tweaked\-Infinite\-Perspective} (T fovy, T aspect, T near, T ep)
+\item 
+{\footnotesize template$<$typename T , typename U , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_gad743556abd138264d4f06f4ca27f1d7e}{glm\-::project} (tvec3$<$ T, P $>$ const \&obj, tmat4x4$<$ T, P $>$ const \&model, tmat4x4$<$ T, P $>$ const \&proj, tvec4$<$ U, P $>$ const \&viewport)
+\item 
+{\footnotesize template$<$typename T , typename U , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_ga82a558de3ce42cbeed0f6ec292a4e1b3}{glm\-::un\-Project} (tvec3$<$ T, P $>$ const \&win, tmat4x4$<$ T, P $>$ const \&model, tmat4x4$<$ T, P $>$ const \&proj, tvec4$<$ U, P $>$ const \&viewport)
+\item 
+{\footnotesize template$<$typename T , precision P, typename U $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_ga9026c77505b99990f68826f27c267dc5}{glm\-::pick\-Matrix} (tvec2$<$ T, P $>$ const \&center, tvec2$<$ T, P $>$ const \&delta, tvec4$<$ U, P $>$ const \&viewport)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_gaf8eef81da1ad09f6a8920101c01eaae4}{glm\-::look\-At} (tvec3$<$ T, P $>$ const \&eye, tvec3$<$ T, P $>$ const \&center, tvec3$<$ T, P $>$ const \&up)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_ga2876d9313334980b94292d2ec169088e}{glm\-::look\-At\-R\-H} (tvec3$<$ T, P $>$ const \&eye, tvec3$<$ T, P $>$ const \&center, tvec3$<$ T, P $>$ const \&up)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__matrix__transform_gacd0c077ec7b58a575855e29cb5fb586d}{glm\-::look\-At\-L\-H} (tvec3$<$ T, P $>$ const \&eye, tvec3$<$ T, P $>$ const \&center, tvec3$<$ T, P $>$ const \&up)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines functions that generate common transformation matrices. The matrices generated by this extension use standard Open\-G\-L fixed-\/function conventions. For example, the look\-At function generates a transform from world space into the specific eye space that the projective matrix functions (perspective, ortho, etc) are designed to expect. The Open\-G\-L compatibility specifications defines the particular layout of this eye space.
+
+$<$\hyperlink{matrix__transform_8hpp}{glm/gtc/matrix\-\_\-transform.\-hpp}$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__matrix__transform_gada6deb989d4b553fe0f7e3279f3afae1}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!frustum@{frustum}}
+\index{frustum@{frustum}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{frustum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::frustum (
+\begin{DoxyParamCaption}
+\item[{T}]{left, }
+\item[{T}]{right, }
+\item[{T}]{bottom, }
+\item[{T}]{top, }
+\item[{T}]{near, }
+\item[{T}]{far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gada6deb989d4b553fe0f7e3279f3afae1}
+Creates a frustum matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & \\
+\hline
+{\em right} & \\
+\hline
+{\em bottom} & \\
+\hline
+{\em top} & \\
+\hline
+{\em near} & \\
+\hline
+{\em far} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga79f704ad91a5f0d68abd88c66c8186e5}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!infinite\-Perspective@{infinite\-Perspective}}
+\index{infinite\-Perspective@{infinite\-Perspective}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{infinite\-Perspective}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::infinite\-Perspective (
+\begin{DoxyParamCaption}
+\item[{T}]{fovy, }
+\item[{T}]{aspect, }
+\item[{T}]{near}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga79f704ad91a5f0d68abd88c66c8186e5}
+Creates a matrix for a symmetric perspective-\/view frustum with far plane at infinite.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fovy} & Specifies the field of view angle, in degrees, in the y direction. Expressed in radians. \\
+\hline
+{\em aspect} & Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height). \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gaf8eef81da1ad09f6a8920101c01eaae4}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!look\-At@{look\-At}}
+\index{look\-At@{look\-At}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{look\-At}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, P$>$ glm\-::look\-At (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{eye, }
+\item[{tvec3$<$ T, P $>$ const \&}]{center, }
+\item[{tvec3$<$ T, P $>$ const \&}]{up}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gaf8eef81da1ad09f6a8920101c01eaae4}
+Build a look at view matrix based on the default handedness.
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye} & Position of the camera \\
+\hline
+{\em center} & Position where the camera is looking at \\
+\hline
+{\em up} & Normalized up vector, how the camera is oriented. Typically (0, 0, 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ frustum(\-T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& near\-Val, T const \& far\-Val) frustum(\-T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& near\-Val, T const \& far\-Val) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gacd0c077ec7b58a575855e29cb5fb586d}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!look\-At\-L\-H@{look\-At\-L\-H}}
+\index{look\-At\-L\-H@{look\-At\-L\-H}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{look\-At\-L\-H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, P$>$ glm\-::look\-At\-L\-H (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{eye, }
+\item[{tvec3$<$ T, P $>$ const \&}]{center, }
+\item[{tvec3$<$ T, P $>$ const \&}]{up}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gacd0c077ec7b58a575855e29cb5fb586d}
+Build a left handed look at view matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye} & Position of the camera \\
+\hline
+{\em center} & Position where the camera is looking at \\
+\hline
+{\em up} & Normalized up vector, how the camera is oriented. Typically (0, 0, 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ frustum(\-T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& near\-Val, T const \& far\-Val) frustum(\-T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& near\-Val, T const \& far\-Val) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga2876d9313334980b94292d2ec169088e}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!look\-At\-R\-H@{look\-At\-R\-H}}
+\index{look\-At\-R\-H@{look\-At\-R\-H}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{look\-At\-R\-H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, P$>$ glm\-::look\-At\-R\-H (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{eye, }
+\item[{tvec3$<$ T, P $>$ const \&}]{center, }
+\item[{tvec3$<$ T, P $>$ const \&}]{up}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga2876d9313334980b94292d2ec169088e}
+Build a right handed look at view matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em eye} & Position of the camera \\
+\hline
+{\em center} & Position where the camera is looking at \\
+\hline
+{\em up} & Normalized up vector, how the camera is oriented. Typically (0, 0, 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ frustum(\-T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& near\-Val, T const \& far\-Val) frustum(\-T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& near\-Val, T const \& far\-Val) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga65280251de6e38580110a0577a43d8f8}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!ortho@{ortho}}
+\index{ortho@{ortho}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{ortho}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::ortho (
+\begin{DoxyParamCaption}
+\item[{T}]{left, }
+\item[{T}]{right, }
+\item[{T}]{bottom, }
+\item[{T}]{top, }
+\item[{T}]{z\-Near, }
+\item[{T}]{z\-Far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga65280251de6e38580110a0577a43d8f8}
+Creates a matrix for an orthographic parallel viewing volume.
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & \\
+\hline
+{\em right} & \\
+\hline
+{\em bottom} & \\
+\hline
+{\em top} & \\
+\hline
+{\em z\-Near} & \\
+\hline
+{\em z\-Far} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ glm\-::ortho(\-T const \& left, T const \& right, T const \& bottom, T const \& top) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga45b1b64f99255c07119b4f1aaed04dd7}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!ortho@{ortho}}
+\index{ortho@{ortho}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{ortho}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::ortho (
+\begin{DoxyParamCaption}
+\item[{T}]{left, }
+\item[{T}]{right, }
+\item[{T}]{bottom, }
+\item[{T}]{top}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga45b1b64f99255c07119b4f1aaed04dd7}
+Creates a matrix for projecting two-\/dimensional coordinates onto the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & \\
+\hline
+{\em right} & \\
+\hline
+{\em bottom} & \\
+\hline
+{\em top} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ glm\-::ortho(\-T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& z\-Near, T const \& z\-Far) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gac3613dcb6c6916465ad5b7ad5a786175}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!perspective@{perspective}}
+\index{perspective@{perspective}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{perspective}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::perspective (
+\begin{DoxyParamCaption}
+\item[{T}]{fovy, }
+\item[{T}]{aspect, }
+\item[{T}]{near, }
+\item[{T}]{far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gac3613dcb6c6916465ad5b7ad5a786175}
+Creates a matrix for a symetric perspective-\/view frustum based on the default handedness.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fovy} & Specifies the field of view angle in the y direction. Expressed in radians. \\
+\hline
+{\em aspect} & Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height). \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+{\em far} & Specifies the distance from the viewer to the far clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gae9146e2c550fc8646299e4b900238145}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!perspective\-Fov@{perspective\-Fov}}
+\index{perspective\-Fov@{perspective\-Fov}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{perspective\-Fov}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::perspective\-Fov (
+\begin{DoxyParamCaption}
+\item[{T}]{fov, }
+\item[{T}]{width, }
+\item[{T}]{height, }
+\item[{T}]{near, }
+\item[{T}]{far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gae9146e2c550fc8646299e4b900238145}
+Builds a perspective projection matrix based on a field of view and the default handedness.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & Expressed in radians. \\
+\hline
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+{\em far} & Specifies the distance from the viewer to the far clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gae705a2f19c3ef5ef880bd6c92759cf2d}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!perspective\-Fov\-L\-H@{perspective\-Fov\-L\-H}}
+\index{perspective\-Fov\-L\-H@{perspective\-Fov\-L\-H}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{perspective\-Fov\-L\-H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::perspective\-Fov\-L\-H (
+\begin{DoxyParamCaption}
+\item[{T}]{fov, }
+\item[{T}]{width, }
+\item[{T}]{height, }
+\item[{T}]{near, }
+\item[{T}]{far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gae705a2f19c3ef5ef880bd6c92759cf2d}
+Builds a left handed perspective projection matrix based on a field of view.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & Expressed in radians. \\
+\hline
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+{\em far} & Specifies the distance from the viewer to the far clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+todo max(width , Height) / min(width , Height)? \hypertarget{group__gtc__matrix__transform_ga07cd8df791bf90dcb782645fe0b21261}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!perspective\-Fov\-R\-H@{perspective\-Fov\-R\-H}}
+\index{perspective\-Fov\-R\-H@{perspective\-Fov\-R\-H}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{perspective\-Fov\-R\-H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::perspective\-Fov\-R\-H (
+\begin{DoxyParamCaption}
+\item[{T}]{fov, }
+\item[{T}]{width, }
+\item[{T}]{height, }
+\item[{T}]{near, }
+\item[{T}]{far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga07cd8df791bf90dcb782645fe0b21261}
+Builds a right handed perspective projection matrix based on a field of view.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & Expressed in radians. \\
+\hline
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+{\em far} & Specifies the distance from the viewer to the far clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+todo max(width , Height) / min(width , Height)? \hypertarget{group__gtc__matrix__transform_ga34048da27c559f1ac8e9550d169dd6f3}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!perspective\-L\-H@{perspective\-L\-H}}
+\index{perspective\-L\-H@{perspective\-L\-H}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{perspective\-L\-H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::perspective\-L\-H (
+\begin{DoxyParamCaption}
+\item[{T}]{fovy, }
+\item[{T}]{aspect, }
+\item[{T}]{near, }
+\item[{T}]{far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga34048da27c559f1ac8e9550d169dd6f3}
+Creates a matrix for a left handed, symetric perspective-\/view frustum.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fovy} & Specifies the field of view angle, in degrees, in the y direction. Expressed in radians. \\
+\hline
+{\em aspect} & Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height). \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+{\em far} & Specifies the distance from the viewer to the far clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga5a4fa9f8ffabb2294e48a18bf8fa2f5f}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!perspective\-R\-H@{perspective\-R\-H}}
+\index{perspective\-R\-H@{perspective\-R\-H}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{perspective\-R\-H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::perspective\-R\-H (
+\begin{DoxyParamCaption}
+\item[{T}]{fovy, }
+\item[{T}]{aspect, }
+\item[{T}]{near, }
+\item[{T}]{far}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga5a4fa9f8ffabb2294e48a18bf8fa2f5f}
+Creates a matrix for a right handed, symetric perspective-\/view frustum.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fovy} & Specifies the field of view angle, in degrees, in the y direction. Expressed in radians. \\
+\hline
+{\em aspect} & Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height). \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+{\em far} & Specifies the distance from the viewer to the far clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga9026c77505b99990f68826f27c267dc5}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!pick\-Matrix@{pick\-Matrix}}
+\index{pick\-Matrix@{pick\-Matrix}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{pick\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P, typename U $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, P$>$ glm\-::pick\-Matrix (
+\begin{DoxyParamCaption}
+\item[{tvec2$<$ T, P $>$ const \&}]{center, }
+\item[{tvec2$<$ T, P $>$ const \&}]{delta, }
+\item[{tvec4$<$ U, P $>$ const \&}]{viewport}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga9026c77505b99990f68826f27c267dc5}
+Define a picking region
+
+
+\begin{DoxyParams}{Parameters}
+{\em center} & \\
+\hline
+{\em delta} & \\
+\hline
+{\em viewport} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Native type used for the computation. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+{\em U} & Currently supported\-: Floating-\/point types and integer types. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gad743556abd138264d4f06f4ca27f1d7e}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!project@{project}}
+\index{project@{project}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{project}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename U , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$T, P$>$ glm\-::project (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{obj, }
+\item[{tmat4x4$<$ T, P $>$ const \&}]{model, }
+\item[{tmat4x4$<$ T, P $>$ const \&}]{proj, }
+\item[{tvec4$<$ U, P $>$ const \&}]{viewport}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gad743556abd138264d4f06f4ca27f1d7e}
+Map the specified object coordinates (obj.\-x, obj.\-y, obj.\-z) into window coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Specify the object coordinates. \\
+\hline
+{\em model} & Specifies the current modelview matrix \\
+\hline
+{\em proj} & Specifies the current projection matrix \\
+\hline
+{\em viewport} & Specifies the current viewport \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return the computed window coordinates. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Native type used for the computation. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+{\em U} & Currently supported\-: Floating-\/point types and integer types. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga161b1df124348f232d994ba7958e4815}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!rotate@{rotate}}
+\index{rotate@{rotate}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, P$>$ glm\-::rotate (
+\begin{DoxyParamCaption}
+\item[{tmat4x4$<$ T, P $>$ const \&}]{m, }
+\item[{T}]{angle, }
+\item[{tvec3$<$ T, P $>$ const \&}]{axis}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga161b1df124348f232d994ba7958e4815}
+Builds a rotation 4 $\ast$ 4 matrix created from an axis vector and an angle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Input matrix multiplied by this rotation matrix. \\
+\hline
+{\em angle} & Rotation angle expressed in radians. \\
+\hline
+{\em axis} & Rotation axis, recommended to be normalized. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Supported\-: half, float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ rotate(tmat4x4$<$\-T, P$>$ const \& m, T angle, T x, T y, T z) 
+
+-\/ rotate(\-T angle, tvec3$<$\-T, P$>$ const \& v) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga8f062fcc07e2445500793f2803afebb0}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!scale@{scale}}
+\index{scale@{scale}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{scale}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, P$>$ glm\-::scale (
+\begin{DoxyParamCaption}
+\item[{tmat4x4$<$ T, P $>$ const \&}]{m, }
+\item[{tvec3$<$ T, P $>$ const \&}]{v}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga8f062fcc07e2445500793f2803afebb0}
+Builds a scale 4 $\ast$ 4 matrix created from 3 scalars.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Input matrix multiplied by this scale matrix. \\
+\hline
+{\em v} & Ratio of scaling for each axis. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ scale(tmat4x4$<$\-T, P$>$ const \& m, T x, T y, T z) 
+
+-\/ scale(tvec3$<$\-T, P$>$ const \& v) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gaee134ab77c6c5548a6ebf4e8e476c6ed}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!translate@{translate}}
+\index{translate@{translate}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{translate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, P$>$ glm\-::translate (
+\begin{DoxyParamCaption}
+\item[{tmat4x4$<$ T, P $>$ const \&}]{m, }
+\item[{tvec3$<$ T, P $>$ const \&}]{v}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gaee134ab77c6c5548a6ebf4e8e476c6ed}
+Builds a translation 4 $\ast$ 4 matrix created from a vector of 3 components.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Input matrix multiplied by this translation matrix. \\
+\hline
+{\em v} & Coordinates of a translation vector. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. 
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include <\hyperlink{glm_8hpp}{glm/glm.hpp}>}
+\textcolor{preprocessor}{#include <\hyperlink{matrix__transform_8hpp}{glm/gtc/matrix\_transform.hpp}>}
+...
+glm::mat4 m = \hyperlink{group__gtc__matrix__transform_gaee134ab77c6c5548a6ebf4e8e476c6ed}{glm::translate}(\hyperlink{structglm_1_1tmat4x4}{glm::mat4}(1.0f), \hyperlink{structglm_1_1tvec3}{glm::vec3}(1.0f));
+\textcolor{comment}{// m[0][0] == 1.0f, m[0][1] == 0.0f, m[0][2] == 0.0f, m[0][3] == 0.0f}
+\textcolor{comment}{// m[1][0] == 0.0f, m[1][1] == 1.0f, m[1][2] == 0.0f, m[1][3] == 0.0f}
+\textcolor{comment}{// m[2][0] == 0.0f, m[2][1] == 0.0f, m[2][2] == 1.0f, m[2][3] == 0.0f}
+\textcolor{comment}{// m[3][0] == 1.0f, m[3][1] == 1.0f, m[3][2] == 1.0f, m[3][3] == 1.0f}
+\end{DoxyCode}
+ \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+
+-\/ translate(tmat4x4$<$\-T, P$>$ const \& m, T x, T y, T z) 
+
+-\/ translate(tvec3$<$\-T, P$>$ const \& v) 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gaed64bd81f5ecdab52fecbdf7f6b58194}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!tweaked\-Infinite\-Perspective@{tweaked\-Infinite\-Perspective}}
+\index{tweaked\-Infinite\-Perspective@{tweaked\-Infinite\-Perspective}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{tweaked\-Infinite\-Perspective}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::tweaked\-Infinite\-Perspective (
+\begin{DoxyParamCaption}
+\item[{T}]{fovy, }
+\item[{T}]{aspect, }
+\item[{T}]{near}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gaed64bd81f5ecdab52fecbdf7f6b58194}
+Creates a matrix for a symmetric perspective-\/view frustum with far plane at infinite for graphics hardware that doesn't support depth clamping.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fovy} & Specifies the field of view angle, in degrees, in the y direction. Expressed in radians. \\
+\hline
+{\em aspect} & Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height). \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_gaa50fce7f50b5d5da881ed30f5532a921}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!tweaked\-Infinite\-Perspective@{tweaked\-Infinite\-Perspective}}
+\index{tweaked\-Infinite\-Perspective@{tweaked\-Infinite\-Perspective}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{tweaked\-Infinite\-Perspective}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::tweaked\-Infinite\-Perspective (
+\begin{DoxyParamCaption}
+\item[{T}]{fovy, }
+\item[{T}]{aspect, }
+\item[{T}]{near, }
+\item[{T}]{ep}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_gaa50fce7f50b5d5da881ed30f5532a921}
+Creates a matrix for a symmetric perspective-\/view frustum with far plane at infinite for graphics hardware that doesn't support depth clamping.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fovy} & Specifies the field of view angle, in degrees, in the y direction. Expressed in radians. \\
+\hline
+{\em aspect} & Specifies the aspect ratio that determines the field of view in the x direction. The aspect ratio is the ratio of x (width) to y (height). \\
+\hline
+{\em near} & Specifies the distance from the viewer to the near clipping plane (always positive). \\
+\hline
+{\em ep} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type used to build the matrix. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__matrix__transform_ga82a558de3ce42cbeed0f6ec292a4e1b3}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}!un\-Project@{un\-Project}}
+\index{un\-Project@{un\-Project}!GLM_GTC_matrix_transform@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform}}
+\subsubsection[{un\-Project}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename U , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$T, P$>$ glm\-::un\-Project (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{win, }
+\item[{tmat4x4$<$ T, P $>$ const \&}]{model, }
+\item[{tmat4x4$<$ T, P $>$ const \&}]{proj, }
+\item[{tvec4$<$ U, P $>$ const \&}]{viewport}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__matrix__transform_ga82a558de3ce42cbeed0f6ec292a4e1b3}
+Map the specified window coordinates (win.\-x, win.\-y, win.\-z) into object coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & Specify the window coordinates to be mapped. \\
+\hline
+{\em model} & Specifies the modelview matrix \\
+\hline
+{\em proj} & Specifies the projection matrix \\
+\hline
+{\em viewport} & Specifies the viewport \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the computed object coordinates. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Native type used for the computation. Currently supported\-: half (not recommanded), float or double. \\
+\hline
+{\em U} & Currently supported\-: Floating-\/point types and integer types. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__matrix__transform}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-matrix\-\_\-transform} 
+\end{DoxySeeAlso}

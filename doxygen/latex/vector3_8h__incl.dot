@@ -1,0 +1,12 @@
+digraph "ext/assimp/include/assimp/vector3.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="ext/assimp/include\l/assimp/vector3.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="math.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="./Compiler/pushpack1.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pushpack1_8h_source.html"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="./Compiler/poppack1.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$poppack1_8h_source.html"];
+}

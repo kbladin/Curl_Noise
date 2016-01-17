@@ -31,53 +31,53 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
 
   ShaderManager::instance()->loadShader(
     "SHADER_PHONG",
-    "../data/shaders/simple.vert",
+    "../shaders/simple.vert",
     NULL,
     NULL,
     NULL,
-    "../data/shaders/simple.frag");
+    "../shaders/simple.frag");
   ShaderManager::instance()->loadShader(
     "SHADER_ONE_COLOR",
-    "../data/shaders/one_color.vert",
+    "../shaders/one_color.vert",
     NULL,
     NULL,
     NULL,
-    "../data/shaders/one_color.frag" );
+    "../shaders/one_color.frag" );
   ShaderManager::instance()->loadShader(
     "SHADER_BACKGROUND",
-    "../data/shaders/background.vert",
+    "../shaders/background.vert",
     NULL,
     NULL,
     NULL,
-    "../data/shaders/background.frag" );
+    "../shaders/background.frag" );
   ShaderManager::instance()->loadShader(
     "SHADER_UPDATE_POINT_CLOUD_POSITIONS",
-    "../data/shaders/point_cloud_programs/quad_passthrough.vert",
+    "../shaders/point_cloud_programs/quad_passthrough.vert",
     NULL,
     NULL,
     NULL,
-    "../data/shaders/point_cloud_programs/update_positions.frag");
+    "../shaders/point_cloud_programs/update_positions.frag");
   ShaderManager::instance()->loadShader(
     "SHADER_UPDATE_POINT_CLOUD_VELOCITIES",
-    "../data/shaders/point_cloud_programs/quad_passthrough.vert",
+    "../shaders/point_cloud_programs/quad_passthrough.vert",
     NULL,
     NULL,
     NULL,
-    "../data/shaders/point_cloud_programs/update_velocities.frag");
+    "../shaders/point_cloud_programs/update_velocities.frag");
   ShaderManager::instance()->loadShader(
     "SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS",
-    "../data/shaders/point_cloud_programs/quad_passthrough.vert",
+    "../shaders/point_cloud_programs/quad_passthrough.vert",
     NULL,
     NULL,
     NULL,
-    "../data/shaders/point_cloud_programs/update_accelerations.frag");
+    "../shaders/point_cloud_programs/update_accelerations.frag");
   ShaderManager::instance()->loadShader(
     "SHADER_RENDER_POINT_CLOUD",
-    "../data/shaders/point_cloud_programs/render.vert",
+    "../shaders/point_cloud_programs/render.vert",
     NULL,
     NULL,
     NULL,
-    "../data/shaders/point_cloud_programs/render.frag");
+    "../shaders/point_cloud_programs/render.frag");
 
   //background_material_ = new BackgroundMaterial();
   grid_mesh_material_ = new OneColorMaterial();

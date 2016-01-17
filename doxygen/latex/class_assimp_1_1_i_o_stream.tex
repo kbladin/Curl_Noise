@@ -1,0 +1,119 @@
+\hypertarget{class_assimp_1_1_i_o_stream}{\section{Assimp\-:\-:I\-O\-Stream Class Reference}
+\label{class_assimp_1_1_i_o_stream}\index{Assimp\-::\-I\-O\-Stream@{Assimp\-::\-I\-O\-Stream}}
+}
+
+
+C\-P\-P-\/\-A\-P\-I\-: Class to handle file I/\-O for C++.  
+
+
+
+
+{\ttfamily \#include $<$I\-O\-Stream.\-hpp$>$}
+
+
+
+Inheritance diagram for Assimp\-:\-:I\-O\-Stream\-:
+
+
+Collaboration diagram for Assimp\-:\-:I\-O\-Stream\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_i_o_stream_a6cedc5033bf531bf14b97d1c9b788de8}{virtual \hyperlink{class_assimp_1_1_i_o_stream_a6cedc5033bf531bf14b97d1c9b788de8}{$\sim$\-I\-O\-Stream} ()}\label{class_assimp_1_1_i_o_stream_a6cedc5033bf531bf14b97d1c9b788de8}
+
+\begin{DoxyCompactList}\small\item\em Destructor. Deleting the object closes the underlying file, alternatively you may use \hyperlink{class_assimp_1_1_i_o_system_a8c334d60f04bceeb6bd0157d21723f3e}{I\-O\-System\-::\-Close()} to release the file. \end{DoxyCompactList}\item 
+virtual size\-\_\-t \hyperlink{class_assimp_1_1_i_o_stream_ae376f641020989d61863b9c6f55c7abf}{Read} (void $\ast$pv\-Buffer, size\-\_\-t p\-Size, size\-\_\-t p\-Count)=0
+\begin{DoxyCompactList}\small\item\em Read from the file. \end{DoxyCompactList}\item 
+virtual size\-\_\-t \hyperlink{class_assimp_1_1_i_o_stream_ad0ca4aae1b8c4d00db391ac3a4171f7b}{Write} (const void $\ast$pv\-Buffer, size\-\_\-t p\-Size, size\-\_\-t p\-Count)=0
+\begin{DoxyCompactList}\small\item\em Write to the file. \end{DoxyCompactList}\item 
+virtual \hyperlink{types_8h_a1f78dfb65090aa930cabb984c8abe711}{ai\-Return} \hyperlink{class_assimp_1_1_i_o_stream_a5ed0dddf418ab08cf3fc21f3f3032220}{Seek} (size\-\_\-t p\-Offset, \hyperlink{types_8h_ac50fbaa57d78776ca99e42104d9b2786}{ai\-Origin} p\-Origin)=0
+\begin{DoxyCompactList}\small\item\em Set the read/write cursor of the file. \end{DoxyCompactList}\item 
+virtual size\-\_\-t \hyperlink{class_assimp_1_1_i_o_stream_a316ac6cd16b5a493d1313f792c806194}{Tell} () const =0
+\begin{DoxyCompactList}\small\item\em Get the current position of the read/write cursor. \end{DoxyCompactList}\item 
+\hypertarget{class_assimp_1_1_i_o_stream_aaa01183d197fb714f28d6c611b6fa058}{virtual size\-\_\-t \hyperlink{class_assimp_1_1_i_o_stream_aaa01183d197fb714f28d6c611b6fa058}{File\-Size} () const =0}\label{class_assimp_1_1_i_o_stream_aaa01183d197fb714f28d6c611b6fa058}
+
+\begin{DoxyCompactList}\small\item\em Returns filesize Returns the filesize. \end{DoxyCompactList}\item 
+\hypertarget{class_assimp_1_1_i_o_stream_a7c19952446ece90924b246f087417899}{virtual void \hyperlink{class_assimp_1_1_i_o_stream_a7c19952446ece90924b246f087417899}{Flush} ()=0}\label{class_assimp_1_1_i_o_stream_a7c19952446ece90924b246f087417899}
+
+\begin{DoxyCompactList}\small\item\em Flush the contents of the file buffer (for writers) See fflush() for more details. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_i_o_stream_af5ae78123b6c6f7afc31b2a52dc9192e}{I\-O\-Stream} (void)
+\begin{DoxyCompactList}\small\item\em class \hyperlink{class_assimp_1_1_i_o_stream}{I\-O\-Stream} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\-P\-P-\/\-A\-P\-I\-: Class to handle file I/\-O for C++. 
+
+Derive an own implementation from this interface to provide custom I\-O handling to the \hyperlink{class_assimp_1_1_importer}{Importer}. If you implement this interface, be sure to also provide an implementation for \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} that creates instances of your custom I\-O class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_i_o_stream_af5ae78123b6c6f7afc31b2a52dc9192e}{\index{Assimp\-::\-I\-O\-Stream@{Assimp\-::\-I\-O\-Stream}!I\-O\-Stream@{I\-O\-Stream}}
+\index{I\-O\-Stream@{I\-O\-Stream}!Assimp::IOStream@{Assimp\-::\-I\-O\-Stream}}
+\subsubsection[{I\-O\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}Assimp\-::\-I\-O\-Stream\-::\-I\-O\-Stream (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_assimp_1_1_i_o_stream_af5ae78123b6c6f7afc31b2a52dc9192e}
+
+
+class \hyperlink{class_assimp_1_1_i_o_stream}{I\-O\-Stream} 
+
+Constructor protected, use \hyperlink{class_assimp_1_1_i_o_system_ac512ece3b0701de5682553007a4c0816}{I\-O\-System\-::\-Open()} to create an instance. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_i_o_stream_ae376f641020989d61863b9c6f55c7abf}{\index{Assimp\-::\-I\-O\-Stream@{Assimp\-::\-I\-O\-Stream}!Read@{Read}}
+\index{Read@{Read}!Assimp::IOStream@{Assimp\-::\-I\-O\-Stream}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}virtual size\-\_\-t Assimp\-::\-I\-O\-Stream\-::\-Read (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pv\-Buffer, }
+\item[{size\-\_\-t}]{p\-Size, }
+\item[{size\-\_\-t}]{p\-Count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_assimp_1_1_i_o_stream_ae376f641020989d61863b9c6f55c7abf}
+
+
+Read from the file. 
+
+See fread() for more details This fails for write-\/only files \hypertarget{class_assimp_1_1_i_o_stream_a5ed0dddf418ab08cf3fc21f3f3032220}{\index{Assimp\-::\-I\-O\-Stream@{Assimp\-::\-I\-O\-Stream}!Seek@{Seek}}
+\index{Seek@{Seek}!Assimp::IOStream@{Assimp\-::\-I\-O\-Stream}}
+\subsubsection[{Seek}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf ai\-Return} Assimp\-::\-I\-O\-Stream\-::\-Seek (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{p\-Offset, }
+\item[{{\bf ai\-Origin}}]{p\-Origin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_assimp_1_1_i_o_stream_a5ed0dddf418ab08cf3fc21f3f3032220}
+
+
+Set the read/write cursor of the file. 
+
+Note that the offset is {\itshape negative} for ai\-Origin\-\_\-\-E\-N\-D. See fseek() for more details \hypertarget{class_assimp_1_1_i_o_stream_a316ac6cd16b5a493d1313f792c806194}{\index{Assimp\-::\-I\-O\-Stream@{Assimp\-::\-I\-O\-Stream}!Tell@{Tell}}
+\index{Tell@{Tell}!Assimp::IOStream@{Assimp\-::\-I\-O\-Stream}}
+\subsubsection[{Tell}]{\setlength{\rightskip}{0pt plus 5cm}virtual size\-\_\-t Assimp\-::\-I\-O\-Stream\-::\-Tell (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_assimp_1_1_i_o_stream_a316ac6cd16b5a493d1313f792c806194}
+
+
+Get the current position of the read/write cursor. 
+
+See ftell() for more details \hypertarget{class_assimp_1_1_i_o_stream_ad0ca4aae1b8c4d00db391ac3a4171f7b}{\index{Assimp\-::\-I\-O\-Stream@{Assimp\-::\-I\-O\-Stream}!Write@{Write}}
+\index{Write@{Write}!Assimp::IOStream@{Assimp\-::\-I\-O\-Stream}}
+\subsubsection[{Write}]{\setlength{\rightskip}{0pt plus 5cm}virtual size\-\_\-t Assimp\-::\-I\-O\-Stream\-::\-Write (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{pv\-Buffer, }
+\item[{size\-\_\-t}]{p\-Size, }
+\item[{size\-\_\-t}]{p\-Count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_assimp_1_1_i_o_stream_ad0ca4aae1b8c4d00db391ac3a4171f7b}
+
+
+Write to the file. 
+
+See fwrite() for more details This fails for read-\/only files 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/\hyperlink{_i_o_stream_8hpp}{I\-O\-Stream.\-hpp}\end{DoxyCompactItemize}

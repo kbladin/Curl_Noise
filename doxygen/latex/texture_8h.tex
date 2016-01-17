@@ -1,0 +1,45 @@
+\hypertarget{texture_8h}{\section{ext/assimp/include/assimp/texture.h File Reference}
+\label{texture_8h}\index{ext/assimp/include/assimp/texture.\-h@{ext/assimp/include/assimp/texture.\-h}}
+}
+
+
+Defines texture helper structures for the library.  
+
+
+{\ttfamily \#include \char`\"{}types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}./\-Compiler/pushpack1.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}./\-Compiler/poppack1.\-h\char`\"{}}\\*
+Include dependency graph for texture.\-h\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structai_texel}{ai\-Texel}
+\begin{DoxyCompactList}\small\item\em Helper structure to represent a texel in a A\-R\-G\-B8888 format. \end{DoxyCompactList}\item 
+struct \hyperlink{structai_texture}{ai\-Texture}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{texture_8h_ad04e3d073878fd1df67378e7909c5d63}{A\-I\-\_\-\-M\-A\-K\-E\-\_\-\-E\-M\-B\-E\-D\-D\-E\-D\-\_\-\-T\-E\-X\-N\-A\-M\-E}(\-\_\-n\-\_\-)~\char`\"{}$\ast$\char`\"{} \# \-\_\-n\-\_\-
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{texture_8h_a6baebf025c95d69d90e0fcdb1a30eb3e}{struct \hyperlink{structai_texel}{ai\-Texel} {\bfseries P\-A\-C\-K\-\_\-\-S\-T\-R\-U\-C\-T}}\label{texture_8h_a6baebf025c95d69d90e0fcdb1a30eb3e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines texture helper structures for the library. Used for file formats which embed their textures into the model file. Supported are both normal textures, which are stored as uncompressed pixels, and \char`\"{}compressed\char`\"{} textures, which are stored in a file format such as P\-N\-G or T\-G\-A. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{texture_8h_ad04e3d073878fd1df67378e7909c5d63}{\index{texture.\-h@{texture.\-h}!A\-I\-\_\-\-M\-A\-K\-E\-\_\-\-E\-M\-B\-E\-D\-D\-E\-D\-\_\-\-T\-E\-X\-N\-A\-M\-E@{A\-I\-\_\-\-M\-A\-K\-E\-\_\-\-E\-M\-B\-E\-D\-D\-E\-D\-\_\-\-T\-E\-X\-N\-A\-M\-E}}
+\index{A\-I\-\_\-\-M\-A\-K\-E\-\_\-\-E\-M\-B\-E\-D\-D\-E\-D\-\_\-\-T\-E\-X\-N\-A\-M\-E@{A\-I\-\_\-\-M\-A\-K\-E\-\_\-\-E\-M\-B\-E\-D\-D\-E\-D\-\_\-\-T\-E\-X\-N\-A\-M\-E}!texture.h@{texture.\-h}}
+\subsubsection[{A\-I\-\_\-\-M\-A\-K\-E\-\_\-\-E\-M\-B\-E\-D\-D\-E\-D\-\_\-\-T\-E\-X\-N\-A\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-I\-\_\-\-M\-A\-K\-E\-\_\-\-E\-M\-B\-E\-D\-D\-E\-D\-\_\-\-T\-E\-X\-N\-A\-M\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-n\-\_\-}
+\end{DoxyParamCaption}
+)~\char`\"{}$\ast$\char`\"{} \# \-\_\-n\-\_\-}}\label{texture_8h_ad04e3d073878fd1df67378e7909c5d63}
+Used to build the reserved path name used by the material system to reference textures that are embedded into their corresponding model files. The parameter specifies the index of the texture (zero-\/based, in the \hyperlink{structai_scene_a0fd0d29fbc439e3715b4975ccb68d2d3}{ai\-Scene\-::m\-Textures} array) 

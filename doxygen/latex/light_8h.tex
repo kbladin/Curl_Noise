@@ -1,0 +1,53 @@
+\hypertarget{light_8h}{\section{ext/assimp/include/assimp/light.h File Reference}
+\label{light_8h}\index{ext/assimp/include/assimp/light.\-h@{ext/assimp/include/assimp/light.\-h}}
+}
+
+
+Defines the \hyperlink{structai_light}{ai\-Light} data structure.  
+
+
+{\ttfamily \#include \char`\"{}types.\-h\char`\"{}}\\*
+Include dependency graph for light.\-h\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structai_light}{ai\-Light}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{light_8h_a7a75cb224d903e71e8daede432449766}{ai\-Light\-Source\-Type} \{ \\*
+{\bfseries ai\-Light\-Source\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D} = 0x0, 
+\hyperlink{light_8h_a7a75cb224d903e71e8daede432449766ab2dd8e6f09a9ca0efcf22457da2e8724}{ai\-Light\-Source\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N\-A\-L} = 0x1, 
+\hyperlink{light_8h_a7a75cb224d903e71e8daede432449766a0f5bf9437cd16516e15c095309476d37}{ai\-Light\-Source\-\_\-\-P\-O\-I\-N\-T} = 0x2, 
+\hyperlink{light_8h_a7a75cb224d903e71e8daede432449766a05ef88df7bae63499a8ed950c995e392}{ai\-Light\-Source\-\_\-\-S\-P\-O\-T} = 0x3, 
+\\*
+\hyperlink{light_8h_a7a75cb224d903e71e8daede432449766a586dc7f849733364cb5b28c403759bf3}{ai\-Light\-Source\-\_\-\-A\-M\-B\-I\-E\-N\-T} = 0x4, 
+\hyperlink{light_8h_a7a75cb224d903e71e8daede432449766a110c3b047ed41a1656849921d75e83a1}{\-\_\-ai\-Light\-Source\-\_\-\-Force32\-Bit} = I\-N\-T\-\_\-\-M\-A\-X
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the \hyperlink{structai_light}{ai\-Light} data structure. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{light_8h_a7a75cb224d903e71e8daede432449766}{\index{light.\-h@{light.\-h}!ai\-Light\-Source\-Type@{ai\-Light\-Source\-Type}}
+\index{ai\-Light\-Source\-Type@{ai\-Light\-Source\-Type}!light.h@{light.\-h}}
+\subsubsection[{ai\-Light\-Source\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf ai\-Light\-Source\-Type}}}\label{light_8h_a7a75cb224d903e71e8daede432449766}
+Enumerates all supported types of light sources. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{ai\-Light\-Source\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N\-A\-L@{ai\-Light\-Source\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N\-A\-L}!light.\-h@{light.\-h}}\index{light.\-h@{light.\-h}!ai\-Light\-Source\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N\-A\-L@{ai\-Light\-Source\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N\-A\-L}}\item[{\em 
+\hypertarget{light_8h_a7a75cb224d903e71e8daede432449766ab2dd8e6f09a9ca0efcf22457da2e8724}{ai\-Light\-Source\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N\-A\-L}\label{light_8h_a7a75cb224d903e71e8daede432449766ab2dd8e6f09a9ca0efcf22457da2e8724}
+}]A directional light source has a well-\/defined direction but is infinitely far away. That's quite a good approximation for sun light. \index{ai\-Light\-Source\-\_\-\-P\-O\-I\-N\-T@{ai\-Light\-Source\-\_\-\-P\-O\-I\-N\-T}!light.\-h@{light.\-h}}\index{light.\-h@{light.\-h}!ai\-Light\-Source\-\_\-\-P\-O\-I\-N\-T@{ai\-Light\-Source\-\_\-\-P\-O\-I\-N\-T}}\item[{\em 
+\hypertarget{light_8h_a7a75cb224d903e71e8daede432449766a0f5bf9437cd16516e15c095309476d37}{ai\-Light\-Source\-\_\-\-P\-O\-I\-N\-T}\label{light_8h_a7a75cb224d903e71e8daede432449766a0f5bf9437cd16516e15c095309476d37}
+}]A point light source has a well-\/defined position in space but no direction -\/ it emits light in all directions. A normal bulb is a point light. \index{ai\-Light\-Source\-\_\-\-S\-P\-O\-T@{ai\-Light\-Source\-\_\-\-S\-P\-O\-T}!light.\-h@{light.\-h}}\index{light.\-h@{light.\-h}!ai\-Light\-Source\-\_\-\-S\-P\-O\-T@{ai\-Light\-Source\-\_\-\-S\-P\-O\-T}}\item[{\em 
+\hypertarget{light_8h_a7a75cb224d903e71e8daede432449766a05ef88df7bae63499a8ed950c995e392}{ai\-Light\-Source\-\_\-\-S\-P\-O\-T}\label{light_8h_a7a75cb224d903e71e8daede432449766a05ef88df7bae63499a8ed950c995e392}
+}]A spot light source emits light in a specific angle. It has a position and a direction it is pointing to. A good example for a spot light is a light spot in sport arenas. \index{ai\-Light\-Source\-\_\-\-A\-M\-B\-I\-E\-N\-T@{ai\-Light\-Source\-\_\-\-A\-M\-B\-I\-E\-N\-T}!light.\-h@{light.\-h}}\index{light.\-h@{light.\-h}!ai\-Light\-Source\-\_\-\-A\-M\-B\-I\-E\-N\-T@{ai\-Light\-Source\-\_\-\-A\-M\-B\-I\-E\-N\-T}}\item[{\em 
+\hypertarget{light_8h_a7a75cb224d903e71e8daede432449766a586dc7f849733364cb5b28c403759bf3}{ai\-Light\-Source\-\_\-\-A\-M\-B\-I\-E\-N\-T}\label{light_8h_a7a75cb224d903e71e8daede432449766a586dc7f849733364cb5b28c403759bf3}
+}]The generic light level of the world, including the bounces of all other lightsources. Typically, there's at most one ambient light in a scene. This light type doesn't have a valid position, direction, or other properties, just a color. \index{\-\_\-ai\-Light\-Source\-\_\-\-Force32\-Bit@{\-\_\-ai\-Light\-Source\-\_\-\-Force32\-Bit}!light.\-h@{light.\-h}}\index{light.\-h@{light.\-h}!\-\_\-ai\-Light\-Source\-\_\-\-Force32\-Bit@{\-\_\-ai\-Light\-Source\-\_\-\-Force32\-Bit}}\item[{\em 
+\hypertarget{light_8h_a7a75cb224d903e71e8daede432449766a110c3b047ed41a1656849921d75e83a1}{\-\_\-ai\-Light\-Source\-\_\-\-Force32\-Bit}\label{light_8h_a7a75cb224d903e71e8daede432449766a110c3b047ed41a1656849921d75e83a1}
+}]This value is not used. It is just there to force the compiler to map this enum to a 32 Bit integer. \end{description}
+\end{Desc}

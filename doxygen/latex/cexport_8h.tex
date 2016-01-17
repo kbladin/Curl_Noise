@@ -1,0 +1,195 @@
+\hypertarget{cexport_8h}{\section{ext/assimp/include/assimp/cexport.h File Reference}
+\label{cexport_8h}\index{ext/assimp/include/assimp/cexport.\-h@{ext/assimp/include/assimp/cexport.\-h}}
+}
+
+
+Defines the C-\/\-A\-P\-I for the \hyperlink{namespace_assimp}{Assimp} export interface.  
+
+
+{\ttfamily \#include \char`\"{}types.\-h\char`\"{}}\\*
+Include dependency graph for cexport.\-h\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structai_export_format_desc}{ai\-Export\-Format\-Desc}
+\item 
+struct \hyperlink{structai_export_data_blob}{ai\-Export\-Data\-Blob}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I size\-\_\-t \hyperlink{cexport_8h_a59cfffbc5b436da8ed8542108102b502}{ai\-Get\-Export\-Format\-Count} (void)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I const C\-\_\-\-S\-T\-R\-U\-C\-T \\*
+\hyperlink{structai_export_format_desc}{ai\-Export\-Format\-Desc} $\ast$ \hyperlink{cexport_8h_adda7f2e6611f719af6c8a4a0bef0a0a2}{ai\-Get\-Export\-Format\-Description} (size\-\_\-t p\-Index)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void \hyperlink{cexport_8h_aaac746cd3f93f8d46b047b21b5d51d99}{ai\-Release\-Export\-Format\-Description} (const C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_export_format_desc}{ai\-Export\-Format\-Desc} $\ast$desc)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void \hyperlink{cexport_8h_a3b462a882e970cd7f492e293e5dee4fe}{ai\-Copy\-Scene} (const C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_scene}{ai\-Scene} $\ast$p\-In, C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_scene}{ai\-Scene} $\ast$$\ast$p\-Out)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void \hyperlink{cexport_8h_a59c30a6f75b024ae2da8bd4c4854320c}{ai\-Free\-Scene} (const C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_scene}{ai\-Scene} $\ast$p\-In)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I \hyperlink{types_8h_a1f78dfb65090aa930cabb984c8abe711}{ai\-Return} \hyperlink{cexport_8h_a9615510b8430a9da4f435a72148128dd}{ai\-Export\-Scene} (const C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_scene}{ai\-Scene} $\ast$p\-Scene, const char $\ast$p\-Format\-Id, const char $\ast$p\-File\-Name, unsigned int p\-Preprocessing)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I \hyperlink{types_8h_a1f78dfb65090aa930cabb984c8abe711}{ai\-Return} \hyperlink{cexport_8h_a94fe06ba0fe03e934d387f2ed6e407d2}{ai\-Export\-Scene\-Ex} (const C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_scene}{ai\-Scene} $\ast$p\-Scene, const char $\ast$p\-Format\-Id, const char $\ast$p\-File\-Name, C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_file_i_o}{ai\-File\-I\-O} $\ast$p\-I\-O, unsigned int p\-Preprocessing)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I const C\-\_\-\-S\-T\-R\-U\-C\-T \\*
+\hyperlink{structai_export_data_blob}{ai\-Export\-Data\-Blob} $\ast$ \hyperlink{cexport_8h_a33b02f2dbfd79980bf29e62f3a64139f}{ai\-Export\-Scene\-To\-Blob} (const C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_scene}{ai\-Scene} $\ast$p\-Scene, const char $\ast$p\-Format\-Id, unsigned int p\-Preprocessing)
+\item 
+A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void \hyperlink{cexport_8h_a0998064849f2ef5544f6fd30cda0b964}{ai\-Release\-Export\-Blob} (const C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_export_data_blob}{ai\-Export\-Data\-Blob} $\ast$p\-Data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the C-\/\-A\-P\-I for the \hyperlink{namespace_assimp}{Assimp} export interface. 
+
+\subsection{Function Documentation}
+\hypertarget{cexport_8h_a3b462a882e970cd7f492e293e5dee4fe}{\index{cexport.\-h@{cexport.\-h}!ai\-Copy\-Scene@{ai\-Copy\-Scene}}
+\index{ai\-Copy\-Scene@{ai\-Copy\-Scene}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Copy\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void ai\-Copy\-Scene (
+\begin{DoxyParamCaption}
+\item[{const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Scene} $\ast$}]{p\-In, }
+\item[{C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Scene} $\ast$$\ast$}]{p\-Out}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_a3b462a882e970cd7f492e293e5dee4fe}
+Create a modifiable copy of a scene. This is useful to import files via \hyperlink{namespace_assimp}{Assimp}, change their topology and export them again. Since the scene returned by the various importer functions is const, a modifiable copy is needed. 
+\begin{DoxyParams}{Parameters}
+{\em p\-In} & Valid scene to be copied \\
+\hline
+{\em p\-Out} & Receives a modifyable copy of the scene. Use \hyperlink{cexport_8h_a59c30a6f75b024ae2da8bd4c4854320c}{ai\-Free\-Scene()} to delete it again. \\
+\hline
+\end{DoxyParams}
+\hypertarget{cexport_8h_a9615510b8430a9da4f435a72148128dd}{\index{cexport.\-h@{cexport.\-h}!ai\-Export\-Scene@{ai\-Export\-Scene}}
+\index{ai\-Export\-Scene@{ai\-Export\-Scene}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Export\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I {\bf ai\-Return} ai\-Export\-Scene (
+\begin{DoxyParamCaption}
+\item[{const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Scene} $\ast$}]{p\-Scene, }
+\item[{const char $\ast$}]{p\-Format\-Id, }
+\item[{const char $\ast$}]{p\-File\-Name, }
+\item[{unsigned int}]{p\-Preprocessing}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_a9615510b8430a9da4f435a72148128dd}
+Exports the given scene to a chosen file format and writes the result file(s) to disk. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Scene} & The scene to export. Stays in possession of the caller, is not changed by the function. The scene is expected to conform to \hyperlink{namespace_assimp}{Assimp}'s Importer output format as specified in the \hyperlink{}{Data Structures Page }. In short, this means the model data should use a right-\/handed coordinate systems, face winding should be counter-\/clockwise and the U\-V coordinate origin is assumed to be in the upper left. If your input data uses different conventions, have a look at the last parameter. \\
+\hline
+{\em p\-Format\-Id} & I\-D string to specify to which format you want to export to. Use \hyperlink{cexport_8h_a59cfffbc5b436da8ed8542108102b502}{ai\-Get\-Export\-Format\-Count()} / \hyperlink{cexport_8h_adda7f2e6611f719af6c8a4a0bef0a0a2}{ai\-Get\-Export\-Format\-Description()} to learn which export formats are available. \\
+\hline
+{\em p\-File\-Name} & Output file to write \\
+\hline
+{\em p\-Preprocessing} & Accepts any choice of the \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410}{ai\-Post\-Process\-Steps} enumerated flags, but in reality only a subset of them makes sense here. Specifying 'preprocessing' flags is useful if the input scene does not conform to \hyperlink{namespace_assimp}{Assimp}'s default conventions as specified in the \hyperlink{}{Data Structures Page }. In short, this means the geometry data should use a right-\/handed coordinate systems, face winding should be counter-\/clockwise and the U\-V coordinate origin is assumed to be in the upper left. The \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a133fd1162674e68bf8cd17070898a936}{ai\-Process\-\_\-\-Make\-Left\-Handed}, \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a06922b6a1f1cd8186f9fdafb471c813e}{ai\-Process\-\_\-\-Flip\-U\-Vs} and \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a429a11bf7ace46f039f55de895505d4a}{ai\-Process\-\_\-\-Flip\-Winding\-Order} flags are used in the import side to allow users to have those defaults automatically adapted to their conventions. Specifying those flags for exporting has the opposite effect, respectively. Some other of the \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410}{ai\-Post\-Process\-Steps} enumerated values may be useful as well, but you'll need to try out what their effect on the exported file is. Many formats impose their own restrictions on the structure of the geometry stored therein, so some preprocessing may have little or no effect at all, or may be redundant as exporters would apply them anyhow. A good example is triangulation -\/ whilst you can enforce it by specifying the \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a9c3de834f0307f31fa2b1b6d05dd592b}{ai\-Process\-\_\-\-Triangulate} flag, most export formats support only triangulate data so they would run the step anyway.\\
+\hline
+\end{DoxyParams}
+If assimp detects that the input scene was directly taken from the importer side of the library (i.\-e. not copied using ai\-Copy\-Scene and potetially modified afterwards), any postprocessing steps already applied to the scene will not be applied again, unless they show non-\/idempotent behaviour (\hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a133fd1162674e68bf8cd17070898a936}{ai\-Process\-\_\-\-Make\-Left\-Handed}, \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a06922b6a1f1cd8186f9fdafb471c813e}{ai\-Process\-\_\-\-Flip\-U\-Vs} and \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a429a11bf7ace46f039f55de895505d4a}{ai\-Process\-\_\-\-Flip\-Winding\-Order}). \begin{DoxyReturn}{Returns}
+a status code indicating the result of the export 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Use \hyperlink{cexport_8h_a3b462a882e970cd7f492e293e5dee4fe}{ai\-Copy\-Scene()} to get a modifiable copy of a previously imported scene. 
+\end{DoxyNote}
+\hypertarget{cexport_8h_a94fe06ba0fe03e934d387f2ed6e407d2}{\index{cexport.\-h@{cexport.\-h}!ai\-Export\-Scene\-Ex@{ai\-Export\-Scene\-Ex}}
+\index{ai\-Export\-Scene\-Ex@{ai\-Export\-Scene\-Ex}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Export\-Scene\-Ex}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I {\bf ai\-Return} ai\-Export\-Scene\-Ex (
+\begin{DoxyParamCaption}
+\item[{const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Scene} $\ast$}]{p\-Scene, }
+\item[{const char $\ast$}]{p\-Format\-Id, }
+\item[{const char $\ast$}]{p\-File\-Name, }
+\item[{C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-File\-I\-O} $\ast$}]{p\-I\-O, }
+\item[{unsigned int}]{p\-Preprocessing}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_a94fe06ba0fe03e934d387f2ed6e407d2}
+Exports the given scene to a chosen file format using custom I\-O logic supplied by you. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Scene} & The scene to export. Stays in possession of the caller, is not changed by the function. \\
+\hline
+{\em p\-Format\-Id} & I\-D string to specify to which format you want to export to. Use \hyperlink{cexport_8h_a59cfffbc5b436da8ed8542108102b502}{ai\-Get\-Export\-Format\-Count()} / \hyperlink{cexport_8h_adda7f2e6611f719af6c8a4a0bef0a0a2}{ai\-Get\-Export\-Format\-Description()} to learn which export formats are available. \\
+\hline
+{\em p\-File\-Name} & Output file to write \\
+\hline
+{\em p\-I\-O} & custom I\-O implementation to be used. Use this if you use your own storage methods. If none is supplied, a default implementation using standard file I\-O is used. Note that \hyperlink{cexport_8h_a33b02f2dbfd79980bf29e62f3a64139f}{ai\-Export\-Scene\-To\-Blob} is provided as convenience function to export to memory buffers. \\
+\hline
+{\em p\-Preprocessing} & Please see the documentation for \hyperlink{cexport_8h_a9615510b8430a9da4f435a72148128dd}{ai\-Export\-Scene} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a status code indicating the result of the export 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Include $<$ai\-File\-I\-O.\-h$>$ for the definition of \hyperlink{structai_file_i_o}{ai\-File\-I\-O}. 
+
+Use \hyperlink{cexport_8h_a3b462a882e970cd7f492e293e5dee4fe}{ai\-Copy\-Scene()} to get a modifiable copy of a previously imported scene. 
+\end{DoxyNote}
+\hypertarget{cexport_8h_a33b02f2dbfd79980bf29e62f3a64139f}{\index{cexport.\-h@{cexport.\-h}!ai\-Export\-Scene\-To\-Blob@{ai\-Export\-Scene\-To\-Blob}}
+\index{ai\-Export\-Scene\-To\-Blob@{ai\-Export\-Scene\-To\-Blob}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Export\-Scene\-To\-Blob}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Export\-Data\-Blob}$\ast$ ai\-Export\-Scene\-To\-Blob (
+\begin{DoxyParamCaption}
+\item[{const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Scene} $\ast$}]{p\-Scene, }
+\item[{const char $\ast$}]{p\-Format\-Id, }
+\item[{unsigned int}]{p\-Preprocessing}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_a33b02f2dbfd79980bf29e62f3a64139f}
+Exports the given scene to a chosen file format. Returns the exported data as a binary blob which you can write into a file or something. When you're done with the data, use \hyperlink{cexport_8h_a0998064849f2ef5544f6fd30cda0b964}{ai\-Release\-Export\-Blob()} to free the resources associated with the export. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Scene} & The scene to export. Stays in possession of the caller, is not changed by the function. \\
+\hline
+{\em p\-Format\-Id} & I\-D string to specify to which format you want to export to. Use \hyperlink{cexport_8h_a59cfffbc5b436da8ed8542108102b502}{ai\-Get\-Export\-Format\-Count()} / \hyperlink{cexport_8h_adda7f2e6611f719af6c8a4a0bef0a0a2}{ai\-Get\-Export\-Format\-Description()} to learn which export formats are available. \\
+\hline
+{\em p\-Preprocessing} & Please see the documentation for \hyperlink{cexport_8h_a9615510b8430a9da4f435a72148128dd}{ai\-Export\-Scene} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the exported data or N\-U\-L\-L in case of error 
+\end{DoxyReturn}
+\hypertarget{cexport_8h_a59c30a6f75b024ae2da8bd4c4854320c}{\index{cexport.\-h@{cexport.\-h}!ai\-Free\-Scene@{ai\-Free\-Scene}}
+\index{ai\-Free\-Scene@{ai\-Free\-Scene}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Free\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void ai\-Free\-Scene (
+\begin{DoxyParamCaption}
+\item[{const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Scene} $\ast$}]{p\-In}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_a59c30a6f75b024ae2da8bd4c4854320c}
+Frees a scene copy created using \hyperlink{cexport_8h_a3b462a882e970cd7f492e293e5dee4fe}{ai\-Copy\-Scene()} \hypertarget{cexport_8h_a59cfffbc5b436da8ed8542108102b502}{\index{cexport.\-h@{cexport.\-h}!ai\-Get\-Export\-Format\-Count@{ai\-Get\-Export\-Format\-Count}}
+\index{ai\-Get\-Export\-Format\-Count@{ai\-Get\-Export\-Format\-Count}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Get\-Export\-Format\-Count}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I size\-\_\-t ai\-Get\-Export\-Format\-Count (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_a59cfffbc5b436da8ed8542108102b502}
+Returns the number of export file formats available in the current \hyperlink{namespace_assimp}{Assimp} build. Use \hyperlink{cexport_8h_adda7f2e6611f719af6c8a4a0bef0a0a2}{ai\-Get\-Export\-Format\-Description()} to retrieve infos of a specific export format. \hypertarget{cexport_8h_adda7f2e6611f719af6c8a4a0bef0a0a2}{\index{cexport.\-h@{cexport.\-h}!ai\-Get\-Export\-Format\-Description@{ai\-Get\-Export\-Format\-Description}}
+\index{ai\-Get\-Export\-Format\-Description@{ai\-Get\-Export\-Format\-Description}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Get\-Export\-Format\-Description}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Export\-Format\-Desc}$\ast$ ai\-Get\-Export\-Format\-Description (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{p\-Index}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_adda7f2e6611f719af6c8a4a0bef0a0a2}
+Returns a description of the nth export file format. Use \hyperlink{cexport_8h_a59cfffbc5b436da8ed8542108102b502}{ai\-Get\-Export\-Format\-Count()} to learn how many export formats are supported. The description must be released by calling ai\-Release\-Export\-Format\-Description afterwards. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Index} & Index of the export format to retrieve information for. Valid range is 0 to \hyperlink{cexport_8h_a59cfffbc5b436da8ed8542108102b502}{ai\-Get\-Export\-Format\-Count()} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A description of that specific export format. N\-U\-L\-L if p\-Index is out of range. 
+\end{DoxyReturn}
+\hypertarget{cexport_8h_a0998064849f2ef5544f6fd30cda0b964}{\index{cexport.\-h@{cexport.\-h}!ai\-Release\-Export\-Blob@{ai\-Release\-Export\-Blob}}
+\index{ai\-Release\-Export\-Blob@{ai\-Release\-Export\-Blob}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Release\-Export\-Blob}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void ai\-Release\-Export\-Blob (
+\begin{DoxyParamCaption}
+\item[{const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Export\-Data\-Blob} $\ast$}]{p\-Data}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_a0998064849f2ef5544f6fd30cda0b964}
+Releases the memory associated with the given exported data. Use this function to free a data blob returned by \hyperlink{cexport_8h_a9615510b8430a9da4f435a72148128dd}{ai\-Export\-Scene()}. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Data} & the data blob returned by \hyperlink{cexport_8h_a33b02f2dbfd79980bf29e62f3a64139f}{ai\-Export\-Scene\-To\-Blob} \\
+\hline
+\end{DoxyParams}
+\hypertarget{cexport_8h_aaac746cd3f93f8d46b047b21b5d51d99}{\index{cexport.\-h@{cexport.\-h}!ai\-Release\-Export\-Format\-Description@{ai\-Release\-Export\-Format\-Description}}
+\index{ai\-Release\-Export\-Format\-Description@{ai\-Release\-Export\-Format\-Description}!cexport.h@{cexport.\-h}}
+\subsubsection[{ai\-Release\-Export\-Format\-Description}]{\setlength{\rightskip}{0pt plus 5cm}A\-S\-S\-I\-M\-P\-\_\-\-A\-P\-I void ai\-Release\-Export\-Format\-Description (
+\begin{DoxyParamCaption}
+\item[{const C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Export\-Format\-Desc} $\ast$}]{desc}
+\end{DoxyParamCaption}
+)}}\label{cexport_8h_aaac746cd3f93f8d46b047b21b5d51d99}
+Release a description of the nth export file format. Must be returned by ai\-Get\-Export\-Format\-Description 
+\begin{DoxyParams}{Parameters}
+{\em desc} & Pointer to the description \\
+\hline
+\end{DoxyParams}

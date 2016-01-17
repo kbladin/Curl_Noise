@@ -1,0 +1,93 @@
+\hypertarget{group__gtx__color__space}{\section{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}
+\label{group__gtx__color__space}\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}}
+}
+
+
+Related to R\-G\-B to H\-S\-V conversions and operations.  
+
+
+Collaboration diagram for G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space\-:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$ T, P $>$ \hyperlink{group__gtx__color__space_ga36b0619e31daf57bc4a54dac2dcf34b7}{glm\-::rgb\-Color} (tvec3$<$ T, P $>$ const \&hsv\-Value)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$ T, P $>$ \hyperlink{group__gtx__color__space_gae72039c00a7be2f03a3b94b37a54349a}{glm\-::hsv\-Color} (tvec3$<$ T, P $>$ const \&rgb\-Value)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$ T, \\*
+defaultp $>$ \hyperlink{group__gtx__color__space_gafecfb15d58da8445103745af3348e516}{glm\-::saturation} (T const s)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$ T, P $>$ \hyperlink{group__gtx__color__space_ga632ee8dadb44e90a05885f6f8c07d46c}{glm\-::saturation} (T const s, tvec3$<$ T, P $>$ const \&color)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec4$<$ T, P $>$ \hyperlink{group__gtx__color__space_ga2033e0566c595230714af396744e8a61}{glm\-::saturation} (T const s, tvec4$<$ T, P $>$ const \&color)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L T \hyperlink{group__gtx__color__space_gaa2f38a5100c3e1c7d39920df43bd8cbe}{glm\-::luminosity} (tvec3$<$ T, P $>$ const \&color)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Related to R\-G\-B to H\-S\-V conversions and operations. $<$\hyperlink{gtx_2color__space_8hpp}{glm/gtx/color\-\_\-space.\-hpp}$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__color__space_gae72039c00a7be2f03a3b94b37a54349a}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}!hsv\-Color@{hsv\-Color}}
+\index{hsv\-Color@{hsv\-Color}!GLM_GTX_color_space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}}
+\subsubsection[{hsv\-Color}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$T, P$>$ glm\-::hsv\-Color (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{rgb\-Value}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__color__space_gae72039c00a7be2f03a3b94b37a54349a}
+Converts a color from R\-G\-B color space to its color in H\-S\-V color space. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__color__space}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtx__color__space_gaa2f38a5100c3e1c7d39920df43bd8cbe}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}!luminosity@{luminosity}}
+\index{luminosity@{luminosity}!GLM_GTX_color_space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}}
+\subsubsection[{luminosity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L T glm\-::luminosity (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{color}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__color__space_gaa2f38a5100c3e1c7d39920df43bd8cbe}
+Compute color luminosity associating ratios (0.\-33, 0.\-59, 0.\-11) to R\-G\-B canals. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__color__space}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtx__color__space_ga36b0619e31daf57bc4a54dac2dcf34b7}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}!rgb\-Color@{rgb\-Color}}
+\index{rgb\-Color@{rgb\-Color}!GLM_GTX_color_space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}}
+\subsubsection[{rgb\-Color}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$T, P$>$ glm\-::rgb\-Color (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{hsv\-Value}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__color__space_ga36b0619e31daf57bc4a54dac2dcf34b7}
+Converts a color from H\-S\-V color space to its color in R\-G\-B color space. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__color__space}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtx__color__space_gafecfb15d58da8445103745af3348e516}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}!saturation@{saturation}}
+\index{saturation@{saturation}!GLM_GTX_color_space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}}
+\subsubsection[{saturation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tmat4x4$<$T, defaultp$>$ glm\-::saturation (
+\begin{DoxyParamCaption}
+\item[{T const}]{s}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__color__space_gafecfb15d58da8445103745af3348e516}
+Build a saturation matrix. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__color__space}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtx__color__space_ga632ee8dadb44e90a05885f6f8c07d46c}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}!saturation@{saturation}}
+\index{saturation@{saturation}!GLM_GTX_color_space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}}
+\subsubsection[{saturation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec3$<$T, P$>$ glm\-::saturation (
+\begin{DoxyParamCaption}
+\item[{T const}]{s, }
+\item[{tvec3$<$ T, P $>$ const \&}]{color}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__color__space_ga632ee8dadb44e90a05885f6f8c07d46c}
+Modify the saturation of a color. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__color__space}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtx__color__space_ga2033e0566c595230714af396744e8a61}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}!saturation@{saturation}}
+\index{saturation@{saturation}!GLM_GTX_color_space@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space}}
+\subsubsection[{saturation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L tvec4$<$T, P$>$ glm\-::saturation (
+\begin{DoxyParamCaption}
+\item[{T const}]{s, }
+\item[{tvec4$<$ T, P $>$ const \&}]{color}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__color__space_ga2033e0566c595230714af396744e8a61}
+Modify the saturation of a color. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__color__space}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-color\-\_\-space} 
+\end{DoxySeeAlso}

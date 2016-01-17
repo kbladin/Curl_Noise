@@ -1,0 +1,122 @@
+\hypertarget{structai_light}{\section{ai\-Light Struct Reference}
+\label{structai_light}\index{ai\-Light@{ai\-Light}}
+}
+
+
+{\ttfamily \#include $<$light.\-h$>$}
+
+
+
+Collaboration diagram for ai\-Light\-:
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_string}{ai\-String} \hyperlink{structai_light_a92806413f16230728b04e5f379fd00c0}{m\-Name}
+\item 
+C\-\_\-\-E\-N\-U\-M \hyperlink{light_8h_a7a75cb224d903e71e8daede432449766}{ai\-Light\-Source\-Type} \hyperlink{structai_light_a4cba1741875dd92724ff55be91c60c2b}{m\-Type}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vector3_d}{ai\-Vector3\-D} \hyperlink{structai_light_a5daf9c9ad2613603b847a527123611f0}{m\-Position}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_vector3_d}{ai\-Vector3\-D} \hyperlink{structai_light_af3776d5e4e6065cb6dd7e10dc656dada}{m\-Direction}
+\item 
+float \hyperlink{structai_light_ae8804b3c309527ca0f85d676bab55710}{m\-Attenuation\-Constant}
+\item 
+float \hyperlink{structai_light_aefda311eaa785ea345782dfa95be817c}{m\-Attenuation\-Linear}
+\item 
+float \hyperlink{structai_light_ab4fb07bfa40a807661b1ed1791838a6d}{m\-Attenuation\-Quadratic}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_color3_d}{ai\-Color3\-D} \hyperlink{structai_light_a22e7feebbfaf53adf73bd9f581636efd}{m\-Color\-Diffuse}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_color3_d}{ai\-Color3\-D} \hyperlink{structai_light_aa79ae6ad6a10f0cb9c740e23b6bb01bf}{m\-Color\-Specular}
+\item 
+C\-\_\-\-S\-T\-R\-U\-C\-T \hyperlink{structai_color3_d}{ai\-Color3\-D} \hyperlink{structai_light_a5188b60e6fbaf1635fa780913508e3cd}{m\-Color\-Ambient}
+\item 
+float \hyperlink{structai_light_abad0466811938623e98bf1d334143f9a}{m\-Angle\-Inner\-Cone}
+\item 
+float \hyperlink{structai_light_a20fd332a5f9d8e8cb94816ff2b0ae7f4}{m\-Angle\-Outer\-Cone}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper structure to describe a light source.
+
+\hyperlink{namespace_assimp}{Assimp} supports multiple sorts of light sources, including directional, point and spot lights. All of them are defined with just a single structure and distinguished by their parameters. Note -\/ some file formats (such as 3\-D\-S, A\-S\-E) export a \char`\"{}target point\char`\"{} -\/ the point a spot light is looking at (it can even be animated). \hyperlink{namespace_assimp}{Assimp} writes the target point as a subnode of a spotlights's main node, called \char`\"{}$<$spot\-Name$>$.\-Target\char`\"{}. However, this is just additional information then, the transformation tracks of the main node make the spot light already point in the right direction. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_light_abad0466811938623e98bf1d334143f9a}{\index{ai\-Light@{ai\-Light}!m\-Angle\-Inner\-Cone@{m\-Angle\-Inner\-Cone}}
+\index{m\-Angle\-Inner\-Cone@{m\-Angle\-Inner\-Cone}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Angle\-Inner\-Cone}]{\setlength{\rightskip}{0pt plus 5cm}float ai\-Light\-::m\-Angle\-Inner\-Cone}}\label{structai_light_abad0466811938623e98bf1d334143f9a}
+Inner angle of a spot light's light cone.
+
+The spot light has maximum influence on objects inside this angle. The angle is given in radians. It is 2\-P\-I for point lights and undefined for directional lights. \hypertarget{structai_light_a20fd332a5f9d8e8cb94816ff2b0ae7f4}{\index{ai\-Light@{ai\-Light}!m\-Angle\-Outer\-Cone@{m\-Angle\-Outer\-Cone}}
+\index{m\-Angle\-Outer\-Cone@{m\-Angle\-Outer\-Cone}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Angle\-Outer\-Cone}]{\setlength{\rightskip}{0pt plus 5cm}float ai\-Light\-::m\-Angle\-Outer\-Cone}}\label{structai_light_a20fd332a5f9d8e8cb94816ff2b0ae7f4}
+Outer angle of a spot light's light cone.
+
+The spot light does not affect objects outside this angle. The angle is given in radians. It is 2\-P\-I for point lights and undefined for directional lights. The outer angle must be greater than or equal to the inner angle. It is assumed that the application uses a smooth interpolation between the inner and the outer cone of the spot light. \hypertarget{structai_light_ae8804b3c309527ca0f85d676bab55710}{\index{ai\-Light@{ai\-Light}!m\-Attenuation\-Constant@{m\-Attenuation\-Constant}}
+\index{m\-Attenuation\-Constant@{m\-Attenuation\-Constant}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Attenuation\-Constant}]{\setlength{\rightskip}{0pt plus 5cm}float ai\-Light\-::m\-Attenuation\-Constant}}\label{structai_light_ae8804b3c309527ca0f85d676bab55710}
+Constant light attenuation factor.
+
+The intensity of the light source at a given distance 'd' from the light's position is 
+\begin{DoxyCode}
+Atten = 1/( att0 + att1 * d + att2 * d*d)
+\end{DoxyCode}
+ This member corresponds to the att0 variable in the equation. Naturally undefined for directional lights. \hypertarget{structai_light_aefda311eaa785ea345782dfa95be817c}{\index{ai\-Light@{ai\-Light}!m\-Attenuation\-Linear@{m\-Attenuation\-Linear}}
+\index{m\-Attenuation\-Linear@{m\-Attenuation\-Linear}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Attenuation\-Linear}]{\setlength{\rightskip}{0pt plus 5cm}float ai\-Light\-::m\-Attenuation\-Linear}}\label{structai_light_aefda311eaa785ea345782dfa95be817c}
+Linear light attenuation factor.
+
+The intensity of the light source at a given distance 'd' from the light's position is 
+\begin{DoxyCode}
+Atten = 1/( att0 + att1 * d + att2 * d*d)
+\end{DoxyCode}
+ This member corresponds to the att1 variable in the equation. Naturally undefined for directional lights. \hypertarget{structai_light_ab4fb07bfa40a807661b1ed1791838a6d}{\index{ai\-Light@{ai\-Light}!m\-Attenuation\-Quadratic@{m\-Attenuation\-Quadratic}}
+\index{m\-Attenuation\-Quadratic@{m\-Attenuation\-Quadratic}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Attenuation\-Quadratic}]{\setlength{\rightskip}{0pt plus 5cm}float ai\-Light\-::m\-Attenuation\-Quadratic}}\label{structai_light_ab4fb07bfa40a807661b1ed1791838a6d}
+Quadratic light attenuation factor.
+
+The intensity of the light source at a given distance 'd' from the light's position is 
+\begin{DoxyCode}
+Atten = 1/( att0 + att1 * d + att2 * d*d)
+\end{DoxyCode}
+ This member corresponds to the att2 variable in the equation. Naturally undefined for directional lights. \hypertarget{structai_light_a5188b60e6fbaf1635fa780913508e3cd}{\index{ai\-Light@{ai\-Light}!m\-Color\-Ambient@{m\-Color\-Ambient}}
+\index{m\-Color\-Ambient@{m\-Color\-Ambient}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Color\-Ambient}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Color3\-D} ai\-Light\-::m\-Color\-Ambient}}\label{structai_light_a5188b60e6fbaf1635fa780913508e3cd}
+Ambient color of the light source
+
+The ambient light color is multiplied with the ambient material color to obtain the final color that contributes to the ambient shading term. Most renderers will ignore this value it, is just a remaining of the fixed-\/function pipeline that is still supported by quite many file formats. \hypertarget{structai_light_a22e7feebbfaf53adf73bd9f581636efd}{\index{ai\-Light@{ai\-Light}!m\-Color\-Diffuse@{m\-Color\-Diffuse}}
+\index{m\-Color\-Diffuse@{m\-Color\-Diffuse}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Color\-Diffuse}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Color3\-D} ai\-Light\-::m\-Color\-Diffuse}}\label{structai_light_a22e7feebbfaf53adf73bd9f581636efd}
+Diffuse color of the light source
+
+The diffuse light color is multiplied with the diffuse material color to obtain the final color that contributes to the diffuse shading term. \hypertarget{structai_light_aa79ae6ad6a10f0cb9c740e23b6bb01bf}{\index{ai\-Light@{ai\-Light}!m\-Color\-Specular@{m\-Color\-Specular}}
+\index{m\-Color\-Specular@{m\-Color\-Specular}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Color\-Specular}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Color3\-D} ai\-Light\-::m\-Color\-Specular}}\label{structai_light_aa79ae6ad6a10f0cb9c740e23b6bb01bf}
+Specular color of the light source
+
+The specular light color is multiplied with the specular material color to obtain the final color that contributes to the specular shading term. \hypertarget{structai_light_af3776d5e4e6065cb6dd7e10dc656dada}{\index{ai\-Light@{ai\-Light}!m\-Direction@{m\-Direction}}
+\index{m\-Direction@{m\-Direction}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Direction}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Vector3\-D} ai\-Light\-::m\-Direction}}\label{structai_light_af3776d5e4e6065cb6dd7e10dc656dada}
+Direction of the light source in space. Relative to the transformation of the node corresponding to the light.
+
+The direction is undefined for point lights. The vector may be normalized, but it needn't. \hypertarget{structai_light_a92806413f16230728b04e5f379fd00c0}{\index{ai\-Light@{ai\-Light}!m\-Name@{m\-Name}}
+\index{m\-Name@{m\-Name}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Name}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-String} ai\-Light\-::m\-Name}}\label{structai_light_a92806413f16230728b04e5f379fd00c0}
+The name of the light source.
+
+There must be a node in the scenegraph with the same name. This node specifies the position of the light in the scene hierarchy and can be animated. \hypertarget{structai_light_a5daf9c9ad2613603b847a527123611f0}{\index{ai\-Light@{ai\-Light}!m\-Position@{m\-Position}}
+\index{m\-Position@{m\-Position}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Position}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-S\-T\-R\-U\-C\-T {\bf ai\-Vector3\-D} ai\-Light\-::m\-Position}}\label{structai_light_a5daf9c9ad2613603b847a527123611f0}
+Position of the light source in space. Relative to the transformation of the node corresponding to the light.
+
+The position is undefined for directional lights. \hypertarget{structai_light_a4cba1741875dd92724ff55be91c60c2b}{\index{ai\-Light@{ai\-Light}!m\-Type@{m\-Type}}
+\index{m\-Type@{m\-Type}!aiLight@{ai\-Light}}
+\subsubsection[{m\-Type}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-E\-N\-U\-M {\bf ai\-Light\-Source\-Type} ai\-Light\-::m\-Type}}\label{structai_light_a4cba1741875dd92724ff55be91c60c2b}
+The type of the light source.
+
+ai\-Light\-Source\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D is not a valid value for this member. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/\hyperlink{light_8h}{light.\-h}\end{DoxyCompactItemize}

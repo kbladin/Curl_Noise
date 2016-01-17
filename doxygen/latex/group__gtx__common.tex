@@ -1,0 +1,55 @@
+\hypertarget{group__gtx__common}{\section{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common}
+\label{group__gtx__common}\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common}}
+}
+
+
+Provide functions to increase the compatibility with Cg and H\-L\-S\-L languages.  
+
+
+Collaboration diagram for G\-L\-M\-\_\-\-G\-T\-X\-\_\-common\-:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type\-::bool\-\_\-type \hyperlink{group__gtx__common_ga74aa7c7462245d83bd5a9edf9c6c2d91}{glm\-::isdenormal} (gen\-Type const \&x)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__gtx__common_ga2580f50d4064557d62f4a533dfc6c7e3}{glm\-::fmod} (vec\-Type$<$ T, P $>$ const \&v)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provide functions to increase the compatibility with Cg and H\-L\-S\-L languages. $<$\hyperlink{gtx_2common_8hpp}{glm/gtx/common.\-hpp}$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__common_ga2580f50d4064557d62f4a533dfc6c7e3}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common}!fmod@{fmod}}
+\index{fmod@{fmod}!GLM_GTX_common@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common}}
+\subsubsection[{fmod}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$T, P$>$ glm\-::fmod (
+\begin{DoxyParamCaption}
+\item[{vec\-Type$<$ T, P $>$ const \&}]{v}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__common_ga2580f50d4064557d62f4a533dfc6c7e3}
+Similiar to 'mod' but with a different rounding and integer support. Returns 'x -\/ y $\ast$ trunc(x/y)' instead of 'x -\/ y $\ast$ floor(x/y)'
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://stackoverflow.com/questions/7610631/glsl-mod-vs-hlsl-fmod}{\tt G\-L\-S\-L mod vs H\-L\-S\-L fmod} 
+
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml}{\tt G\-L\-S\-L mod man page} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtx__common_ga74aa7c7462245d83bd5a9edf9c6c2d91}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common}!isdenormal@{isdenormal}}
+\index{isdenormal@{isdenormal}!GLM_GTX_common@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-common}}
+\subsubsection[{isdenormal}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type\-::bool\-\_\-type glm\-::isdenormal (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__common_ga74aa7c7462245d83bd5a9edf9c6c2d91}
+Returns true if x is a denormalized number Numbers whose absolute value is too small to be represented in the normal format are represented in an alternate, denormalized format. This format is less precise but can represent values closer to zero.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/isnan.xml}{\tt G\-L\-S\-L isnan man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}

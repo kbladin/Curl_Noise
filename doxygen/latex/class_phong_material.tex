@@ -1,0 +1,67 @@
+\hypertarget{class_phong_material}{\section{Phong\-Material Class Reference}
+\label{class_phong_material}\index{Phong\-Material@{Phong\-Material}}
+}
+
+
+Every Mesh has a material which specifies parameters for shading.  
+
+
+
+
+{\ttfamily \#include $<$Material.\-h$>$}
+
+
+
+Inherits \hyperlink{class_material}{Material}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_phong_material_a5edfd5d4415cb5f7c10e8eea49cb692d}{\hyperlink{class_phong_material_a5edfd5d4415cb5f7c10e8eea49cb692d}{Phong\-Material} ()}\label{class_phong_material_a5edfd5d4415cb5f7c10e8eea49cb692d}
+
+\begin{DoxyCompactList}\small\item\em Create a material which is bound to the Phong shader. \end{DoxyCompactList}\item 
+void \hyperlink{class_phong_material_a1fb4a309e9baf9b014c3a7c63927c407}{render} () const 
+\begin{DoxyCompactList}\small\item\em Updating the shader parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_phong_material_a25435084925806a2224c21b52b03208e}{glm\-::vec3 {\bfseries diffuse\-\_\-color\-\_\-}}\label{class_phong_material_a25435084925806a2224c21b52b03208e}
+
+\item 
+\hypertarget{class_phong_material_a2c211e6380feea43ccb3de3011634012}{glm\-::vec3 {\bfseries specular\-\_\-color\-\_\-}}\label{class_phong_material_a2c211e6380feea43ccb3de3011634012}
+
+\item 
+\hypertarget{class_phong_material_a6820ac548a2a86d83ce0f50a15bec145}{float {\bfseries specularity\-\_\-}}\label{class_phong_material_a6820ac548a2a86d83ce0f50a15bec145}
+
+\item 
+\hypertarget{class_phong_material_aeb629ee9cbb87c62836b94e1b2225e39}{int {\bfseries shinyness\-\_\-}}\label{class_phong_material_aeb629ee9cbb87c62836b94e1b2225e39}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Every Mesh has a material which specifies parameters for shading. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_phong_material_a1fb4a309e9baf9b014c3a7c63927c407}{\index{Phong\-Material@{Phong\-Material}!render@{render}}
+\index{render@{render}!PhongMaterial@{Phong\-Material}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}void Phong\-Material\-::render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_phong_material_a1fb4a309e9baf9b014c3a7c63927c407}
+
+
+Updating the shader parameters. 
+
+This function is automatically called when a mesh with this material is rendered. 
+
+Implements \hyperlink{class_material}{Material}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/include/Material.\-h\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/src/Material.\-cpp\end{DoxyCompactItemize}

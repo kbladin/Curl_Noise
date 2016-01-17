@@ -1,0 +1,61 @@
+\hypertarget{class_material}{\section{Material Class Reference}
+\label{class_material}\index{Material@{Material}}
+}
+
+
+Every Mesh has a material which specifies parameters for shading.  
+
+
+
+
+{\ttfamily \#include $<$Material.\-h$>$}
+
+
+
+Inherited by \hyperlink{class_background_material}{Background\-Material}, \hyperlink{class_one_color_material}{One\-Color\-Material}, \hyperlink{class_phong_material}{Phong\-Material}, and \hyperlink{class_point_cloud_material}{Point\-Cloud\-Material}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_material_aeb844696886b650724958ae2eb3440f6}{Material} (G\-Luint program\-\_\-\-I\-D)
+\begin{DoxyCompactList}\small\item\em Create a material which is bound to a specific shader. \end{DoxyCompactList}\item 
+\hypertarget{class_material_a9806edb1cded956ef4699f6f86b3244b}{virtual void {\bfseries render} () const =0}\label{class_material_a9806edb1cded956ef4699f6f86b3244b}
+
+\item 
+\hypertarget{class_material_a77f272bb5ad8dc7d2643db5383378dd8}{G\-Luint \hyperlink{class_material_a77f272bb5ad8dc7d2643db5383378dd8}{get\-Program\-I\-D} () const }\label{class_material_a77f272bb5ad8dc7d2643db5383378dd8}
+
+\begin{DoxyCompactList}\small\item\em Returns the program I\-D of the shader of the \hyperlink{class_material}{Material}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_material_a61ac1d7314cdb0b14311eb1787f6c192}{const G\-Luint {\bfseries program\-\_\-\-I\-D\-\_\-}}\label{class_material_a61ac1d7314cdb0b14311eb1787f6c192}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Every Mesh has a material which specifies parameters for shading. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_material_aeb844696886b650724958ae2eb3440f6}{\index{Material@{Material}!Material@{Material}}
+\index{Material@{Material}!Material@{Material}}
+\subsubsection[{Material}]{\setlength{\rightskip}{0pt plus 5cm}Material\-::\-Material (
+\begin{DoxyParamCaption}
+\item[{G\-Luint}]{program\-\_\-\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_material_aeb844696886b650724958ae2eb3440f6}
+
+
+Create a material which is bound to a specific shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em program\-\_\-\-I\-D} & can be one of the shaders in \hyperlink{class_shader_manager}{Shader\-Manager}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/include/Material.\-h\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/src/Material.\-cpp\end{DoxyCompactItemize}

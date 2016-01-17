@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="glm::detail::ieee754\l_QNAN::i",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structglm_1_1detail_1_1ieee754___q_n_a_n_1_1i.html"];
+}

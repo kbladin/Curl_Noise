@@ -1,0 +1,92 @@
+\hypertarget{bitfield_8hpp}{\section{ext/glm/include/glm/gtc/bitfield.hpp File Reference}
+\label{bitfield_8hpp}\index{ext/glm/include/glm/gtc/bitfield.\-hpp@{ext/glm/include/glm/gtc/bitfield.\-hpp}}
+}
+{\ttfamily \#include \char`\"{}../detail/setup.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../detail/precision.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../detail/type\-\_\-int.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../detail/\-\_\-vectorize.\-hpp\char`\"{}}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include \char`\"{}bitfield.\-inl\char`\"{}}\\*
+Include dependency graph for bitfield.\-hpp\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename gen\-I\-U\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-I\-U\-Type \hyperlink{group__gtc__bitfield_gad7eba518a0b71662114571ee76939f8a}{glm\-::mask} (gen\-I\-U\-Type Bits)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-I\-U\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-I\-U\-Type$<$ T, P $>$ \hyperlink{group__gtc__bitfield_ga073dbd8642f550b51da3572541431c1c}{glm\-::mask} (vec\-I\-U\-Type$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename gen\-I\-U\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-I\-U\-Type \hyperlink{group__gtc__bitfield_ga1c33d075c5fb8bd8dbfd5092bfc851ca}{glm\-::bitfield\-Rotate\-Right} (gen\-I\-U\-Type In, int Shift)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__gtc__bitfield_ga96b56fd2adad1eeaee9e10dfe83904ba}{glm\-::bitfield\-Rotate\-Right} (vec\-Type$<$ T, P $>$ const \&In, int Shift)
+\item 
+{\footnotesize template$<$typename gen\-I\-U\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-I\-U\-Type \hyperlink{group__gtc__bitfield_ga2eb49678a344ce1495bdb5586d9896b9}{glm\-::bitfield\-Rotate\-Left} (gen\-I\-U\-Type In, int Shift)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__gtc__bitfield_ga410d130917d85b865718e3ebc32cf0ef}{glm\-::bitfield\-Rotate\-Left} (vec\-Type$<$ T, P $>$ const \&In, int Shift)
+\item 
+{\footnotesize template$<$typename gen\-I\-U\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-I\-U\-Type \hyperlink{group__gtc__bitfield_ga46f9295abe3b5c7658f5b13c7f819f0a}{glm\-::bitfield\-Fill\-One} (gen\-I\-U\-Type Value, int First\-Bit, int Bit\-Count)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__gtc__bitfield_gad789042e84e8292ae95dc1af856f2ad5}{glm\-::bitfield\-Fill\-One} (vec\-Type$<$ T, P $>$ const \&Value, int First\-Bit, int Bit\-Count)
+\item 
+{\footnotesize template$<$typename gen\-I\-U\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-I\-U\-Type \hyperlink{group__gtc__bitfield_ga697b86998b7d74ee0a69d8e9f8819fee}{glm\-::bitfield\-Fill\-Zero} (gen\-I\-U\-Type Value, int First\-Bit, int Bit\-Count)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__gtc__bitfield_gaddba3196316b0bd240295b09b43c2958}{glm\-::bitfield\-Fill\-Zero} (vec\-Type$<$ T, P $>$ const \&Value, int First\-Bit, int Bit\-Count)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int16 \hyperlink{group__gtc__bitfield_ga479134317bc95d99f2b2e235d3db287b}{glm\-::bitfield\-Interleave} (int8 x, int8 y)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint16 \hyperlink{group__gtc__bitfield_ga0700a3ceb088a0ecc23d76c154096061}{glm\-::bitfield\-Interleave} (uint8 x, uint8 y)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int32 \hyperlink{group__gtc__bitfield_ga1a0264598647ae00a596865af4e1e878}{glm\-::bitfield\-Interleave} (int16 x, int16 y)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint32 \hyperlink{group__gtc__bitfield_ga19ef8360379483e3ee245e89cb62ff93}{glm\-::bitfield\-Interleave} (uint16 x, uint16 y)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int64 \hyperlink{group__gtc__bitfield_ga0de51d5985e6a703f305a5a61479babd}{glm\-::bitfield\-Interleave} (int32 x, int32 y)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint64 \hyperlink{group__gtc__bitfield_ga2bc87fd66f6f8471c1a46888360cef12}{glm\-::bitfield\-Interleave} (uint32 x, uint32 y)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int32 \hyperlink{group__gtc__bitfield_ga6dee2ce1c45805063bb7fc5f6fd8f5ca}{glm\-::bitfield\-Interleave} (int8 x, int8 y, int8 z)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint32 \hyperlink{group__gtc__bitfield_gab9d593a2e916beb8f8137a0dbeae3afe}{glm\-::bitfield\-Interleave} (uint8 x, uint8 y, uint8 z)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int64 \hyperlink{group__gtc__bitfield_gaf898f842ac089fcc8d6201c32702584a}{glm\-::bitfield\-Interleave} (int16 x, int16 y, int16 z)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint64 \hyperlink{group__gtc__bitfield_ga3c170e2ec54f2faab5e1c5bb693d718d}{glm\-::bitfield\-Interleave} (uint16 x, uint16 y, uint16 z)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int64 \hyperlink{group__gtc__bitfield_ga64e2d84f6560af3cc639644b1e628c42}{glm\-::bitfield\-Interleave} (int32 x, int32 y, int32 z)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint64 \hyperlink{group__gtc__bitfield_ga7c10eb37f608365cfaef5ca2c476e1ce}{glm\-::bitfield\-Interleave} (uint32 x, uint32 y, uint32 z)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int32 \hyperlink{group__gtc__bitfield_ga7da84ecc2b3a46c9c08a9f40012359cf}{glm\-::bitfield\-Interleave} (int8 x, int8 y, int8 z, int8 w)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint32 \hyperlink{group__gtc__bitfield_ga447c0bbed9d60c14578626d8f03f3755}{glm\-::bitfield\-Interleave} (uint8 x, uint8 y, uint8 z, uint8 w)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int64 \hyperlink{group__gtc__bitfield_ga09ee0be0fac790a1607a711e597dd9bf}{glm\-::bitfield\-Interleave} (int16 x, int16 y, int16 z, int16 w)
+\item 
+G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint64 \hyperlink{group__gtc__bitfield_gac8a926a7bfd9b23c22a4f685193fbfe1}{glm\-::bitfield\-Interleave} (uint16 x, uint16 y, uint16 z, uint16 w)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Open\-G\-L Mathematics (glm.\-g-\/truc.\-net)
+
+Copyright (c) 2005 -\/ 2015 G-\/\-Truc Creation (www.\-g-\/truc.\-net) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\-Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\-:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+Restrictions\-: By making use of the Software for military purposes, you choose to make a Bunny unhappy.
+
+T\-H\-E S\-O\-F\-T\-W\-A\-R\-E I\-S P\-R\-O\-V\-I\-D\-E\-D \char`\"{}\-A\-S I\-S\char`\"{}, W\-I\-T\-H\-O\-U\-T W\-A\-R\-R\-A\-N\-T\-Y O\-F A\-N\-Y K\-I\-N\-D, E\-X\-P\-R\-E\-S\-S O\-R I\-M\-P\-L\-I\-E\-D, I\-N\-C\-L\-U\-D\-I\-N\-G B\-U\-T N\-O\-T L\-I\-M\-I\-T\-E\-D T\-O T\-H\-E W\-A\-R\-R\-A\-N\-T\-I\-E\-S O\-F M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y, F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E A\-N\-D N\-O\-N\-I\-N\-F\-R\-I\-N\-G\-E\-M\-E\-N\-T. I\-N N\-O E\-V\-E\-N\-T S\-H\-A\-L\-L T\-H\-E A\-U\-T\-H\-O\-R\-S O\-R C\-O\-P\-Y\-R\-I\-G\-H\-T H\-O\-L\-D\-E\-R\-S B\-E L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y C\-L\-A\-I\-M, D\-A\-M\-A\-G\-E\-S O\-R O\-T\-H\-E\-R L\-I\-A\-B\-I\-L\-I\-T\-Y, W\-H\-E\-T\-H\-E\-R I\-N A\-N A\-C\-T\-I\-O\-N O\-F C\-O\-N\-T\-R\-A\-C\-T, T\-O\-R\-T O\-R O\-T\-H\-E\-R\-W\-I\-S\-E, A\-R\-I\-S\-I\-N\-G F\-R\-O\-M, O\-U\-T O\-F O\-R I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E S\-O\-F\-T\-W\-A\-R\-E O\-R T\-H\-E U\-S\-E O\-R O\-T\-H\-E\-R D\-E\-A\-L\-I\-N\-G\-S I\-N T\-H\-E S\-O\-F\-T\-W\-A\-R\-E.
+
+\hyperlink{group__gtc__bitfield}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-bitfield}
+
+\begin{DoxyDate}{Date}
+2014-\/10-\/25 / 2014-\/10-\/25 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Christophe Riccio
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__core}{G\-L\-M Core} (dependence) 
+
+\hyperlink{group__gtc__bitfield}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-bitfield} (dependence) 
+\end{DoxySeeAlso}

@@ -1,0 +1,226 @@
+\hypertarget{class_triangle_mesh}{\section{Triangle\-Mesh Class Reference}
+\label{class_triangle_mesh}\index{Triangle\-Mesh@{Triangle\-Mesh}}
+}
+
+
+This class extends \hyperlink{class_abstract_mesh}{Abstract\-Mesh} and renders triangles.  
+
+
+
+
+{\ttfamily \#include $<$Mesh.\-h$>$}
+
+
+
+Inherits \hyperlink{class_abstract_mesh}{Abstract\-Mesh}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_triangle_mesh_aba32bb5138081c3903510ecb8573ee22}{Triangle\-Mesh} (const char $\ast$file\-\_\-name)
+\begin{DoxyCompactList}\small\item\em Create a \hyperlink{class_triangle_mesh}{Triangle\-Mesh} from file. \end{DoxyCompactList}\item 
+\hyperlink{class_triangle_mesh_a309dc6017e3eccac68ff193fc961c29e}{Triangle\-Mesh} (std\-::vector$<$ glm\-::vec3 $>$ vertices, std\-::vector$<$ glm\-::vec3 $>$ normals, std\-::vector$<$ unsigned short $>$ elements)
+\begin{DoxyCompactList}\small\item\em Create a \hyperlink{class_triangle_mesh}{Triangle\-Mesh} from vertex lists. \end{DoxyCompactList}\item 
+\hyperlink{class_triangle_mesh_a424ee41b5f60d433130c66aae11c8679}{Triangle\-Mesh} ()
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{class_triangle_mesh}{Triangle\-Mesh} without initializing vertex lists. \end{DoxyCompactList}\item 
+void \hyperlink{class_triangle_mesh_a224c1ef04d6ef81e75910f017b0a601c}{init\-Plane} (glm\-::vec3 position, glm\-::vec3 normal, glm\-::vec3 scale)
+\begin{DoxyCompactList}\small\item\em Initializes a plane. \end{DoxyCompactList}\item 
+void \hyperlink{class_triangle_mesh_a3a4f220dc0d38d0afb5a6bb06fed542a}{init\-Box} (glm\-::vec3 max, glm\-::vec3 min, glm\-::vec3 position)
+\begin{DoxyCompactList}\small\item\em Initializes a axis aligned box. \end{DoxyCompactList}\item 
+void \hyperlink{class_triangle_mesh_aa793e05b63668163ff112070f065fb7a}{init\-Cone} (glm\-::vec3 position, glm\-::vec3 direction, glm\-::vec3 scale, int divisions)
+\begin{DoxyCompactList}\small\item\em Initializes a cone shape. \end{DoxyCompactList}\item 
+void \hyperlink{class_triangle_mesh_a031d3311d9909dacfc4156287f639c0c}{init\-Cylinder} (glm\-::vec3 position, glm\-::vec3 direction, glm\-::vec3 scale, int divisions)
+\begin{DoxyCompactList}\small\item\em Initializes a cylinder shape. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_triangle_mesh_a398c9add19ab38946d3defa3598abe8b}{render} (glm\-::mat4 M, G\-Luint program\-\_\-\-I\-D)
+\begin{DoxyCompactList}\small\item\em Render the mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class extends \hyperlink{class_abstract_mesh}{Abstract\-Mesh} and renders triangles. 
+
+The \hyperlink{class_triangle_mesh}{Triangle\-Mesh} also has a list of normals and elements. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_triangle_mesh_aba32bb5138081c3903510ecb8573ee22}{\index{Triangle\-Mesh@{Triangle\-Mesh}!Triangle\-Mesh@{Triangle\-Mesh}}
+\index{Triangle\-Mesh@{Triangle\-Mesh}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{Triangle\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}Triangle\-Mesh\-::\-Triangle\-Mesh (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{class_triangle_mesh_aba32bb5138081c3903510ecb8573ee22}
+
+
+Create a \hyperlink{class_triangle_mesh}{Triangle\-Mesh} from file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-\_\-name} & is the file path for the model, for example \char`\"{}bunny.\-obj\char`\"{}. \\
+\hline
+{\em material} & is the material of the mesh \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_triangle_mesh_a309dc6017e3eccac68ff193fc961c29e}{\index{Triangle\-Mesh@{Triangle\-Mesh}!Triangle\-Mesh@{Triangle\-Mesh}}
+\index{Triangle\-Mesh@{Triangle\-Mesh}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{Triangle\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}Triangle\-Mesh\-::\-Triangle\-Mesh (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ glm\-::vec3 $>$}]{vertices, }
+\item[{std\-::vector$<$ glm\-::vec3 $>$}]{normals, }
+\item[{std\-::vector$<$ unsigned short $>$}]{elements}
+\end{DoxyParamCaption}
+)}}\label{class_triangle_mesh_a309dc6017e3eccac68ff193fc961c29e}
+
+
+Create a \hyperlink{class_triangle_mesh}{Triangle\-Mesh} from vertex lists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertices} & is a list of vertices. \\
+\hline
+{\em normals} & is a list of normals. \\
+\hline
+{\em elements} & is a list of elements (indices for faces). \\
+\hline
+{\em material} & is the material of the mesh defined in Simple\-Graphiics\-Engine. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_triangle_mesh_a424ee41b5f60d433130c66aae11c8679}{\index{Triangle\-Mesh@{Triangle\-Mesh}!Triangle\-Mesh@{Triangle\-Mesh}}
+\index{Triangle\-Mesh@{Triangle\-Mesh}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{Triangle\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}Triangle\-Mesh\-::\-Triangle\-Mesh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_triangle_mesh_a424ee41b5f60d433130c66aae11c8679}
+
+
+Creates a \hyperlink{class_triangle_mesh}{Triangle\-Mesh} without initializing vertex lists. 
+
+This constructor is used when creating basic Triangle\-Meshes such as planes or boxes. First construct the \hyperlink{class_triangle_mesh}{Triangle\-Mesh}, then call one of the init-\/functions (eg\-: init\-Plane, init\-Box). 
+\begin{DoxyParams}{Parameters}
+{\em material} & is the material of the mesh \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_triangle_mesh_a3a4f220dc0d38d0afb5a6bb06fed542a}{\index{Triangle\-Mesh@{Triangle\-Mesh}!init\-Box@{init\-Box}}
+\index{init\-Box@{init\-Box}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{init\-Box}]{\setlength{\rightskip}{0pt plus 5cm}void Triangle\-Mesh\-::init\-Box (
+\begin{DoxyParamCaption}
+\item[{glm\-::vec3}]{max, }
+\item[{glm\-::vec3}]{min, }
+\item[{glm\-::vec3}]{position}
+\end{DoxyParamCaption}
+)}}\label{class_triangle_mesh_a3a4f220dc0d38d0afb5a6bb06fed542a}
+
+
+Initializes a axis aligned box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max} & is the max corner of the box \\
+\hline
+{\em min} & is the min corner of the box. \\
+\hline
+{\em position} & is a point in the center of the box. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_triangle_mesh_aa793e05b63668163ff112070f065fb7a}{\index{Triangle\-Mesh@{Triangle\-Mesh}!init\-Cone@{init\-Cone}}
+\index{init\-Cone@{init\-Cone}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{init\-Cone}]{\setlength{\rightskip}{0pt plus 5cm}void Triangle\-Mesh\-::init\-Cone (
+\begin{DoxyParamCaption}
+\item[{glm\-::vec3}]{position, }
+\item[{glm\-::vec3}]{direction, }
+\item[{glm\-::vec3}]{scale, }
+\item[{int}]{divisions}
+\end{DoxyParamCaption}
+)}}\label{class_triangle_mesh_aa793e05b63668163ff112070f065fb7a}
+
+
+Initializes a cone shape. 
+
+Currently, the normals are all soft (not realistic). 
+\begin{DoxyParams}{Parameters}
+{\em position} & is the position of the center of the circle \\
+\hline
+{\em direction} & is direction of the cone. \\
+\hline
+{\em scale} & defines scaling in x-\/, y-\/, and z-\/ direction. \\
+\hline
+{\em divisions} & is the subdivision level. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_triangle_mesh_a031d3311d9909dacfc4156287f639c0c}{\index{Triangle\-Mesh@{Triangle\-Mesh}!init\-Cylinder@{init\-Cylinder}}
+\index{init\-Cylinder@{init\-Cylinder}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{init\-Cylinder}]{\setlength{\rightskip}{0pt plus 5cm}void Triangle\-Mesh\-::init\-Cylinder (
+\begin{DoxyParamCaption}
+\item[{glm\-::vec3}]{position, }
+\item[{glm\-::vec3}]{direction, }
+\item[{glm\-::vec3}]{scale, }
+\item[{int}]{divisions}
+\end{DoxyParamCaption}
+)}}\label{class_triangle_mesh_a031d3311d9909dacfc4156287f639c0c}
+
+
+Initializes a cylinder shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & is the position of the center of the circle \\
+\hline
+{\em direction} & is direction of the cone. \\
+\hline
+{\em scale} & defines scaling in x-\/, y-\/, and z-\/ direction. \\
+\hline
+{\em divisions} & is the subdivision level. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_triangle_mesh_a224c1ef04d6ef81e75910f017b0a601c}{\index{Triangle\-Mesh@{Triangle\-Mesh}!init\-Plane@{init\-Plane}}
+\index{init\-Plane@{init\-Plane}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{init\-Plane}]{\setlength{\rightskip}{0pt plus 5cm}void Triangle\-Mesh\-::init\-Plane (
+\begin{DoxyParamCaption}
+\item[{glm\-::vec3}]{position, }
+\item[{glm\-::vec3}]{normal, }
+\item[{glm\-::vec3}]{scale}
+\end{DoxyParamCaption}
+)}}\label{class_triangle_mesh_a224c1ef04d6ef81e75910f017b0a601c}
+
+
+Initializes a plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & is a point in the center of the plane. \\
+\hline
+{\em normal} & is the normal of the plane. \\
+\hline
+{\em scale} & defines scaling in x-\/, y-\/, and z-\/ direction. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_triangle_mesh_a398c9add19ab38946d3defa3598abe8b}{\index{Triangle\-Mesh@{Triangle\-Mesh}!render@{render}}
+\index{render@{render}!TriangleMesh@{Triangle\-Mesh}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}void Triangle\-Mesh\-::render (
+\begin{DoxyParamCaption}
+\item[{glm\-::mat4}]{M, }
+\item[{G\-Luint}]{program\-\_\-\-I\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_triangle_mesh_a398c9add19ab38946d3defa3598abe8b}
+
+
+Render the mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em M} & is the transformation matrix of the parent. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_mesh}{Abstract\-Mesh}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/include/\-S\-G\-E/Mesh.\-h\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/src/\-S\-G\-E/Mesh.\-cpp\end{DoxyCompactItemize}

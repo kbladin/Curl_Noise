@@ -1,0 +1,10 @@
+digraph "glm::detail::_swizzle_base2&lt; ValueType, P, VecType, N, E0, E1, E2, E3, 1 &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="glm::detail::_swizzle\l_base2\< ValueType, P,\l VecType, N, E0, E1, E2,\l E3, 1 \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="glm::detail::_swizzle\l_base1\< ValueType, P,\l VecType, E0, E1, E2,\l E3, N \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structglm_1_1detail_1_1__swizzle__base1.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="glm::detail::_swizzle\l_base0\< ValueType, N \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structglm_1_1detail_1_1__swizzle__base0.html"];
+}

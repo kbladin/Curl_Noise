@@ -1,0 +1,44 @@
+\hypertarget{structai_face}{\section{ai\-Face Struct Reference}
+\label{structai_face}\index{ai\-Face@{ai\-Face}}
+}
+
+
+A single face in a mesh, referring to multiple vertices.  
+
+
+
+
+{\ttfamily \#include $<$mesh.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{structai_face_adda2698cec0ebfe651572f4a5701360b}{m\-Num\-Indices}
+\item 
+\hypertarget{structai_face_a2026b434c40cf1636f9f464a592ec36c}{unsigned int $\ast$ \hyperlink{structai_face_a2026b434c40cf1636f9f464a592ec36c}{m\-Indices}}\label{structai_face_a2026b434c40cf1636f9f464a592ec36c}
+
+\begin{DoxyCompactList}\small\item\em Pointer to the indices array. Size of the array is given in num\-Indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A single face in a mesh, referring to multiple vertices. 
+
+If m\-Num\-Indices is 3, we call the face 'triangle', for m\-Num\-Indices $>$ 3 it's called 'polygon' (hey, that's just a definition!). \par
+ \hyperlink{structai_mesh_a99d66ac0a444068c1b252b30265cbf53}{ai\-Mesh\-::m\-Primitive\-Types} can be queried to quickly examine which types of primitive are actually present in a mesh. The \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410ab4484f73635d633cd79973bac1431ed6}{ai\-Process\-\_\-\-Sort\-By\-P\-Type} flag executes a special post-\/processing algorithm which splits meshes with {\itshape different} primitive types mixed up (e.\-g. lines and triangles) in several 'clean' submeshes. Furthermore there is a configuration option ( \hyperlink{config_8h_a971e337cb0d526861142586b8341cb98}{A\-I\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-P\-P\-\_\-\-S\-B\-P\-\_\-\-R\-E\-M\-O\-V\-E}) to force \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410ab4484f73635d633cd79973bac1431ed6}{ai\-Process\-\_\-\-Sort\-By\-P\-Type} to remove specific kinds of primitives from the imported scene, completely and forever. In many cases you'll probably want to set this setting to 
+\begin{DoxyCode}
+aiPrimitiveType\_LINE|aiPrimitiveType\_POINT
+\end{DoxyCode}
+ Together with the \hyperlink{postprocess_8h_a64795260b95f5a4b3f3dc1be4f52e410a9c3de834f0307f31fa2b1b6d05dd592b}{ai\-Process\-\_\-\-Triangulate} flag you can then be sure that \hyperlink{structai_face_adda2698cec0ebfe651572f4a5701360b}{ai\-Face\-::m\-Num\-Indices} is always 3. \begin{DoxyNote}{Note}
+Take a look at the \hyperlink{}{Data Structures page } for more information on the layout and winding order of a face. 
+\end{DoxyNote}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_face_adda2698cec0ebfe651572f4a5701360b}{\index{ai\-Face@{ai\-Face}!m\-Num\-Indices@{m\-Num\-Indices}}
+\index{m\-Num\-Indices@{m\-Num\-Indices}!aiFace@{ai\-Face}}
+\subsubsection[{m\-Num\-Indices}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ai\-Face\-::m\-Num\-Indices}}\label{structai_face_adda2698cec0ebfe651572f4a5701360b}
+Number of indices defining this face. The maximum value for this member is \#\-A\-I\-\_\-\-M\-A\-X\-\_\-\-F\-A\-C\-E\-\_\-\-I\-N\-D\-I\-C\-E\-S. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/mesh.\-h\end{DoxyCompactItemize}

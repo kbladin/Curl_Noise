@@ -1,0 +1,63 @@
+\hypertarget{func__integer_8hpp}{\section{ext/glm/include/glm/detail/func\-\_\-integer.hpp File Reference}
+\label{func__integer_8hpp}\index{ext/glm/include/glm/detail/func\-\_\-integer.\-hpp@{ext/glm/include/glm/detail/func\-\_\-integer.\-hpp}}
+}
+{\ttfamily \#include \char`\"{}setup.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}precision.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}func\-\_\-common.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}func\-\_\-vector\-\_\-relational.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}func\-\_\-integer.\-inl\char`\"{}}\\*
+Include dependency graph for func\-\_\-integer.\-hpp\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ uint, P $>$ \hyperlink{group__core__func__integer_ga2fc1a46e7b7e9fbbd8fa444fbacaa2aa}{glm\-::uadd\-Carry} (vec\-Type$<$ uint, P $>$ const \&x, vec\-Type$<$ uint, P $>$ const \&y, vec\-Type$<$ uint, P $>$ \&carry)
+\item 
+{\footnotesize template$<$precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ uint, P $>$ \hyperlink{group__core__func__integer_ga22a889bf08313b7e547e2cdb8bb15ee4}{glm\-::usub\-Borrow} (vec\-Type$<$ uint, P $>$ const \&x, vec\-Type$<$ uint, P $>$ const \&y, vec\-Type$<$ uint, P $>$ \&borrow)
+\item 
+{\footnotesize template$<$precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L void \hyperlink{group__core__func__integer_ga456ff9dcec42f6769a9ae2a2af7f1ce1}{glm\-::umul\-Extended} (vec\-Type$<$ uint, P $>$ const \&x, vec\-Type$<$ uint, P $>$ const \&y, vec\-Type$<$ uint, P $>$ \&msb, vec\-Type$<$ uint, P $>$ \&lsb)
+\item 
+{\footnotesize template$<$precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L void \hyperlink{group__core__func__integer_ga6e6e8b29ca40d8ca2df10b58ed17d426}{glm\-::imul\-Extended} (vec\-Type$<$ int, P $>$ const \&x, vec\-Type$<$ int, P $>$ const \&y, vec\-Type$<$ int, P $>$ \&msb, vec\-Type$<$ int, P $>$ \&lsb)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__integer_gab84b88f3a8e367774e5dd1c618c353cf}{glm\-::bitfield\-Extract} (vec\-Type$<$ T, P $>$ const \&Value, int Offset, int Bits)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__integer_ga5681dfac9239beb1b8bd995e3c6496d7}{glm\-::bitfield\-Insert} (vec\-Type$<$ T, P $>$ const \&Base, vec\-Type$<$ T, P $>$ const \&Insert, int Offset, int Bits)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__integer_ga153e7e8d0c035f83cce50fc3e580930f}{glm\-::bitfield\-Reverse} (vec\-Type$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int \hyperlink{group__core__func__integer_ga44abfe3379e11cbd29425a843420d0d6}{glm\-::bit\-Count} (gen\-Type v)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ int, P $>$ \hyperlink{group__core__func__integer_ga1f29640969a3c54564da06ac67a5392e}{glm\-::bit\-Count} (vec\-Type$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename gen\-I\-U\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int \hyperlink{group__core__func__integer_gaf74c4d969fa34ab8acb9d390f5ca5274}{glm\-::find\-L\-S\-B} (gen\-I\-U\-Type x)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ int, P $>$ \hyperlink{group__core__func__integer_ga014a72009e68233c34c06a6dc2251b8c}{glm\-::find\-L\-S\-B} (vec\-Type$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename gen\-I\-U\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L int \hyperlink{group__core__func__integer_ga7e4a794d766861c70bc961630f8ef621}{glm\-::find\-M\-S\-B} (gen\-I\-U\-Type x)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ int, P $>$ \hyperlink{group__core__func__integer_ga433104d77ec2ba58888aaefb77e9183f}{glm\-::find\-M\-S\-B} (vec\-Type$<$ T, P $>$ const \&v)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Open\-G\-L Mathematics (glm.\-g-\/truc.\-net)
+
+Copyright (c) 2005 -\/ 2015 G-\/\-Truc Creation (www.\-g-\/truc.\-net) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\-Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\-:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+Restrictions\-: By making use of the Software for military purposes, you choose to make a Bunny unhappy.
+
+T\-H\-E S\-O\-F\-T\-W\-A\-R\-E I\-S P\-R\-O\-V\-I\-D\-E\-D \char`\"{}\-A\-S I\-S\char`\"{}, W\-I\-T\-H\-O\-U\-T W\-A\-R\-R\-A\-N\-T\-Y O\-F A\-N\-Y K\-I\-N\-D, E\-X\-P\-R\-E\-S\-S O\-R I\-M\-P\-L\-I\-E\-D, I\-N\-C\-L\-U\-D\-I\-N\-G B\-U\-T N\-O\-T L\-I\-M\-I\-T\-E\-D T\-O T\-H\-E W\-A\-R\-R\-A\-N\-T\-I\-E\-S O\-F M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y, F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E A\-N\-D N\-O\-N\-I\-N\-F\-R\-I\-N\-G\-E\-M\-E\-N\-T. I\-N N\-O E\-V\-E\-N\-T S\-H\-A\-L\-L T\-H\-E A\-U\-T\-H\-O\-R\-S O\-R C\-O\-P\-Y\-R\-I\-G\-H\-T H\-O\-L\-D\-E\-R\-S B\-E L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y C\-L\-A\-I\-M, D\-A\-M\-A\-G\-E\-S O\-R O\-T\-H\-E\-R L\-I\-A\-B\-I\-L\-I\-T\-Y, W\-H\-E\-T\-H\-E\-R I\-N A\-N A\-C\-T\-I\-O\-N O\-F C\-O\-N\-T\-R\-A\-C\-T, T\-O\-R\-T O\-R O\-T\-H\-E\-R\-W\-I\-S\-E, A\-R\-I\-S\-I\-N\-G F\-R\-O\-M, O\-U\-T O\-F O\-R I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E S\-O\-F\-T\-W\-A\-R\-E O\-R T\-H\-E U\-S\-E O\-R O\-T\-H\-E\-R D\-E\-A\-L\-I\-N\-G\-S I\-N T\-H\-E S\-O\-F\-T\-W\-A\-R\-E.
+
+\hyperlink{group__core}{G\-L\-M Core}
+
+\begin{DoxyDate}{Date}
+2010-\/03-\/17 / 2011-\/06-\/18 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Christophe Riccio
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-8 Integer Functions} 
+\end{DoxySeeAlso}

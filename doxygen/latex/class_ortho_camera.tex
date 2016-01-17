@@ -1,0 +1,80 @@
+\hypertarget{class_ortho_camera}{\section{Ortho\-Camera Class Reference}
+\label{class_ortho_camera}\index{Ortho\-Camera@{Ortho\-Camera}}
+}
+
+
+An orthographic camera defined in 3\-D space.  
+
+
+
+
+{\ttfamily \#include $<$Camera.\-h$>$}
+
+
+
+Inherits \hyperlink{class_abstract_camera}{Abstract\-Camera}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_ortho_camera_a1c452bfb01577c1aaed8b74ca3dc1916}{Ortho\-Camera} (G\-Luint program\-\_\-\-I\-D, G\-L\-F\-Wwindow $\ast$window)
+\begin{DoxyCompactList}\small\item\em Creates camera to render objects with the defined shader program attached. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_ortho_camera_a57f2d0c0ebd9a423c27794d7f9d4d96c}{render} (glm\-::mat4 M)
+\begin{DoxyCompactList}\small\item\em Render the Camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An orthographic camera defined in 3\-D space. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_ortho_camera_a1c452bfb01577c1aaed8b74ca3dc1916}{\index{Ortho\-Camera@{Ortho\-Camera}!Ortho\-Camera@{Ortho\-Camera}}
+\index{Ortho\-Camera@{Ortho\-Camera}!OrthoCamera@{Ortho\-Camera}}
+\subsubsection[{Ortho\-Camera}]{\setlength{\rightskip}{0pt plus 5cm}Ortho\-Camera\-::\-Ortho\-Camera (
+\begin{DoxyParamCaption}
+\item[{G\-Luint}]{program\-\_\-\-I\-D, }
+\item[{G\-L\-F\-Wwindow $\ast$}]{window}
+\end{DoxyParamCaption}
+)}}\label{class_ortho_camera_a1c452bfb01577c1aaed8b74ca3dc1916}
+
+
+Creates camera to render objects with the defined shader program attached. 
+
+The shader program can later be changed so that other shaders can be used for this particular camera. It is also possible to have several cameras and switching between them to use separate shaders. The aspect ratio is set from the parameter 
+\begin{DoxyParams}{Parameters}
+{\em window.} & \\
+\hline
+{\em program\-\_\-\-I\-D} & is the shader program that this Camera will render. \\
+\hline
+{\em window} & is the G\-L\-F\-Wwindow$\ast$ to render to. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ortho_camera_a57f2d0c0ebd9a423c27794d7f9d4d96c}{\index{Ortho\-Camera@{Ortho\-Camera}!render@{render}}
+\index{render@{render}!OrthoCamera@{Ortho\-Camera}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}void Ortho\-Camera\-::render (
+\begin{DoxyParamCaption}
+\item[{glm\-::mat4}]{M}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_ortho_camera_a57f2d0c0ebd9a423c27794d7f9d4d96c}
+
+
+Render the Camera. 
+
+Sets the view and projection matrices of the cameras shader to the corresponding transforms for the camera. 
+\begin{DoxyParams}{Parameters}
+{\em M} & is the transformation matrix of the parent. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_aaf5b7d99f25d511e75a37c5475912956}{Abstract\-Camera}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/include/\-S\-G\-E/Camera.\-h\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/src/\-S\-G\-E/Camera.\-cpp\end{DoxyCompactItemize}

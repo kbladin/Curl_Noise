@@ -1,0 +1,46 @@
+\hypertarget{structai_file_i_o}{\section{ai\-File\-I\-O Struct Reference}
+\label{structai_file_i_o}\index{ai\-File\-I\-O@{ai\-File\-I\-O}}
+}
+
+
+C-\/\-A\-P\-I\-: File system callbacks.  
+
+
+
+
+{\ttfamily \#include $<$cfileio.\-h$>$}
+
+
+
+Collaboration diagram for ai\-File\-I\-O\-:
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ai\-File\-Open\-Proc \hyperlink{structai_file_i_o_a819d9c7823039294125068d06949a6df}{Open\-Proc}
+\item 
+ai\-File\-Close\-Proc \hyperlink{structai_file_i_o_a7ec702672712b5a02dc49cb17f980a14}{Close\-Proc}
+\item 
+ai\-User\-Data \hyperlink{structai_file_i_o_a9c62b7f3d70fbb2f41e33ad0b9933139}{User\-Data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C-\/\-A\-P\-I\-: File system callbacks. 
+
+Provided are functions to open and close files. Supply a custom structure to the import function. If you don't, a default implementation is used. Use custom file systems to enable reading from other sources, such as Z\-I\-Ps or memory locations. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_file_i_o_a7ec702672712b5a02dc49cb17f980a14}{\index{ai\-File\-I\-O@{ai\-File\-I\-O}!Close\-Proc@{Close\-Proc}}
+\index{Close\-Proc@{Close\-Proc}!aiFileIO@{ai\-File\-I\-O}}
+\subsubsection[{Close\-Proc}]{\setlength{\rightskip}{0pt plus 5cm}ai\-File\-Close\-Proc ai\-File\-I\-O\-::\-Close\-Proc}}\label{structai_file_i_o_a7ec702672712b5a02dc49cb17f980a14}
+Function used to close an existing file \hypertarget{structai_file_i_o_a819d9c7823039294125068d06949a6df}{\index{ai\-File\-I\-O@{ai\-File\-I\-O}!Open\-Proc@{Open\-Proc}}
+\index{Open\-Proc@{Open\-Proc}!aiFileIO@{ai\-File\-I\-O}}
+\subsubsection[{Open\-Proc}]{\setlength{\rightskip}{0pt plus 5cm}ai\-File\-Open\-Proc ai\-File\-I\-O\-::\-Open\-Proc}}\label{structai_file_i_o_a819d9c7823039294125068d06949a6df}
+Function used to open a new file \hypertarget{structai_file_i_o_a9c62b7f3d70fbb2f41e33ad0b9933139}{\index{ai\-File\-I\-O@{ai\-File\-I\-O}!User\-Data@{User\-Data}}
+\index{User\-Data@{User\-Data}!aiFileIO@{ai\-File\-I\-O}}
+\subsubsection[{User\-Data}]{\setlength{\rightskip}{0pt plus 5cm}ai\-User\-Data ai\-File\-I\-O\-::\-User\-Data}}\label{structai_file_i_o_a9c62b7f3d70fbb2f41e33ad0b9933139}
+User-\/defined, opaque data 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/\hyperlink{cfileio_8h}{cfileio.\-h}\end{DoxyCompactItemize}

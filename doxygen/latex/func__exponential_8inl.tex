@@ -1,0 +1,69 @@
+\hypertarget{func__exponential_8inl}{\section{ext/glm/include/glm/detail/func\-\_\-exponential.inl File Reference}
+\label{func__exponential_8inl}\index{ext/glm/include/glm/detail/func\-\_\-exponential.\-inl@{ext/glm/include/glm/detail/func\-\_\-exponential.\-inl}}
+}
+{\ttfamily \#include \char`\"{}func\-\_\-vector\-\_\-relational.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}\-\_\-vectorize.\-hpp\char`\"{}}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
+Include dependency graph for func\-\_\-exponential.\-inl\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structglm_1_1detail_1_1compute__log2}{glm\-::detail\-::compute\-\_\-log2$<$ T, P, vec\-Type, is\-Float $>$}
+\item 
+struct \hyperlink{structglm_1_1detail_1_1compute__inversesqrt}{glm\-::detail\-::compute\-\_\-inversesqrt$<$ vec\-Type, T, P $>$}
+\item 
+struct \hyperlink{structglm_1_1detail_1_1compute__inversesqrt_3_01vec_type_00_01float_00_01lowp_01_4}{glm\-::detail\-::compute\-\_\-inversesqrt$<$ vec\-Type, float, lowp $>$}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespaceglm_1_1detail_a3d24a612f2c5fa4f3aaf97dcd979ef1c}{{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type {\bfseries glm\-::detail\-::log2} (gen\-Type Value)}\label{namespaceglm_1_1detail_a3d24a612f2c5fa4f3aaf97dcd979ef1c}
+
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__exponential_ga082b332a4b7c6ad1d43e09ff19e214dd}{glm\-::pow} (vec\-Type$<$ T, P $>$ const \&base, vec\-Type$<$ T, P $>$ const \&exponent)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__exponential_ga25e54a7f44fc49ec6ac6ffc7675cf04a}{glm\-::exp} (vec\-Type$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__exponential_ga21efca311e62d233de0ae96bab126b83}{glm\-::log} (vec\-Type$<$ T, P $>$ const \&x)
+\item 
+\hypertarget{namespaceglm_a8f6240c6756f850537398b1af2751c4b}{{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R gen\-Type {\bfseries glm\-::exp2} (gen\-Type x)}\label{namespaceglm_a8f6240c6756f850537398b1af2751c4b}
+
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__exponential_ga42ca440d9062f1f456f5a9e896378f9c}{glm\-::exp2} (vec\-Type$<$ T, P $>$ const \&x)
+\item 
+\hypertarget{namespaceglm_ab47f0f29ead9cefd62d62ba5f83fe81b}{{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R gen\-Type {\bfseries glm\-::log2} (gen\-Type x)}\label{namespaceglm_ab47f0f29ead9cefd62d62ba5f83fe81b}
+
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__exponential_gabae30945338a555a03733f00dad95d0d}{glm\-::log2} (vec\-Type$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__exponential_gae7ac2e44c14d4e8004098d0bfba6e2b8}{glm\-::sqrt} (vec\-Type$<$ T, P $>$ const \&x)
+\item 
+\hypertarget{namespaceglm_a5e3dd2bba414db15477d43ca9d71acf5}{{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R gen\-Type {\bfseries glm\-::inversesqrt} (gen\-Type x)}\label{namespaceglm_a5e3dd2bba414db15477d43ca9d71acf5}
+
+\item 
+{\footnotesize template$<$typename T , precision P, template$<$ typename, precision $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-Q\-U\-A\-L\-I\-F\-I\-E\-R vec\-Type$<$ T, P $>$ \hyperlink{group__core__func__exponential_ga599103d4fe4ef2234761ba8da7268627}{glm\-::inversesqrt} (vec\-Type$<$ T, P $>$ const \&x)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Open\-G\-L Mathematics (glm.\-g-\/truc.\-net)
+
+Copyright (c) 2005 -\/ 2015 G-\/\-Truc Creation (www.\-g-\/truc.\-net) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\-Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\-:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+Restrictions\-: By making use of the Software for military purposes, you choose to make a Bunny unhappy.
+
+T\-H\-E S\-O\-F\-T\-W\-A\-R\-E I\-S P\-R\-O\-V\-I\-D\-E\-D \char`\"{}\-A\-S I\-S\char`\"{}, W\-I\-T\-H\-O\-U\-T W\-A\-R\-R\-A\-N\-T\-Y O\-F A\-N\-Y K\-I\-N\-D, E\-X\-P\-R\-E\-S\-S O\-R I\-M\-P\-L\-I\-E\-D, I\-N\-C\-L\-U\-D\-I\-N\-G B\-U\-T N\-O\-T L\-I\-M\-I\-T\-E\-D T\-O T\-H\-E W\-A\-R\-R\-A\-N\-T\-I\-E\-S O\-F M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y, F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E A\-N\-D N\-O\-N\-I\-N\-F\-R\-I\-N\-G\-E\-M\-E\-N\-T. I\-N N\-O E\-V\-E\-N\-T S\-H\-A\-L\-L T\-H\-E A\-U\-T\-H\-O\-R\-S O\-R C\-O\-P\-Y\-R\-I\-G\-H\-T H\-O\-L\-D\-E\-R\-S B\-E L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y C\-L\-A\-I\-M, D\-A\-M\-A\-G\-E\-S O\-R O\-T\-H\-E\-R L\-I\-A\-B\-I\-L\-I\-T\-Y, W\-H\-E\-T\-H\-E\-R I\-N A\-N A\-C\-T\-I\-O\-N O\-F C\-O\-N\-T\-R\-A\-C\-T, T\-O\-R\-T O\-R O\-T\-H\-E\-R\-W\-I\-S\-E, A\-R\-I\-S\-I\-N\-G F\-R\-O\-M, O\-U\-T O\-F O\-R I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E S\-O\-F\-T\-W\-A\-R\-E O\-R T\-H\-E U\-S\-E O\-R O\-T\-H\-E\-R D\-E\-A\-L\-I\-N\-G\-S I\-N T\-H\-E S\-O\-F\-T\-W\-A\-R\-E.
+
+\hyperlink{group__core}{G\-L\-M Core}
+
+\begin{DoxyDate}{Date}
+2008-\/08-\/03 / 2011-\/06-\/15 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Christophe Riccio 
+\end{DoxyAuthor}

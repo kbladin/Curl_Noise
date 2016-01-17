@@ -1,0 +1,69 @@
+\hypertarget{class_shader_manager}{\section{Shader\-Manager Class Reference}
+\label{class_shader_manager}\index{Shader\-Manager@{Shader\-Manager}}
+}
+
+
+A class containing all shader program I\-Ds in a map.  
+
+
+
+
+{\ttfamily \#include $<$Shader\-Manager.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_shader_manager_a7603399f16432b94223b9fa78f74fb87}{\hyperlink{class_shader_manager_a7603399f16432b94223b9fa78f74fb87}{$\sim$\-Shader\-Manager} ()}\label{class_shader_manager_a7603399f16432b94223b9fa78f74fb87}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hypertarget{class_shader_manager_aeb73e8c1993757a54270f19bc23cada9}{void {\bfseries load\-Shader} (std\-::string name, const char $\ast$vs\-\_\-src, const char $\ast$tcs\-\_\-src, const char $\ast$tes\-\_\-src, const char $\ast$gs\-\_\-src, const char $\ast$fs\-\_\-src)}\label{class_shader_manager_aeb73e8c1993757a54270f19bc23cada9}
+
+\item 
+G\-Luint \hyperlink{class_shader_manager_ad37a07a4362a3c605ef75ea3d6af081d}{get\-Shader} (std\-::string name)
+\begin{DoxyCompactList}\small\item\em Returns a program I\-D based on a name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_shader_manager}{Shader\-Manager} $\ast$ \hyperlink{class_shader_manager_ad0c27625f06cc78bf8716485f5bce8e2}{instance} ()
+\begin{DoxyCompactList}\small\item\em Returning the instance that can be used for calling other functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class containing all shader program I\-Ds in a map. 
+
+This class uses the singleton design pattern. This means that It is not possible to create instances of the class. There is only one instance that is reached from the static function \hyperlink{class_shader_manager_ad0c27625f06cc78bf8716485f5bce8e2}{instance()}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_shader_manager_ad37a07a4362a3c605ef75ea3d6af081d}{\index{Shader\-Manager@{Shader\-Manager}!get\-Shader@{get\-Shader}}
+\index{get\-Shader@{get\-Shader}!ShaderManager@{Shader\-Manager}}
+\subsubsection[{get\-Shader}]{\setlength{\rightskip}{0pt plus 5cm}G\-Luint Shader\-Manager\-::get\-Shader (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_shader_manager_ad37a07a4362a3c605ef75ea3d6af081d}
+
+
+Returns a program I\-D based on a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & must be one of the compiled shaders names. The options are\-: \char`\"{}\-S\-H\-A\-D\-E\-R\-\_\-\-P\-H\-O\-N\-G\char`\"{}, \char`\"{}\-S\-H\-A\-D\-E\-R\-\_\-\-O\-N\-E\-\_\-\-C\-O\-L\-O\-R\char`\"{} or \char`\"{}\-S\-H\-A\-D\-E\-R\-\_\-\-B\-A\-C\-K\-G\-R\-O\-U\-N\-D\char`\"{} (more might be added later). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_shader_manager_ad0c27625f06cc78bf8716485f5bce8e2}{\index{Shader\-Manager@{Shader\-Manager}!instance@{instance}}
+\index{instance@{instance}!ShaderManager@{Shader\-Manager}}
+\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Shader\-Manager} $\ast$ Shader\-Manager\-::instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_shader_manager_ad0c27625f06cc78bf8716485f5bce8e2}
+
+
+Returning the instance that can be used for calling other functions. 
+
+This function can not be called before an Open\-G\-L context is created. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/include/\-S\-G\-E/Shader\-Manager.\-h\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/src/\-S\-G\-E/Shader\-Manager.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,94 @@
+\hypertarget{group__gtc__ulp}{\section{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}
+\label{group__gtc__ulp}\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}}
+}
+
+
+Allow the measurement of the accuracy of a function against a reference implementation. This extension works on floating-\/point data and provide results in U\-L\-P. $<$\hyperlink{ulp_8hpp}{glm/gtc/ulp.\-hpp}$>$ need to be included to use these features.  
+
+
+Collaboration diagram for G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp\-:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type \hyperlink{group__gtc__ulp_gae516ae554faa6117660828240e8bdaf0}{glm\-::next\-\_\-float} (gen\-Type const \&x)
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type \hyperlink{group__gtc__ulp_ga2fcbb7bfbfc595712bfddc51b0715b07}{glm\-::prev\-\_\-float} (gen\-Type const \&x)
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type \hyperlink{group__gtc__ulp_gad107ec3d9697ef82032a33338a73ebdd}{glm\-::next\-\_\-float} (gen\-Type const \&x, uint const \&Distance)
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type \hyperlink{group__gtc__ulp_gaa399d5b6472a70e8952f9b26ecaacdec}{glm\-::prev\-\_\-float} (gen\-Type const \&x, uint const \&Distance)
+\item 
+{\footnotesize template$<$typename T $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint \hyperlink{group__gtc__ulp_ga2e09bd6c8b0a9c91f6f5683d68245634}{glm\-::float\-\_\-distance} (T const \&x, T const \&y)
+\item 
+{\footnotesize template$<$typename T , template$<$ typename $>$ class vec\-Type$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$ uint $>$ \hyperlink{group__gtc__ulp_ga85355f2549d75789eb66e5d565d8ad26}{glm\-::float\-\_\-distance} (vec\-Type$<$ T $>$ const \&x, vec\-Type$<$ T $>$ const \&y)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Allow the measurement of the accuracy of a function against a reference implementation. This extension works on floating-\/point data and provide results in U\-L\-P. $<$\hyperlink{ulp_8hpp}{glm/gtc/ulp.\-hpp}$>$ need to be included to use these features. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__ulp_ga2e09bd6c8b0a9c91f6f5683d68245634}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}!float\-\_\-distance@{float\-\_\-distance}}
+\index{float\-\_\-distance@{float\-\_\-distance}!GLM_GTC_ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}}
+\subsubsection[{float\-\_\-distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L uint glm\-::float\-\_\-distance (
+\begin{DoxyParamCaption}
+\item[{T const \&}]{x, }
+\item[{T const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__ulp_ga2e09bd6c8b0a9c91f6f5683d68245634}
+Return the distance in the number of U\-L\-P between 2 scalars. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__ulp}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__ulp_ga85355f2549d75789eb66e5d565d8ad26}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}!float\-\_\-distance@{float\-\_\-distance}}
+\index{float\-\_\-distance@{float\-\_\-distance}!GLM_GTC_ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}}
+\subsubsection[{float\-\_\-distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ typename $>$ class vec\-Type$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type$<$uint$>$ glm\-::float\-\_\-distance (
+\begin{DoxyParamCaption}
+\item[{vec\-Type$<$ T $>$ const \&}]{x, }
+\item[{vec\-Type$<$ T $>$ const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__ulp_ga85355f2549d75789eb66e5d565d8ad26}
+Return the distance in the number of U\-L\-P between 2 vectors. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__ulp}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__ulp_gae516ae554faa6117660828240e8bdaf0}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}!next\-\_\-float@{next\-\_\-float}}
+\index{next\-\_\-float@{next\-\_\-float}!GLM_GTC_ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}}
+\subsubsection[{next\-\_\-float}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type glm\-::next\-\_\-float (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__ulp_gae516ae554faa6117660828240e8bdaf0}
+Return the next U\-L\-P value(s) after the input value(s). \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__ulp}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__ulp_gad107ec3d9697ef82032a33338a73ebdd}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}!next\-\_\-float@{next\-\_\-float}}
+\index{next\-\_\-float@{next\-\_\-float}!GLM_GTC_ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}}
+\subsubsection[{next\-\_\-float}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type glm\-::next\-\_\-float (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{uint const \&}]{Distance}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__ulp_gad107ec3d9697ef82032a33338a73ebdd}
+Return the value(s) U\-L\-P distance after the input value(s). \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__ulp}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__ulp_ga2fcbb7bfbfc595712bfddc51b0715b07}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}!prev\-\_\-float@{prev\-\_\-float}}
+\index{prev\-\_\-float@{prev\-\_\-float}!GLM_GTC_ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}}
+\subsubsection[{prev\-\_\-float}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type glm\-::prev\-\_\-float (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__ulp_ga2fcbb7bfbfc595712bfddc51b0715b07}
+Return the previous U\-L\-P value(s) before the input value(s). \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__ulp}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__ulp_gaa399d5b6472a70e8952f9b26ecaacdec}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}!prev\-\_\-float@{prev\-\_\-float}}
+\index{prev\-\_\-float@{prev\-\_\-float}!GLM_GTC_ulp@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp}}
+\subsubsection[{prev\-\_\-float}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L gen\-Type glm\-::prev\-\_\-float (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{uint const \&}]{Distance}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__ulp_gaa399d5b6472a70e8952f9b26ecaacdec}
+Return the value(s) U\-L\-P distance before the input value(s). \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__ulp}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-ulp} 
+\end{DoxySeeAlso}

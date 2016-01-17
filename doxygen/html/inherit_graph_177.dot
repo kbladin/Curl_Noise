@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="glm::detail::functor1\l\< R, T, P, tvec4 \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structglm_1_1detail_1_1functor1_3_01_r_00_01_t_00_01_p_00_01tvec4_01_4.html"];
+}

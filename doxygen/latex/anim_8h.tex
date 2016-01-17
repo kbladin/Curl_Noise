@@ -1,0 +1,72 @@
+\hypertarget{anim_8h}{\section{ext/assimp/include/assimp/anim.h File Reference}
+\label{anim_8h}\index{ext/assimp/include/assimp/anim.\-h@{ext/assimp/include/assimp/anim.\-h}}
+}
+
+
+Defines the data structures in which the imported animations are returned.  
+
+
+{\ttfamily \#include \char`\"{}types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}quaternion.\-h\char`\"{}}\\*
+Include dependency graph for anim.\-h\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structai_vector_key}{ai\-Vector\-Key}
+\item 
+struct \hyperlink{structai_quat_key}{ai\-Quat\-Key}
+\item 
+struct \hyperlink{structai_mesh_key}{ai\-Mesh\-Key}
+\item 
+struct \hyperlink{structai_node_anim}{ai\-Node\-Anim}
+\item 
+struct \hyperlink{structai_mesh_anim}{ai\-Mesh\-Anim}
+\item 
+struct \hyperlink{structai_animation}{ai\-Animation}
+\item 
+struct \hyperlink{struct_assimp_1_1_interpolator}{Assimp\-::\-Interpolator$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em C\-P\-P-\/\-A\-P\-I\-: Utility class to simplify interpolations of various data types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespace_assimp}{Assimp}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{anim_8h_a201b9e9429b82cd6423ff4a4daf01cef}{ai\-Anim\-Behaviour} \{ \\*
+\hyperlink{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefac580185752c298b2e5bca0dbbef7f5c1}{ai\-Anim\-Behaviour\-\_\-\-D\-E\-F\-A\-U\-L\-T} = 0x0, 
+\hyperlink{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefaf6e8fd16ed92f7ec3652c367e15eb798}{ai\-Anim\-Behaviour\-\_\-\-C\-O\-N\-S\-T\-A\-N\-T} = 0x1, 
+\hyperlink{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefa735ec243b581565a1ea5c974b07ec260}{ai\-Anim\-Behaviour\-\_\-\-L\-I\-N\-E\-A\-R} = 0x2, 
+\hyperlink{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefafa0d6cc9c9718af698b436c7c6da836d}{ai\-Anim\-Behaviour\-\_\-\-R\-E\-P\-E\-A\-T} = 0x3, 
+\\*
+\hyperlink{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefa8e18d19abc297d6f6ed86c7a7ab9b4fc}{\-\_\-ai\-Anim\-Behaviour\-\_\-\-Force32\-Bit}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the data structures in which the imported animations are returned. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{anim_8h_a201b9e9429b82cd6423ff4a4daf01cef}{\index{anim.\-h@{anim.\-h}!ai\-Anim\-Behaviour@{ai\-Anim\-Behaviour}}
+\index{ai\-Anim\-Behaviour@{ai\-Anim\-Behaviour}!anim.h@{anim.\-h}}
+\subsubsection[{ai\-Anim\-Behaviour}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf ai\-Anim\-Behaviour}}}\label{anim_8h_a201b9e9429b82cd6423ff4a4daf01cef}
+Defines how an animation channel behaves outside the defined time range. This corresponds to \hyperlink{structai_node_anim_a305c01b60886a07b69f04b1db6d7d3c5}{ai\-Node\-Anim\-::m\-Pre\-State} and \hyperlink{structai_node_anim_a93cefd440cbaf587c136eb224d4a0327}{ai\-Node\-Anim\-::m\-Post\-State}. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{ai\-Anim\-Behaviour\-\_\-\-D\-E\-F\-A\-U\-L\-T@{ai\-Anim\-Behaviour\-\_\-\-D\-E\-F\-A\-U\-L\-T}!anim.\-h@{anim.\-h}}\index{anim.\-h@{anim.\-h}!ai\-Anim\-Behaviour\-\_\-\-D\-E\-F\-A\-U\-L\-T@{ai\-Anim\-Behaviour\-\_\-\-D\-E\-F\-A\-U\-L\-T}}\item[{\em 
+\hypertarget{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefac580185752c298b2e5bca0dbbef7f5c1}{ai\-Anim\-Behaviour\-\_\-\-D\-E\-F\-A\-U\-L\-T}\label{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefac580185752c298b2e5bca0dbbef7f5c1}
+}]The value from the default node transformation is taken \index{ai\-Anim\-Behaviour\-\_\-\-C\-O\-N\-S\-T\-A\-N\-T@{ai\-Anim\-Behaviour\-\_\-\-C\-O\-N\-S\-T\-A\-N\-T}!anim.\-h@{anim.\-h}}\index{anim.\-h@{anim.\-h}!ai\-Anim\-Behaviour\-\_\-\-C\-O\-N\-S\-T\-A\-N\-T@{ai\-Anim\-Behaviour\-\_\-\-C\-O\-N\-S\-T\-A\-N\-T}}\item[{\em 
+\hypertarget{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefaf6e8fd16ed92f7ec3652c367e15eb798}{ai\-Anim\-Behaviour\-\_\-\-C\-O\-N\-S\-T\-A\-N\-T}\label{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefaf6e8fd16ed92f7ec3652c367e15eb798}
+}]The nearest key value is used without interpolation \index{ai\-Anim\-Behaviour\-\_\-\-L\-I\-N\-E\-A\-R@{ai\-Anim\-Behaviour\-\_\-\-L\-I\-N\-E\-A\-R}!anim.\-h@{anim.\-h}}\index{anim.\-h@{anim.\-h}!ai\-Anim\-Behaviour\-\_\-\-L\-I\-N\-E\-A\-R@{ai\-Anim\-Behaviour\-\_\-\-L\-I\-N\-E\-A\-R}}\item[{\em 
+\hypertarget{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefa735ec243b581565a1ea5c974b07ec260}{ai\-Anim\-Behaviour\-\_\-\-L\-I\-N\-E\-A\-R}\label{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefa735ec243b581565a1ea5c974b07ec260}
+}]The value of the nearest two keys is linearly extrapolated for the current time value. \index{ai\-Anim\-Behaviour\-\_\-\-R\-E\-P\-E\-A\-T@{ai\-Anim\-Behaviour\-\_\-\-R\-E\-P\-E\-A\-T}!anim.\-h@{anim.\-h}}\index{anim.\-h@{anim.\-h}!ai\-Anim\-Behaviour\-\_\-\-R\-E\-P\-E\-A\-T@{ai\-Anim\-Behaviour\-\_\-\-R\-E\-P\-E\-A\-T}}\item[{\em 
+\hypertarget{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefafa0d6cc9c9718af698b436c7c6da836d}{ai\-Anim\-Behaviour\-\_\-\-R\-E\-P\-E\-A\-T}\label{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefafa0d6cc9c9718af698b436c7c6da836d}
+}]The animation is repeated. \begin{DoxyVerb}If the animation key go from n to m and the current
+time is t, use the value at (t-n) % (|m-n|). \end{DoxyVerb}
+ \index{\-\_\-ai\-Anim\-Behaviour\-\_\-\-Force32\-Bit@{\-\_\-ai\-Anim\-Behaviour\-\_\-\-Force32\-Bit}!anim.\-h@{anim.\-h}}\index{anim.\-h@{anim.\-h}!\-\_\-ai\-Anim\-Behaviour\-\_\-\-Force32\-Bit@{\-\_\-ai\-Anim\-Behaviour\-\_\-\-Force32\-Bit}}\item[{\em 
+\hypertarget{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefa8e18d19abc297d6f6ed86c7a7ab9b4fc}{\-\_\-ai\-Anim\-Behaviour\-\_\-\-Force32\-Bit}\label{anim_8h_a201b9e9429b82cd6423ff4a4daf01cefa8e18d19abc297d6f6ed86c7a7ab9b4fc}
+}]This value is not used, it is just here to force the the compiler to map this enum to a 32 Bit integer \end{description}
+\end{Desc}

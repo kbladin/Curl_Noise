@@ -1,0 +1,60 @@
+\hypertarget{group__gtx__vector__angle}{\section{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}
+\label{group__gtx__vector__angle}\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}}
+}
+
+
+Compute angle between vectors.  
+
+
+Collaboration diagram for G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle\-:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename vec\-Type $>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type\-::value\-\_\-type \hyperlink{group__gtx__vector__angle_gab8691008a2536b681b711211816c14f7}{glm\-::angle} (vec\-Type const \&x, vec\-Type const \&y)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L T \hyperlink{group__gtx__vector__angle_ga82a19d474be13c92c7b10caab42a5a72}{glm\-::oriented\-Angle} (tvec2$<$ T, P $>$ const \&x, tvec2$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T , precision P$>$ }\\G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L T \hyperlink{group__gtx__vector__angle_ga7254dba112eff55f55f9544f41cb9ece}{glm\-::oriented\-Angle} (tvec3$<$ T, P $>$ const \&x, tvec3$<$ T, P $>$ const \&y, tvec3$<$ T, P $>$ const \&ref)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Compute angle between vectors. $<$\hyperlink{vector__angle_8hpp}{glm/gtx/vector\-\_\-angle.\-hpp}$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__vector__angle_gab8691008a2536b681b711211816c14f7}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}!angle@{angle}}
+\index{angle@{angle}!GLM_GTX_vector_angle@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename vec\-Type $>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L vec\-Type\-::value\-\_\-type glm\-::angle (
+\begin{DoxyParamCaption}
+\item[{vec\-Type const \&}]{x, }
+\item[{vec\-Type const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__vector__angle_gab8691008a2536b681b711211816c14f7}
+Returns the absolute angle between two vectors. Parameters need to be normalized. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__vector__angle}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle} extension. 
+\end{DoxySeeAlso}
+\hypertarget{group__gtx__vector__angle_ga82a19d474be13c92c7b10caab42a5a72}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}!oriented\-Angle@{oriented\-Angle}}
+\index{oriented\-Angle@{oriented\-Angle}!GLM_GTX_vector_angle@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}}
+\subsubsection[{oriented\-Angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L T glm\-::oriented\-Angle (
+\begin{DoxyParamCaption}
+\item[{tvec2$<$ T, P $>$ const \&}]{x, }
+\item[{tvec2$<$ T, P $>$ const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__vector__angle_ga82a19d474be13c92c7b10caab42a5a72}
+Returns the oriented angle between two 2d vectors. Parameters need to be normalized. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__vector__angle}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle} extension.
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]epsilon is hard coded to 0.\-01 \end{DoxyRefDesc}
+\hypertarget{group__gtx__vector__angle_ga7254dba112eff55f55f9544f41cb9ece}{\index{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}!oriented\-Angle@{oriented\-Angle}}
+\index{oriented\-Angle@{oriented\-Angle}!GLM_GTX_vector_angle@{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle}}
+\subsubsection[{oriented\-Angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , precision P$>$ G\-L\-M\-\_\-\-F\-U\-N\-C\-\_\-\-D\-E\-C\-L T glm\-::oriented\-Angle (
+\begin{DoxyParamCaption}
+\item[{tvec3$<$ T, P $>$ const \&}]{x, }
+\item[{tvec3$<$ T, P $>$ const \&}]{y, }
+\item[{tvec3$<$ T, P $>$ const \&}]{ref}
+\end{DoxyParamCaption}
+)}}\label{group__gtx__vector__angle_ga7254dba112eff55f55f9544f41cb9ece}
+Returns the oriented angle between two 3d vectors based from a reference axis. Parameters need to be normalized. \begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtx__vector__angle}{G\-L\-M\-\_\-\-G\-T\-X\-\_\-vector\-\_\-angle} extension. 
+\end{DoxySeeAlso}

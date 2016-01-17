@@ -1,0 +1,92 @@
+\hypertarget{class_assimp_1_1_log_stream}{\section{Assimp\-:\-:Log\-Stream Class Reference}
+\label{class_assimp_1_1_log_stream}\index{Assimp\-::\-Log\-Stream@{Assimp\-::\-Log\-Stream}}
+}
+
+
+C\-P\-P-\/\-A\-P\-I\-: Abstract interface for log stream implementations.  
+
+
+
+
+{\ttfamily \#include $<$Log\-Stream.\-hpp$>$}
+
+
+
+Inheritance diagram for Assimp\-:\-:Log\-Stream\-:
+
+
+Collaboration diagram for Assimp\-:\-:Log\-Stream\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_log_stream_a72cabcadc78dcbdd54b5641703057ee7}{virtual \hyperlink{class_assimp_1_1_log_stream_a72cabcadc78dcbdd54b5641703057ee7}{$\sim$\-Log\-Stream} ()}\label{class_assimp_1_1_log_stream_a72cabcadc78dcbdd54b5641703057ee7}
+
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_log_stream_ab0bfcb5ab9988ef65d7222a50f6e8d37}{write} (const char $\ast$message)=0
+\begin{DoxyCompactList}\small\item\em Overwrite this for your own output methods. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_assimp_1_1_log_stream}{Log\-Stream} $\ast$ \hyperlink{class_assimp_1_1_log_stream_a6b358a4a79b2e9ba2025e10d3e9405e3}{create\-Default\-Stream} (\hyperlink{types_8h_ae4271f61a7c06cd4770fc3e11f58f9c6}{ai\-Default\-Log\-Stream} stream, const char $\ast$name=\char`\"{}Assimp\-Log.\-txt\char`\"{}, I\-O\-System $\ast$io=N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em Creates a default log stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_log_stream_ac6863075fc4a6fcffd76ad6af80c18bc}{\hyperlink{class_assimp_1_1_log_stream_ac6863075fc4a6fcffd76ad6af80c18bc}{Log\-Stream} ()}\label{class_assimp_1_1_log_stream_ac6863075fc4a6fcffd76ad6af80c18bc}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\-P\-P-\/\-A\-P\-I\-: Abstract interface for log stream implementations. 
+
+Several default implementations are provided, see \hyperlink{types_8h_ae4271f61a7c06cd4770fc3e11f58f9c6}{ai\-Default\-Log\-Stream} for more details. Writing your own implementation of \hyperlink{class_assimp_1_1_log_stream}{Log\-Stream} is just necessary if these are not enough for your purpose. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_log_stream_a6b358a4a79b2e9ba2025e10d3e9405e3}{\index{Assimp\-::\-Log\-Stream@{Assimp\-::\-Log\-Stream}!create\-Default\-Stream@{create\-Default\-Stream}}
+\index{create\-Default\-Stream@{create\-Default\-Stream}!Assimp::LogStream@{Assimp\-::\-Log\-Stream}}
+\subsubsection[{create\-Default\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Log\-Stream}$\ast$ Assimp\-::\-Log\-Stream\-::create\-Default\-Stream (
+\begin{DoxyParamCaption}
+\item[{{\bf ai\-Default\-Log\-Stream}}]{stream, }
+\item[{const char $\ast$}]{name = {\ttfamily \char`\"{}AssimpLog.txt\char`\"{}}, }
+\item[{{\bf I\-O\-System} $\ast$}]{io = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_assimp_1_1_log_stream_a6b358a4a79b2e9ba2025e10d3e9405e3}
+
+
+Creates a default log stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em streams} & Type of the default stream \\
+\hline
+{\em name} & For ai\-Default\-Log\-Stream\-\_\-\-F\-I\-L\-E\-: name of the output file \\
+\hline
+{\em io} & For ai\-Default\-Log\-Stream\-\_\-\-F\-I\-L\-E\-: \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} to be used to open the output file. Pass N\-U\-L\-L for the default implementation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New \hyperlink{class_assimp_1_1_log_stream}{Log\-Stream} instance. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_log_stream_ab0bfcb5ab9988ef65d7222a50f6e8d37}{\index{Assimp\-::\-Log\-Stream@{Assimp\-::\-Log\-Stream}!write@{write}}
+\index{write@{write}!Assimp::LogStream@{Assimp\-::\-Log\-Stream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp\-::\-Log\-Stream\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_assimp_1_1_log_stream_ab0bfcb5ab9988ef65d7222a50f6e8d37}
+
+
+Overwrite this for your own output methods. 
+
+Log messages {\itshape may} consist of multiple lines and you shouldn't expect a consistent formatting. If you want custom formatting (e.\-g. generate H\-T\-M\-L), supply a custom instance of \hyperlink{class_assimp_1_1_logger}{Logger} to \#\-Default\-Logger\-:set(). Usually you can {\itshape expect} that a log message is exactly one line and terminated with a single \par
+ character. 
+\begin{DoxyParams}{Parameters}
+{\em message} & Message to be written \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/\hyperlink{_log_stream_8hpp}{Log\-Stream.\-hpp}\end{DoxyCompactItemize}

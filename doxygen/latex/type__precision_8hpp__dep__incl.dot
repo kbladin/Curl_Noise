@@ -1,0 +1,20 @@
+digraph "ext/glm/include/glm/gtc/type_precision.hpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="ext/glm/include/glm\l/gtc/type_precision.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="ext/glm/include/glm\l/gtc/packing.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$gtc_2packing_8hpp.html"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="ext/glm/include/glm\l/ext.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ext_8hpp_source.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="ext/glm/include/glm\l/gtx/number_precision.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$number__precision_8hpp.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="ext/glm/include/glm\l/gtx/string_cast.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$string__cast_8hpp.html"];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="ext/glm/include/glm\l/gtx/type_aligned.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$type__aligned_8hpp.html"];
+  Node6 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

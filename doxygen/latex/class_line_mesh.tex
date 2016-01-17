@@ -1,0 +1,148 @@
+\hypertarget{class_line_mesh}{\section{Line\-Mesh Class Reference}
+\label{class_line_mesh}\index{Line\-Mesh@{Line\-Mesh}}
+}
+
+
+This class extends \hyperlink{class_abstract_mesh}{Abstract\-Mesh} and renders lines.  
+
+
+
+
+{\ttfamily \#include $<$Mesh.\-h$>$}
+
+
+
+Inherits \hyperlink{class_abstract_mesh}{Abstract\-Mesh}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_line_mesh_a2a4c9b45b462d7733ca95020342c828a}{Line\-Mesh} ()
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{class_line_mesh}{Line\-Mesh} without initializing vertex lists. \end{DoxyCompactList}\item 
+void \hyperlink{class_line_mesh_ae39037e3e68db0d05102225b3958e368}{init\-Line} (glm\-::vec3 start, glm\-::vec3 end)
+\begin{DoxyCompactList}\small\item\em Initializes line from start position to end position. \end{DoxyCompactList}\item 
+void \hyperlink{class_line_mesh_ad635ffbca27ac5d40cdaa24e4dd5f2d8}{init\-Grid\-Plane} (glm\-::vec3 position, glm\-::vec3 normal, glm\-::vec3 scale, unsigned int divisions)
+\begin{DoxyCompactList}\small\item\em Initializes a grid-\/plane used as reference in the scene. \end{DoxyCompactList}\item 
+void \hyperlink{class_line_mesh_a3367b57d600876a95ca20de56335e47f}{init\-Circle} (glm\-::vec3 position, glm\-::vec3 normal, glm\-::vec3 scale, unsigned int divisions)
+\begin{DoxyCompactList}\small\item\em Initializes a circle. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_line_mesh_ab2e04404f48e57ff9c8a03c3fee7b0bb}{render} (glm\-::mat4 M, G\-Luint program\-\_\-\-I\-D)
+\begin{DoxyCompactList}\small\item\em Render the mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class extends \hyperlink{class_abstract_mesh}{Abstract\-Mesh} and renders lines. 
+
+Currently, this mesh can not be loaded from file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_line_mesh_a2a4c9b45b462d7733ca95020342c828a}{\index{Line\-Mesh@{Line\-Mesh}!Line\-Mesh@{Line\-Mesh}}
+\index{Line\-Mesh@{Line\-Mesh}!LineMesh@{Line\-Mesh}}
+\subsubsection[{Line\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}Line\-Mesh\-::\-Line\-Mesh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_line_mesh_a2a4c9b45b462d7733ca95020342c828a}
+
+
+Creates a \hyperlink{class_line_mesh}{Line\-Mesh} without initializing vertex lists. 
+
+This constructor is used when creating basic Line\-Meshes such as grid-\/planes or axes. First construct the \hyperlink{class_line_mesh}{Line\-Mesh}, then call one of the init-\/functions (eg\-: init\-Axes, init\-Grid\-Plane). 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_line_mesh_a3367b57d600876a95ca20de56335e47f}{\index{Line\-Mesh@{Line\-Mesh}!init\-Circle@{init\-Circle}}
+\index{init\-Circle@{init\-Circle}!LineMesh@{Line\-Mesh}}
+\subsubsection[{init\-Circle}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Mesh\-::init\-Circle (
+\begin{DoxyParamCaption}
+\item[{glm\-::vec3}]{position, }
+\item[{glm\-::vec3}]{normal, }
+\item[{glm\-::vec3}]{scale, }
+\item[{unsigned int}]{divisions}
+\end{DoxyParamCaption}
+)}}\label{class_line_mesh_a3367b57d600876a95ca20de56335e47f}
+
+
+Initializes a circle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & is a point in the center of the circle. \\
+\hline
+{\em normal} & is the normal of the circle. \\
+\hline
+{\em scale} & defines scaling in x-\/, y-\/, and z-\/ direction. \\
+\hline
+{\em divisions} & defines how many vertices the circle will contain. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_line_mesh_ad635ffbca27ac5d40cdaa24e4dd5f2d8}{\index{Line\-Mesh@{Line\-Mesh}!init\-Grid\-Plane@{init\-Grid\-Plane}}
+\index{init\-Grid\-Plane@{init\-Grid\-Plane}!LineMesh@{Line\-Mesh}}
+\subsubsection[{init\-Grid\-Plane}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Mesh\-::init\-Grid\-Plane (
+\begin{DoxyParamCaption}
+\item[{glm\-::vec3}]{position, }
+\item[{glm\-::vec3}]{normal, }
+\item[{glm\-::vec3}]{scale, }
+\item[{unsigned int}]{divisions}
+\end{DoxyParamCaption}
+)}}\label{class_line_mesh_ad635ffbca27ac5d40cdaa24e4dd5f2d8}
+
+
+Initializes a grid-\/plane used as reference in the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & is a point in the center of the plane. \\
+\hline
+{\em normal} & is the normal of the plane. \\
+\hline
+{\em scale} & defines scaling in x-\/, y-\/, and z-\/ direction. \\
+\hline
+{\em divisions} & defines how dense the grid will be. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_line_mesh_ae39037e3e68db0d05102225b3958e368}{\index{Line\-Mesh@{Line\-Mesh}!init\-Line@{init\-Line}}
+\index{init\-Line@{init\-Line}!LineMesh@{Line\-Mesh}}
+\subsubsection[{init\-Line}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Mesh\-::init\-Line (
+\begin{DoxyParamCaption}
+\item[{glm\-::vec3}]{start, }
+\item[{glm\-::vec3}]{end}
+\end{DoxyParamCaption}
+)}}\label{class_line_mesh_ae39037e3e68db0d05102225b3958e368}
+
+
+Initializes line from start position to end position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & is the start position of the line. \\
+\hline
+{\em end} & is the end position of the line. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_line_mesh_ab2e04404f48e57ff9c8a03c3fee7b0bb}{\index{Line\-Mesh@{Line\-Mesh}!render@{render}}
+\index{render@{render}!LineMesh@{Line\-Mesh}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Mesh\-::render (
+\begin{DoxyParamCaption}
+\item[{glm\-::mat4}]{M, }
+\item[{G\-Luint}]{program\-\_\-\-I\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_line_mesh_ab2e04404f48e57ff9c8a03c3fee7b0bb}
+
+
+Render the mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em M} & is the transformation matrix of the parent. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_mesh}{Abstract\-Mesh}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/include/\-S\-G\-E/Mesh.\-h\item 
+/\-Users/kbladin/\-Documents/\-C++projects/curl\-\_\-noise/src/\-S\-G\-E/Mesh.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,179 @@
+\hypertarget{class_assimp_1_1_default_logger}{\section{Assimp\-:\-:Default\-Logger Class Reference}
+\label{class_assimp_1_1_default_logger}\index{Assimp\-::\-Default\-Logger@{Assimp\-::\-Default\-Logger}}
+}
+
+
+C\-P\-P-\/\-A\-P\-I\-: Primary logging facility of \hyperlink{namespace_assimp}{Assimp}.  
+
+
+
+
+{\ttfamily \#include $<$Default\-Logger.\-hpp$>$}
+
+
+
+Inheritance diagram for Assimp\-:\-:Default\-Logger\-:
+
+
+Collaboration diagram for Assimp\-:\-:Default\-Logger\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_assimp_1_1_default_logger_abc0ca7a337f8c3e38eca0eb45bb1ccf0}{attach\-Stream} (\hyperlink{class_assimp_1_1_log_stream}{Log\-Stream} $\ast$p\-Stream, unsigned int severity)
+\begin{DoxyCompactList}\small\item\em Attach a new log-\/stream. \end{DoxyCompactList}\item 
+bool \hyperlink{class_assimp_1_1_default_logger_a2615f1d1624f1d742d0cf2dd4a5cccc8}{detatch\-Stream} (\hyperlink{class_assimp_1_1_log_stream}{Log\-Stream} $\ast$p\-Stream, unsigned int severity)
+\begin{DoxyCompactList}\small\item\em Detach a still attached stream from the logger (or modify the filter flags bits) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_assimp_1_1_logger}{Logger} $\ast$ \hyperlink{class_assimp_1_1_default_logger_adccb11f85f8b0ef226c382e11ba665c3}{create} (const char $\ast$name=\hyperlink{_default_logger_8hpp_a5e31e6d6c9f8a8954134f3da38fec0a0}{A\-S\-S\-I\-M\-P\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-L\-O\-G\-\_\-\-N\-A\-M\-E}, \hyperlink{class_assimp_1_1_logger_a8b6248a0fd062431e8572556350d29e6}{Log\-Severity} severity=\hyperlink{class_assimp_1_1_logger_a8b6248a0fd062431e8572556350d29e6a79d16f85dc21486ee489f300027e8eda}{N\-O\-R\-M\-A\-L}, unsigned int def\-Streams=\hyperlink{types_8h_ae4271f61a7c06cd4770fc3e11f58f9c6a424869369b939e649decec5cea6bb52c}{ai\-Default\-Log\-Stream\-\_\-\-D\-E\-B\-U\-G\-G\-E\-R}$\vert$\hyperlink{types_8h_ae4271f61a7c06cd4770fc3e11f58f9c6a53f81f9d36437ced72e67b297dc17815}{ai\-Default\-Log\-Stream\-\_\-\-F\-I\-L\-E}, \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} $\ast$io=N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em Creates a logging instance. \end{DoxyCompactList}\item 
+static void \hyperlink{class_assimp_1_1_default_logger_a9daba548026045b99813c760c2842ed2}{set} (\hyperlink{class_assimp_1_1_logger}{Logger} $\ast$logger)
+\begin{DoxyCompactList}\small\item\em Setup a custom \hyperlink{class_assimp_1_1_logger_a784e6d1a741072b17bab32a6a41055e8}{Logger} implementation. \end{DoxyCompactList}\item 
+static \hyperlink{class_assimp_1_1_logger}{Logger} $\ast$ \hyperlink{class_assimp_1_1_default_logger_a7d0a53f2db66945ade30094330a77ba4}{get} ()
+\begin{DoxyCompactList}\small\item\em Getter for singleton instance. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_assimp_1_1_default_logger_abebc7ee702a2a2dde765e771948400c6}{is\-Null\-Logger} ()
+\begin{DoxyCompactList}\small\item\em Return whether a \#\-Null\-Logger is currently active. \end{DoxyCompactList}\item 
+\hypertarget{class_assimp_1_1_default_logger_a0b1da096d7442af5a4a4cb5ebb2540f7}{static void \hyperlink{class_assimp_1_1_default_logger_a0b1da096d7442af5a4a4cb5ebb2540f7}{kill} ()}\label{class_assimp_1_1_default_logger_a0b1da096d7442af5a4a4cb5ebb2540f7}
+
+\begin{DoxyCompactList}\small\item\em Kills the current singleton logger and replaces it with a \#\-Null\-Logger instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+C\-P\-P-\/\-A\-P\-I\-: Primary logging facility of \hyperlink{namespace_assimp}{Assimp}. 
+
+The library stores its primary \hyperlink{class_assimp_1_1_logger_a784e6d1a741072b17bab32a6a41055e8}{Logger} as a static member of this class. \hyperlink{class_assimp_1_1_default_logger_a7d0a53f2db66945ade30094330a77ba4}{get()} returns this primary logger. By default the underlying implementation is just a \#\-Null\-Logger which rejects all log messages. By calling \hyperlink{class_assimp_1_1_default_logger_adccb11f85f8b0ef226c382e11ba665c3}{create()}, logging is turned on. To capture the log output multiple log streams (\#\-Log\-Stream) can be attach to the logger. Some default streams for common streaming locations (such as a file, std\-::cout, Output\-Debug\-String()) are also provided.
+
+If you wish to customize the logging at an even deeper level supply your own implementation of \hyperlink{class_assimp_1_1_logger_a784e6d1a741072b17bab32a6a41055e8}{Logger} to \hyperlink{class_assimp_1_1_default_logger_a9daba548026045b99813c760c2842ed2}{set()}. \begin{DoxyNote}{Note}
+The whole logging stuff causes a small extra overhead for all imports. 
+\end{DoxyNote}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_default_logger_abc0ca7a337f8c3e38eca0eb45bb1ccf0}{\index{Assimp\-::\-Default\-Logger@{Assimp\-::\-Default\-Logger}!attach\-Stream@{attach\-Stream}}
+\index{attach\-Stream@{attach\-Stream}!Assimp::DefaultLogger@{Assimp\-::\-Default\-Logger}}
+\subsubsection[{attach\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Default\-Logger\-::attach\-Stream (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\-Stream} $\ast$}]{p\-Stream, }
+\item[{unsigned int}]{severity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_assimp_1_1_default_logger_abc0ca7a337f8c3e38eca0eb45bb1ccf0}
+
+
+Attach a new log-\/stream. 
+
+The logger takes ownership of the stream and is responsible for its destruction (which is done using \-::delete when the logger itself is destroyed). Call detach\-Stream to detach a stream and to gain ownership of it again. 
+\begin{DoxyParams}{Parameters}
+{\em p\-Stream} & Log-\/stream to attach \\
+\hline
+{\em severity} & Message filter, specified which types of log messages are dispatched to the stream. Provide a bitwise combination of the Error\-Severity flags. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the stream has been attached, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_assimp_1_1_logger_aaf32a42b02a7e227076013d01e349871}{Assimp\-::\-Logger}.
+
+\hypertarget{class_assimp_1_1_default_logger_adccb11f85f8b0ef226c382e11ba665c3}{\index{Assimp\-::\-Default\-Logger@{Assimp\-::\-Default\-Logger}!create@{create}}
+\index{create@{create}!Assimp::DefaultLogger@{Assimp\-::\-Default\-Logger}}
+\subsubsection[{create}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Logger}$\ast$ Assimp\-::\-Default\-Logger\-::create (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name = {\ttfamily {\bf A\-S\-S\-I\-M\-P\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-L\-O\-G\-\_\-\-N\-A\-M\-E}}, }
+\item[{{\bf Log\-Severity}}]{severity = {\ttfamily {\bf N\-O\-R\-M\-A\-L}}, }
+\item[{unsigned int}]{def\-Streams = {\ttfamily {\bf ai\-Default\-Log\-Stream\-\_\-\-D\-E\-B\-U\-G\-G\-E\-R}$\vert${\bf ai\-Default\-Log\-Stream\-\_\-\-F\-I\-L\-E}}, }
+\item[{{\bf I\-O\-System} $\ast$}]{io = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_assimp_1_1_default_logger_adccb11f85f8b0ef226c382e11ba665c3}
+
+
+Creates a logging instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name for log file. Only valid in combination with the ai\-Default\-Log\-Stream\-\_\-\-F\-I\-L\-E flag. \\
+\hline
+{\em severity} & Log severity, V\-E\-R\-B\-O\-S\-E turns on debug messages \\
+\hline
+{\em def\-Streams} & Default log streams to be attached. Any bitwise combination of the ai\-Default\-Log\-Stream enumerated values. If \hyperlink{types_8h_ae4271f61a7c06cd4770fc3e11f58f9c6a53f81f9d36437ced72e67b297dc17815}{ai\-Default\-Log\-Stream\-\_\-\-F\-I\-L\-E} is specified but an empty string is passed for 'name', no log file is created at all. \\
+\hline
+{\em io} & \hyperlink{class_assimp_1_1_i_o_system}{I\-O\-System} to be used to open external files (such as the log file). Pass N\-U\-L\-L to rely on the default implementation. This replaces the default \#\-Null\-Logger with a \#\-Default\-Logger instance. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_assimp_1_1_default_logger_a2615f1d1624f1d742d0cf2dd4a5cccc8}{\index{Assimp\-::\-Default\-Logger@{Assimp\-::\-Default\-Logger}!detatch\-Stream@{detatch\-Stream}}
+\index{detatch\-Stream@{detatch\-Stream}!Assimp::DefaultLogger@{Assimp\-::\-Default\-Logger}}
+\subsubsection[{detatch\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp\-::\-Default\-Logger\-::detatch\-Stream (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\-Stream} $\ast$}]{p\-Stream, }
+\item[{unsigned int}]{severity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_assimp_1_1_default_logger_a2615f1d1624f1d742d0cf2dd4a5cccc8}
+
+
+Detach a still attached stream from the logger (or modify the filter flags bits) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Stream} & Log-\/stream instance for detaching \\
+\hline
+{\em severity} & Provide a bitwise combination of the Error\-Severity flags. This value is \&$\sim$ed with the current flags of the stream, if the result is 0 the stream is detached from the \hyperlink{class_assimp_1_1_logger}{Logger} and the caller retakes the possession of the stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the stream has been detached, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_assimp_1_1_logger_a9489263727f29fecbd705d5c8d2590c0}{Assimp\-::\-Logger}.
+
+\hypertarget{class_assimp_1_1_default_logger_a7d0a53f2db66945ade30094330a77ba4}{\index{Assimp\-::\-Default\-Logger@{Assimp\-::\-Default\-Logger}!get@{get}}
+\index{get@{get}!Assimp::DefaultLogger@{Assimp\-::\-Default\-Logger}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Logger}$\ast$ Assimp\-::\-Default\-Logger\-::get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_assimp_1_1_default_logger_a7d0a53f2db66945ade30094330a77ba4}
+
+
+Getter for singleton instance. 
+
+\begin{DoxyReturn}{Returns}
+Only instance. This is never null, but it could be a \hyperlink{class_assimp_1_1_null_logger}{Null\-Logger}. Use is\-Null\-Logger to check this. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_default_logger_abebc7ee702a2a2dde765e771948400c6}{\index{Assimp\-::\-Default\-Logger@{Assimp\-::\-Default\-Logger}!is\-Null\-Logger@{is\-Null\-Logger}}
+\index{is\-Null\-Logger@{is\-Null\-Logger}!Assimp::DefaultLogger@{Assimp\-::\-Default\-Logger}}
+\subsubsection[{is\-Null\-Logger}]{\setlength{\rightskip}{0pt plus 5cm}static bool Assimp\-::\-Default\-Logger\-::is\-Null\-Logger (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_assimp_1_1_default_logger_abebc7ee702a2a2dde765e771948400c6}
+
+
+Return whether a \#\-Null\-Logger is currently active. 
+
+\begin{DoxyReturn}{Returns}
+true if the current logger is a \#\-Null\-Logger. Use \hyperlink{class_assimp_1_1_default_logger_adccb11f85f8b0ef226c382e11ba665c3}{create()} or \hyperlink{class_assimp_1_1_default_logger_a9daba548026045b99813c760c2842ed2}{set()} to setup a logger that does actually do something else than just rejecting all log messages. 
+\end{DoxyReturn}
+\hypertarget{class_assimp_1_1_default_logger_a9daba548026045b99813c760c2842ed2}{\index{Assimp\-::\-Default\-Logger@{Assimp\-::\-Default\-Logger}!set@{set}}
+\index{set@{set}!Assimp::DefaultLogger@{Assimp\-::\-Default\-Logger}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp\-::\-Default\-Logger\-::set (
+\begin{DoxyParamCaption}
+\item[{{\bf Logger} $\ast$}]{logger}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_assimp_1_1_default_logger_a9daba548026045b99813c760c2842ed2}
+
+
+Setup a custom \hyperlink{class_assimp_1_1_logger_a784e6d1a741072b17bab32a6a41055e8}{Logger} implementation. 
+
+Use this if the provided \#\-Default\-Logger class doesn't fit into your needs. If the provided message formatting is O\-K for you, it's much easier to use \hyperlink{class_assimp_1_1_default_logger_adccb11f85f8b0ef226c382e11ba665c3}{create()} and to attach your own custom output streams to it. 
+\begin{DoxyParams}{Parameters}
+{\em logger} & Pass N\-U\-L\-L to setup a default \hyperlink{class_assimp_1_1_null_logger}{Null\-Logger} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+ext/assimp/include/assimp/\hyperlink{_default_logger_8hpp}{Default\-Logger.\-hpp}\end{DoxyCompactItemize}
