@@ -99,11 +99,11 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderMana
   for (int i=0; i<positions.size(); i++) {
     float r = (float(rand()) / RAND_MAX) + 0.4;
     float t = (float(rand()) / RAND_MAX) * 360;
-    positions[i] = glm::vec3(r * glm::cos(t),(float(rand()) / RAND_MAX - 0.5f) * 0.5f,r * glm::sin(t));
+    //positions[i] = glm::vec3(r * glm::cos(t),(float(rand()) / RAND_MAX - 0.5f) * 0.5f,r * glm::sin(t));
+    //velocities[i] = glm::sqrt(0.000003f * ( 500.0f) ) * glm::length(positions[i]) * glm::length(positions[i]) * glm::normalize(glm::cross(positions[i], glm::vec3(0,1,0)));
     
-    
-    velocities[i] = glm::sqrt(0.000003f * ( 500.0f) ) * glm::length(positions[i]) * glm::length(positions[i]) * glm::normalize(glm::cross(positions[i], glm::vec3(0,1,0)));
-    
+    positions[i] = glm::vec3(float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f);
+    velocities[i] = 0.1f * glm::vec3(float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f);
     /*
     if (positions[i].x < 0)
     {

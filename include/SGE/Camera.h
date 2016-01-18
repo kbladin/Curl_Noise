@@ -16,6 +16,8 @@ public:
   AbstractCamera(GLuint program_ID, GLFWwindow* window);
   virtual void render(glm::mat4 M) = 0;
   void setShader(GLuint program_ID);
+  void setNearClippingPlane(float near);
+  void setFarClippingPlane(float far);
 protected:
   GLuint program_ID_;
   GLuint view_matrix_ID_;
@@ -23,19 +25,34 @@ protected:
   
   glm::mat4 projection_transform_;
   GLFWwindow* window_;
+
+  float near_;
+  float far_;
 };
 
 //! A perspective camera defined in 3D space
 class PerspectiveCamera : public AbstractCamera {
 public:
-  PerspectiveCamera(GLuint program_ID, GLFWwindow* window);
+  PerspectiveCamera(
+    GLuint program_ID,
+    GLFWwindow* window,
+    float fov,
+    float near,
+    float far);
   virtual void render(glm::mat4 M);
+  void setFOV(float fov);
+private:
+  float fov_;
 };
 
 //! An orthographic camera defined in 3D space
 class OrthoCamera : public AbstractCamera {
 public:
-  OrthoCamera(GLuint program_ID, GLFWwindow* window);
+  OrthoCamera(
+    GLuint program_ID,
+    GLFWwindow* window,
+    float near,
+    float far);
   virtual void render(glm::mat4 M);
 };
 

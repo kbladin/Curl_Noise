@@ -42,7 +42,7 @@ var searchData=
   ['pickmatrix',['pickMatrix',['../group__gtc__matrix__transform.html#ga9026c77505b99990f68826f27c267dc5',1,'glm::pickMatrix(tvec2&lt; T, P &gt; const &amp;center, tvec2&lt; T, P &gt; const &amp;delta, tvec4&lt; U, P &gt; const &amp;viewport)'],['../group__gtc__matrix__transform.html#ga9026c77505b99990f68826f27c267dc5',1,'glm::pickMatrix(tvec2&lt; T, P &gt; const &amp;center, tvec2&lt; T, P &gt; const &amp;delta, tvec4&lt; U, P &gt; const &amp;viewport)']]],
   ['pimpl',['Pimpl',['../class_assimp_1_1_importer.html#ac112839f323a630f83395acb74746827',1,'Assimp::Importer']]],
   ['pitch',['pitch',['../group__gtc__quaternion.html#ga2c08b93a4261c10748fd4d2104346f17',1,'glm::pitch(tquat&lt; T, P &gt; const &amp;x)'],['../group__gtc__quaternion.html#ga2c08b93a4261c10748fd4d2104346f17',1,'glm::pitch(tquat&lt; T, P &gt; const &amp;q)']]],
-  ['pointcloudgpu',['PointCloudGPU',['../class_point_cloud_g_p_u.html',1,'']]],
+  ['ParticleSystem',['ParticleSystem',['../class_point_cloud_g_p_u.html',1,'']]],
   ['pointcloudmaterial',['PointCloudMaterial',['../class_point_cloud_material.html',1,'PointCloudMaterial'],['../class_point_cloud_material.html#af492c996c142a7e4de594f5b18066188',1,'PointCloudMaterial::PointCloudMaterial()']]],
   ['pointcloudmesh',['PointCloudMesh',['../class_point_cloud_mesh.html',1,'']]],
   ['polar',['polar',['../group__gtx__polar__coordinates.html#gafcf95a38c780a4ad5ba14c8ac9e522bb',1,'glm::polar(tvec3&lt; T, P &gt; const &amp;euclidean)'],['../group__gtx__polar__coordinates.html#gafcf95a38c780a4ad5ba14c8ac9e522bb',1,'glm::polar(tvec3&lt; T, P &gt; const &amp;euclidean)']]],

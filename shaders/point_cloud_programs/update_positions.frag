@@ -14,6 +14,7 @@ void main(){
 	vec3 v = texelFetch( velocitySampler2D, ivec2(gl_FragCoord.xy), 0).xyz;
 	vec3 p = texelFetch( positionSampler2D, ivec2(gl_FragCoord.xy), 0).xyz;
 
+	// Euler integration
 	vec3 delta_p = v * dt;
 	vec3 new_pos = p + delta_p;
 

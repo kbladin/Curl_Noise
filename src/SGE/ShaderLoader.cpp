@@ -28,46 +28,56 @@ GLuint ShaderLoader::loadShaders(
   const char * geometry_file_path,
   const char * fragment_file_path)
 {
-  // Create the shaders
-  // Vertex and fragment shader is a must
-  GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-  GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+  GLuint vertex_shader_ID;
+  GLuint fragment_shader_ID;
+  GLuint tesselation_control_shader_ID;
+  GLuint tesselation_evaluation_shader_ID;
+  GLuint geometry_shader_ID;
   
-  GLuint TesselationControlShaderID;
-  GLuint TesselationEvaluationShaderID;
-  GLuint GeometryShaderID;
-
+  // Create the shaders (vertex and fragment shader must be in the pipeline)
+  if (vertex_file_path)
+    vertex_shader_ID = glCreateShader(GL_VERTEX_SHADER);
+  else
+  {
+    printf("ERROR : A vertex shader was not provided");
+  }
   if (tesselation_control_file_path)
-    TesselationControlShaderID = glCreateShader(GL_TESS_CONTROL_SHADER);
+    tesselation_control_shader_ID = glCreateShader(GL_TESS_CONTROL_SHADER);
   if (tesselation_eval_file_path)
-    TesselationEvaluationShaderID = glCreateShader(GL_TESS_EVALUATION_SHADER);
+    tesselation_evaluation_shader_ID = glCreateShader(GL_TESS_EVALUATION_SHADER);
   if (geometry_file_path)
-    GeometryShaderID = glCreateShader(GL_GEOMETRY_SHADER);
+    geometry_shader_ID = glCreateShader(GL_GEOMETRY_SHADER);
+  if (fragment_file_path)
+    fragment_shader_ID = glCreateShader(GL_FRAGMENT_SHADER);
+  else
+  {
+    printf("ERROR : A fragment shader was not provided");
+  }
 
   // Read the Vertex Shader code from the file
-  std::string VertexShaderCode;
-  std::ifstream VertexShaderStream(vertex_file_path, std::ios::in);
-  if(VertexShaderStream.is_open())
+  std::string vertex_shader_code;
+  std::ifstream vertex_shader_stream(vertex_file_path, std::ios::in);
+  if(vertex_shader_stream.is_open())
   {
     std::string Line = "";
-    while(getline(VertexShaderStream, Line))
-      VertexShaderCode += "\n" + Line;
-    VertexShaderStream.close();
+    while(getline(vertex_shader_stream, Line))
+      vertex_shader_code += "\n" + Line;
+    vertex_shader_stream.close();
   }
   else
   {
     printf("ERROR : %s could not be opened.\n", vertex_file_path);
   }
   
-  std::string TesselationControlShaderCode;
+  std::string tesselation_control_shader_code;
   if (tesselation_control_file_path){
     // Read the Tesselation Control Shader code from the file
-    std::ifstream TesselationControlShaderStream(tesselation_control_file_path, std::ios::in);
-    if(TesselationControlShaderStream.is_open()){
+    std::ifstream tesselation_control_shader_stream(tesselation_control_file_path, std::ios::in);
+    if(tesselation_control_shader_stream.is_open()){
       std::string Line = "";
-      while(getline(TesselationControlShaderStream, Line))
-        TesselationControlShaderCode += "\n" + Line;
-      TesselationControlShaderStream.close();
+      while(getline(tesselation_control_shader_stream, Line))
+        tesselation_control_shader_code += "\n" + Line;
+      tesselation_control_shader_stream.close();
     }
     else
     {
@@ -75,15 +85,15 @@ GLuint ShaderLoader::loadShaders(
     }
   }
 
-  std::string TesselationEvaluationShaderCode;
+  std::string tesselation_evaluation_shader_code;
   if (tesselation_eval_file_path){
     // Read the Tesselation Evaluation Shader code from the file
-    std::ifstream TesselationEvalStream(tesselation_eval_file_path, std::ios::in);
-    if(TesselationEvalStream.is_open()){
+    std::ifstream tesselation_eval_stream(tesselation_eval_file_path, std::ios::in);
+    if(tesselation_eval_stream.is_open()){
       std::string Line = "";
-      while(getline(TesselationEvalStream, Line))
-        TesselationEvaluationShaderCode += "\n" + Line;
-      TesselationEvalStream.close();
+      while(getline(tesselation_eval_stream, Line))
+        tesselation_evaluation_shader_code += "\n" + Line;
+      tesselation_eval_stream.close();
     }
     else
     {
@@ -91,15 +101,15 @@ GLuint ShaderLoader::loadShaders(
     }
   }
 
-  std::string GeometryShaderCode;
+  std::string geometry_shader_code;
   if (geometry_file_path){
     // Read the Geometry Shader code from the file
-    std::ifstream GeomatryShaderStream(geometry_file_path, std::ios::in);
-    if(GeomatryShaderStream.is_open()){
+    std::ifstream geometry_shader_stream(geometry_file_path, std::ios::in);
+    if(geometry_shader_stream.is_open()){
       std::string Line = "";
-      while(getline(GeomatryShaderStream, Line))
-        GeometryShaderCode += "\n" + Line;
-      GeomatryShaderStream.close();
+      while(getline(geometry_shader_stream, Line))
+        geometry_shader_code += "\n" + Line;
+      geometry_shader_stream.close();
     }
     else
     {
@@ -108,122 +118,127 @@ GLuint ShaderLoader::loadShaders(
   }
 
   // Read the Fragment Shader code from the file
-  std::string FragmentShaderCode;
-  std::ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
-  if(FragmentShaderStream.is_open()){
+  std::string fragment_shader_code;
+  std::ifstream fragment_shader_stream(fragment_file_path, std::ios::in);
+  if(fragment_shader_stream.is_open()){
     std::string Line = "";
-    while(getline(FragmentShaderStream, Line))
-      FragmentShaderCode += "\n" + Line;
-    FragmentShaderStream.close();
+    while(getline(fragment_shader_stream, Line))
+      fragment_shader_code += "\n" + Line;
+    fragment_shader_stream.close();
   }
   else
   {
     printf("ERROR : %s could not be opened.\n", fragment_file_path);
   }
   
-  GLint Result = GL_FALSE;
-  int InfoLogLength;
+  GLint result = GL_FALSE;
+  int info_log_length;
   
   // Compile Vertex Shader
   printf("Compiling shader : %s\n", vertex_file_path);
-  char const * VertexSourcePointer = VertexShaderCode.c_str();
-  glShaderSource(VertexShaderID, 1, &VertexSourcePointer , NULL);
-  glCompileShader(VertexShaderID);
+  char const * VertexSourcePointer = vertex_shader_code.c_str();
+  glShaderSource(vertex_shader_ID, 1, &VertexSourcePointer , NULL);
+  glCompileShader(vertex_shader_ID);
   
   // Check Vertex Shader
-  glGetShaderiv(VertexShaderID, GL_COMPILE_STATUS, &Result);
-  glGetShaderiv(VertexShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-  std::vector<char> VertexShaderErrorMessage(InfoLogLength);
-  glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
-  fprintf(stdout, "%s\n", &VertexShaderErrorMessage[0]);
+  glGetShaderiv(vertex_shader_ID, GL_COMPILE_STATUS, &result);
+  glGetShaderiv(vertex_shader_ID, GL_INFO_LOG_LENGTH, &info_log_length);
+  std::vector<char> vertex_shader_error_message(info_log_length);
+  glGetShaderInfoLog(vertex_shader_ID, info_log_length, NULL, &vertex_shader_error_message[0]);
+  //if (strlen(&vertex_shader_error_message[0]) > 0)
+    fprintf(stdout, "%s\n", &vertex_shader_error_message[0]);
 
   if (tesselation_control_file_path){
     // Compile Tesselation Control Shader
     printf("Compiling shader : %s\n", tesselation_control_file_path);
-    char const * TesselationControlSourcePointer = TesselationControlShaderCode.c_str();
-    glShaderSource(TesselationControlShaderID, 1, &TesselationControlSourcePointer , NULL);
-    glCompileShader(TesselationControlShaderID);
+    char const * TesselationControlSourcePointer = tesselation_control_shader_code.c_str();
+    glShaderSource(tesselation_control_shader_ID, 1, &TesselationControlSourcePointer , NULL);
+    glCompileShader(tesselation_control_shader_ID);
     
     // Check Tesselation Control Shader
-    glGetShaderiv(TesselationControlShaderID, GL_COMPILE_STATUS, &Result);
-    glGetShaderiv(TesselationControlShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-    std::vector<char> TesselationControlShaderErrorMessage(InfoLogLength);
-    glGetShaderInfoLog(TesselationControlShaderID, InfoLogLength, NULL, &TesselationControlShaderErrorMessage[0]);
-    fprintf(stdout, "%s\n", &TesselationControlShaderErrorMessage[0]);
+    glGetShaderiv(tesselation_control_shader_ID, GL_COMPILE_STATUS, &result);
+    glGetShaderiv(tesselation_control_shader_ID, GL_INFO_LOG_LENGTH, &info_log_length);
+    std::vector<char> tesselation_control_shader_error_message(info_log_length);
+    glGetShaderInfoLog(tesselation_control_shader_ID, info_log_length, NULL, &tesselation_control_shader_error_message[0]);
+    //if (strlen(&tesselation_control_shader_error_message[0]) > 0)
+      fprintf(stdout, "%s\n", &tesselation_control_shader_error_message[0]);
   }
 
   if (tesselation_eval_file_path){
     // Compile Fragment Shader
     printf("Compiling shader : %s\n", tesselation_eval_file_path);
-    char const * TesselationEvaluationSourcePointer = TesselationEvaluationShaderCode.c_str();
-    glShaderSource(TesselationEvaluationShaderID, 1, &TesselationEvaluationSourcePointer , NULL);
-    glCompileShader(TesselationEvaluationShaderID);
+    char const * TesselationEvaluationSourcePointer = tesselation_evaluation_shader_code.c_str();
+    glShaderSource(tesselation_evaluation_shader_ID, 1, &TesselationEvaluationSourcePointer , NULL);
+    glCompileShader(tesselation_evaluation_shader_ID);
     
     // Check TesselationEvaluation Shader
-    glGetShaderiv(TesselationEvaluationShaderID, GL_COMPILE_STATUS, &Result);
-    glGetShaderiv(TesselationEvaluationShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-    std::vector<char> TesselationEvaluationShaderErrorMessage(InfoLogLength);
-    glGetShaderInfoLog(TesselationEvaluationShaderID, InfoLogLength, NULL, &TesselationEvaluationShaderErrorMessage[0]);
-    fprintf(stdout, "%s\n", &TesselationEvaluationShaderErrorMessage[0]);
+    glGetShaderiv(tesselation_evaluation_shader_ID, GL_COMPILE_STATUS, &result);
+    glGetShaderiv(tesselation_evaluation_shader_ID, GL_INFO_LOG_LENGTH, &info_log_length);
+    std::vector<char> tesselation_evaluation_shader_error_message(info_log_length);
+    glGetShaderInfoLog(tesselation_evaluation_shader_ID, info_log_length, NULL, &tesselation_evaluation_shader_error_message[0]);
+    //if (strlen(&tesselation_evaluation_shader_error_message[0]) > 0)
+      fprintf(stdout, "%s\n", &tesselation_evaluation_shader_error_message[0]);
   }
 
   if (geometry_file_path){
     // Compile Fragment Shader
     printf("Compiling shader : %s\n", geometry_file_path);
-    char const * GeometrySourcePointer = GeometryShaderCode.c_str();
-    glShaderSource(GeometryShaderID, 1, &GeometrySourcePointer , NULL);
-    glCompileShader(GeometryShaderID);
+    char const * GeometrySourcePointer = geometry_shader_code.c_str();
+    glShaderSource(geometry_shader_ID, 1, &GeometrySourcePointer , NULL);
+    glCompileShader(geometry_shader_ID);
     
     // Check Geometry Shader
-    glGetShaderiv(GeometryShaderID, GL_COMPILE_STATUS, &Result);
-    glGetShaderiv(GeometryShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-    std::vector<char> GeometryShaderErrorMessage(InfoLogLength);
-    glGetShaderInfoLog(GeometryShaderID, InfoLogLength, NULL, &GeometryShaderErrorMessage[0]);
-    fprintf(stdout, "%s\n", &GeometryShaderErrorMessage[0]);
+    glGetShaderiv(geometry_shader_ID, GL_COMPILE_STATUS, &result);
+    glGetShaderiv(geometry_shader_ID, GL_INFO_LOG_LENGTH, &info_log_length);
+    std::vector<char> geometry_shader_error_message(info_log_length);
+    glGetShaderInfoLog(geometry_shader_ID, info_log_length, NULL, &geometry_shader_error_message[0]);
+    //if (strlen(&geometry_shader_error_message[0]) > 0)
+      fprintf(stdout, "%s\n", &geometry_shader_error_message[0]);
   }
 
   // Compile Fragment Shader
   printf("Compiling shader : %s\n", fragment_file_path);
-  char const * FragmentSourcePointer = FragmentShaderCode.c_str();
-  glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer , NULL);
-  glCompileShader(FragmentShaderID);
+  char const * FragmentSourcePointer = fragment_shader_code.c_str();
+  glShaderSource(fragment_shader_ID, 1, &FragmentSourcePointer , NULL);
+  glCompileShader(fragment_shader_ID);
   
   // Check Fragment Shader
-  glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &Result);
-  glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-  std::vector<char> FragmentShaderErrorMessage(InfoLogLength);
-  glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
-  fprintf(stdout, "%s\n", &FragmentShaderErrorMessage[0]);
+  glGetShaderiv(fragment_shader_ID, GL_COMPILE_STATUS, &result);
+  glGetShaderiv(fragment_shader_ID, GL_INFO_LOG_LENGTH, &info_log_length);
+  std::vector<char> fragment_shader_error_message(info_log_length);
+  glGetShaderInfoLog(fragment_shader_ID, info_log_length, NULL, &fragment_shader_error_message[0]);
+  //if (strlen(&fragment_shader_error_message[0]) > 0)
+    fprintf(stdout, "%s\n", &fragment_shader_error_message[0]);
   
   // Link the program
   fprintf(stdout, "Linking program\n");
-  GLuint ProgramID = glCreateProgram();
-  glAttachShader(ProgramID, VertexShaderID);
+  GLuint program_ID = glCreateProgram();
+  glAttachShader(program_ID, vertex_shader_ID);
   if (tesselation_control_file_path)
-    glAttachShader(ProgramID, TesselationControlShaderID);
+    glAttachShader(program_ID, tesselation_control_shader_ID);
   if (tesselation_eval_file_path)
-    glAttachShader(ProgramID, TesselationEvaluationShaderID);
+    glAttachShader(program_ID, tesselation_evaluation_shader_ID);
   if (geometry_file_path)
-    glAttachShader(ProgramID, GeometryShaderID);
-  glAttachShader(ProgramID, FragmentShaderID);
+    glAttachShader(program_ID, geometry_shader_ID);
+  glAttachShader(program_ID, fragment_shader_ID);
 
-  glLinkProgram(ProgramID);
+  glLinkProgram(program_ID);
   
   // Check the program
-  glGetProgramiv(ProgramID, GL_LINK_STATUS, &Result);
-  glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-  std::vector<char> ProgramErrorMessage( std::max(InfoLogLength, int(1)) );
-  glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
+  glGetProgramiv(program_ID, GL_LINK_STATUS, &result);
+  glGetProgramiv(program_ID, GL_INFO_LOG_LENGTH, &info_log_length);
+  std::vector<char> ProgramErrorMessage( std::max(info_log_length, int(1)) );
+  glGetProgramInfoLog(program_ID, info_log_length, NULL, &ProgramErrorMessage[0]);
   fprintf(stdout, "%s\n", &ProgramErrorMessage[0]);
   
-  glDeleteShader(VertexShaderID);
+  glDeleteShader(vertex_shader_ID);
   if (tesselation_control_file_path)
-    glDeleteShader(TesselationControlShaderID);
+    glDeleteShader(tesselation_control_shader_ID);
   if (tesselation_eval_file_path)
-    glDeleteShader(TesselationEvaluationShaderID);
+    glDeleteShader(tesselation_evaluation_shader_ID);
   if (geometry_file_path)
-    glDeleteShader(GeometryShaderID);
-  glDeleteShader(FragmentShaderID);
+    glDeleteShader(geometry_shader_ID);
+  glDeleteShader(fragment_shader_ID);
 
-  return ProgramID;
+  return program_ID;
 }

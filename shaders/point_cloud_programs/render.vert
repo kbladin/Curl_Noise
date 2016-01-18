@@ -2,7 +2,6 @@
 
 layout(location = 0) in vec2 index;
 
-// Values that stay constant for the whole mesh.
 uniform sampler2D accelerationSampler2D;
 uniform sampler2D velocitySampler2D;
 uniform sampler2D positionSampler2D;
@@ -10,8 +9,6 @@ uniform sampler2D positionSampler2D;
 uniform mat4 M;
 uniform mat4 V;
 uniform mat4 P;
-
-//out vec2 index_frag;
 
 out vec3 a;
 out vec3 v;

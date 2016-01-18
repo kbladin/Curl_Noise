@@ -1,6 +1,6 @@
-#include "../include/PointCloudGPU.h"
+#include "../include/ParticleSystem.h"
 
-PointCloudGPU::PointCloudGPU(unsigned long size) : size_(int(sqrt(size)))
+ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
 {
   material_ = new PointCloudMaterial(size_);
   mesh_ = new PointCloudMesh(size_);
@@ -116,7 +116,7 @@ PointCloudGPU::PointCloudGPU(unsigned long size) : size_(int(sqrt(size)))
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-PointCloudGPU::~PointCloudGPU()
+ParticleSystem::~ParticleSystem()
 {
   delete material_;
   delete mesh_;
@@ -129,13 +129,13 @@ PointCloudGPU::~PointCloudGPU()
   glDeleteProgram(update_positions_program_ID_);
 }
 
-void PointCloudGPU::render(glm::mat4 M)
+void ParticleSystem::render(glm::mat4 M)
 {
   material_->render();
   mesh_->render(M, ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"));
 }
 
-void PointCloudGPU::updateAccelerations(float dt)
+void ParticleSystem::updateAccelerations(float dt)
 {
   glBindFramebuffer(GL_FRAMEBUFFER, acceleration_frame_buffer_);
   glViewport(0,0,size_,size_);
@@ -184,7 +184,7 @@ void PointCloudGPU::updateAccelerations(float dt)
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void PointCloudGPU::updateVelocities(float dt)
+void ParticleSystem::updateVelocities(float dt)
 {
   glBindFramebuffer(GL_FRAMEBUFFER, velocity_frame_buffer_);
   glViewport(0,0,size_,size_);
@@ -233,7 +233,7 @@ void PointCloudGPU::updateVelocities(float dt)
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void PointCloudGPU::updatePositions(float dt)
+void ParticleSystem::updatePositions(float dt)
 {
   glBindFramebuffer(GL_FRAMEBUFFER, position_frame_buffer_);
   glViewport(0,0,size_,size_);
@@ -283,7 +283,7 @@ void PointCloudGPU::updatePositions(float dt)
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void PointCloudGPU::update(float dt)
+void ParticleSystem::update(float dt)
 {
   dt *= 3;
   const int sims_per_frame = 1;
@@ -295,7 +295,7 @@ void PointCloudGPU::update(float dt)
   }
 }
 
-void PointCloudGPU::swapTextures()
+void ParticleSystem::swapTextures()
 {
   // Swap so that the newly updated textures will be used for sampling. We can
   // render over the old ones now. They are not used any more.

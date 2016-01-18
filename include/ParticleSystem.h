@@ -6,10 +6,10 @@
 
 #include "../include/Material.h"
 
-class PointCloudGPU : public Object3D {
+class ParticleSystem : public Object3D {
 public:
-  PointCloudGPU(unsigned long size);
-  ~PointCloudGPU();
+  ParticleSystem(unsigned long size);
+  ~ParticleSystem();
   void render(glm::mat4 M);
   void update(float dt);
 private:

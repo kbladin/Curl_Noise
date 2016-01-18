@@ -2,7 +2,7 @@
 #define MY_ENGINE_H
 
 #include "../include/SGE/SimpleGraphicsEngine.h"
-#include "../include/PointCloudGPU.h"
+#include "../include/ParticleSystem.h"
 
 class MyBGObject3D : public Object3D {
 public:
@@ -12,6 +12,16 @@ public:
 protected:
   BackgroundMaterial* material_;
   TriangleMesh* background_plane_;
+};
+
+class MyObject3D : public Object3D {
+public:
+  MyObject3D(const char* file_path);
+  ~MyObject3D();
+  void render(glm::mat4 M);
+protected:
+  Material* material_;
+  TriangleMesh* mesh_;
 };
 
 //! The actual program extending SimpleGraphicsEngine
@@ -27,22 +37,12 @@ public:
   static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
 private:
   // Objects to put in the scene
-  Object3D* bunny_;
-  TriangleMesh* bunny_mesh_;
-  PhongMaterial* bunny_material_;
-  LightSource* light_;
-  
-  glm::vec3 rotation_point;
-  
+  MyBGObject3D* background_;
+  MyObject3D* bunny_;
+  ParticleSystem* point_cloud_;
+
   float delay_counter_;
   int frame_counter_;
-
-
-  //TriangleMesh* background_plane_;
-  
-  MyBGObject3D* background_;
-
-  PointCloudGPU* point_cloud_;
   
   // One camera for each render shader
   // (probably a bit faster than to change shader for one camera)

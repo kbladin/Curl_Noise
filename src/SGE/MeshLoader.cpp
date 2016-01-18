@@ -25,7 +25,7 @@ bool loadMesh_assimp(
 	if(!scene || scene->mFlags==AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
 		std::cout << "The file wasn't successfuly opened: " << path << std::endl;
-		return false; 
+		return false;
 	}
 
 	aiMesh* mesh=scene->mMeshes[0];

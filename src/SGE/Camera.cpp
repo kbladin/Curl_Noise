@@ -49,23 +49,49 @@ void AbstractCamera::setShader(GLuint program_ID)
   projection_matrix_ID_ = glGetUniformLocation(program_ID_, "P");
 }
 
+//! Set the near clipping plane of the camera
+  /*!
+    \param near is a positive value.
+  */
+void AbstractCamera::setNearClippingPlane(float near)
+{
+  near_ = near;
+}
+
+//! Set the far clipping plane of the camera
+  /*!
+    \param far is a positive value.
+  */
+void AbstractCamera::setFarClippingPlane(float far)
+{
+  far_ = far;
+}
+
 //! Creates camera to render objects with the defined shader program attached.
   /*!
     The shader program can later be changed so that other shaders can be
     used for this particular camera. It is also possible to have several
     cameras and switching between them to use separate shaders.
-    The aspect ratio is set from the parameter \param window.
     \param program_ID is the shader program that this Camera will render.
     \param window is the GLFWwindow* to render to.
   */
-PerspectiveCamera::PerspectiveCamera(GLuint program_ID, GLFWwindow* window) :
+PerspectiveCamera::PerspectiveCamera(
+    GLuint program_ID,
+    GLFWwindow* window,
+    float fov,
+    float near,
+    float far) :
 AbstractCamera(program_ID, window)
 {
+  fov_ = fov;
+  near_ = near;
+  far_ = far;
+
   int width;
   int height;
   glfwGetWindowSize(window_, &width, &height);
   float aspect = float(width)/height;
-  projection_transform_ = glm::perspective(45.0f, aspect, 0.1f, 100.0f);
+  projection_transform_ = glm::perspective(fov_, aspect, near_, far_);
 }
 
 //! Render the Camera.
@@ -80,9 +106,18 @@ void PerspectiveCamera::render(glm::mat4 M)
   int height;
   glfwGetWindowSize(window_, &width, &height);
   float aspect = float(width)/height;
-  projection_transform_ = glm::perspective(45.0f, aspect, 0.1f, 100.0f);
+  projection_transform_ = glm::perspective(fov_, aspect, near_, far_);
   
   AbstractCamera::render(M);
+}
+
+//! Set the field of view of the camera in angles
+  /*!
+    \param fov is a positive value.
+  */
+void PerspectiveCamera::setFOV(float fov)
+{
+  fov_ = fov;
 }
 
 //! Creates camera to render objects with the defined shader program attached.
@@ -94,14 +129,21 @@ void PerspectiveCamera::render(glm::mat4 M)
     \param program_ID is the shader program that this Camera will render.
     \param window is the GLFWwindow* to render to.
   */
-OrthoCamera::OrthoCamera(GLuint program_ID, GLFWwindow* window) :
+OrthoCamera::OrthoCamera(
+  GLuint program_ID,
+  GLFWwindow* window,
+  float near,
+  float far) :
   AbstractCamera(program_ID, window)
 {
+  near_ = near;
+  far_ = far;
+
   int width;
   int height;
   glfwGetWindowSize(window_, &width, &height);
   float aspect = float(width)/height;
-  projection_transform_ = glm::ortho(-aspect, aspect, -1.0f, 1.0f, -100.0f, 100.0f);
+  projection_transform_ = glm::ortho(-aspect, aspect, -1.0f, 1.0f, -far_, near_);
 }
 
 //! Render the Camera.
@@ -116,7 +158,7 @@ void OrthoCamera::render(glm::mat4 M)
   int height;
   glfwGetWindowSize(window_, &width, &height);
   float aspect = float(width)/height;
-  projection_transform_ = glm::ortho(-aspect, aspect, -1.0f, 1.0f, -100.0f, 100.0f);
+  projection_transform_ = glm::ortho(-aspect, aspect, -1.0f, 1.0f, -far_, near_);
   
   AbstractCamera::render(M);
 }

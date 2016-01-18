@@ -91,7 +91,7 @@ digraph "ext/glm/include/glm/gtc/constants.inl"
   Node31 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node32 [label="include/MyEngine.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_my_engine_8h_source.html"];
   Node30 -> Node33 [dir="back",color="midnightblue",fontsize="10",style="solid"];
-  Node33 [label="include/PointCloudGPU.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_point_cloud_g_p_u_8h_source.html"];
+  Node33 [label="include/ParticleSystem.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_point_cloud_g_p_u_8h_source.html"];
   Node33 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node27 -> Node34 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node34 [label="include/SGE/Camera.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$include_2_s_g_e_2camera_8h_source.html"];

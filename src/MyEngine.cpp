@@ -24,11 +24,27 @@ void MyBGObject3D::render(glm::mat4 M)
   background_plane_->render(M, material_->getProgramID());
 }
 
+MyObject3D::MyObject3D(const char* file_path)
+{
+  mesh_ = new TriangleMesh(file_path);
+  material_ = new PhongMaterial();
+}
+
+MyObject3D::~MyObject3D()
+{
+  delete mesh_;
+  delete material_;
+}
+
+void MyObject3D::render(glm::mat4 M)
+{
+  material_->render();
+  mesh_->render(M, material_->getProgramID());
+}
+
 MyEngine::MyEngine() : SimpleGraphicsEngine()
 {
-  //rotation_point = glm::vec3(0,0,-3);
-  //camera_->transform_.translate(rotation_point);
-
+  // Load shaders
   ShaderManager::instance()->loadShader(
     "SHADER_PHONG",
     "../shaders/simple.vert",
@@ -78,38 +94,56 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
     NULL,
     NULL,
     "../shaders/point_cloud_programs/render.frag");
-
-  //background_material_ = new BackgroundMaterial();
-  grid_mesh_material_ = new OneColorMaterial();
   
+  // Create cameras
   basic_cam_ = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_PHONG"),
-    window_);
+    window_,
+    45,
+    0.1,
+    100);
   one_color_cam_ = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_ONE_COLOR"),
-    window_);
+    window_,
+    45,
+    0.1,
+    100);
   background_ortho_cam_ = new OrthoCamera(
     ShaderManager::instance()->getShader("SHADER_BACKGROUND"),
-    window_);
+    window_,
+    100,
+    100);
   point_cloud_cam_ = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"),
-    window_);
+    window_,
+    45,
+    0.1,
+    100);
   
+  // Create objects
+  background_ = new MyBGObject3D();
+  bunny_ = new MyObject3D("../data/meshes/bunny.obj");
+  point_cloud_ = new ParticleSystem(1000000);
+
+  // Connect nodes
   camera_->addChild(basic_cam_);
   camera_->addChild(one_color_cam_);
   camera_->addChild(point_cloud_cam_);
   viewspace_ortho_camera_->addChild(background_ortho_cam_);
-  
-  background_ = new MyBGObject3D();  
-  point_cloud_ = new PointCloudGPU(1000);
-  
+
+  // Add to scene
   scene_->addChild(point_cloud_);
+  //scene_->addChild(bunny_);
   background_space_->addChild(background_);
-
-
 
   // Set callback functions
   glfwSetScrollCallback(window_, mouseScrollCallback);
+
+  // Set camera transform
+  camera_->transform_matrix_ = glm::translate(glm::vec3(0.0f,0.0f,-5.0f));
+  camera_->transform_matrix_ =
+    camera_->transform_matrix_ *
+    glm::rotate(glm::mat4(), 0.3f, glm::vec3(1,0,0));
 }
 
 MyEngine::~MyEngine()
@@ -123,21 +157,21 @@ MyEngine::~MyEngine()
   delete point_cloud_cam_;
   
   delete grid_mesh_material_;
-  //delete background_material_;
 
   delete background_;
+  delete bunny_;
 }
 
 void MyEngine::update()
 {
   SimpleGraphicsEngine::update();
   
+  // Update particle system
   point_cloud_->update(dt_);
 
-
+  // Print FPS on window
   frame_counter_ ++;
-  delay_counter_ += dt_;
-  
+  delay_counter_ += dt_;  
   if (delay_counter_ >= 1.0) {
     std::stringstream title;
     title << frame_counter_ << " FPS";
@@ -149,7 +183,7 @@ void MyEngine::update()
 
 void MyEngine::mouseScrollCallback(GLFWwindow * window, double dx, double dy)
 {
-
+  //camera_->transform_matrix_ = camera_->transform_matrix_ * glm::translate(glm::vec3(0.0f,0.0f,-3.0f));
   /*
   glm::vec3 prev_position = camera_->transform_.getPosition();
 

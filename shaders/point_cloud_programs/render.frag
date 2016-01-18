@@ -30,12 +30,8 @@ void main(){
 		c5 * clamp(min(5 - x, x - 3), 0, 1) + 
 		c6 * clamp(x - 4, 0, 1);
 
-	//vec3 c = vec3(1,1,1) * clamp((w - 1) * 0.5, 0,1) + vec3(1,1,0) * w + vec3(1,0,0) * (1 - w);
-
-
 	vec2 coord = gl_PointCoord - vec2(0.5);  //from [0,1] to [-0.5,0.5]
 	if(length(coord) > 0.5)                  //outside of circle radius?
-    discard;
-	//float alpha = length(gl_PointCoord - vec2(0.5,0.5)) < 0.5 ? 1 : 0;
+	    discard;
 	color = vec4(c ,1);
 }

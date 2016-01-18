@@ -2,7 +2,6 @@
 
 AbstractMesh::AbstractMesh()
 {
-  //program_ID_ = program_ID;
 }
 
 AbstractMesh::~AbstractMesh()
@@ -14,8 +13,6 @@ AbstractMesh::~AbstractMesh()
 
 void AbstractMesh::initialize()
 {
-  //glUseProgram(program_ID_);
-  
   glGenVertexArrays(1, &vertex_array_ID_);
   glBindVertexArray(vertex_array_ID_);
   
@@ -26,9 +23,6 @@ void AbstractMesh::initialize()
     vertices_.size() * sizeof(glm::vec3),
     &vertices_[0],
     GL_STATIC_DRAW);
-  
-  // Get a handle for our matrix uniform
-  //glGetUniformLocation(program_ID, "M") = glGetUniformLocation(program_ID_, "M");
 }
 
 //! Create a TriangleMesh from file.
@@ -50,9 +44,10 @@ TriangleMesh::TriangleMesh(const char *file_name)
     \param material is the material of the mesh
     defined in SimpleGraphiicsEngine.
   */
-TriangleMesh::TriangleMesh(std::vector<glm::vec3> vertices,
-           std::vector<glm::vec3> normals,
-           std::vector<unsigned short> elements)
+TriangleMesh::TriangleMesh(
+  std::vector<glm::vec3> vertices,
+  std::vector<glm::vec3> normals,
+  std::vector<unsigned short> elements)
 {
   vertices_ = vertices;
   normals_ = normals;
@@ -90,15 +85,18 @@ void TriangleMesh::initPlane(
   glm::vec3 normal,
   glm::vec3 scale)
 {
+  // Data sizes
   vertices_.resize(4);
   normals_.resize(4);
   elements_.resize(6);
   
+  // Create a quad
   vertices_[0] = glm::vec3(0.5f, 0.5f, 0.0f);
   vertices_[1] = glm::vec3(0.5f, -0.5f, 0.0f);
   vertices_[2] = glm::vec3(-0.5f, -0.5f, 0.0f);
   vertices_[3] = glm::vec3(-0.5f, 0.5f, 0.0f);
   
+  // Connectivity info
   elements_[0] = 0;
   elements_[1] = 1;
   elements_[2] = 2;
@@ -106,6 +104,7 @@ void TriangleMesh::initPlane(
   elements_[4] = 3;
   elements_[5] = 0;
   
+  // Transform the vertices
   glm::mat4 M;
   glm::vec3 up =
     normal != glm::vec3(0.0f, 0.0f, 1.0f) ?
@@ -114,7 +113,6 @@ void TriangleMesh::initPlane(
                   glm::vec3(0.0f, 0.0f, 0.0f),
                   normal,
                   up);
-  
   for (int i = 0; i < vertices_.size(); i++) {
     normals_[i] = glm::vec3(glm::vec4(glm::vec3(0.0f, 0.0f, -1.0f), 0) * M);
     vertices_[i] = glm::vec3(glm::vec4(vertices_[i] * scale, 1) * M);
@@ -135,6 +133,7 @@ void TriangleMesh::initBox(glm::vec3 max,
                    glm::vec3 min,
                    glm::vec3 position)
 {
+  // Data sizes
   vertices_.resize(24);
   normals_.resize(24);
   elements_.resize(36);
@@ -268,9 +267,12 @@ void TriangleMesh::initCone(glm::vec3 position,
               glm::vec3 scale,
               int divisions)
 {
+  // Data sizes
   vertices_.resize(divisions + 2);
   normals_.resize(divisions + 2);
   elements_.resize(divisions * 6);
+
+  // Vertices around the base of the cone
   float delta_theta = M_PI * 2 / float(divisions);
   for (int i=0; i<divisions; i++) {
     float x = cos(delta_theta * i);
@@ -278,10 +280,14 @@ void TriangleMesh::initCone(glm::vec3 position,
     vertices_[i] = glm::vec3(x,y,0);
     normals_[i] = glm::vec3(x,y,0);
   }
+
+  // Top and bottom vertices
   vertices_[divisions] = glm::vec3(0,0,-1);
   normals_[divisions] = glm::vec3(0,0,-1);
   vertices_[divisions + 1] = glm::vec3(0,0,0);
   normals_[divisions + 1] = glm::vec3(0,0,1);
+  
+  // Set connectivity
   for (int i = 0; i<divisions-1; i++) {
     elements_[i*6] = i;
     elements_[i*6 + 1] = divisions;
@@ -297,6 +303,7 @@ void TriangleMesh::initCone(glm::vec3 position,
   elements_[divisions*6 - 1 - 1] = 0;
   elements_[divisions*6 - 1 - 0] = divisions + 1;
   
+  // Set direction
   glm::mat4 M;
   glm::vec3 up =
   !(direction.x == 0 && direction.y == 0) ?
@@ -305,7 +312,8 @@ void TriangleMesh::initCone(glm::vec3 position,
                   glm::vec3(0.0f, 0.0f, 0.0f),
                   direction,
                   up);
-  
+
+  // Apply direction transform
   for (int i = 0; i < vertices_.size(); i++) {
     vertices_[i].x *= scale.x;
     vertices_[i].y *= scale.y;
@@ -331,6 +339,7 @@ void TriangleMesh::initCylinder(glm::vec3 position,
                                 glm::vec3 scale,
                                 int divisions)
 {
+  // Data sizes
   vertices_.resize(divisions * 2 + (divisions + 1) * 2);
   normals_.resize(divisions * 2 + (divisions + 1) * 2);
   elements_.resize(divisions * 12);
@@ -418,8 +427,6 @@ void TriangleMesh::initialize()
 {
   AbstractMesh::initialize();
   
-  //glUseProgram(program_ID_);
-
   glGenBuffers(1, &normal_buffer_);
   glBindBuffer(GL_ARRAY_BUFFER, normal_buffer_);
   glBufferData(GL_ARRAY_BUFFER, normals_.size() * sizeof(glm::vec3), &normals_[0], GL_STATIC_DRAW);
@@ -435,12 +442,14 @@ void TriangleMesh::initialize()
 */
 void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
 {
+  // Render all children
   Object3D::render(M);
-  
-  glm::mat4 total_transform = M * transform_matrix_;
   
   // Use our shader
   glUseProgram(program_ID);
+
+  // Shader input
+  glm::mat4 total_transform = M * transform_matrix_;
   glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
@@ -457,7 +466,7 @@ void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
                         (void*)0            // array buffer offset
                         );
   
-  // 2nd attribute buffer : noemals
+  // 2nd attribute buffer : normals
   glEnableVertexAttribArray(1);
   glBindBuffer(GL_ARRAY_BUFFER, normal_buffer_);
   glVertexAttribPointer(
@@ -472,7 +481,7 @@ void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
   // Index buffer
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
   
-  // Draw the triangles !
+  // Draw the triangles
   glDrawElements(
                  GL_TRIANGLES,      // mode
                  elements_.size(),    // count
@@ -493,7 +502,7 @@ void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
 */
 LineMesh::LineMesh()
 {
-  //initialize();
+  initialize();
 }
 
 LineMesh::~LineMesh()
@@ -622,8 +631,6 @@ void LineMesh::initialize()
 {
   AbstractMesh::initialize();
   
-  //glUseProgram(program_ID_);
-
   glGenBuffers(1, &element_buffer_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, elements_.size() * sizeof(unsigned short), &elements_[0] , GL_STATIC_DRAW);
@@ -637,10 +644,11 @@ void LineMesh::render(glm::mat4 M, GLuint program_ID)
 {
   Object3D::render(M);
   
-  glm::mat4 total_transform = M * transform_matrix_;
-  
-  // Use our shader
+  // Use the shader
   glUseProgram(program_ID);
+  
+  // Input to the shader
+  glm::mat4 total_transform = M * transform_matrix_;
   glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
@@ -660,14 +668,14 @@ void LineMesh::render(glm::mat4 M, GLuint program_ID)
   // Index buffer
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
   
-  // Draw the triangles !
+  // Draw the triangles
   glDrawElements(
                  GL_LINES,      // mode
                  elements_.size(),    // count
                  GL_UNSIGNED_SHORT,   // type
                  (void*)0           // element array buffer offset
                  );
-  
+
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
 }
@@ -701,11 +709,12 @@ PointCloudMesh::~PointCloudMesh()
 void PointCloudMesh::render(glm::mat4 M, GLuint program_ID)
 {
   Object3D::render(M);
-  
-  glm::mat4 total_transform = M * transform_matrix_;
-  
+    
   // Use our shader
   glUseProgram(program_ID);
+
+  // Input to the shader
+  glm::mat4 total_transform = M * transform_matrix_;
   glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);

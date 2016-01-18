@@ -172,7 +172,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  GLuint element_buffer_;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">class </span><a class="code" href="class_point_cloud_g_p_u.html">PointCloudGPU</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">class </span><a class="code" href="class_point_cloud_g_p_u.html">ParticleSystem</a>;</div>
 <div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_point_cloud_mesh.html">   95</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_point_cloud_mesh.html">PointCloudMesh</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_mesh.html">AbstractMesh</a> {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="class_point_cloud_mesh.html">PointCloudMesh</a>(<span class="keywordtype">int</span> size);</div>
@@ -180,7 +180,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> render(glm::mat4 M, GLuint program_ID);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> size_;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_point_cloud_g_p_u.html">PointCloudGPU</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_point_cloud_g_p_u.html">ParticleSystem</a>;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">void</span> initialize();</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  GLuint index_buffer_;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
@@ -188,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_abstract_mesh_html"><div class="ttname"><a href="class_abstract_mesh.html">AbstractMesh</a></div><div class="ttdoc">This class serves as a base for the mesh classes. </div><div class="ttdef"><b>Definition:</b> Mesh.h:16</div></div>
 <div class="ttc" id="class_line_mesh_html_ab2e04404f48e57ff9c8a03c3fee7b0bb"><div class="ttname"><a href="class_line_mesh.html#ab2e04404f48e57ff9c8a03c3fee7b0bb">LineMesh::render</a></div><div class="ttdeci">virtual void render(glm::mat4 M, GLuint program_ID)</div><div class="ttdoc">Render the mesh. </div><div class="ttdef"><b>Definition:</b> Mesh.cpp:636</div></div>
-<div class="ttc" id="class_point_cloud_g_p_u_html"><div class="ttname"><a href="class_point_cloud_g_p_u.html">PointCloudGPU</a></div><div class="ttdef"><b>Definition:</b> PointCloudGPU.h:9</div></div>
+<div class="ttc" id="class_point_cloud_g_p_u_html"><div class="ttname"><a href="class_point_cloud_g_p_u.html">ParticleSystem</a></div><div class="ttdef"><b>Definition:</b> ParticleSystem.h:9</div></div>
 <div class="ttc" id="class_point_cloud_mesh_html"><div class="ttname"><a href="class_point_cloud_mesh.html">PointCloudMesh</a></div><div class="ttdoc">This class extends AbstractMesh. </div><div class="ttdef"><b>Definition:</b> Mesh.h:95</div></div>
 <div class="ttc" id="class_triangle_mesh_html_a424ee41b5f60d433130c66aae11c8679"><div class="ttname"><a href="class_triangle_mesh.html#a424ee41b5f60d433130c66aae11c8679">TriangleMesh::TriangleMesh</a></div><div class="ttdeci">TriangleMesh()</div><div class="ttdoc">Creates a TriangleMesh without initializing vertex lists. </div><div class="ttdef"><b>Definition:</b> Mesh.cpp:72</div></div>
 <div class="ttc" id="class_line_mesh_html_a2a4c9b45b462d7733ca95020342c828a"><div class="ttname"><a href="class_line_mesh.html#a2a4c9b45b462d7733ca95020342c828a">LineMesh::LineMesh</a></div><div class="ttdeci">LineMesh()</div><div class="ttdoc">Creates a LineMesh without initializing vertex lists. </div><div class="ttdef"><b>Definition:</b> Mesh.cpp:494</div></div>
