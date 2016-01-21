@@ -14,7 +14,6 @@
 #include "../../ext/glm/include/glm/gtc/matrix_transform.hpp"
 #include "../../ext/glm/include/glm/gtx/transform.hpp"
 #include <gl/glew.h>
-#include <gl/glfw3.h>
 
 //! A light source defined in 3D space
 class LightSource : public Object3D {
@@ -42,12 +41,10 @@ class SimpleGraphicsEngine {
 public:
   SimpleGraphicsEngine();
   virtual ~SimpleGraphicsEngine();
-  void run();
 protected:
-  virtual void update() = 0;
+  virtual void run() = 0;
+  void update(int w, int h);
   
-  // Probably should be private...
-  GLFWwindow* window_;
   double dt_;
   Object3D* scene_;
 
@@ -56,10 +53,11 @@ protected:
   
   static Object3D* camera_;
   static Object3D* viewspace_ortho_camera_;
+  virtual bool initialize();
+
+  double time_;
   
 private:
-  bool initialize();
-  double time_;
 };
 
 #endif

@@ -38,45 +38,23 @@ void LightSource::render(glm::mat4 M)
 Object3D* SimpleGraphicsEngine::camera_;
 Object3D* SimpleGraphicsEngine::viewspace_ortho_camera_;
 
-//! Initializes OpenGL, creating context and adding all basic objects for the scene.
 SimpleGraphicsEngine::SimpleGraphicsEngine()
 {
-  if( !initialize() )
-    std::cout << "ERROR : Could not initialize SimpleGraphicsEngine!" << std::endl;
+
 }
 
 SimpleGraphicsEngine::~SimpleGraphicsEngine()
 {
-  glfwTerminate();
   delete scene_;
   delete view_space_;
   delete background_space_;  
   
   delete camera_;
-}
+} 
 
+//! Initializes OpenGL, creating context and adding all basic objects for the scene.
 bool SimpleGraphicsEngine::initialize()
 {
-  time_ = glfwGetTime();
-  // Initialize the library
-  if (!glfwInit())
-    return false;
-  // Modern OpenGL
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  // Create a windowed mode window and its OpenGL context
-  window_ = glfwCreateWindow(720, 480, "Model Viewer", NULL, NULL);
-  if (!window_)
-  {
-    glfwTerminate();
-    return false;
-  }
-  // Make the window's context current
-  glfwMakeContextCurrent(window_);
-  printf("%s\n", glGetString(GL_VERSION));
-  
   glewExperimental = true; // Needed in core profile
   if (glewInit() != GLEW_OK) {
     fprintf(stderr, "Failed to initialize GLEW\n");
@@ -108,24 +86,18 @@ bool SimpleGraphicsEngine::initialize()
   return true;
 }
 
-//! Starts the main loop
-void SimpleGraphicsEngine::run()
+//! This function needs to be implemented if extending this class.
+void SimpleGraphicsEngine::update(int w, int h)
 {
-  while (!glfwWindowShouldClose(window_))
-  {
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    update();
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0.7, 0.7, 0.7, 1);
-    
-    int width;
-    int height;
-    glfwGetWindowSize(window_, &width, &height);
-    float aspect = float(width)/height;
-    glViewport(0,0,width * 2,height * 2);
+
+    float aspect = float(w)/h;
+    glViewport(0,0,w * 2,h * 2);
 
     glDisable(GL_DEPTH_TEST);
     background_space_->render(glm::mat4());
@@ -133,14 +105,5 @@ void SimpleGraphicsEngine::run()
     scene_->render(glm::mat4());
     view_space_->render(glm::mat4());
 
-    glfwSwapBuffers(window_);
-    glfwPollEvents();
-  }
-}
-
-//! This function needs to be implemented if extending this class.
-void SimpleGraphicsEngine::update()
-{
-  dt_ = glfwGetTime() - time_;
-  time_ = glfwGetTime();
+    
 }

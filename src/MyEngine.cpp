@@ -45,6 +45,11 @@ void MyObject3D::render(glm::mat4 M)
 
 MyEngine::MyEngine() : SimpleGraphicsEngine()
 {
+  // First initialize this class to create OpenGL context
+  initialize();
+  // Now initialize OpenGL and objects in scene
+  SimpleGraphicsEngine::initialize();
+
   // Load shaders
   ShaderManager::instance()->loadShader(
     "SHADER_PHONG",
@@ -99,24 +104,28 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
   // Create cameras
   basic_cam_ = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_PHONG"),
-    window_,
+    100,
+    100,
     45,
     0.01,
     100);
   one_color_cam_ = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_ONE_COLOR"),
-    window_,
+    100,
+    100,
     45,
     0.01,
     100);
   background_ortho_cam_ = new OrthoCamera(
     ShaderManager::instance()->getShader("SHADER_BACKGROUND"),
-    window_,
+    100,
+    100,
     100,
     100);
   point_cloud_cam_ = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"),
-    window_,
+    100,
+    100,
     45,
     0.01,
     100);
@@ -148,8 +157,33 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
     glm::rotate(glm::mat4(), 0.3f, glm::vec3(1,0,0));
 }
 
+bool MyEngine::initialize()
+{
+  time_ = glfwGetTime();
+  // Initialize glfw
+  if (!glfwInit())
+    return false;
+  // Modern OpenGL
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  // Create a windowed mode window and its OpenGL context
+  window_ = glfwCreateWindow(720, 480, "Model Viewer", NULL, NULL);
+  if (!window_)
+  {
+    glfwTerminate();
+    return false;
+  }
+  // Make the window's context current
+  glfwMakeContextCurrent(window_);
+  printf("%s\n", glGetString(GL_VERSION));
+  return true;
+}
+
 MyEngine::~MyEngine()
 {
+  glfwTerminate();
   delete point_cloud_;
   
   delete basic_cam_;
@@ -166,7 +200,19 @@ MyEngine::~MyEngine()
 
 void MyEngine::update()
 {
-  SimpleGraphicsEngine::update();
+  dt_ = glfwGetTime() - time_;
+  time_ = glfwGetTime();
+  int width;
+  int height;
+  glfwGetWindowSize(window_, &width, &height);
+
+  basic_cam_->setResolution(width, height);
+  one_color_cam_->setResolution(width, height);
+  point_cloud_cam_->setResolution(width, height);
+  background_ortho_cam_->setResolution(width, height);
+  
+
+  SimpleGraphicsEngine::update(width, height);
   
   // Update particle system
   point_cloud_->update(dt_);
@@ -180,6 +226,17 @@ void MyEngine::update()
     glfwSetWindowTitle(window_, title.str().c_str());
     frame_counter_ = 0;
     delay_counter_ = 0;
+  }
+
+  glfwSwapBuffers(window_);
+  glfwPollEvents();
+}
+
+void MyEngine::run()
+{
+  while (!glfwWindowShouldClose(window_))
+  {
+    update();
   }
 }
 

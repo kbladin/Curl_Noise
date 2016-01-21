@@ -724,7 +724,7 @@ void PointCloudMesh::render(glm::mat4 M, GLuint program_ID)
   glVertexAttribPointer(
                         0,                  // attribute
                         2,                  // size
-                        GL_INT,           // type
+                        GL_INT,             // type
                         GL_FALSE,           // normalized?
                         0,                  // stride
                         (void*)0            // array buffer offset

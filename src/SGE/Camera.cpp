@@ -8,9 +8,10 @@
     \param program_ID is the shader program that this Camera will render.
     \param window is the GLFWwindow* to render to.
   */
-AbstractCamera::AbstractCamera(GLuint program_ID, GLFWwindow* window)
+AbstractCamera::AbstractCamera(GLuint program_ID, int width, int height)
 {
-  window_ = window;
+  width_ = width;
+  height_ = height;
   program_ID_ = program_ID;
   glUseProgram(program_ID_);
 
@@ -67,6 +68,12 @@ void AbstractCamera::setFarClippingPlane(float far)
   far_ = far;
 }
 
+void AbstractCamera::setResolution(int width, int height)
+{
+  width_ = width;
+  height_ = height;
+}
+
 //! Creates camera to render objects with the defined shader program attached.
   /*!
     The shader program can later be changed so that other shaders can be
@@ -77,20 +84,18 @@ void AbstractCamera::setFarClippingPlane(float far)
   */
 PerspectiveCamera::PerspectiveCamera(
     GLuint program_ID,
-    GLFWwindow* window,
+    int width,
+    int height,
     float fov,
     float near,
     float far) :
-AbstractCamera(program_ID, window)
+AbstractCamera(program_ID, width, height)
 {
   fov_ = fov;
   near_ = near;
   far_ = far;
 
-  int width;
-  int height;
-  glfwGetWindowSize(window_, &width, &height);
-  float aspect = float(width)/height;
+  float aspect = float(width_)/height_;
   projection_transform_ = glm::perspective(fov_, aspect, near_, far_);
 }
 
@@ -102,10 +107,7 @@ AbstractCamera(program_ID, window)
   */
 void PerspectiveCamera::render(glm::mat4 M)
 {
-  int width;
-  int height;
-  glfwGetWindowSize(window_, &width, &height);
-  float aspect = float(width)/height;
+  float aspect = float(width_)/height_;
   projection_transform_ = glm::perspective(fov_, aspect, near_, far_);
   
   AbstractCamera::render(M);
@@ -131,18 +133,16 @@ void PerspectiveCamera::setFOV(float fov)
   */
 OrthoCamera::OrthoCamera(
   GLuint program_ID,
-  GLFWwindow* window,
+  int width,
+  int height,
   float near,
   float far) :
-  AbstractCamera(program_ID, window)
+  AbstractCamera(program_ID, width, height)
 {
   near_ = near;
   far_ = far;
 
-  int width;
-  int height;
-  glfwGetWindowSize(window_, &width, &height);
-  float aspect = float(width)/height;
+  float aspect = float(width_)/height_;
   projection_transform_ = glm::ortho(-aspect, aspect, -1.0f, 1.0f, -far_, near_);
 }
 
@@ -154,10 +154,7 @@ OrthoCamera::OrthoCamera(
   */
 void OrthoCamera::render(glm::mat4 M)
 {
-  int width;
-  int height;
-  glfwGetWindowSize(window_, &width, &height);
-  float aspect = float(width)/height;
+  float aspect = float(width_)/height_;
   projection_transform_ = glm::ortho(-aspect, aspect, -1.0f, 1.0f, -far_, near_);
   
   AbstractCamera::render(M);

@@ -4,6 +4,8 @@
 #include "../include/SGE/SimpleGraphicsEngine.h"
 #include "../include/ParticleSystem.h"
 
+#include <gl/glfw3.h>
+
 class MyBGObject3D : public Object3D {
 public:
   MyBGObject3D();
@@ -33,9 +35,13 @@ class MyEngine : public SimpleGraphicsEngine {
 public:
   MyEngine();
   ~MyEngine();
-  virtual void update();
+  virtual void run();
+  void update();
   static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
 private:
+  virtual bool initialize();
+  GLFWwindow* window_;
+
   // Objects to put in the scene
   MyBGObject3D* background_;
   MyObject3D* sphere_;
