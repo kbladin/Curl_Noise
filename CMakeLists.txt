@@ -12,10 +12,19 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 find_package(OPENGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(GLFW3 REQUIRED)
-#find_package(ANTTWEAKBAR REQUIRED)
+find_package(ANTTWEAKBAR REQUIRED)
 
 set(ASSIMP_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/ext/assimp/include)
 set(ASSIMP_LIBRARIES ${PROJECT_SOURCE_DIR}/ext/assimp/lib/libassimp.dylib)
+#set(ANT_TWEAK_BAR_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/ext/AntTweakBar/include)
+#set(ANT_TWEAK_BAR_LIBRARIES ${PROJECT_SOURCE_DIR}/ext/AntTweakBar/lib/AntTweakBar.lib)
+
+
+#set(NANOGUI_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/ext/nanogui/include)
+#set(EIGEN_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/ext/nanogui/ext/Eigen)
+#add_definitions(-DEIGEN_DONT_ALIGN)
+
+#add_subdirectory(ext/nanogui)
 
 if(APPLE)
   # Find external libraries
@@ -28,6 +37,7 @@ include_directories(${GLEW_INCLUDE_DIR})
 include_directories(${GLFW_INCLUDE_DIRS})
 #include_directories(${ANT_TWEAK_BAR_INCLUDE_PATH})
 include_directories(${ASSIMP_INCLUDE_DIRS})
+include_directories(${ANT_TWEAK_BAR_INCLUDE_PATH})
 
 # Our own include directory
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
@@ -53,8 +63,19 @@ add_executable(curlnoise src/main.cpp)
 # C++11 compatability
 set_target_properties(curlnoise PROPERTIES COMPILE_FLAGS "-std=c++11")
 
+#include(CheckCXXCompilerFlag)
+#CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+#CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+#if(COMPILER_SUPPORTS_CXX11)
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+#elseif(COMPILER_SUPPORTS_CXX0X)
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+#else()
+#        message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+#endif()
+
 # Link all the libraries (including our own)
-target_link_libraries(curlnoise Curl_Noise_lib ${OPENGL_LIBRARIES} ${OPENGL_glu_LIBRARY} ${ASSIMP_LIBRARIES} ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
+target_link_libraries(curlnoise Curl_Noise_lib ${OPENGL_LIBRARIES} ${OPENGL_glu_LIBRARY} ${ASSIMP_LIBRARIES} ${GLEW_LIBRARY} ${GLFW_LIBRARIES} ${ANT_TWEAK_BAR_LIBRARY})
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
 if(APPLE)

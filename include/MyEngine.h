@@ -3,12 +3,15 @@
 
 #include "../include/SGE/SimpleGraphicsEngine.h"
 #include "../include/ParticleSystem.h"
+#include "../include/AntGui.h"
 
 #include <gl/glfw3.h>
 #include <gl/glew.h>
 
 #include <iostream>
 #include <sstream>
+
+#include <AntTweakBar.h>
 
 class MyBGObject3D : public Object3D {
 public:
@@ -41,9 +44,20 @@ public:
   ~MyEngine();
   virtual void run();
   void update();
-  static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
+  //static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
 private:
   virtual bool initialize();
+  static void mousePosCallback(GLFWwindow * window, double x, double y);
+  static void mouseButtonCallback(GLFWwindow * window, int button, int action, int mods);
+  static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
+  static void keyCallback(
+    GLFWwindow * window,
+    int key,
+    int scancode,
+    int action,
+    int mods);
+
+  AntGui *ant_gui_;
   GLFWwindow* window_;
 
   // Objects to put in the scene

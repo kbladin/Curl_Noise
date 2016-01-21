@@ -55,8 +55,7 @@ protected:
   static Object3D* viewspace_ortho_camera_;
   virtual bool initialize();
 
-  double time_;
-  
+  double time_;  
 private:
 };
 

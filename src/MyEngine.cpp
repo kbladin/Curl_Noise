@@ -1,7 +1,5 @@
 #include "../include/MyEngine.h"
 
-//#include <nanogui/nanogui.h>
-
 MyBGObject3D::MyBGObject3D()
 {
   background_plane_ = new TriangleMesh();
@@ -45,11 +43,12 @@ void MyObject3D::render(glm::mat4 M)
 
 MyEngine::MyEngine() : SimpleGraphicsEngine()
 {
-  // First initialize this class to create OpenGL context
+  // First initialize this class to create OpenGL context with glfw
   initialize();
-  // Now initialize OpenGL and objects in scene
+  // Now initialize objects in scene
   SimpleGraphicsEngine::initialize();
-
+  // create the gui
+  ant_gui_ = new AntGui();
   // Load shaders
   ShaderManager::instance()->loadShader(
     "SHADER_PHONG",
@@ -147,14 +146,17 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
   //scene_->addChild(sphere_);
   background_space_->addChild(background_);
 
-  // Set callback functions
-  glfwSetScrollCallback(window_, mouseScrollCallback);
-
   // Set camera transform
   camera_->transform_matrix_ = glm::translate(glm::vec3(0.0f,0.0f,-3.0f));
   camera_->transform_matrix_ =
     camera_->transform_matrix_ *
     glm::rotate(glm::mat4(), 0.3f, glm::vec3(1,0,0));
+
+  // Set callback functions
+  glfwSetCursorPosCallback(window_, mousePosCallback);
+  glfwSetMouseButtonCallback(window_, mouseButtonCallback);
+  glfwSetScrollCallback(window_, mouseScrollCallback);
+  glfwSetKeyCallback(window_, keyCallback);
 }
 
 bool MyEngine::initialize()
@@ -184,6 +186,8 @@ bool MyEngine::initialize()
 MyEngine::~MyEngine()
 {
   glfwTerminate();
+  delete ant_gui_;
+
   delete point_cloud_;
   
   delete basic_cam_;
@@ -210,12 +214,14 @@ void MyEngine::update()
   one_color_cam_->setResolution(width, height);
   point_cloud_cam_->setResolution(width, height);
   background_ortho_cam_->setResolution(width, height);
-  
 
   SimpleGraphicsEngine::update(width, height);
   
   // Update particle system
   point_cloud_->update(dt_);
+
+  // Draw the gui
+  ant_gui_->render(width, height);
 
   // Print FPS on window
   frame_counter_ ++;
@@ -240,25 +246,38 @@ void MyEngine::run()
   }
 }
 
+void MyEngine::mousePosCallback(GLFWwindow * window, double x, double y)
+{
+  if (!TwEventMousePosGLFW(x * 2,y * 2))
+  {
+    
+  }
+}
+
+void MyEngine::mouseButtonCallback(GLFWwindow * window, int button, int action, int mods)
+{
+  if (!TwEventMouseButtonGLFW(button, action))
+  {
+
+  }
+}
+
 void MyEngine::mouseScrollCallback(GLFWwindow * window, double dx, double dy)
 {
-  camera_->transform_matrix_ = camera_->transform_matrix_ * glm::rotate(glm::mat4(), 0.1f * float(dx), glm::vec3(0,1,0));
-  /*
-  glm::vec3 prev_position = camera_->transform_.getPosition();
+  camera_->transform_matrix_ =
+    camera_->transform_matrix_ *
+    glm::rotate(glm::mat4(), 0.1f * float(dx), glm::vec3(0,1,0));
+}
 
-  // Transform back
-  camera_->transform_.translate(-prev_position);
+void MyEngine::keyCallback(
+  GLFWwindow * window,
+  int key,
+  int scancode,
+  int action,
+  int mods)
+{
+  if (!TwEventKeyGLFW(key, action))
+  {
 
-  camera_->transform_.rotateX(- 5 * dy);
-  
-  float current_x_rotation = camera_->transform_.getEulerRotationXYZ().x;
-  camera_->transform_.rotateX(-current_x_rotation);
-  
-  camera_->transform_.rotateY(- 5 * dx);
-
-  camera_->transform_.rotateX(current_x_rotation);
-  
-  // Do transform again
-  camera_->transform_.translate(prev_position);
-  */
+  }
 }
