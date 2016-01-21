@@ -39,13 +39,16 @@ private:
  */
 class SimpleGraphicsEngine {
 public:
-  SimpleGraphicsEngine();
+  SimpleGraphicsEngine(double time);
   virtual ~SimpleGraphicsEngine();
+  float getDt();
 protected:
-  virtual void run() = 0;
+  //virtual void run() = 0;
   void update(int w, int h);
   
+  double time_;  
   double dt_;
+
   Object3D* scene_;
 
   Object3D* view_space_;
@@ -55,7 +58,6 @@ protected:
   static Object3D* viewspace_ortho_camera_;
   virtual bool initialize();
 
-  double time_;  
 private:
 };
 

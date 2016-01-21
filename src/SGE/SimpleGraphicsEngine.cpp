@@ -38,9 +38,10 @@ void LightSource::render(glm::mat4 M)
 Object3D* SimpleGraphicsEngine::camera_;
 Object3D* SimpleGraphicsEngine::viewspace_ortho_camera_;
 
-SimpleGraphicsEngine::SimpleGraphicsEngine()
+SimpleGraphicsEngine::SimpleGraphicsEngine(double time)
 {
-
+  time_ = time;
+  dt_ = 0;
 }
 
 SimpleGraphicsEngine::~SimpleGraphicsEngine()
@@ -89,21 +90,20 @@ bool SimpleGraphicsEngine::initialize()
 //! This function needs to be implemented if extending this class.
 void SimpleGraphicsEngine::update(int w, int h)
 {
-    glClearColor(0, 0, 0, 1);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.7, 0.7, 0.7, 1);
+  glClearColor(0, 0, 0, 1);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    float aspect = float(w)/h;
-    glViewport(0,0,w * 2,h * 2);
+  float aspect = float(w)/h;
+  glViewport(0,0,w * 2,h * 2);
 
-    glDisable(GL_DEPTH_TEST);
-    background_space_->render(glm::mat4());
-    glEnable(GL_DEPTH_TEST);
-    scene_->render(glm::mat4());
-    view_space_->render(glm::mat4());
+  glDisable(GL_DEPTH_TEST);
+  background_space_->render(glm::mat4());
+  glEnable(GL_DEPTH_TEST);
+  scene_->render(glm::mat4());
+  view_space_->render(glm::mat4());
+}
 
-    
+float SimpleGraphicsEngine::getDt()
+{
+  return dt_;
 }

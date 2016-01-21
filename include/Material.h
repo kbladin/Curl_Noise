@@ -2,7 +2,6 @@
 #define MATERIAL_H
 
 #include <gl/glew.h>
-#include <gl/glfw3.h>
 #include "../ext/glm/include/glm/glm.hpp"
 
 #include "../include/SGE/ShaderManager.h"

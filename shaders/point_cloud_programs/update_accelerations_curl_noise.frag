@@ -156,10 +156,10 @@ vec3 potential(vec3 p)
   float alpha;
   vec3 n;
   vec3 pot = vec3(0,0,0);
-  //pot += L * 0.3 * speed * vec3(
-  //  snoise(vec4(p.x, p.y, p.z, time * 0.01) / L),
-  //  snoise(vec4(p.x, p.y + 49, p.z, time * 0.01) / L),
-  //  snoise(vec4(p.x, p.y, p.z + 49, time * 0.01) / L));
+  pot += L * 0.3 * speed * vec3(
+    snoise(vec4(p.x, p.y, p.z, time * 0.01) / L),
+    snoise(vec4(p.x, p.y + 49, p.z, time * 0.01) / L),
+    snoise(vec4(p.x, p.y, p.z + 49, time * 0.01) / L));
   
   // Rotational potential gives linearly rising vector field
   pot += speed * vec3(-p.z,0,p.x);

@@ -42,5 +42,5 @@ void main(){
 	//vec3 diffuse = vec3(1,1,1) *  dot(n,-normalize(vec3(1,1,-1)));
 
 	
-	color = vec4(1,1,1,0.02);//vec4(diffuse, 1);
+	color = vec4(1,1,1,0.1);//vec4(diffuse, 1);
 }

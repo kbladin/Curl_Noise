@@ -41,14 +41,12 @@ void MyObject3D::render(glm::mat4 M)
   mesh_->render(M, material_->getProgramID());
 }
 
-MyEngine::MyEngine() : SimpleGraphicsEngine()
+MyEngine::MyEngine(double time) : SimpleGraphicsEngine(time)
 {
   // First initialize this class to create OpenGL context with glfw
   initialize();
   // Now initialize objects in scene
   SimpleGraphicsEngine::initialize();
-  // create the gui
-  ant_gui_ = new AntGui();
   // Load shaders
   ShaderManager::instance()->loadShader(
     "SHADER_PHONG",
@@ -133,7 +131,6 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
   background_ = new MyBGObject3D();
   sphere_ = new MyObject3D("../data/meshes/icosphere.obj");
   point_cloud_ = new ParticleSystem(200000);
-
   
   // Connect nodes
   camera_->addChild(basic_cam_);
@@ -143,7 +140,7 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
 
   // Add to scene
   scene_->addChild(point_cloud_);
-  //scene_->addChild(sphere_);
+  scene_->addChild(sphere_);
   background_space_->addChild(background_);
 
   // Set camera transform
@@ -151,43 +148,10 @@ MyEngine::MyEngine() : SimpleGraphicsEngine()
   camera_->transform_matrix_ =
     camera_->transform_matrix_ *
     glm::rotate(glm::mat4(), 0.3f, glm::vec3(1,0,0));
-
-  // Set callback functions
-  glfwSetCursorPosCallback(window_, mousePosCallback);
-  glfwSetMouseButtonCallback(window_, mouseButtonCallback);
-  glfwSetScrollCallback(window_, mouseScrollCallback);
-  glfwSetKeyCallback(window_, keyCallback);
-}
-
-bool MyEngine::initialize()
-{
-  time_ = glfwGetTime();
-  // Initialize glfw
-  if (!glfwInit())
-    return false;
-  // Modern OpenGL
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  // Create a windowed mode window and its OpenGL context
-  window_ = glfwCreateWindow(720, 480, "Model Viewer", NULL, NULL);
-  if (!window_)
-  {
-    glfwTerminate();
-    return false;
-  }
-  // Make the window's context current
-  glfwMakeContextCurrent(window_);
-  printf("%s\n", glGetString(GL_VERSION));
-  return true;
 }
 
 MyEngine::~MyEngine()
 {
-  glfwTerminate();
-  delete ant_gui_;
-
   delete point_cloud_;
   
   delete basic_cam_;
@@ -202,14 +166,11 @@ MyEngine::~MyEngine()
   delete sphere_;
 }
 
-void MyEngine::update()
+void MyEngine::update(int width, int height, float time)
 {
-  dt_ = glfwGetTime() - time_;
-  time_ = glfwGetTime();
-  int width;
-  int height;
-  glfwGetWindowSize(window_, &width, &height);
-
+  dt_ = time - time_;
+  time_ = time;
+  
   basic_cam_->setResolution(width, height);
   one_color_cam_->setResolution(width, height);
   point_cloud_cam_->setResolution(width, height);
@@ -219,50 +180,19 @@ void MyEngine::update()
   
   // Update particle system
   point_cloud_->update(dt_);
-
-  // Draw the gui
-  ant_gui_->render(width, height);
-
-  // Print FPS on window
-  frame_counter_ ++;
-  delay_counter_ += dt_;  
-  if (delay_counter_ >= 1.0) {
-    std::stringstream title;
-    title << frame_counter_ << " FPS";
-    glfwSetWindowTitle(window_, title.str().c_str());
-    frame_counter_ = 0;
-    delay_counter_ = 0;
-  }
-
-  glfwSwapBuffers(window_);
-  glfwPollEvents();
 }
 
-void MyEngine::run()
+void MyEngine::mousePosCallback(double x, double y)
 {
-  while (!glfwWindowShouldClose(window_))
-  {
-    update();
-  }
+
 }
 
-void MyEngine::mousePosCallback(GLFWwindow * window, double x, double y)
+void MyEngine::mouseButtonCallback(int button, int action, int mods)
 {
-  if (!TwEventMousePosGLFW(x * 2,y * 2))
-  {
-    
-  }
+
 }
 
-void MyEngine::mouseButtonCallback(GLFWwindow * window, int button, int action, int mods)
-{
-  if (!TwEventMouseButtonGLFW(button, action))
-  {
-
-  }
-}
-
-void MyEngine::mouseScrollCallback(GLFWwindow * window, double dx, double dy)
+void MyEngine::mouseScrollCallback(double dx, double dy)
 {
   camera_->transform_matrix_ =
     camera_->transform_matrix_ *
@@ -270,14 +200,10 @@ void MyEngine::mouseScrollCallback(GLFWwindow * window, double dx, double dy)
 }
 
 void MyEngine::keyCallback(
-  GLFWwindow * window,
   int key,
   int scancode,
   int action,
   int mods)
 {
-  if (!TwEventKeyGLFW(key, action))
-  {
 
-  }
 }

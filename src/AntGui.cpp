@@ -13,8 +13,6 @@ AntGui::AntGui()
   //// Add 'speed' to 'bar': it is a modifable (RW) variable of type TW_TYPE_DOUBLE. Its key shortcuts are [s] and [S].
   //TwAddVarRW(bar, "speed", TW_TYPE_DOUBLE, &speed, 
   //           " label='Rot speed' min=0 max=2 step=0.01 keyIncr=s keyDecr=S help='Rotation speed (turns/second)' ");
-
-
 }
 
 AntGui::~AntGui()

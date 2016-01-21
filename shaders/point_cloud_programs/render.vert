@@ -25,6 +25,6 @@ void main(){
 	t = p_tmp.a;
 	vec4 pos_cam_space = V * M * vec4(p ,1);
 	gl_Position = P * pos_cam_space;
-	radius =  20 / (-pos_cam_space.z);
+	radius = 1;//  5 / (-pos_cam_space.z);
 	gl_PointSize = radius;
 }

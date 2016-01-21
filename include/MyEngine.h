@@ -5,13 +5,10 @@
 #include "../include/ParticleSystem.h"
 #include "../include/AntGui.h"
 
-#include <gl/glfw3.h>
 #include <gl/glew.h>
 
 #include <iostream>
 #include <sstream>
-
-#include <AntTweakBar.h>
 
 class MyBGObject3D : public Object3D {
 public:
@@ -40,33 +37,23 @@ protected:
 */
 class MyEngine : public SimpleGraphicsEngine {
 public:
-  MyEngine();
+  MyEngine(double time);
   ~MyEngine();
-  virtual void run();
-  void update();
-  //static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
-private:
-  virtual bool initialize();
-  static void mousePosCallback(GLFWwindow * window, double x, double y);
-  static void mouseButtonCallback(GLFWwindow * window, int button, int action, int mods);
-  static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
-  static void keyCallback(
-    GLFWwindow * window,
+  void update(int width, int height, float time);
+
+  void mousePosCallback(double x, double y);
+  void mouseButtonCallback(int button, int action, int mods);
+  void mouseScrollCallback(double dx, double dy);
+  void keyCallback(
     int key,
     int scancode,
     int action,
     int mods);
-
-  AntGui *ant_gui_;
-  GLFWwindow* window_;
-
+private:
   // Objects to put in the scene
   MyBGObject3D* background_;
   MyObject3D* sphere_;
   ParticleSystem* point_cloud_;
-
-  float delay_counter_;
-  int frame_counter_;
   
   // One camera for each render shader
   // (probably a bit faster than to change shader for one camera)
