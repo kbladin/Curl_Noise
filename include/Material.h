@@ -75,9 +75,9 @@ public:
   GLuint getPositionTextureToSample(){return position_texture_to_sample_;};
   void render()const;
 private:
-  GLuint acceleration_texture_sampler1D_ID_;
-  GLuint velocity_texture_sampler1D_ID_;
-  GLuint position_texture_sampler1D_ID_;
+  GLuint acceleration_texture_sampler2D_ID_;
+  GLuint velocity_texture_sampler2D_ID_;
+  GLuint position_texture_sampler2D_ID_;
   
   GLuint acceleration_texture_to_sample_;
   GLuint velocity_texture_to_sample_;

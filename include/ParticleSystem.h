@@ -40,6 +40,8 @@ private:
   
   std::vector<glm::vec3> quad_vertices_;
   std::vector<unsigned short> quad_elements_;
+
+  float time;
 };
 
 #endif

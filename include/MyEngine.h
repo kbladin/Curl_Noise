@@ -38,7 +38,7 @@ public:
 private:
   // Objects to put in the scene
   MyBGObject3D* background_;
-  MyObject3D* bunny_;
+  MyObject3D* sphere_;
   ParticleSystem* point_cloud_;
 
   float delay_counter_;

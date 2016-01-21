@@ -88,7 +88,7 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderMana
 {
   std::vector<glm::vec3> accelerations;
   std::vector<glm::vec3> velocities;
-  std::vector<glm::vec3> positions;
+  std::vector<glm::vec4> positions;
   accelerations.resize(size * size);
   velocities.resize(size * size);
   positions.resize(size * size);
@@ -102,8 +102,8 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderMana
     //positions[i] = glm::vec3(r * glm::cos(t),(float(rand()) / RAND_MAX - 0.5f) * 0.5f,r * glm::sin(t));
     //velocities[i] = glm::sqrt(0.000003f * ( 500.0f) ) * glm::length(positions[i]) * glm::length(positions[i]) * glm::normalize(glm::cross(positions[i], glm::vec3(0,1,0)));
     
-    positions[i] = glm::vec3(float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f);
-    velocities[i] = 0.1f * glm::vec3(float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f);
+    positions[i] = glm::vec4(float(rand()) / RAND_MAX - 0.5f, -2, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX * 0.5);
+    velocities[i] = 0.0f * glm::vec3(float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f);
     /*
     if (positions[i].x < 0)
     {
@@ -155,11 +155,11 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderMana
   glBindTexture(GL_TEXTURE_2D, position_texture_to_sample_);
   glTexImage2D(GL_TEXTURE_2D,
                0,
-               GL_RGB,
+               GL_RGBA,
                size,
                size,
                0,
-               GL_RGB,
+               GL_RGBA,
                GL_FLOAT,
                &positions[0]);
   
@@ -168,9 +168,9 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderMana
   
   glUseProgram(program_ID_);
 
-  acceleration_texture_sampler1D_ID_ = glGetUniformLocation(program_ID_, "accelerationSampler2D");
-  velocity_texture_sampler1D_ID_ = glGetUniformLocation(program_ID_, "velocitySampler2D");
-  position_texture_sampler1D_ID_ = glGetUniformLocation(program_ID_, "positionSampler2D");
+  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "accelerationSampler2D");
+  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "velocitySampler2D");
+  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "positionSampler2D");
 }
 
 PointCloudMaterial::~PointCloudMaterial()
@@ -212,14 +212,14 @@ void PointCloudMaterial::render() const
   
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, acceleration_texture_to_sample_);
-  glUniform1i(acceleration_texture_sampler1D_ID_, 0);
+  glUniform1i(acceleration_texture_sampler2D_ID_, 0);
   
   glActiveTexture(GL_TEXTURE0 + 1);
   glBindTexture(GL_TEXTURE_2D, velocity_texture_to_sample_);
-  glUniform1i(velocity_texture_sampler1D_ID_, 1);
+  glUniform1i(velocity_texture_sampler2D_ID_, 1);
   
   glActiveTexture(GL_TEXTURE0 + 2);
   glBindTexture(GL_TEXTURE_2D, position_texture_to_sample_);
-  glUniform1i(position_texture_sampler1D_ID_, 2);
+  glUniform1i(position_texture_sampler2D_ID_, 2);
   
 }

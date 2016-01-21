@@ -4,6 +4,7 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
 {
   material_ = new PointCloudMaterial(size_);
   mesh_ = new PointCloudMesh(size_);
+  time = 0;
   
   // Three shaders. One for each attribute
   update_accelerations_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS");
@@ -47,11 +48,11 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
   glBindTexture(GL_TEXTURE_2D, position_texture_to_render_);
   glTexImage2D(GL_TEXTURE_2D,
                0,
-               GL_RGB,
+               GL_RGBA,
                size_,
                size_,
                0,
-               GL_RGB,
+               GL_RGBA,
                GL_FLOAT,
                0);
   // Need mipmap for some reason......
@@ -132,7 +133,17 @@ ParticleSystem::~ParticleSystem()
 void ParticleSystem::render(glm::mat4 M)
 {
   material_->render();
+
+  glEnable(GL_BLEND);
+  glEnable(GL_DEPTH_TEST);
+  glDepthMask(GL_FALSE);
+  glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
   mesh_->render(M, ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"));
+
+  // Now turn depth masking on and blending off, so state is unchanged.
+  glDepthMask(GL_TRUE);
+  glDisable(GL_BLEND);
 }
 
 void ParticleSystem::updateAccelerations(float dt)
@@ -145,6 +156,7 @@ void ParticleSystem::updateAccelerations(float dt)
   
   // These should not be done every time....
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "dt"), dt);
+  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "time"), time);
   glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "size"), size_);
   glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "accelerationSampler2D"), 0);
   glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "velocitySampler2D"), 1);
@@ -285,13 +297,13 @@ void ParticleSystem::updatePositions(float dt)
 
 void ParticleSystem::update(float dt)
 {
-  dt *= 3;
   const int sims_per_frame = 1;
   for (int i=0; i<sims_per_frame; i++) {
     updateAccelerations(dt / sims_per_frame);
     updateVelocities(dt / sims_per_frame);
     updatePositions(dt / sims_per_frame);
     swapTextures();
+    time += dt / sims_per_frame;
   }
 }
 
