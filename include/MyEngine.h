@@ -5,6 +5,10 @@
 #include "../include/ParticleSystem.h"
 
 #include <gl/glfw3.h>
+#include <gl/glew.h>
+
+#include <iostream>
+#include <sstream>
 
 class MyBGObject3D : public Object3D {
 public:

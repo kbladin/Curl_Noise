@@ -1,8 +1,8 @@
-#include <iostream>
-#include <vector>
+//#include <iostream>
+//#include <vector>
 
-#include <gl/glew.h>
-#include <gl/glfw3.h>
+//#include <gl/glew.h>
+//#include <gl/glfw3.h>
 
 #include "../include/MyEngine.h"
 

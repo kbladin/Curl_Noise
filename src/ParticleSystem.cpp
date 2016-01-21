@@ -132,7 +132,7 @@ ParticleSystem::~ParticleSystem()
 
 void ParticleSystem::render(glm::mat4 M)
 {
-  material_->render();
+  material_->use();
 
   glEnable(GL_BLEND);
   glEnable(GL_DEPTH_TEST);

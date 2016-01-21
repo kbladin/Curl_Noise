@@ -35,7 +35,7 @@ PhongMaterial::PhongMaterial() : Material(ShaderManager::instance()->getShader("
     This function is automatically called when a mesh with this material is
     rendered.
   */
-void PhongMaterial::render() const
+void PhongMaterial::use() const
 {
   // Use our shader
   glUseProgram(program_ID_);
@@ -59,7 +59,7 @@ OneColorMaterial::OneColorMaterial() : Material(ShaderManager::instance()->getSh
     This function is automatically called when a mesh with this material is
     rendered.
   */
-void OneColorMaterial::render() const
+void OneColorMaterial::use() const
 {
   // Use our shader
   glUseProgram(program_ID_);
@@ -77,7 +77,7 @@ BackgroundMaterial::BackgroundMaterial() : Material(ShaderManager::instance()->g
     This function is automatically called when a mesh with this material is
     rendered.
   */
-void BackgroundMaterial::render() const
+void BackgroundMaterial::use() const
 {
   // Use our shader
   glUseProgram(program_ID_);
@@ -205,7 +205,7 @@ GLuint PointCloudMaterial::swapPositionTexture(GLuint texture_ID)
 }
 
 //! Updating the shader parameters.
-void PointCloudMaterial::render() const
+void PointCloudMaterial::use() const
 {
   // Use our shader
   glUseProgram(program_ID_);

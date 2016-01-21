@@ -1,6 +1,6 @@
 #include "../include/MyEngine.h"
-#include <iostream>
-#include <sstream>
+
+//#include <nanogui/nanogui.h>
 
 MyBGObject3D::MyBGObject3D()
 {
@@ -20,7 +20,7 @@ MyBGObject3D::~MyBGObject3D()
 
 void MyBGObject3D::render(glm::mat4 M)
 {
-  material_->render();
+  material_->use();
   background_plane_->render(M, material_->getProgramID());
 }
 
@@ -39,7 +39,7 @@ MyObject3D::~MyObject3D()
 
 void MyObject3D::render(glm::mat4 M)
 {
-  material_->render();
+  material_->use();
   mesh_->render(M, material_->getProgramID());
 }
 

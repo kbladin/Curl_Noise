@@ -17,7 +17,7 @@ class Material {
 public:
   Material(GLuint program_ID);
   virtual ~Material(){};
-  virtual void render()const = 0;
+  virtual void use()const = 0;
   GLuint getProgramID()const;
 protected:
   const GLuint program_ID_;
@@ -28,7 +28,7 @@ class PhongMaterial : public Material {
 public:
   PhongMaterial();
   ~PhongMaterial(){};
-  void render()const;
+  void use()const;
   
   glm::vec3 diffuse_color_;
   glm::vec3 specular_color_;
@@ -46,7 +46,7 @@ class OneColorMaterial : public Material {
 public:
   OneColorMaterial();
   ~OneColorMaterial(){};
-  void render()const;
+  void use()const;
   
   glm::vec3 diffuse_color_;
   private:
@@ -58,7 +58,7 @@ class BackgroundMaterial : public Material {
 public:
   BackgroundMaterial();
   ~BackgroundMaterial(){};
-  void render()const;
+  void use()const;
 private:
 };
 
@@ -73,7 +73,7 @@ public:
   GLuint getAccelerationTextureToSample(){return acceleration_texture_to_sample_;};
   GLuint getVelocityTextureToSample(){return velocity_texture_to_sample_;};
   GLuint getPositionTextureToSample(){return position_texture_to_sample_;};
-  void render()const;
+  void use()const;
 private:
   GLuint acceleration_texture_sampler2D_ID_;
   GLuint velocity_texture_sampler2D_ID_;
