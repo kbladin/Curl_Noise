@@ -7,6 +7,11 @@ uniform sampler2D velocitySampler2D;
 uniform sampler2D accelerationSampler2D;
 
 uniform float dt;
+
+// Properties of the particle system
+uniform float inv_life_length_factor;
+uniform float emission_area_factor;
+
 out vec4 position_out;
 
 float rand(vec2 co){
@@ -28,12 +33,12 @@ void main(){
 	//new_pos.z = new_pos.z < -1 ? 1 : (new_pos.z > 1 ? -1 : new_pos.z); 
 
 	if(t >= 1){
-		new_pos.y = -2;
-		new_pos.x = (fract(new_pos.x - 0.5) - 0.5) * 0.5;
-		new_pos.z = (fract(new_pos.z - 0.5) - 0.5) * 0.5;
-		t = rand(new_pos.xy);
+		new_pos.x = (fract(new_pos.x - 0.5) - 0.5) * emission_area_factor;
+		new_pos.y = -2 + (fract(new_pos.y - 0.5) - 0.5) * emission_area_factor;
+		new_pos.z = (fract(new_pos.z - 0.5) - 0.5) * emission_area_factor;
+		t = rand(new_pos.xy * 17);
 	}
 
-	t += dt * 0.05;
+	t += dt * inv_life_length_factor * 0.01;
     position_out = vec4(new_pos,t);
 }

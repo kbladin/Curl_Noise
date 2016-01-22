@@ -10,6 +10,8 @@ uniform mat4 M;
 uniform mat4 V;
 uniform mat4 P;
 
+uniform float particle_radius;
+
 out vec3 a;
 out vec3 v;
 out vec3 p;
@@ -25,6 +27,6 @@ void main(){
 	t = p_tmp.a;
 	vec4 pos_cam_space = V * M * vec4(p ,1);
 	gl_Position = P * pos_cam_space;
-	radius = 1;//  5 / (-pos_cam_space.z);
+	radius = particle_radius;// 5 / (-pos_cam_space.z);
 	gl_PointSize = radius;
 }

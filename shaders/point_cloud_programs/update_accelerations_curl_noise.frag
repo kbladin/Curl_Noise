@@ -146,23 +146,32 @@ uniform sampler2D accelerationSampler2D;
 uniform float dt;
 uniform float time;
 uniform int size;
+
+// Properties of the particle system
+uniform float field_speed;
+uniform float curl;
+uniform float progression_rate;
+uniform float length_scale;
+
+// Output
 out vec4 acceleration_out;
 
 // The vector field potential has three components
 vec3 potential(vec3 p)
 {
-  float L = 0.2;
-  float speed = 0.1;
+  float L = length_scale;
+  float speed = field_speed;
+  float beta = curl; // amount of curl noise compared to rising field
   float alpha;
   vec3 n;
   vec3 pot = vec3(0,0,0);
-  pot += L * 0.3 * speed * vec3(
-    snoise(vec4(p.x, p.y, p.z, time * 0.01) / L),
+  pot += L * beta * speed * vec3(
+    snoise(vec4(p.x, p.y, p.z, time * progression_rate * 0.1) / L),
     snoise(vec4(p.x, p.y + 49, p.z, time * 0.01) / L),
     snoise(vec4(p.x, p.y, p.z + 49, time * 0.01) / L));
   
   // Rotational potential gives linearly rising vector field
-  pot += speed * vec3(-p.z,0,p.x);
+  pot += (1 - beta) * speed * vec3(-p.z,0,p.x);
 
   alpha = abs((smoothstep(0.5, 0.5+L, length(p))));
   n = normalize(p);

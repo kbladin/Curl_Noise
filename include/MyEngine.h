@@ -49,6 +49,9 @@ public:
     int scancode,
     int action,
     int mods);
+
+  ParticleSystemProperties* getParticleSystemPropertiesPointer();
+  PointCloudRenderingProperties* getPointCloudRenderingPropertiesPointer();
 private:
   // Objects to put in the scene
   MyBGObject3D* background_;

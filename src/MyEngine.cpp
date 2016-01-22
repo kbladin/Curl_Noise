@@ -207,3 +207,13 @@ void MyEngine::keyCallback(
 {
 
 }
+
+ParticleSystemProperties* MyEngine::getParticleSystemPropertiesPointer()
+{
+  return point_cloud_->getPropertiesPointer();
+}
+
+PointCloudRenderingProperties* MyEngine::getPointCloudRenderingPropertiesPointer()
+{
+  return point_cloud_->getPointCloudRenderingPropertiesPointer();
+}

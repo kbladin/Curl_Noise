@@ -86,6 +86,9 @@ void BackgroundMaterial::use() const
 //! Create a material which is bound to the UpdatePointCloud shader.
 PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"))
 {
+  rendering_properties_.particle_color = glm::vec3(1,1,1);
+  rendering_properties_.particle_radius = 2;
+
   std::vector<glm::vec3> accelerations;
   std::vector<glm::vec3> velocities;
   std::vector<glm::vec4> positions;
@@ -171,6 +174,8 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderMana
   acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "accelerationSampler2D");
   velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "velocitySampler2D");
   position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "positionSampler2D");
+  particle_color_ID_ = glGetUniformLocation(program_ID_, "particle_color");
+  particle_radius_ID_ = glGetUniformLocation(program_ID_, "particle_radius");
 }
 
 PointCloudMaterial::~PointCloudMaterial()
@@ -221,5 +226,20 @@ void PointCloudMaterial::use() const
   glActiveTexture(GL_TEXTURE0 + 2);
   glBindTexture(GL_TEXTURE_2D, position_texture_to_sample_);
   glUniform1i(position_texture_sampler2D_ID_, 2);
-  
+
+  glUniform3f(
+    particle_color_ID_,
+    rendering_properties_.particle_color.r,
+    rendering_properties_.particle_color.g,
+    rendering_properties_.particle_color.b);
+
+  glUniform1f(
+    particle_radius_ID_,
+    rendering_properties_.particle_radius);
 }
+
+PointCloudRenderingProperties* PointCloudMaterial::getPropertiesPointer()
+{
+  return &rendering_properties_;
+}
+

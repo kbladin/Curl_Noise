@@ -1,10 +1,19 @@
-#ifndef POINT_CLOUD_GPU_H
-#define POINT_CLOUD_GPU_H
+#ifndef PARTICLE_SYSTEM_GPU_H
+#define PARTICLE_SYSTEM_GPU_H
 
 #include "../include/SGE/Object3D.h"
 #include "../include/SGE/Mesh.h"
 
 #include "../include/Material.h"
+
+struct ParticleSystemProperties {
+  float field_speed;
+  float curl;
+  float progression_rate;
+  float length_scale;
+  float life_length_factor;
+  float emission_area_factor;
+};
 
 class ParticleSystem : public Object3D {
 public:
@@ -12,11 +21,15 @@ public:
   ~ParticleSystem();
   void render(glm::mat4 M);
   void update(float dt);
+  ParticleSystemProperties* getPropertiesPointer();
+  PointCloudRenderingProperties* getPointCloudRenderingPropertiesPointer();
 private:
   void updateAccelerations(float dt);
   void updateVelocities(float dt);
   void updatePositions(float dt);
   void swapTextures();
+
+  ParticleSystemProperties properties_;
   
   const unsigned long size_;
   PointCloudMesh* mesh_;

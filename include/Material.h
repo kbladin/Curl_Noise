@@ -61,6 +61,11 @@ public:
 private:
 };
 
+struct PointCloudRenderingProperties {
+  glm::vec3 particle_color;
+  float particle_radius;
+};
+
 //! Every Mesh has a material which specifies parameters for shading.
 class PointCloudMaterial : public Material {
 public:
@@ -72,8 +77,14 @@ public:
   GLuint getAccelerationTextureToSample(){return acceleration_texture_to_sample_;};
   GLuint getVelocityTextureToSample(){return velocity_texture_to_sample_;};
   GLuint getPositionTextureToSample(){return position_texture_to_sample_;};
+  
+  PointCloudRenderingProperties* getPropertiesPointer();
+
   void use()const;
 private:
+  GLuint particle_color_ID_;
+  GLuint particle_radius_ID_;
+
   GLuint acceleration_texture_sampler2D_ID_;
   GLuint velocity_texture_sampler2D_ID_;
   GLuint position_texture_sampler2D_ID_;
@@ -81,6 +92,8 @@ private:
   GLuint acceleration_texture_to_sample_;
   GLuint velocity_texture_to_sample_;
   GLuint position_texture_to_sample_;
+
+  PointCloudRenderingProperties rendering_properties_;
 };
 
 #endif

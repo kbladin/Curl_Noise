@@ -19,6 +19,14 @@ ApplicationWindowGLFW::ApplicationWindowGLFW()
   // create the gui
   ant_gui_ = new AntGui();
 
+  // Add tweak bars to control properties in the engine
+  ant_gui_->createParticleSystemPropertiesTwBar(
+    engine_->getParticleSystemPropertiesPointer(),
+    "Particle System Properties");
+  ant_gui_->createPointCloundRenderingPropertiesTwBar(
+    engine_->getPointCloudRenderingPropertiesPointer(),
+    "Particle System Rendering Properties");
+
   // Set callback functions
   glfwSetCursorPosCallback(window_, mousePosCallback);
   glfwSetMouseButtonCallback(window_, mouseButtonCallback);
@@ -85,7 +93,10 @@ void ApplicationWindowGLFW::run()
   }
 }
 
-void ApplicationWindowGLFW::mousePosCallback(GLFWwindow * window, double x, double y)
+void ApplicationWindowGLFW::mousePosCallback(
+  GLFWwindow * window,
+  double x,
+  double y)
 {
   if (!TwEventMousePosGLFW(x * 2,y * 2))
   {
@@ -93,7 +104,11 @@ void ApplicationWindowGLFW::mousePosCallback(GLFWwindow * window, double x, doub
   }
 }
 
-void ApplicationWindowGLFW::mouseButtonCallback(GLFWwindow * window, int button, int action, int mods)
+void ApplicationWindowGLFW::mouseButtonCallback(
+  GLFWwindow * window,
+  int button,
+  int action,
+  int mods)
 {
   if (!TwEventMouseButtonGLFW(button, action))
   {
@@ -101,7 +116,10 @@ void ApplicationWindowGLFW::mouseButtonCallback(GLFWwindow * window, int button,
   }
 }
 
-void ApplicationWindowGLFW::mouseScrollCallback(GLFWwindow * window, double dx, double dy)
+void ApplicationWindowGLFW::mouseScrollCallback(
+  GLFWwindow * window,
+  double dx,
+  double dy)
 {
   engine_->mouseScrollCallback(dx, dy);
 }

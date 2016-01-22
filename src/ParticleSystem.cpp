@@ -2,6 +2,13 @@
 
 ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
 {
+  properties_.field_speed = 0.1;
+  properties_.curl = 0.3;
+  properties_.progression_rate = 0.1;
+  properties_.length_scale = 0.2;
+  properties_.life_length_factor = 0.2;
+  properties_.emission_area_factor = 0.5;
+
   material_ = new PointCloudMaterial(size_);
   mesh_ = new PointCloudMesh(size_);
   time = 0;
@@ -134,16 +141,26 @@ void ParticleSystem::render(glm::mat4 M)
 {
   material_->use();
 
-  glEnable(GL_BLEND);
-  glEnable(GL_DEPTH_TEST);
-  glDepthMask(GL_FALSE);
-  glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+  //glEnable(GL_BLEND);
+  //glEnable(GL_DEPTH_TEST);
+  //glDepthMask(GL_FALSE);
+  //glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
   mesh_->render(M, ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"));
 
   // Now turn depth masking on and blending off, so state is unchanged.
   glDepthMask(GL_TRUE);
   glDisable(GL_BLEND);
+}
+
+ParticleSystemProperties* ParticleSystem::getPropertiesPointer()
+{
+  return &properties_;
+}
+
+PointCloudRenderingProperties* ParticleSystem::getPointCloudRenderingPropertiesPointer()
+{
+  return material_->getPropertiesPointer();
 }
 
 void ParticleSystem::updateAccelerations(float dt)
@@ -162,6 +179,12 @@ void ParticleSystem::updateAccelerations(float dt)
   glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "velocitySampler2D"), 1);
   glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "positionSampler2D"), 2);
   
+  // Properties of the particle system
+  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "field_speed"), properties_.field_speed);
+  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "curl"), properties_.curl);
+  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "progression_rate"), properties_.progression_rate);
+  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "length_scale"), properties_.length_scale);
+
   // Textures we want to sample from. All from previous state
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, material_->getAccelerationTextureToSample());
@@ -259,6 +282,10 @@ void ParticleSystem::updatePositions(float dt)
   glUniform1i(glGetUniformLocation(update_positions_program_ID_, "velocitySampler2D"), 1);
   glUniform1i(glGetUniformLocation(update_positions_program_ID_, "positionSampler2D"), 2);
   
+  // Properties of the particle system
+  glUniform1f(glGetUniformLocation(update_positions_program_ID_, "inv_life_length_factor"), 1 / properties_.life_length_factor);
+  glUniform1f(glGetUniformLocation(update_positions_program_ID_, "emission_area_factor"), properties_.emission_area_factor);
+
   // Acceleration and velocity are from current state
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, acceleration_texture_to_render_);

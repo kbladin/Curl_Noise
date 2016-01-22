@@ -6,6 +6,8 @@ out vec4 color;
 //uniform sampler2D velocitySampler2D;
 //uniform sampler2D positionSampler2D;
 
+uniform vec3 particle_color;
+
 in vec3 a;
 in vec3 v;
 in vec3 p;
@@ -42,5 +44,5 @@ void main(){
 	//vec3 diffuse = vec3(1,1,1) *  dot(n,-normalize(vec3(1,1,-1)));
 
 	
-	color = vec4(1,1,1,0.1);//vec4(diffuse, 1);
+	color = vec4(particle_color,0.2);//vec4(diffuse, 1);
 }
