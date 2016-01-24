@@ -10,7 +10,8 @@ uniform float dt;
 
 // Properties of the particle system
 uniform float inv_life_length_factor;
-uniform float emission_area_factor;
+uniform float emitter_size;
+uniform vec3 emitter_position;
 
 out vec4 position_out;
 
@@ -33,9 +34,9 @@ void main(){
 	//new_pos.z = new_pos.z < -1 ? 1 : (new_pos.z > 1 ? -1 : new_pos.z); 
 
 	if(t >= 1){
-		new_pos.x = (fract(new_pos.x - 0.5) - 0.5) * emission_area_factor;
-		new_pos.y = -2 + (fract(new_pos.y - 0.5) - 0.5) * emission_area_factor;
-		new_pos.z = (fract(new_pos.z - 0.5) - 0.5) * emission_area_factor;
+		new_pos.x = emitter_position.x + (fract(new_pos.x - 0.5) - 0.5) * emitter_size;
+		new_pos.y = emitter_position.y + (fract(new_pos.y - 0.5) - 0.5) * emitter_size;
+		new_pos.z = emitter_position.z + (fract(new_pos.z - 0.5) - 0.5) * emitter_size;
 		t = rand(new_pos.xy * 17);
 	}
 

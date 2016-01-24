@@ -4,10 +4,12 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
 {
   properties_.field_speed = 0.1;
   properties_.curl = 0.3;
-  properties_.progression_rate = 0.1;
-  properties_.length_scale = 0.2;
+  properties_.progression_rate = 0.5;
+  properties_.length_scale = 0.5;
   properties_.life_length_factor = 0.2;
-  properties_.emission_area_factor = 0.5;
+  properties_.emitter_size = 0.2;
+  properties_.emitter_position = glm::vec3(0,-2,0);
+  properties_.field_main_direction = glm::vec3(0,1,0);
 
   material_ = new PointCloudMaterial(size_);
   mesh_ = new PointCloudMesh(size_);
@@ -145,11 +147,23 @@ void ParticleSystem::render(glm::mat4 M)
   //glEnable(GL_DEPTH_TEST);
   //glDepthMask(GL_FALSE);
   //glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+  
+  //glEnable(GL_BLEND);
+  //glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+  
+  if (material_->getProgramID() == 
+      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"))
+    glDisable(GL_BLEND);
+  else if (material_->getProgramID() == 
+      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"))
+  {
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+  }
 
-  mesh_->render(M, ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"));
+  mesh_->render(M, material_->getProgramID());
 
-  // Now turn depth masking on and blending off, so state is unchanged.
-  glDepthMask(GL_TRUE);
+  // Reset state
   glDisable(GL_BLEND);
 }
 
@@ -161,6 +175,16 @@ ParticleSystemProperties* ParticleSystem::getPropertiesPointer()
 PointCloudRenderingProperties* ParticleSystem::getPointCloudRenderingPropertiesPointer()
 {
   return material_->getPropertiesPointer();
+}
+
+void ParticleSystem::switchShader()
+{
+  if (material_->getProgramID() == 
+      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"))
+    material_->setShaderToAdditive();
+  else if (material_->getProgramID() == 
+      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"))
+    material_->setShaderToPhong();
 }
 
 void ParticleSystem::updateAccelerations(float dt)
@@ -184,6 +208,12 @@ void ParticleSystem::updateAccelerations(float dt)
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "curl"), properties_.curl);
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "progression_rate"), properties_.progression_rate);
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "length_scale"), properties_.length_scale);
+  properties_.field_main_direction = glm::normalize(properties_.field_main_direction);
+  glUniform3f(
+    glGetUniformLocation(update_accelerations_program_ID_, "field_main_direction"),
+    properties_.field_main_direction.x,
+    properties_.field_main_direction.y,
+    properties_.field_main_direction.z);
 
   // Textures we want to sample from. All from previous state
   glActiveTexture(GL_TEXTURE0);
@@ -207,6 +237,8 @@ void ParticleSystem::updateAccelerations(float dt)
                         (void*)0            // array buffer offset
                         );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad_element_buffer_);
+
+  glDisable(GL_BLEND);
   // Draw the quad
   glDrawElements(
                  GL_TRIANGLES,      // mode
@@ -256,6 +288,8 @@ void ParticleSystem::updateVelocities(float dt)
                         (void*)0            // array buffer offset
                         );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad_element_buffer_);
+
+  glDisable(GL_BLEND);
   // Draw the quad
   glDrawElements(
                  GL_TRIANGLES,      // mode
@@ -284,7 +318,12 @@ void ParticleSystem::updatePositions(float dt)
   
   // Properties of the particle system
   glUniform1f(glGetUniformLocation(update_positions_program_ID_, "inv_life_length_factor"), 1 / properties_.life_length_factor);
-  glUniform1f(glGetUniformLocation(update_positions_program_ID_, "emission_area_factor"), properties_.emission_area_factor);
+  glUniform1f(glGetUniformLocation(update_positions_program_ID_, "emitter_size"), properties_.emitter_size);
+  glUniform3f(
+    glGetUniformLocation(update_positions_program_ID_, "emitter_position"),
+    properties_.emitter_position.x,
+    properties_.emitter_position.y,
+    properties_.emitter_position.z);
 
   // Acceleration and velocity are from current state
   glActiveTexture(GL_TEXTURE0);
@@ -309,6 +348,8 @@ void ParticleSystem::updatePositions(float dt)
                         (void*)0            // array buffer offset
                         );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad_element_buffer_);
+  
+  glDisable(GL_BLEND);
   // Draw the quad
   glDrawElements(
                  GL_TRIANGLES,      // mode

@@ -84,7 +84,8 @@ void BackgroundMaterial::use() const
 }
 
 //! Create a material which is bound to the UpdatePointCloud shader.
-PointCloudMaterial::PointCloudMaterial(unsigned long size) : Material(ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD"))
+PointCloudMaterial::PointCloudMaterial(unsigned long size) :
+  Material(ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"))
 {
   rendering_properties_.particle_color = glm::vec3(1,1,1);
   rendering_properties_.particle_radius = 2;
@@ -209,10 +210,33 @@ GLuint PointCloudMaterial::swapPositionTexture(GLuint texture_ID)
   return tmp;
 }
 
+void PointCloudMaterial::setShaderToPhong()
+{
+  program_ID_ = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
+  updateUniformIDs();
+}
+
+void PointCloudMaterial::setShaderToAdditive()
+{
+  program_ID_ = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+  updateUniformIDs();
+}
+
+void PointCloudMaterial::updateUniformIDs()
+{
+  glUseProgram(program_ID_);
+
+  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "accelerationSampler2D");
+  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "velocitySampler2D");
+  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "positionSampler2D");
+  particle_color_ID_ = glGetUniformLocation(program_ID_, "particle_color");
+  particle_radius_ID_ = glGetUniformLocation(program_ID_, "particle_radius");
+}
+
 //! Updating the shader parameters.
 void PointCloudMaterial::use() const
 {
-  // Use our shader
+  // Use shader
   glUseProgram(program_ID_);
   
   glActiveTexture(GL_TEXTURE0);

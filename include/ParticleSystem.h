@@ -12,7 +12,9 @@ struct ParticleSystemProperties {
   float progression_rate;
   float length_scale;
   float life_length_factor;
-  float emission_area_factor;
+  float emitter_size;
+  glm::vec3 emitter_position;
+  glm::vec3 field_main_direction;
 };
 
 class ParticleSystem : public Object3D {
@@ -23,6 +25,8 @@ public:
   void update(float dt);
   ParticleSystemProperties* getPropertiesPointer();
   PointCloudRenderingProperties* getPointCloudRenderingPropertiesPointer();
+  void switchShader();
+
 private:
   void updateAccelerations(float dt);
   void updateVelocities(float dt);

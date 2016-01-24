@@ -12,10 +12,14 @@ uniform mat4 P;
 
 uniform float particle_radius;
 
+uniform vec3 lightPosition;
+
 out vec3 a;
 out vec3 v;
 out vec3 p;
 out float t; // Life time of particle
+out vec3 lightPosition_viewspace;
+out vec4 pos_cam_space;
 
 out float radius;
 
@@ -25,8 +29,12 @@ void main(){
 	vec4 p_tmp = texelFetch( positionSampler2D, ivec2(index), 0);
 	p = p_tmp.xyz;
 	t = p_tmp.a;
-	vec4 pos_cam_space = V * M * vec4(p ,1);
+
+	pos_cam_space = V * M * vec4(p ,1);
 	gl_Position = P * pos_cam_space;
-	radius = particle_radius;// 5 / (-pos_cam_space.z);
+	
+	lightPosition_viewspace = ( V * vec4(lightPosition,1)).xyz;
+
+	radius = particle_radius * 5 / (-pos_cam_space.z);
 	gl_PointSize = radius;
 }

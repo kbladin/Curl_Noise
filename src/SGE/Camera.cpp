@@ -74,6 +74,11 @@ void AbstractCamera::setResolution(int width, int height)
   height_ = height;
 }
 
+glm::mat4 AbstractCamera::getProjectionTransform()
+{
+  return projection_transform_;
+}
+
 //! Creates camera to render objects with the defined shader program attached.
   /*!
     The shader program can later be changed so that other shaders can be

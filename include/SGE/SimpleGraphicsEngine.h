@@ -21,9 +21,12 @@ public:
   LightSource(GLuint program_ID);
   virtual void render(glm::mat4 M);
   
+  void setIntensity(float intensity);
+  void setColor(glm::vec3 color);
+private:
   float intensity_;
   glm::vec3 color_;
-private:
+
   GLuint program_ID_;
   GLuint light_position_ID_;
   GLuint light_intensity_ID_;
@@ -41,23 +44,27 @@ class SimpleGraphicsEngine {
 public:
   SimpleGraphicsEngine(double time);
   virtual ~SimpleGraphicsEngine();
-  float getDt();
-protected:
-  //virtual void run() = 0;
-  void update(int w, int h);
   
+  float getDt();
+  int getWindowWidth();
+  int getWindowHeight();
+
+  virtual void setWindowResolution(int width, int height);
+protected:
+  void update();
+  virtual bool initialize();
+
   double time_;  
   double dt_;
+  int window_width_;
+  int window_height_;
 
   Object3D* scene_;
-
   Object3D* view_space_;
   Object3D* background_space_;
   
   static Object3D* camera_;
   static Object3D* viewspace_ortho_camera_;
-  virtual bool initialize();
-
 private:
 };
 

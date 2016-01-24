@@ -18,6 +18,8 @@ public:
   void setNearClippingPlane(float near);
   void setFarClippingPlane(float far);
   void setResolution(int width, int height);
+
+  glm::mat4 getProjectionTransform();
 protected:
   GLuint program_ID_;
   GLuint view_matrix_ID_;

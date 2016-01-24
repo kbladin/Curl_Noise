@@ -1,41 +1,50 @@
 #include "../include/AntGui.h"
 
-AntGui::AntGui()
+AntGui::AntGui(int window_width, int window_height)
 {
-	// Initialize AntTweakBar
+  // Rescale before initializing
+  TwDefine(" GLOBAL fontscaling=2 "); // double the size of all fonts
+  // Initialize AntTweakBar
   TwInit(TW_OPENGL_CORE, NULL);
+  // Set properties
+  TwDefine(" GLOBAL contained=true "); // bars cannot move outside of the window
+  TwDefine(" GLOBAL help='...' ");
+  TwDefine(" GLOBAL fontsize=2 "); // use large font
+  TwDefine(" GLOBAL fontresizable=false "); // font cannot be resized
+  
+  //TwDefine(" help size='470 500' "); // resize bar
+  
 
-  //// Create a tweak bar
-  //bar = TwNewBar("TweakBar");
-  //TwDefine(" GLOBAL help='This example shows how to integrate AntTweakBar with GLFW and OpenGL.' "); // Message added to the help bar.
 
-
-  //// Add 'speed' to 'bar': it is a modifable (RW) variable of type TW_TYPE_DOUBLE. Its key shortcuts are [s] and [S].
-  //TwAddVarRW(bar, "speed", TW_TYPE_DOUBLE, &speed, 
-  //           " label='Rot speed' min=0 max=2 step=0.01 keyIncr=s keyDecr=S help='Rotation speed (turns/second)' ");
+  window_width_ = window_width;
+  window_height_ = window_height;
 }
 
 AntGui::~AntGui()
 {
   // Delete all tweak bars
-  for (
-    std::map<std::string, TwBar*>::iterator it = tweak_bars_.begin();
-    it != tweak_bars_.end();
-    ++it)
-  {
-    TwDeleteBar(it->second);
-  }
+  TwDeleteAllBars();
   TwTerminate();
 }
 
 void AntGui::createParticleSystemPropertiesTwBar(
   ParticleSystemProperties* ps_properties,
+  PointCloudRenderingProperties* pc_rendering_properties,
   const char* name)
 {
   // Create a tweak bar
   TwBar* bar = TwNewBar(name);
-  // Message added to the help bar.
-  TwDefine(" GLOBAL help='Properties of the particle system' ");
+  std::string definitions;
+  definitions =
+  std::string("'") + name + std::string("' ") + 
+  std::string("help='These properties defines the engine behavior' ") +
+  std::string("size='470 740' ") +
+  std::string("movable=false ") +
+  std::string("resizable=false ");
+  TwDefine(definitions.c_str());
+
+  // Add a text (the way to do it with Ant Tweak Bar)
+  TwAddButton(bar, "comment1", NULL, NULL, " label='Behavior Properties' ");
 
   // Add the variables
   TwAddVarRW(
@@ -67,32 +76,23 @@ void AntGui::createParticleSystemPropertiesTwBar(
     "life_length_factor",
     TW_TYPE_FLOAT,
     &ps_properties->life_length_factor, 
-    " label='Life Length Factor' min=0 max=1 step=0.01 keyIncr=s keyDecr=S help='Factor of avarage life length for the particles' ");
+    " label='Life Length Factor' min=0.05 max=1 step=0.01 keyIncr=s keyDecr=S help='Factor of avarage life length for the particles' ");
   TwAddVarRW(
     bar,
-    "emission_area_factor",
+    "emitter_size",
     TW_TYPE_FLOAT,
-    &ps_properties->emission_area_factor, 
-    " label='Emission Area Factor' min=0 max=1 step=0.01 keyIncr=s keyDecr=S help='Factor of emission area' ");
-  //TwAddVarRW(
-  //  bar,
-  //  "particle_color",
-  //  TW_TYPE_COLOR3F,
-  //  &ps_properties->color,
-  //  " label='Particle Color' ");
+    &ps_properties->emitter_size, 
+    " label='Emitter size' min=0.05 max=1 step=0.01 keyIncr=s keyDecr=S help='Factor of emission area' ");
+  TwAddVarRW(
+    bar,
+    "field_main_direction",
+    TW_TYPE_DIR3F,
+    &ps_properties->field_main_direction, 
+    " label='Field Main Direction' help='Direction of field' ");
 
-  // Push the tweak bar to the map
-  tweak_bars_[name] = bar;
-}
-
-void AntGui::createPointCloundRenderingPropertiesTwBar(
-  PointCloudRenderingProperties* pc_rendering_properties,
-  const char* name)
-{
-  // Create a tweak bar
-  TwBar* bar = TwNewBar(name);
-  // Message added to the help bar.
-  TwDefine(" GLOBAL help='Rendering properties of the particle system' ");
+  TwAddSeparator(bar, NULL, NULL);
+  // Add a text (the way to do it with Ant Tweak Bar)
+  TwAddButton(bar, "comment2", NULL, NULL, " label='Rendering Properties' ");
 
   // Add the variables
   TwAddVarRW(
@@ -122,9 +122,26 @@ void AntGui::deleteTwBar(const char* name)
   }
 }
 
-void AntGui::render(int width, int height)
+
+int AntGui::getWindowWidth()
 {
-  TwWindowSize(width * 2, height * 2);
+  return window_width_;
+}
+
+int AntGui::getWindowHeight()
+{
+  return window_height_;
+}
+
+void AntGui::setWindowResolution(int width, int height)
+{
+  window_height_ = height;
+  window_width_ = width;
+}
+
+void AntGui::render()
+{
+  TwWindowSize(window_width_ * 2, window_height_ * 2);
   // Draw tweak bars
   TwDraw();
 }

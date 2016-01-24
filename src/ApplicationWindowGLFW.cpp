@@ -1,6 +1,7 @@
 #include "../include/ApplicationWindowGLFW.h"
 
 MyEngine* ApplicationWindowGLFW::engine_;
+AntGui* ApplicationWindowGLFW::ant_gui_;
 
 ApplicationWindowGLFW::ApplicationWindowGLFW()
 {
@@ -13,25 +14,28 @@ ApplicationWindowGLFW::ApplicationWindowGLFW()
     std::cout << "ERROR : Failed to initialize OpenGL" << std::endl;
   }
 
+  int width;
+  int height;
+  glfwGetWindowSize(window_, &width, &height);
+
   // Create engine
-  engine_ = new MyEngine(glfwGetTime());
+  engine_ = new MyEngine(width, height, glfwGetTime());
 
   // create the gui
-  ant_gui_ = new AntGui();
+  ant_gui_ = new AntGui(width, height);
 
   // Add tweak bars to control properties in the engine
   ant_gui_->createParticleSystemPropertiesTwBar(
     engine_->getParticleSystemPropertiesPointer(),
-    "Particle System Properties");
-  ant_gui_->createPointCloundRenderingPropertiesTwBar(
     engine_->getPointCloudRenderingPropertiesPointer(),
-    "Particle System Rendering Properties");
-
+    "Particle System Properties");
+  
   // Set callback functions
   glfwSetCursorPosCallback(window_, mousePosCallback);
   glfwSetMouseButtonCallback(window_, mouseButtonCallback);
   glfwSetScrollCallback(window_, mouseScrollCallback);
   glfwSetKeyCallback(window_, keyCallback);
+  glfwSetWindowSizeCallback(window_, windowSizeCallback);
 }
 
 ApplicationWindowGLFW::~ApplicationWindowGLFW()
@@ -69,12 +73,11 @@ void ApplicationWindowGLFW::run()
   {
     int width;
     int height;
-    glfwGetWindowSize(window_, &width, &height);
 
-    engine_->update(width, height, glfwGetTime());
+    engine_->update(glfwGetTime());
 
     // Draw the gui
-    ant_gui_->render(width, height);
+    ant_gui_->render();
 
     // Print FPS on window
     frame_counter_ ++;
@@ -112,7 +115,10 @@ void ApplicationWindowGLFW::mouseButtonCallback(
 {
   if (!TwEventMouseButtonGLFW(button, action))
   {
-    engine_->mouseButtonCallback(button, action, mods);
+    if (action == GLFW_PRESS)
+      engine_->mouseButtonPress();
+    else if (action == GLFW_RELEASE)
+      engine_->mouseButtonRelease();
   }
 }
 
@@ -133,6 +139,20 @@ void ApplicationWindowGLFW::keyCallback(
 {
   if (!TwEventKeyGLFW(key, action))
   {
-    engine_->keyCallback(key, scancode, action, mods);
+    if (action == GLFW_RELEASE)
+    {
+      if (key == GLFW_KEY_SPACE)
+        engine_->switchParticleShader();
+    }
+    //engine_->keyCallback(key, scancode, action, mods);
   }
+}
+
+void ApplicationWindowGLFW::windowSizeCallback(
+  GLFWwindow* window,
+  int width,
+  int height)
+{
+  engine_->setWindowResolution(width, height);
+  ant_gui_->setWindowResolution(width, height);
 }

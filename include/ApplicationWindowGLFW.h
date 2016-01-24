@@ -28,9 +28,10 @@ private:
     int scancode,
     int action,
     int mods);
+  static void windowSizeCallback(GLFWwindow* window, int width, int height);
 
-	AntGui *ant_gui_;
 	GLFWwindow* window_;
+  static AntGui *ant_gui_;
   static MyEngine* engine_;
 
   float delay_counter_;

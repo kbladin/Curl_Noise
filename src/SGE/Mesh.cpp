@@ -480,7 +480,7 @@ void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
   
   // Index buffer
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
-  
+    
   // Draw the triangles
   glDrawElements(
                  GL_TRIANGLES,      // mode

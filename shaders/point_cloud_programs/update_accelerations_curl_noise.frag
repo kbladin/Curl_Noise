@@ -152,6 +152,7 @@ uniform float field_speed;
 uniform float curl;
 uniform float progression_rate;
 uniform float length_scale;
+uniform vec3 field_main_direction;
 
 // Output
 out vec4 acceleration_out;
@@ -171,8 +172,16 @@ vec3 potential(vec3 p)
     snoise(vec4(p.x, p.y, p.z + 49, time * 0.01) / L));
   
   // Rotational potential gives linearly rising vector field
-  pot += (1 - beta) * speed * vec3(-p.z,0,p.x);
+  //pot += (1 - beta) * speed * vec3(-p.z,0,p.x);
 
+  // External directional field
+  vec3 p_parallel = dot(field_main_direction, p) * field_main_direction;
+  vec3 p_orthogonal = p - p_parallel;
+  vec3 pot_directional = cross(p_orthogonal, field_main_direction);
+
+  pot += (1 - beta) * speed * pot_directional;
+
+  // Affect the field from a sphere
   alpha = abs((smoothstep(0.5, 0.5+L, length(p))));
   n = normalize(p);
   pot = (alpha - 0.1) * pot + (1 - (alpha - 0.1)) * n * dot(n, pot);

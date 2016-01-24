@@ -2,6 +2,8 @@
 #define ANT_GUI_H
 
 #include <map>
+#include <string>
+#include <vector>
 
 #include <AntTweakBar.h>
 #include "../include/ParticleSystem.h"
@@ -10,19 +12,25 @@
 class AntGui
 {
 public:
-	AntGui();
+	AntGui(int window_width, int window_height);
 	~AntGui();
 
   void createParticleSystemPropertiesTwBar(
     ParticleSystemProperties* ps_properties,
-    const char* name);
-  void createPointCloundRenderingPropertiesTwBar(
     PointCloudRenderingProperties* pc_rendering_properties,
     const char* name);
   void deleteTwBar(const char* name);
 
-  void render(int width, int height);
+  int getWindowWidth();
+  int getWindowHeight();
+
+  void setWindowResolution(int width, int height);
+
+  void render();
 private:
+  int window_width_;
+  int window_height_;
+
   std::map<std::string, TwBar*> tweak_bars_;
 };
 

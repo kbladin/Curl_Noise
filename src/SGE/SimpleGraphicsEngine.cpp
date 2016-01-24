@@ -7,7 +7,7 @@
 */
 LightSource::LightSource(GLuint program_ID)
 {
-  intensity_ = 5.0f;
+  intensity_ = 10.0f;
   color_ = glm::vec3(1.0, 1.0, 1.0);
   
   program_ID_ = program_ID;
@@ -16,6 +16,16 @@ LightSource::LightSource(GLuint program_ID)
   light_position_ID_ = glGetUniformLocation(program_ID_, "lightPosition");
   light_intensity_ID_ = glGetUniformLocation(program_ID_, "lightIntensity");
   light_color_ID_ = glGetUniformLocation(program_ID_, "lightColor");
+}
+
+void LightSource::setIntensity(float intensity)
+{
+  intensity_ = intensity;
+}
+
+void LightSource::setColor(glm::vec3 color)
+{
+  color_ = color;
 }
 
 //! Render the LightSource.
@@ -88,13 +98,13 @@ bool SimpleGraphicsEngine::initialize()
 }
 
 //! This function needs to be implemented if extending this class.
-void SimpleGraphicsEngine::update(int w, int h)
+void SimpleGraphicsEngine::update()
 {
   glClearColor(0, 0, 0, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  float aspect = float(w)/h;
-  glViewport(0,0,w * 2,h * 2);
+  float aspect = float(window_width_) / window_height_;
+  glViewport(0,0,window_width_ * 2, window_height_ * 2);
 
   glDisable(GL_DEPTH_TEST);
   background_space_->render(glm::mat4());
@@ -106,4 +116,21 @@ void SimpleGraphicsEngine::update(int w, int h)
 float SimpleGraphicsEngine::getDt()
 {
   return dt_;
+}
+
+
+int SimpleGraphicsEngine::getWindowWidth()
+{
+  return window_width_;
+}
+
+int SimpleGraphicsEngine::getWindowHeight()
+{
+  return window_height_;
+}
+
+void SimpleGraphicsEngine::setWindowResolution(int width, int height)
+{
+  window_width_ = width;
+  window_height_ = height;
 }
