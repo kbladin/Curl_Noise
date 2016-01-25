@@ -1,5 +1,7 @@
 #version 330 core
 
+// Simplex Noise
+
 //
 // Description : Array and textureless GLSL 2D/3D/4D simplex 
 //               noise functions.
@@ -138,21 +140,21 @@ float smoothstep(float edge0, float edge1, float x)
   return x*x*(3 - 2*x);
 }
 
-// All attribures are from previous state
-uniform sampler2D positionSampler2D;
-uniform sampler2D velocitySampler2D;
-uniform sampler2D accelerationSampler2D;
+// Acceleration, velocity and position of previous time step
+uniform sampler2D acceleration_sampler_2D;
+uniform sampler2D velocity_sampler_2D;
+uniform sampler2D position_sampler_2D;
 
-uniform float dt;
-uniform float time;
-uniform int size;
+uniform float dt; // Time step
+uniform float time; // Global time 
+uniform int   size; // size * size = number of particles
 
 // Properties of the particle system
 uniform float field_speed;
 uniform float curl;
 uniform float progression_rate;
 uniform float length_scale;
-uniform vec3 field_main_direction;
+uniform vec3  field_main_direction;
 
 // Output
 out vec4 acceleration_out;
@@ -160,58 +162,52 @@ out vec4 acceleration_out;
 // The vector field potential has three components
 vec3 potential(vec3 p)
 {
-  float L = length_scale;
-  float speed = field_speed;
-  float beta = curl; // amount of curl noise compared to rising field
-  float alpha;
-  vec3 n;
-  vec3 pot = vec3(0,0,0);
-  pot += L * beta * speed * vec3(
-    snoise(vec4(p.x, p.y, p.z, time * progression_rate * 0.1) / L),
-    snoise(vec4(p.x, p.y + 49, p.z, time * 0.01) / L),
-    snoise(vec4(p.x, p.y, p.z + 49, time * 0.01) / L));
+  float L;      // Length scale as described by Bridson
+  float speed;  // field speed
+  float alpha;  // Alpha as described by Bridson
+  float beta;   // amount of curl noise compared to the constant field
+  vec3 n;       // Normal of closest surface
+  vec3 pot;     // Output potential
   
-  // Rotational potential gives linearly rising vector field
-  //pot += (1 - beta) * speed * vec3(-p.z,0,p.x);
+  L = length_scale;
+  speed = field_speed;
+  beta = curl;
 
+  // Start with an empty field
+  pot = vec3(0,0,0);
+  // Add Noise in each direction
+  pot += L * beta * speed * vec3(
+    snoise(vec4(p.x, p.y,       p.z,      time * progression_rate * 0.1) / L),
+    snoise(vec4(p.x, p.y + 49,  p.z,      time * progression_rate * 0.1) / L),
+    snoise(vec4(p.x, p.y,       p.z + 49, time * progression_rate * 0.1) / L));
+  
   // External directional field
+  // Rotational potential gives a constant velocity field
   vec3 p_parallel = dot(field_main_direction, p) * field_main_direction;
   vec3 p_orthogonal = p - p_parallel;
   vec3 pot_directional = cross(p_orthogonal, field_main_direction);
 
+  // Add the rotational potential
   pot += (1 - beta) * speed * pot_directional;
 
   // Affect the field from a sphere
+  // The closer to the sphere, the less of the original potential
+  // and the more of a tangental potential
   alpha = abs((smoothstep(0.5, 0.5+L, length(p))));
   n = normalize(p);
   pot = (alpha - 0.1) * pot + (1 - (alpha - 0.1)) * n * dot(n, pot);
 
-  //n = closestNormal(p);
-  //alpha = abs((smoothstep(0.5,1.1,dot(p, n))) ) / L;
-  ////n = vec3(1,0,0);
-  //pot = alpha * pot + (1 - alpha) * n * dot(n, pot);
-  //
-  //alpha = abs((smoothstep(0,1,p.x + 1) - 0.5) * 2) / 100;
-  //n = vec3(-1,0,0);
-  //pot = alpha * pot + (1 - alpha) * n * dot(n, pot);
-  
-  //alpha = abs((smoothstep(0,1,p.y - 1) - 0.5) * 2) / 100;
-  //n = vec3(0,1,0);
-  //pot = alpha * pot + (1 - alpha) * n * dot(n, pot);
-  
-  //alpha = abs((smoothstep(-1,1,p.x + 1) - 0.5) * 2) / 100;
-  //n = vec3(0,-1,0);
-  //pot = alpha * pot + (1 - alpha) * n * dot(n, pot);
-  
   return pot;
 }
 
 void main(){
-  vec3 a = texelFetch( accelerationSampler2D, ivec2(gl_FragCoord.xy), 0).xyz;
-  vec3 v = texelFetch( velocitySampler2D, ivec2(gl_FragCoord.xy), 0).xyz;
-  vec3 p = texelFetch( positionSampler2D, ivec2(gl_FragCoord.xy), 0).xyz;
+  // Get state from previous time step
+  vec3 a = texelFetch( acceleration_sampler_2D, ivec2(gl_FragCoord.xy), 0).xyz;
+  vec3 v = texelFetch( velocity_sampler_2D, ivec2(gl_FragCoord.xy), 0).xyz;
+  vec3 p = texelFetch( position_sampler_2D, ivec2(gl_FragCoord.xy), 0).xyz;
 
-  float epsilon = 0.001;
+  // Step length for approximating derivatives
+  float epsilon = 0.00001;
   vec3 pot = potential(p);
 
   // Partial derivatives of different components of the potential

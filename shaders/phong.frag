@@ -1,49 +1,53 @@
 #version 330 core
 
-in vec3 Normal_viewspace;
-in vec3 vertexPosition_viewspace;
-in vec3 lightPosition_viewspace;
+// Input data from vertex shader
+in vec3 normal_viewspace;
+in vec3 vertex_position_viewspace;
+in vec3 light_position_viewspace;
 
+// Fragment output
 out vec4 color;
 
-uniform float lightIntensity;
-uniform vec3 lightColor;
+// Material properties
+uniform vec3 	material_diffise_color;
+uniform vec3 	material_specularColor;
+uniform float 	material_specularity;
+uniform int 	material_shinyness;
 
-uniform vec3 material_diffiseColor;
-uniform vec3 material_specularColor;
-uniform float material_specularity;
-uniform int material_shinyness;
+// Light properties
+uniform float 	light_intensity;
+uniform vec3 	light_color;
 
 void main(){
-	vec3 l = normalize(vertexPosition_viewspace - lightPosition_viewspace);
-	vec3 v = normalize(vertexPosition_viewspace);
-	vec3 n = normalize(Normal_viewspace);
+	// Light calculations
+	vec3 light_to_position = vertex_position_viewspace - light_position_viewspace;
+	vec3 l = normalize(light_to_position);
+	vec3 v = normalize(vertex_position_viewspace);
+	vec3 n = normalize(normal_viewspace);
 	vec3 r = reflect(l,n);
 
-	float cosTheta = clamp(dot(-l,n),0,1);
-	float cosAlpha = clamp(dot(v,-r),0,1);
+	float cos_theta = max(dot(-l,n),0);
+	float cos_alpha = max(dot(v,-r),0);
 
-	float distance = length(vertexPosition_viewspace - lightPosition_viewspace);
-	float invDistanceSquare = 1 / pow(distance, 2);
+	float distance = length(light_to_position);
+	float inv_dist_square = 1 / pow(distance, 2);
 
-	vec3 underLight = clamp(dot(-vec3(0,1,0),n),0,1) * material_diffiseColor * 0.2;
-
-	vec3 ambient = vec3(0.2,0.2,0.2) * material_diffiseColor;
+	// Light components
+	vec3 under_light = max(dot(-vec3(0,1,0),n),0) * material_diffise_color * 0.2;
+	vec3 ambient = vec3(0.2,0.2,0.2) * material_diffise_color;
 	vec3 diffuse =
-		lightIntensity * 
-		cosTheta * 
-		invDistanceSquare *
-		lightColor * 
-		material_diffiseColor;
-	
+		light_intensity * 
+		cos_theta * 
+		inv_dist_square *
+		light_color * 
+		material_diffise_color;
 	vec3 specular =
-		lightIntensity *
+		light_intensity *
 		material_specularity *
-		pow(cosAlpha, material_shinyness) *
-		invDistanceSquare *
-		lightColor *
+		pow(cos_alpha, material_shinyness) *
+		inv_dist_square *
+		light_color *
 		material_specularColor;
 
-    color.rgb = ambient + diffuse + specular + underLight;
-    color.a = 1;
+    color = vec4(ambient + diffuse + specular + under_light, 1);
 }

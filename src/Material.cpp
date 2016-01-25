@@ -24,7 +24,7 @@ PhongMaterial::PhongMaterial() : Material(ShaderManager::instance()->getShader("
   shinyness_ = 16;
   
   glUseProgram(program_ID_);
-  diffuseColor_ID_ = glGetUniformLocation(program_ID_, "material_diffiseColor");
+  diffuseColor_ID_ = glGetUniformLocation(program_ID_, "material_diffise_color");
   specularColor_ID_ = glGetUniformLocation(program_ID_, "material_specularColor");
   specularity_ID_ = glGetUniformLocation(program_ID_, "material_specularity");
   shinyness_ID_ = glGetUniformLocation(program_ID_, "material_shinyness");
@@ -51,7 +51,7 @@ OneColorMaterial::OneColorMaterial() : Material(ShaderManager::instance()->getSh
   diffuse_color_ = glm::vec3(1.0, 1.0, 1.0);
   
   glUseProgram(program_ID_);
-  diffuseColor_ID_ = glGetUniformLocation(program_ID_, "material_diffiseColor");
+  diffuseColor_ID_ = glGetUniformLocation(program_ID_, "material_diffise_color");
 }
 
 //! Updating the shader parameters.
@@ -221,9 +221,9 @@ void PointCloudMaterial::updateUniformIDs()
   }
 
   glUseProgram(program_ID);
-  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "accelerationSampler2D");
-  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "velocitySampler2D");
-  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "positionSampler2D");
+  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "acceleration_sampler_2D");
+  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "velocity_sampler_2D");
+  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "position_sampler_2D");
   particle_color_ID_ = glGetUniformLocation(program_ID, "particle_color");
   particle_radius_ID_ = glGetUniformLocation(program_ID, "particle_radius");
 }

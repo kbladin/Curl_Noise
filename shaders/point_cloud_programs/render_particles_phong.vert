@@ -1,40 +1,54 @@
 #version 330 core
 
+// Index to pick the current particle
 layout(location = 0) in vec2 index;
 
-uniform sampler2D accelerationSampler2D;
-uniform sampler2D velocitySampler2D;
-uniform sampler2D positionSampler2D;
+// Acceleration, velocity and position of previous time step
+uniform sampler2D acceleration_sampler_2D;
+uniform sampler2D velocity_sampler_2D;
+uniform sampler2D position_sampler_2D;
 
+// Transform matrices
 uniform mat4 M;
 uniform mat4 V;
 uniform mat4 P;
 
+// Particle rendering properties
 uniform float particle_radius;
 
-uniform vec3 lightPosition;
+// Light properties
+uniform vec3 light_position;
 
-out vec3 a;
-out vec3 v;
-out vec3 p;
-out float t; // Life time of particle
-out vec3 lightPosition_viewspace;
-out vec4 pos_cam_space;
+// Output
 
-out float radius;
+// Particle
+//out vec3 a; // Acceleration
+//out vec3 v; // Velocity
+//out vec3 p; // Position
+//out float t; // Life time of particle
+//// Rendering of particle
+//out float radius;
+
+// Light source
+out vec3 light_position_viewspace;
+out vec4 vertex_position_viewspace;
 
 void main(){
-	a = texelFetch( accelerationSampler2D, ivec2(index), 0).xyz;
-	v = texelFetch( velocitySampler2D, ivec2(index), 0).xyz;
-	vec4 p_tmp = texelFetch( positionSampler2D, ivec2(index), 0);
-	p = p_tmp.xyz;
-	t = p_tmp.a;
+	// Write output to fragment shader
+	// a = texelFetch( acceleration_sampler_2D, ivec2(index), 0).xyz;
+	// v = texelFetch( velocity_sampler_2D, ivec2(index), 0).xyz;
+	// The lifetime is stored in the fourth element of position
+	vec4 p_tmp = texelFetch( position_sampler_2D, ivec2(index), 0);
+	vec3 p = p_tmp.xyz;
+	//t = p_tmp.a;
 
-	pos_cam_space = V * M * vec4(p ,1);
-	gl_Position = P * pos_cam_space;
+	// Set camera position
+	vertex_position_viewspace = V * M * vec4(p ,1);
+	// Position of particle
+	gl_Position = P * vertex_position_viewspace;
 	
-	lightPosition_viewspace = ( V * vec4(lightPosition,1)).xyz;
+	light_position_viewspace = ( V * vec4(light_position,1)).xyz;
 
-	radius = particle_radius * 5 / (-pos_cam_space.z);
-	gl_PointSize = radius;
+	// Set size dependent on distance to camera
+	gl_PointSize = particle_radius * 5 / (-vertex_position_viewspace.z);
 }

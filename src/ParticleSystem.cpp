@@ -189,9 +189,9 @@ void ParticleSystem::updateAccelerations(float dt)
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "dt"), dt);
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "time"), time);
   glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "size"), size_);
-  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "accelerationSampler2D"), 0);
-  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "velocitySampler2D"), 1);
-  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "positionSampler2D"), 2);
+  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "acceleration_sampler_2D"), 0);
+  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "velocity_sampler_2D"), 1);
+  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "position_sampler_2D"), 2);
   
   // Properties of the particle system
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "field_speed"), properties_.field_speed);
@@ -251,9 +251,9 @@ void ParticleSystem::updateVelocities(float dt)
   
   glUniform1f(glGetUniformLocation(update_velocities_program_ID_, "dt"), dt);
   glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "size"), size_);
-  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "accelerationSampler2D"), 0);
-  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "velocitySampler2D"), 1);
-  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "positionSampler2D"), 2);
+  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "acceleration_sampler_2D"), 0);
+  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "velocity_sampler_2D"), 1);
+  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "position_sampler_2D"), 2);
   
   // Acceleration from current state (so that we can integrate it, solve diff eq)
   glActiveTexture(GL_TEXTURE0);
@@ -302,9 +302,9 @@ void ParticleSystem::updatePositions(float dt)
   
   glUniform1f(glGetUniformLocation(update_positions_program_ID_, "dt"), dt);
   glUniform1i(glGetUniformLocation(update_positions_program_ID_, "size"), size_);
-  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "accelerationSampler2D"), 0);
-  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "velocitySampler2D"), 1);
-  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "positionSampler2D"), 2);
+  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "acceleration_sampler_2D"), 0);
+  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "velocity_sampler_2D"), 1);
+  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "position_sampler_2D"), 2);
   
   // Properties of the particle system
   glUniform1f(glGetUniformLocation(update_positions_program_ID_, "inv_life_length_factor"), 1 / properties_.life_length_factor);

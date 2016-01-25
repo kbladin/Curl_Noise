@@ -13,9 +13,9 @@ LightSource::LightSource(GLuint program_ID)
   program_ID_ = program_ID;
   
   glUseProgram(program_ID_);
-  light_position_ID_ = glGetUniformLocation(program_ID_, "lightPosition");
-  light_intensity_ID_ = glGetUniformLocation(program_ID_, "lightIntensity");
-  light_color_ID_ = glGetUniformLocation(program_ID_, "lightColor");
+  light_position_ID_ = glGetUniformLocation(program_ID_, "light_position");
+  light_intensity_ID_ = glGetUniformLocation(program_ID_, "light_intensity");
+  light_color_ID_ = glGetUniformLocation(program_ID_, "light_color");
 }
 
 void LightSource::setIntensity(float intensity)
