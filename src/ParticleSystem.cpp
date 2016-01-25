@@ -198,7 +198,11 @@ void ParticleSystem::updateAccelerations(float dt)
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "curl"), properties_.curl);
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "progression_rate"), properties_.progression_rate);
   glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "length_scale"), properties_.length_scale);
-  properties_.field_main_direction = glm::normalize(properties_.field_main_direction);
+  
+  if (properties_.field_main_direction != glm::vec3(0,0,0))
+    properties_.field_main_direction = glm::normalize(properties_.field_main_direction);
+  else
+    properties_.field_main_direction = glm::vec3(0,1,0);
   glUniform3f(
     glGetUniformLocation(update_accelerations_program_ID_, "field_main_direction"),
     properties_.field_main_direction.x,

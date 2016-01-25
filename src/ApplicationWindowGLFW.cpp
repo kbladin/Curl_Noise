@@ -67,6 +67,7 @@ bool ApplicationWindowGLFW::initOpenGLContext()
   return true;
 }
 
+//! Starts the main loop
 void ApplicationWindowGLFW::run()
 {
   while (!glfwWindowShouldClose(window_))

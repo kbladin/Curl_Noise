@@ -9,11 +9,12 @@
 #include "../include/ParticleSystem.h"
 #include "../include/Material.h"
 
+//! A class that handels user interfacing thorough the GUI library AntTweakBar
 class AntGui
 {
 public:
-	AntGui(int window_width, int window_height);
-	~AntGui();
+  AntGui(int window_width, int window_height);
+  ~AntGui();
 
   void createParticleSystemPropertiesTwBar(
     ParticleSystemProperties* ps_properties,

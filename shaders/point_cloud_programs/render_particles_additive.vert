@@ -17,13 +17,12 @@ uniform mat4 P;
 uniform float particle_radius;
 
 void main(){
-	vec4 p_tmp = texelFetch( position_sampler_2D, ivec2(index), 0);
-	vec3 p = p_tmp.xyz;
-	
-	// Set camera position
-	vec4 vertex_position_viewspace = V * M * vec4(p ,1);
-	// Position of particle
-	gl_Position = P * vertex_position_viewspace;
-	
-	gl_PointSize = particle_radius;
+  vec4 p_tmp = texelFetch( position_sampler_2D, ivec2(index), 0);
+  vec3 p = p_tmp.xyz;
+  
+  // Set camera position
+  vec4 vertex_position_viewspace = V * M * vec4(p ,1);
+  // Position and size of point
+  gl_Position = P * vertex_position_viewspace;
+  gl_PointSize = particle_radius;
 }

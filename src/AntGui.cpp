@@ -1,5 +1,6 @@
 #include "../include/AntGui.h"
 
+//! Initializes AntTweakBar so that gui bars can be added
 AntGui::AntGui(int window_width, int window_height)
 {
   // Rescale before initializing
@@ -11,15 +12,12 @@ AntGui::AntGui(int window_width, int window_height)
   TwDefine(" GLOBAL help='...' ");
   TwDefine(" GLOBAL fontsize=2 "); // use large font
   TwDefine(" GLOBAL fontresizable=false "); // font cannot be resized
-  
-  //TwDefine(" help size='470 500' "); // resize bar
-  
-
 
   window_width_ = window_width;
   window_height_ = window_height;
 }
 
+//! Destructor
 AntGui::~AntGui()
 {
   // Delete all tweak bars
@@ -27,6 +25,14 @@ AntGui::~AntGui()
   TwTerminate();
 }
 
+//! Creates a tweak bar to change particle system properties
+/*!
+  \param ps_properties is a pointer to a data structure of type
+  ParticleSystemProperties. Its values can be changed from the gui.
+  \param pc_rendering_properties is a pointer to a data structure of type
+  PointCloudRenderingProperties. Its values can be changed from the gui.
+  \param name is the name of the tweak bar.
+*/
 void AntGui::createParticleSystemPropertiesTwBar(
   ParticleSystemProperties* ps_properties,
   PointCloudRenderingProperties* pc_rendering_properties,
@@ -119,6 +125,10 @@ void AntGui::createParticleSystemPropertiesTwBar(
   tweak_bars_[name] = bar;
 }
 
+//! Deletes the tweak bar defined by name
+/*!
+  \param name is the name of the tweak bar.
+*/
 void AntGui::deleteTwBar(const char* name)
 {
   TwBar* bar = tweak_bars_[name];
@@ -129,23 +139,30 @@ void AntGui::deleteTwBar(const char* name)
   }
 }
 
-
+//! Returns the window width in pixels
 int AntGui::getWindowWidth()
 {
   return window_width_;
 }
 
+//! Returns the window height in pixels
 int AntGui::getWindowHeight()
 {
   return window_height_;
 }
 
+//! Set resolution to new window width and height
+/*!
+  \param width is the new window width.
+  \param height is the new window height.
+*/
 void AntGui::setWindowResolution(int width, int height)
 {
   window_height_ = height;
   window_width_ = width;
 }
 
+//! Renders the gui
 void AntGui::render()
 {
   TwWindowSize(window_width_ * 2, window_height_ * 2);

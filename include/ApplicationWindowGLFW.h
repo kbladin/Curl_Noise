@@ -9,11 +9,12 @@
 #include <AntTweakBar.h>
 #include "../include/MyEngine.h"
 
+//! A class that handles both user interfacing and has an instance of a MyEngine object.
 class ApplicationWindowGLFW
 {
 public:
-	ApplicationWindowGLFW();
-	~ApplicationWindowGLFW();
+  ApplicationWindowGLFW();
+  ~ApplicationWindowGLFW();
 
   void run();
 
@@ -30,7 +31,7 @@ private:
     int mods);
   static void windowSizeCallback(GLFWwindow* window, int width, int height);
 
-	GLFWwindow* window_;
+  GLFWwindow* window_;
   static AntGui *ant_gui_;
   static MyEngine* engine_;
 

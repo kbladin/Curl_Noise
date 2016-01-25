@@ -147,7 +147,6 @@ uniform sampler2D position_sampler_2D;
 
 uniform float dt; // Time step
 uniform float time; // Global time 
-uniform int   size; // size * size = number of particles
 
 // Properties of the particle system
 uniform float field_speed;
@@ -166,8 +165,8 @@ vec3 potential(vec3 p)
   float speed;  // field speed
   float alpha;  // Alpha as described by Bridson
   float beta;   // amount of curl noise compared to the constant field
-  vec3 n;       // Normal of closest surface
-  vec3 pot;     // Output potential
+  vec3  n;       // Normal of closest surface
+  vec3  pot;     // Output potential
   
   L = length_scale;
   speed = field_speed;
@@ -190,7 +189,7 @@ vec3 potential(vec3 p)
   // Add the rotational potential
   pot += (1 - beta) * speed * pot_directional;
 
-  // Affect the field from a sphere
+  // Affect the field by a sphere
   // The closer to the sphere, the less of the original potential
   // and the more of a tangental potential
   alpha = abs((smoothstep(0.5, 0.5+L, length(p))));
@@ -203,8 +202,8 @@ vec3 potential(vec3 p)
 void main(){
   // Get state from previous time step
   vec3 a = texelFetch( acceleration_sampler_2D, ivec2(gl_FragCoord.xy), 0).xyz;
-  vec3 v = texelFetch( velocity_sampler_2D, ivec2(gl_FragCoord.xy), 0).xyz;
-  vec3 p = texelFetch( position_sampler_2D, ivec2(gl_FragCoord.xy), 0).xyz;
+  vec3 v = texelFetch( velocity_sampler_2D,     ivec2(gl_FragCoord.xy), 0).xyz;
+  vec3 p = texelFetch( position_sampler_2D,     ivec2(gl_FragCoord.xy), 0).xyz;
 
   // Step length for approximating derivatives
   float epsilon = 0.00001;

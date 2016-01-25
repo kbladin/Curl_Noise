@@ -50,9 +50,7 @@ void ShaderManager::loadShader(
 
 //! Returns a program ID based on a name.
 /*!
-  \param name must be one of the compiled shaders names. The options are:
-  "SHADER_PHONG", "SHADER_ONE_COLOR" or "SHADER_BACKGROUND"
-  (more might be added later).
+  \param name is the name of a previously added shader program
 */
 GLuint ShaderManager::getShader(std::string name)
 {

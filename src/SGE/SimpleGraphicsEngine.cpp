@@ -18,11 +18,19 @@ LightSource::LightSource(GLuint program_ID)
   light_color_ID_ = glGetUniformLocation(program_ID_, "light_color");
 }
 
+//! Sets the intensity of the light source.
+/*!
+  \param intensity is a positive value.
+*/
 void LightSource::setIntensity(float intensity)
 {
   intensity_ = intensity;
 }
 
+//! Sets the color of the light source.
+/*!
+  \param color is a rgb vector with positive values.
+*/
 void LightSource::setColor(glm::vec3 color)
 {
   color_ = color;
@@ -45,15 +53,32 @@ void LightSource::render(glm::mat4 M)
   glUniform3f(light_color_ID_, color_.r, color_.g, color_.b);
 }
 
+//! Static camera object
+/*!
+  Objects of type AbstractCameras subclasses should be added as children to
+  this object 
+*/
 Object3D* SimpleGraphicsEngine::camera_;
+
+//! Static camera object
+/*!
+  Objects of type AbstractCameras subclasses which are orthogonal should be
+  added as children to this object. This camera renders objects in screen space.
+*/
 Object3D* SimpleGraphicsEngine::viewspace_ortho_camera_;
 
+//! Constructor
+/*!
+  Create an object of SimpleGraphicsEngine.
+  \param time is the currens global time.
+*/
 SimpleGraphicsEngine::SimpleGraphicsEngine(double time)
 {
   time_ = time;
   dt_ = 0;
 }
 
+//! Destructor
 SimpleGraphicsEngine::~SimpleGraphicsEngine()
 {
   delete scene_;
@@ -113,22 +138,29 @@ void SimpleGraphicsEngine::update()
   view_space_->render(glm::mat4());
 }
 
+//! Returns the current delta time which is set each time step
 float SimpleGraphicsEngine::getDt()
 {
   return dt_;
 }
 
-
+//! Returns the window width   
 int SimpleGraphicsEngine::getWindowWidth()
 {
   return window_width_;
 }
 
+//! Returns the window height
 int SimpleGraphicsEngine::getWindowHeight()
 {
   return window_height_;
 }
 
+//! Set resolution to new window width and height
+/*!
+  \param width is the new window width.
+  \param height is the new window height.
+*/
 void SimpleGraphicsEngine::setWindowResolution(int width, int height)
 {
   window_width_ = width;

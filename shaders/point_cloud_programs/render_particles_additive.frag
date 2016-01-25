@@ -10,9 +10,8 @@ uniform float light_intensity;
 uniform vec3 light_color;
 
 void main(){
-	vec2 coord = (gl_PointCoord - vec2(0.5))*2;  // From [0,1] to [-0.5,0.5]
-	coord.y = -coord.y; // y should point up
-	if(length(coord) > 1) // Outside of circle radius?
-	    discard;
-	color = vec4(particle_color, 0.1);
+  vec2 coord = (gl_PointCoord - vec2(0.5))*2;  // From [0,1] to [-0.5,0.5]
+  if(length(coord) > 1) // Outside of circle radius?
+    discard;
+  color = vec4(particle_color, 0.1);
 }

@@ -26,10 +26,10 @@ void AbstractMesh::initialize()
 }
 
 //! Create a TriangleMesh from file.
-  /*!
-    \param file_name is the file path for the model, for example "bunny.obj".
-    \param material is the material of the mesh
-  */
+/*!
+  \param file_name is the file path for the model, for example "bunny.obj".
+  \param material is the material of the mesh
+*/
 TriangleMesh::TriangleMesh(const char *file_name)
 {
   loadMesh_assimp(file_name, &elements_, &vertices_, NULL, &normals_);
@@ -37,13 +37,13 @@ TriangleMesh::TriangleMesh(const char *file_name)
 }
 
 //! Create a TriangleMesh from vertex lists.
-  /*!
-    \param vertices is a list of vertices.
-    \param normals is a list of normals.
-    \param elements is a list of elements (indices for faces).
-    \param material is the material of the mesh
-    defined in SimpleGraphiicsEngine.
-  */
+/*!
+  \param vertices is a list of vertices.
+  \param normals is a list of normals.
+  \param elements is a list of elements (indices for faces).
+  \param material is the material of the mesh
+  defined in SimpleGraphiicsEngine.
+*/
 TriangleMesh::TriangleMesh(
   std::vector<glm::vec3> vertices,
   std::vector<glm::vec3> normals,
@@ -57,13 +57,13 @@ TriangleMesh::TriangleMesh(
 }
 
 //! Creates a TriangleMesh without initializing vertex lists.
-  /*!
-    This constructor is used when creating basic TriangleMeshes such as planes
-    or boxes.
-    First construct the TriangleMesh, then call one of the init-functions
-    (eg: initPlane, initBox).
-    \param material is the material of the mesh
-  */
+/*!
+  This constructor is used when creating basic TriangleMeshes such as planes
+  or boxes.
+  First construct the TriangleMesh, then call one of the init-functions
+  (eg: initPlane, initBox).
+  \param material is the material of the mesh
+*/
 TriangleMesh::TriangleMesh()
 {
 }
@@ -75,11 +75,11 @@ TriangleMesh::~TriangleMesh()
 }
 
 //! Initializes a plane.
-  /*!
-    \param position is a point in the center of the plane.
-    \param normal is the normal of the plane.
-    \param scale defines scaling in x-, y-, and z- direction.
-  */
+/*!
+  \param position is a point in the center of the plane.
+  \param normal is the normal of the plane.
+  \param scale defines scaling in x-, y-, and z- direction.
+*/
 void TriangleMesh::initPlane(
   glm::vec3 position,
   glm::vec3 normal,
@@ -333,7 +333,6 @@ void TriangleMesh::initCone(glm::vec3 position,
   \param scale defines scaling in x-, y-, and z- direction.
   \param divisions is the subdivision level.
 */
-
 void TriangleMesh::initCylinder(glm::vec3 position,
                                 glm::vec3 direction,
                                 glm::vec3 scale,
@@ -639,6 +638,7 @@ void LineMesh::initialize()
 //! Render the mesh.
 /*!
   \param M is the transformation matrix of the parent.
+  \param program_ID is the shader that will be bound for rendering.
 */
 void LineMesh::render(glm::mat4 M, GLuint program_ID)
 {
@@ -680,6 +680,7 @@ void LineMesh::render(glm::mat4 M, GLuint program_ID)
   glDisableVertexAttribArray(1);
 }
 
+//! Creates a point cloud mesh of size * size particles 
 PointCloudMesh::PointCloudMesh(int size) : size_(size)
 {
   initialize();
@@ -701,11 +702,17 @@ void PointCloudMesh::initialize()
   glBufferData(GL_ARRAY_BUFFER, indices.size() * sizeof(std::pair<int, int>), &indices[0], GL_STATIC_DRAW);
 }
 
+//! Destructor
 PointCloudMesh::~PointCloudMesh()
 {
   glDeleteBuffers(1, &index_buffer_);
 }
 
+//! Render the mesh.
+/*!
+  \param M is the transformation matrix of the parent.
+  \param program_ID is the shader that will be bound for rendering.
+*/
 void PointCloudMesh::render(glm::mat4 M, GLuint program_ID)
 {
   Object3D::render(M);

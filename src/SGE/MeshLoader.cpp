@@ -6,6 +6,13 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+//! Loads a mesh using the assimp library.
+/*!
+  \param path is a cstring of the path to the file.
+  \param out_indices is the output indeces.
+  \param out_uvs is the output uvs.
+  \param out_normals is the output normals.
+*/
 bool loadMesh_assimp(
 	const char * path,
 	std::vector<unsigned short> * out_indices,

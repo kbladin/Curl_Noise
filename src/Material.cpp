@@ -1,9 +1,9 @@
 #include "../include/Material.h"
 
 //! Create a material which is bound to a specific shader.
-  /*!
-    \param program_ID can be one of the shaders in ShaderManager.
-  */
+/*!
+  \param program_ID can be one of the shaders in ShaderManager.
+*/
 Material::Material(GLuint program_ID) : program_ID_(program_ID)
 {
 
@@ -31,10 +31,10 @@ PhongMaterial::PhongMaterial() : Material(ShaderManager::instance()->getShader("
 }
 
 //! Updating the shader parameters.
-  /*!
-    This function is automatically called when a mesh with this material is
-    rendered.
-  */
+/*!
+  This function is automatically called when a mesh with this material is
+  rendered.
+*/
 void PhongMaterial::use() const
 {
   // Use our shader
@@ -55,10 +55,10 @@ OneColorMaterial::OneColorMaterial() : Material(ShaderManager::instance()->getSh
 }
 
 //! Updating the shader parameters.
-  /*!
-    This function is automatically called when a mesh with this material is
-    rendered.
-  */
+/*!
+  This function is automatically called when a mesh with this material is
+  rendered.
+*/
 void OneColorMaterial::use() const
 {
   // Use our shader
@@ -73,10 +73,10 @@ BackgroundMaterial::BackgroundMaterial() : Material(ShaderManager::instance()->g
 }
 
 //! Updating the shader parameters.
-  /*!
-    This function is automatically called when a mesh with this material is
-    rendered.
-  */
+/*!
+  This function is automatically called when a mesh with this material is
+  rendered.
+*/
 void BackgroundMaterial::use() const
 {
   // Use our shader

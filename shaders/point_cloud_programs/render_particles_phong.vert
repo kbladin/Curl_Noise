@@ -34,21 +34,20 @@ out vec3 light_position_viewspace;
 out vec4 vertex_position_viewspace;
 
 void main(){
-	// Write output to fragment shader
-	// a = texelFetch( acceleration_sampler_2D, ivec2(index), 0).xyz;
-	// v = texelFetch( velocity_sampler_2D, ivec2(index), 0).xyz;
-	// The lifetime is stored in the fourth element of position
-	vec4 p_tmp = texelFetch( position_sampler_2D, ivec2(index), 0);
-	vec3 p = p_tmp.xyz;
-	//t = p_tmp.a;
+  // Write output to fragment shader
+  // a = texelFetch( acceleration_sampler_2D, ivec2(index), 0).xyz;
+  // v = texelFetch( velocity_sampler_2D, ivec2(index), 0).xyz;
+  // The lifetime is stored in the fourth element of position
+  vec4 p_tmp =  texelFetch( position_sampler_2D, ivec2(index), 0);
+  vec3 p =      p_tmp.xyz;
+  //t = p_tmp.a;
 
-	// Set camera position
-	vertex_position_viewspace = V * M * vec4(p ,1);
-	// Position of particle
-	gl_Position = P * vertex_position_viewspace;
-	
-	light_position_viewspace = ( V * vec4(light_position,1)).xyz;
-
-	// Set size dependent on distance to camera
-	gl_PointSize = particle_radius * 5 / (-vertex_position_viewspace.z);
+  // Set camera position
+  vertex_position_viewspace = V * M * vec4(p ,1);
+  // Position and size of point
+  // Set size dependent on distance to camera
+  gl_Position =   P * vertex_position_viewspace;
+  gl_PointSize =  particle_radius * 5 / (-vertex_position_viewspace.z);
+  
+  light_position_viewspace = ( V * vec4(light_position,1)).xyz;
 }
