@@ -66,7 +66,6 @@ public:
 
   ParticleSystemProperties* getParticleSystemPropertiesPointer();
   PointCloudRenderingProperties* getPointCloudRenderingPropertiesPointer();
-  void switchParticleShader();
 
   void setWindowResolution(int width, int height);
 private:

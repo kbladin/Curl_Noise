@@ -25,7 +25,6 @@ public:
   void update(float dt);
   ParticleSystemProperties* getPropertiesPointer();
   PointCloudRenderingProperties* getPointCloudRenderingPropertiesPointer();
-  void switchShader();
 
 private:
   void updateAccelerations(float dt);

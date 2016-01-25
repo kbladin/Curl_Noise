@@ -38,7 +38,7 @@ void AntGui::createParticleSystemPropertiesTwBar(
   definitions =
   std::string("'") + name + std::string("' ") + 
   std::string("help='These properties defines the engine behavior' ") +
-  std::string("size='470 740' ") +
+  std::string("size='470 770' ") +
   std::string("movable=false ") +
   std::string("resizable=false ");
   TwDefine(definitions.c_str());
@@ -94,7 +94,14 @@ void AntGui::createParticleSystemPropertiesTwBar(
   // Add a text (the way to do it with Ant Tweak Bar)
   TwAddButton(bar, "comment2", NULL, NULL, " label='Rendering Properties' ");
 
+  // Create enum values
+  TwEnumVal shader_enum_val[] = { {ADDITIVE, "Additive"}, {PHONG, "Phong"} };
+  TwType shader_type;
+  // Define enum type
+  shader_type = TwDefineEnum("shader_type", shader_enum_val, 2);
+
   // Add the variables
+  TwAddVarRW(bar, "Shader", shader_type, &pc_rendering_properties->shader, NULL);
   TwAddVarRW(
     bar,
     "particle_color",

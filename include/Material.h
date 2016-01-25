@@ -61,13 +61,18 @@ public:
 private:
 };
 
+typedef enum {
+  ADDITIVE, PHONG
+} PointCloudShader;
+
 struct PointCloudRenderingProperties {
   glm::vec3 particle_color;
   float particle_radius;
+  PointCloudShader shader;
 };
 
 //! Every Mesh has a material which specifies parameters for shading.
-class PointCloudMaterial : public Material {
+class PointCloudMaterial {
 public:
   PointCloudMaterial(unsigned long size);
   ~PointCloudMaterial();
@@ -78,12 +83,10 @@ public:
   GLuint getVelocityTextureToSample(){return velocity_texture_to_sample_;};
   GLuint getPositionTextureToSample(){return position_texture_to_sample_;};
   
-  void setShaderToPhong();
-  void setShaderToAdditive();
-
   PointCloudRenderingProperties* getPropertiesPointer();
 
-  void use() const;
+  void use();
+  GLuint getProgramID() const;
 private:
   void updateUniformIDs();
 

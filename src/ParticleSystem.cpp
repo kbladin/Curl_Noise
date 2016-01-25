@@ -177,16 +177,6 @@ PointCloudRenderingProperties* ParticleSystem::getPointCloudRenderingPropertiesP
   return material_->getPropertiesPointer();
 }
 
-void ParticleSystem::switchShader()
-{
-  if (material_->getProgramID() == 
-      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"))
-    material_->setShaderToAdditive();
-  else if (material_->getProgramID() == 
-      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"))
-    material_->setShaderToPhong();
-}
-
 void ParticleSystem::updateAccelerations(float dt)
 {
   glBindFramebuffer(GL_FRAMEBUFFER, acceleration_frame_buffer_);

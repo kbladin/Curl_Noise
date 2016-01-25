@@ -84,11 +84,11 @@ void BackgroundMaterial::use() const
 }
 
 //! Create a material which is bound to the UpdatePointCloud shader.
-PointCloudMaterial::PointCloudMaterial(unsigned long size) :
-  Material(ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"))
+PointCloudMaterial::PointCloudMaterial(unsigned long size)
 {
   rendering_properties_.particle_color = glm::vec3(1,1,1);
   rendering_properties_.particle_radius = 2;
+  rendering_properties_.shader = ADDITIVE;
 
   std::vector<glm::vec3> accelerations;
   std::vector<glm::vec3> velocities;
@@ -170,13 +170,8 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size) :
   // Need mipmap for some reason......
   glGenerateMipmap(GL_TEXTURE_2D);
   
-  glUseProgram(program_ID_);
 
-  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "accelerationSampler2D");
-  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "velocitySampler2D");
-  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "positionSampler2D");
-  particle_color_ID_ = glGetUniformLocation(program_ID_, "particle_color");
-  particle_radius_ID_ = glGetUniformLocation(program_ID_, "particle_radius");
+  updateUniformIDs();
 }
 
 PointCloudMaterial::~PointCloudMaterial()
@@ -210,35 +205,35 @@ GLuint PointCloudMaterial::swapPositionTexture(GLuint texture_ID)
   return tmp;
 }
 
-void PointCloudMaterial::setShaderToPhong()
-{
-  program_ID_ = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
-  updateUniformIDs();
-}
-
-void PointCloudMaterial::setShaderToAdditive()
-{
-  program_ID_ = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
-  updateUniformIDs();
-}
-
 void PointCloudMaterial::updateUniformIDs()
 {
-  glUseProgram(program_ID_);
+  GLuint program_ID;
+  switch (rendering_properties_.shader)
+  {
+    case ADDITIVE :
+      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+      break;
+    case PHONG :
+      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
+      break;
+    default :
+      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+  }
 
-  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "accelerationSampler2D");
-  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "velocitySampler2D");
-  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID_, "positionSampler2D");
-  particle_color_ID_ = glGetUniformLocation(program_ID_, "particle_color");
-  particle_radius_ID_ = glGetUniformLocation(program_ID_, "particle_radius");
+  glUseProgram(program_ID);
+  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "accelerationSampler2D");
+  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "velocitySampler2D");
+  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "positionSampler2D");
+  particle_color_ID_ = glGetUniformLocation(program_ID, "particle_color");
+  particle_radius_ID_ = glGetUniformLocation(program_ID, "particle_radius");
 }
 
 //! Updating the shader parameters.
-void PointCloudMaterial::use() const
+void PointCloudMaterial::use()
 {
-  // Use shader
-  glUseProgram(program_ID_);
-  
+  // Update IDs and use shader
+  updateUniformIDs();
+
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, acceleration_texture_to_sample_);
   glUniform1i(acceleration_texture_sampler2D_ID_, 0);
@@ -261,6 +256,24 @@ void PointCloudMaterial::use() const
     particle_radius_ID_,
     rendering_properties_.particle_radius);
 }
+
+//! Returns the program ID of the shader of the Material.
+GLuint PointCloudMaterial::getProgramID() const
+{
+  GLuint program_ID;
+  switch (rendering_properties_.shader)
+  {
+    case ADDITIVE :
+      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+      break;
+    case PHONG :
+      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
+      break;
+    default :
+      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+  }
+  return program_ID;
+};
 
 PointCloudRenderingProperties* PointCloudMaterial::getPropertiesPointer()
 {

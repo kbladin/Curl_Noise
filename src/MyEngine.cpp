@@ -276,11 +276,6 @@ PointCloudRenderingProperties* MyEngine::getPointCloudRenderingPropertiesPointer
   return point_cloud_->getPointCloudRenderingPropertiesPointer();
 }
 
-void MyEngine::switchParticleShader()
-{
-  point_cloud_->switchShader();
-}
-
 void MyEngine::setWindowResolution(int width, int height)
 {
   SimpleGraphicsEngine::setWindowResolution(width, height);

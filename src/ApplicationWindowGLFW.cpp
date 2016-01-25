@@ -85,7 +85,7 @@ void ApplicationWindowGLFW::run()
 
     if (delay_counter_ >= 1.0) {
       std::stringstream title;
-      title << frame_counter_ << " FPS";
+      title << "Curl Noise Demo by Kalle Bladin. " << frame_counter_ << " FPS";
       glfwSetWindowTitle(window_, title.str().c_str());
       frame_counter_ = 0;
       delay_counter_ = 0;
@@ -139,11 +139,6 @@ void ApplicationWindowGLFW::keyCallback(
 {
   if (!TwEventKeyGLFW(key, action))
   {
-    if (action == GLFW_RELEASE)
-    {
-      if (key == GLFW_KEY_SPACE)
-        engine_->switchParticleShader();
-    }
     //engine_->keyCallback(key, scancode, action, mods);
   }
 }
