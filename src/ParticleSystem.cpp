@@ -17,11 +17,8 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
   
   // Three shaders. One for each attribute
   update_accelerations_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS");
-  glUseProgram(update_positions_program_ID_);
   update_velocities_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES");
-  glUseProgram(update_positions_program_ID_);
-   update_positions_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS");
-  glUseProgram(update_positions_program_ID_);
+  update_positions_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS");
   
   // We want to render to three textures as well. One for each attrubute.
   // When updating. We sample from previous state and update these textures.
