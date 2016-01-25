@@ -7,7 +7,6 @@
 #include <iostream>
 
 #include <gl/glew.h>
-//#include <gl/glfw3.h>
 
 //! A class containing all shader program IDs in a map.
 /*!

@@ -2,7 +2,6 @@
 #define SIMPLE_GRAPHICS_ENGINE_H
 
 #include "../../include/SGE/ShaderManager.h"
-//#include "../../include/Material.h"
 #include "../../include/SGE/Object3D.h"
 #include "../../include/SGE/Mesh.h"
 #include "../../include/SGE/Camera.h"
@@ -10,9 +9,10 @@
 #include <vector>
 #include <map>
 
-#include "../../ext/glm/include/glm/glm.hpp"
-#include "../../ext/glm/include/glm/gtc/matrix_transform.hpp"
-#include "../../ext/glm/include/glm/gtx/transform.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform.hpp>
+
 #include <gl/glew.h>
 
 //! A light source defined in 3D space

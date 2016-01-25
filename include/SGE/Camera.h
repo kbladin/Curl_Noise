@@ -5,9 +5,9 @@
 
 #include <gl/glew.h>
 
-#include "../../ext/glm/include/glm/glm.hpp"
-#include "../../ext/glm/include/glm/gtc/matrix_transform.hpp"
-#include "../../ext/glm/include/glm/gtx/transform.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform.hpp>
 
 //! A camera defined in 3D space
 class AbstractCamera : public Object3D {

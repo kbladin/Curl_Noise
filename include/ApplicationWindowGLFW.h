@@ -1,13 +1,15 @@
 #ifndef WINDOW_MANAGER_H
 #define WINDOW_MANAGER_H
 
+#include "../include/MyEngine.h"
+
 #include <iostream>
+
+#include <AntTweakBar.h>
 
 #include <gl/glew.h>
 #include <gl/glfw3.h>
 
-#include <AntTweakBar.h>
-#include "../include/MyEngine.h"
 
 //! A class that handles both user interfacing and has an instance of a MyEngine object.
 class ApplicationWindowGLFW

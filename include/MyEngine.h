@@ -5,10 +5,11 @@
 #include "../include/ParticleSystem.h"
 #include "../include/AntGui.h"
 
-#include <gl/glew.h>
-
 #include <iostream>
 #include <sstream>
+
+#include <gl/glew.h>
+
 
 class MyBGObject3D : public Object3D {
 public:

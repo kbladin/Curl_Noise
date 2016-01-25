@@ -3,7 +3,6 @@
 
 #include "../include/SGE/Object3D.h"
 #include "../include/SGE/Mesh.h"
-
 #include "../include/Material.h"
 
 struct ParticleSystemProperties {

@@ -1,11 +1,13 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include <gl/glew.h>
-#include "../ext/glm/include/glm/glm.hpp"
-
 #include "../include/SGE/ShaderManager.h"
 
+#include <gl/glew.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform.hpp>
 
 //! Every Mesh has a material which specifies parameters for shading.
   /*

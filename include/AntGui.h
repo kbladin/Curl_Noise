@@ -1,13 +1,14 @@
 #ifndef ANT_GUI_H
 #define ANT_GUI_H
 
+#include "../include/ParticleSystem.h"
+#include "../include/Material.h"
+
 #include <map>
 #include <string>
 #include <vector>
 
 #include <AntTweakBar.h>
-#include "../include/ParticleSystem.h"
-#include "../include/Material.h"
 
 //! A class that handels user interfacing thorough the GUI library AntTweakBar
 class AntGui

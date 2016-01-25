@@ -1,16 +1,16 @@
 #ifndef MESH_H
 #define MESH_H
 
-#include <vector>
-
 #include "../../include/SGE/Object3D.h"
 #include "../../include/SGE/MeshLoader.h"
 
+#include <vector>
+
 #include <gl/glew.h>
 
-#include "../../ext/glm/include/glm/glm.hpp"
-#include "../../ext/glm/include/glm/gtc/matrix_transform.hpp"
-#include "../../ext/glm/include/glm/gtx/transform.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform.hpp>
 
 //! This class serves as a base for the mesh classes
 /*!
