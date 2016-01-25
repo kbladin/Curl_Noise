@@ -1,9 +1,0 @@
-digraph "ext/assimp/include/assimp/Compiler" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_520a70b6b26d310861f7df47171224e2 {
-    graph [ bgcolor="#ddddee", pencolor="black", label="assimp" fontname="Helvetica", fontsize="10", URL="dir_520a70b6b26d310861f7df47171224e2.html"]
-  dir_173715d730489a991c6c23e076b33a29 [shape=box, label="Compiler", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_173715d730489a991c6c23e076b33a29.html"];
-  }
-}

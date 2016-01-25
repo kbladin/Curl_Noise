@@ -1,9 +1,0 @@
-digraph "ext/assimp/include/assimp/port/AndroidJNI" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_971b48ef5e3e574dc12f8a78ed162b56 {
-    graph [ bgcolor="#ddddee", pencolor="black", label="port" fontname="Helvetica", fontsize="10", URL="dir_971b48ef5e3e574dc12f8a78ed162b56.html"]
-  dir_57c7ac50ca507353da881eca6148f71a [shape=box, label="AndroidJNI", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_57c7ac50ca507353da881eca6148f71a.html"];
-  }
-}

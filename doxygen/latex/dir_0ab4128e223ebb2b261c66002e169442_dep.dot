@@ -1,9 +1,0 @@
-digraph "/Users/kbladin/Documents/C++projects/curl_noise/include/SGE" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_969cc7e2a1297da2b41367b445f16a66 {
-    graph [ bgcolor="#ddddee", pencolor="black", label="include" fontname="Helvetica", fontsize="10", URL="dir_969cc7e2a1297da2b41367b445f16a66.html"]
-  dir_0ab4128e223ebb2b261c66002e169442 [shape=box, label="SGE", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_0ab4128e223ebb2b261c66002e169442.html"];
-  }
-}
