@@ -110,9 +110,9 @@ void TriangleMesh::initPlane(
     normal != glm::vec3(0.0f, 0.0f, 1.0f) ?
     glm::vec3(0.0f, 0.0f, 1.0f) : glm::vec3(0.0f, 1.0f, 0.0f);
   M = glm::lookAt(
-                  glm::vec3(0.0f, 0.0f, 0.0f),
-                  normal,
-                  up);
+    glm::vec3(0.0f, 0.0f, 0.0f),
+    normal,
+    up);
   for (int i = 0; i < vertices_.size(); i++) {
     normals_[i] = glm::vec3(glm::vec4(glm::vec3(0.0f, 0.0f, -1.0f), 0) * M);
     vertices_[i] = glm::vec3(glm::vec4(vertices_[i] * scale, 1) * M);
