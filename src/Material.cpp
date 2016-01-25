@@ -16,7 +16,8 @@ GLuint Material::getProgramID() const
 };
 
 //! Create a material which is bound to the Phong shader.
-PhongMaterial::PhongMaterial() : Material(ShaderManager::instance()->getShader("SHADER_PHONG"))
+PhongMaterial::PhongMaterial() :
+  Material(ShaderManager::instance()->getShader("SHADER_PHONG"))
 {
   diffuse_color_ = glm::vec3(1.0, 1.0, 1.0);
   specular_color_ = glm::vec3(1.0, 1.0, 1.0);
@@ -24,10 +25,10 @@ PhongMaterial::PhongMaterial() : Material(ShaderManager::instance()->getShader("
   shinyness_ = 16;
   
   glUseProgram(program_ID_);
-  diffuseColor_ID_ = glGetUniformLocation(program_ID_, "material_diffise_color");
+  diffuseColor_ID_ =  glGetUniformLocation(program_ID_, "material_diffise_color");
   specularColor_ID_ = glGetUniformLocation(program_ID_, "material_specularColor");
-  specularity_ID_ = glGetUniformLocation(program_ID_, "material_specularity");
-  shinyness_ID_ = glGetUniformLocation(program_ID_, "material_shinyness");
+  specularity_ID_ =   glGetUniformLocation(program_ID_, "material_specularity");
+  shinyness_ID_ =     glGetUniformLocation(program_ID_, "material_shinyness");
 }
 
 //! Updating the shader parameters.
@@ -39,14 +40,23 @@ void PhongMaterial::use() const
 {
   // Use our shader
   glUseProgram(program_ID_);
-  glUniform3f(diffuseColor_ID_,diffuse_color_.r,diffuse_color_.g, diffuse_color_.b);
-  glUniform3f(specularColor_ID_,specular_color_.r,specular_color_.g, specular_color_.b);
+  glUniform3f(
+    diffuseColor_ID_,
+    diffuse_color_.r,
+    diffuse_color_.g,
+    diffuse_color_.b);
+  glUniform3f(
+    specularColor_ID_,
+    specular_color_.r,
+    specular_color_.g,
+    specular_color_.b);
   glUniform1f(specularity_ID_, specularity_);
   glUniform1i(shinyness_ID_, shinyness_);
 }
 
 //! Create a material which is bound to the OneColor shader.
-OneColorMaterial::OneColorMaterial() : Material(ShaderManager::instance()->getShader("SHADER_ONE_COLOR"))
+OneColorMaterial::OneColorMaterial() :
+  Material(ShaderManager::instance()->getShader("SHADER_ONE_COLOR"))
 {
   diffuse_color_ = glm::vec3(1.0, 1.0, 1.0);
   
@@ -63,11 +73,16 @@ void OneColorMaterial::use() const
 {
   // Use our shader
   glUseProgram(program_ID_);
-  glUniform3f(diffuseColor_ID_,diffuse_color_.r,diffuse_color_.g, diffuse_color_.b);
+  glUniform3f(
+    diffuseColor_ID_,
+    diffuse_color_.r,
+    diffuse_color_.g,
+    diffuse_color_.b);
 }
 
 //! Create a material which is bound to the Background shader.
-BackgroundMaterial::BackgroundMaterial() : Material(ShaderManager::instance()->getShader("SHADER_BACKGROUND"))
+BackgroundMaterial::BackgroundMaterial() :
+  Material(ShaderManager::instance()->getShader("SHADER_BACKGROUND"))
 {
   glUseProgram(program_ID_);
 }
@@ -103,73 +118,63 @@ PointCloudMaterial::PointCloudMaterial(unsigned long size)
   for (int i=0; i<positions.size(); i++) {
     float r = (float(rand()) / RAND_MAX) + 0.4;
     float t = (float(rand()) / RAND_MAX) * 360;
-    //positions[i] = glm::vec3(r * glm::cos(t),(float(rand()) / RAND_MAX - 0.5f) * 0.5f,r * glm::sin(t));
-    //velocities[i] = glm::sqrt(0.000003f * ( 500.0f) ) * glm::length(positions[i]) * glm::length(positions[i]) * glm::normalize(glm::cross(positions[i], glm::vec3(0,1,0)));
     
-    positions[i] = glm::vec4(float(rand()) / RAND_MAX - 0.5f, 100, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX);
-    velocities[i] = 0.0f * glm::vec3(float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f, float(rand()) / RAND_MAX - 0.5f);
-    /*
-    if (positions[i].x < 0)
-    {
-      positions[i].x -= 0.3;
-      velocities[i] = glm::vec3(0,0,1) * 0.1f;
-    }
-    else
-    {
-      positions[i].x += 0.3;
-      velocities[i] = -glm::vec3(0,0,1) * 0.1f;
-    }
-    */
-    
-    //velocities[i] += glm::vec3(float(rand()) / RAND_MAX - 0.5f,(float(rand()) / RAND_MAX - 0.5f),float(rand()) / RAND_MAX - 0.5f) * 0.001f;
-    accelerations[i] = glm::vec3(0,0,0);
+    positions[i] = glm::vec4(
+      float(rand()) / RAND_MAX,
+      100 + float(rand()) / RAND_MAX - 0.5f,
+      float(rand()) / RAND_MAX - 0.5f,
+      float(rand()) / RAND_MAX);
+    velocities[i] =     glm::vec3(0,0,0);
+    accelerations[i] =  glm::vec3(0,0,0);
   }
   
   glGenTextures(1, &acceleration_texture_to_sample_);
   glBindTexture(GL_TEXTURE_2D, acceleration_texture_to_sample_);
-  glTexImage2D(GL_TEXTURE_2D,
-               0,
-               GL_RGB,
-               size,
-               size,
-               0,
-               GL_RGB,
-               GL_FLOAT,
-               &accelerations[0]);
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_RGB,
+    size,
+    size,
+    0,
+    GL_RGB,
+    GL_FLOAT,
+    &accelerations[0]);
   
   // Need mipmap for some reason......
   glGenerateMipmap(GL_TEXTURE_2D);
   
   glGenTextures(1, &velocity_texture_to_sample_);
   glBindTexture(GL_TEXTURE_2D, velocity_texture_to_sample_);
-  glTexImage2D(GL_TEXTURE_2D,
-               0,
-               GL_RGB,
-               size,
-               size,
-               0,
-               GL_RGB,
-               GL_FLOAT,
-               &velocities[0]);
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_RGB,
+    size,
+    size,
+    0,
+    GL_RGB,
+    GL_FLOAT,
+    &velocities[0]);
   
   // Need mipmap for some reason......
   glGenerateMipmap(GL_TEXTURE_2D);
   
   glGenTextures(1, &position_texture_to_sample_);
   glBindTexture(GL_TEXTURE_2D, position_texture_to_sample_);
-  glTexImage2D(GL_TEXTURE_2D,
-               0,
-               GL_RGBA,
-               size,
-               size,
-               0,
-               GL_RGBA,
-               GL_FLOAT,
-               &positions[0]);
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_RGBA,
+    size,
+    size,
+    0,
+    GL_RGBA,
+    GL_FLOAT,
+    &positions[0]);
   
   // Need mipmap for some reason......
   glGenerateMipmap(GL_TEXTURE_2D);
-  
 
   updateUniformIDs();
 }
@@ -211,21 +216,29 @@ void PointCloudMaterial::updateUniformIDs()
   switch (rendering_properties_.shader)
   {
     case ADDITIVE :
-      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+      program_ID =
+        ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
       break;
     case PHONG :
-      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
+      program_ID =
+        ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
       break;
     default :
-      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+      program_ID =
+        ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
   }
 
   glUseProgram(program_ID);
-  acceleration_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "acceleration_sampler_2D");
-  velocity_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "velocity_sampler_2D");
-  position_texture_sampler2D_ID_ = glGetUniformLocation(program_ID, "position_sampler_2D");
-  particle_color_ID_ = glGetUniformLocation(program_ID, "particle_color");
-  particle_radius_ID_ = glGetUniformLocation(program_ID, "particle_radius");
+  acceleration_texture_sampler2D_ID_ =
+    glGetUniformLocation(program_ID, "acceleration_sampler_2D");
+  velocity_texture_sampler2D_ID_ =
+    glGetUniformLocation(program_ID, "velocity_sampler_2D");
+  position_texture_sampler2D_ID_ =
+    glGetUniformLocation(program_ID, "position_sampler_2D");
+  particle_color_ID_ =
+    glGetUniformLocation(program_ID, "particle_color");
+  particle_radius_ID_ =
+    glGetUniformLocation(program_ID, "particle_radius");
 }
 
 //! Updating the shader parameters.
@@ -264,13 +277,16 @@ GLuint PointCloudMaterial::getProgramID() const
   switch (rendering_properties_.shader)
   {
     case ADDITIVE :
-      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+      program_ID =
+        ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
       break;
     case PHONG :
-      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
+      program_ID =
+        ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG");
       break;
     default :
-      program_ID = ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
+      program_ID =
+        ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE");
   }
   return program_ID;
 };

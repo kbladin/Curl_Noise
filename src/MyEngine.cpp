@@ -288,8 +288,6 @@ void MyEngine::setWindowResolution(int width, int height)
 
 void MyEngine::updateParticleEmitterPosition()
 {
-  // Unproject camera here
-
   // The unProject() function returns a vector in world-space which
   // defines a direction out of the frustum depending on which pixel
   // we shoot the ray from. "from" will be on the near-viewplane

@@ -10,10 +10,10 @@
 #include <glm/gtx/transform.hpp>
 
 //! Every Mesh has a material which specifies parameters for shading.
-  /*
-    This class is extended for every shader program that needs specific shader
-    uniforms.
-  */
+/*
+  This class is extended for every shader program that needs specific shader
+  uniforms.
+*/
 class Material {
 public:
   Material(GLuint program_ID);
@@ -50,7 +50,7 @@ public:
   void use() const;
   
   glm::vec3 diffuse_color_;
-  private:
+private:
   GLuint diffuseColor_ID_;
 };
 
@@ -96,14 +96,18 @@ private:
   GLuint particle_color_ID_;
   GLuint particle_radius_ID_;
 
+  // Textures to sample from
   GLuint acceleration_texture_sampler2D_ID_;
   GLuint velocity_texture_sampler2D_ID_;
   GLuint position_texture_sampler2D_ID_;
   
+  // Textures to render to
   GLuint acceleration_texture_to_sample_;
   GLuint velocity_texture_to_sample_;
   GLuint position_texture_to_sample_;
 
+  // Rendering properties that can be changed from the outside since the
+  // function getPropertiesPointer() returns a pointer to this object
   PointCloudRenderingProperties rendering_properties_;
 };
 

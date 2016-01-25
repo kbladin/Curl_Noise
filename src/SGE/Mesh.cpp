@@ -428,11 +428,19 @@ void TriangleMesh::initialize()
   
   glGenBuffers(1, &normal_buffer_);
   glBindBuffer(GL_ARRAY_BUFFER, normal_buffer_);
-  glBufferData(GL_ARRAY_BUFFER, normals_.size() * sizeof(glm::vec3), &normals_[0], GL_STATIC_DRAW);
+  glBufferData(
+    GL_ARRAY_BUFFER,
+    normals_.size() * sizeof(glm::vec3),
+    &normals_[0],
+    GL_STATIC_DRAW);
   
   glGenBuffers(1, &element_buffer_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, elements_.size() * sizeof(unsigned short), &elements_[0] , GL_STATIC_DRAW);
+  glBufferData(
+    GL_ELEMENT_ARRAY_BUFFER,
+    elements_.size() * sizeof(unsigned short),
+    &elements_[0],
+    GL_STATIC_DRAW);
 }
 
 //! Render the mesh.
@@ -449,7 +457,11 @@ void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
 
   // Shader input
   glm::mat4 total_transform = M * transform_matrix_;
-  glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
+  glUniformMatrix4fv(
+    glGetUniformLocation(program_ID, "M"),
+    1,
+    GL_FALSE,
+    &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
   
@@ -457,36 +469,33 @@ void TriangleMesh::render(glm::mat4 M, GLuint program_ID)
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_);
   glVertexAttribPointer(
-                        0,                  // attribute
-                        3,                  // size
-                        GL_FLOAT,           // type
-                        GL_FALSE,           // normalized?
-                        0,                  // stride
-                        (void*)0            // array buffer offset
-                        );
+    0,          // attribute
+    3,          // size
+    GL_FLOAT,   // type
+    GL_FALSE,   // normalized?
+    0,          // stride
+    (void*)0);  // array buffer offset
   
   // 2nd attribute buffer : normals
   glEnableVertexAttribArray(1);
   glBindBuffer(GL_ARRAY_BUFFER, normal_buffer_);
   glVertexAttribPointer(
-                        1,                  // attribute
-                        3,                  // size
-                        GL_FLOAT,           // type
-                        GL_FALSE,           // normalized?
-                        0,                  // stride
-                        (void*)0            // array buffer offset
-                        );
+    1,          // attribute
+    3,          // size
+    GL_FLOAT,   // type
+    GL_FALSE,   // normalized?
+    0,          // stride
+    (void*)0);  // array buffer offset
   
   // Index buffer
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
     
   // Draw the triangles
   glDrawElements(
-                 GL_TRIANGLES,      // mode
-                 elements_.size(),    // count
-                 GL_UNSIGNED_SHORT,   // type
-                 (void*)0           // element array buffer offset
-                 );
+    GL_TRIANGLES,       // mode
+    elements_.size(),   // count
+    GL_UNSIGNED_SHORT,  // type
+    (void*)0);          // element array buffer offset
   
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
@@ -532,10 +541,11 @@ void LineMesh::initLine(glm::vec3 start, glm::vec3 end)
   \param scale defines scaling in x-, y-, and z- direction.
   \param divisions defines how dense the grid will be.
 */
-void LineMesh::initGridPlane(glm::vec3 position,
-                             glm::vec3 normal,
-                             glm::vec3 scale,
-                             unsigned int divisions)
+void LineMesh::initGridPlane(
+  glm::vec3 position,
+  glm::vec3 normal,
+  glm::vec3 scale,
+  unsigned int divisions)
 {
   vertices_.resize((divisions + 1) * 4);
   elements_.resize((divisions + 1) * 4);
@@ -565,9 +575,9 @@ void LineMesh::initGridPlane(glm::vec3 position,
   !(normal.x == 0 && normal.y == 0) ?
   glm::vec3(0.0f, 0.0f, 1.0f) : glm::vec3(0.0f, 1.0f, 0.0f);
   M = glm::lookAt(
-                  glm::vec3(0.0f, 0.0f, 0.0f),
-                  normal,
-                  up);
+    glm::vec3(0.0f, 0.0f, 0.0f),
+    normal,
+    up);
   
   for (int i = 0; i < vertices_.size(); i++) {
     vertices_[i] /= divisions;
@@ -608,8 +618,9 @@ void LineMesh::initCircle(
   
   glm::mat4 M;
   glm::vec3 up =
-  !(normal.x == 0 && normal.y == 0) ?
-  glm::vec3(0.0f, 0.0f, 1.0f) : glm::vec3(0.0f, 1.0f, 0.0f);
+    !(normal.x == 0 && normal.y == 0) ?
+    glm::vec3(0.0f, 0.0f, 1.0f) :
+    glm::vec3(0.0f, 1.0f, 0.0f);
   M = glm::lookAt(
                   glm::vec3(0.0f, 0.0f, 0.0f),
                   normal,
@@ -632,7 +643,11 @@ void LineMesh::initialize()
   
   glGenBuffers(1, &element_buffer_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, elements_.size() * sizeof(unsigned short), &elements_[0] , GL_STATIC_DRAW);
+  glBufferData(
+    GL_ELEMENT_ARRAY_BUFFER,
+    elements_.size() * sizeof(unsigned short),
+    &elements_[0],
+    GL_STATIC_DRAW);
 }
 
 //! Render the mesh.
@@ -649,7 +664,11 @@ void LineMesh::render(glm::mat4 M, GLuint program_ID)
   
   // Input to the shader
   glm::mat4 total_transform = M * transform_matrix_;
-  glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
+  glUniformMatrix4fv(
+    glGetUniformLocation(program_ID, "M"),
+    1,
+    GL_FALSE,
+    &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
   
@@ -657,24 +676,23 @@ void LineMesh::render(glm::mat4 M, GLuint program_ID)
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_);
   glVertexAttribPointer(
-                        0,                  // attribute
-                        3,                  // size
-                        GL_FLOAT,           // type
-                        GL_FALSE,           // normalized?
-                        0,                  // stride
-                        (void*)0            // array buffer offset
-                        );
+    0,          // attribute
+    3,          // size
+    GL_FLOAT,   // type
+    GL_FALSE,   // normalized?
+    0,          // stride
+    (void*)0);  // array buffer offset
   
   // Index buffer
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_);
   
   // Draw the triangles
   glDrawElements(
-                 GL_LINES,      // mode
-                 elements_.size(),    // count
-                 GL_UNSIGNED_SHORT,   // type
-                 (void*)0           // element array buffer offset
-                 );
+    GL_LINES,           // mode
+    elements_.size(),   // count
+    GL_UNSIGNED_SHORT,  // type
+    (void*)0);          // element array buffer offset
+
 
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
@@ -699,7 +717,11 @@ void PointCloudMesh::initialize()
   }
   glGenBuffers(1, &index_buffer_);
   glBindBuffer(GL_ARRAY_BUFFER, index_buffer_);
-  glBufferData(GL_ARRAY_BUFFER, indices.size() * sizeof(std::pair<int, int>), &indices[0], GL_STATIC_DRAW);
+  glBufferData(
+    GL_ARRAY_BUFFER,
+    indices.size() * sizeof(std::pair<int, int>),
+    &indices[0],
+    GL_STATIC_DRAW);
 }
 
 //! Destructor
@@ -722,22 +744,24 @@ void PointCloudMesh::render(glm::mat4 M, GLuint program_ID)
 
   // Input to the shader
   glm::mat4 total_transform = M * transform_matrix_;
-  glUniformMatrix4fv(glGetUniformLocation(program_ID, "M"), 1, GL_FALSE, &total_transform[0][0]);
+  glUniformMatrix4fv(
+    glGetUniformLocation(program_ID, "M"),
+    1,
+    GL_FALSE,
+    &total_transform[0][0]);
   
   glBindVertexArray(vertex_array_ID_);
 
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, index_buffer_);
   glVertexAttribPointer(
-                        0,                  // attribute
-                        2,                  // size
-                        GL_INT,             // type
-                        GL_FALSE,           // normalized?
-                        0,                  // stride
-                        (void*)0            // array buffer offset
-                        );
+    0,          // attribute
+    2,          // size
+    GL_INT,     // type
+    GL_FALSE,   // normalized?
+    0,          // stride
+    (void*)0);  // array buffer offset
   
-  //glPointSize(2);
   glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
   glDrawArrays(GL_POINTS, 0, size_ * size_);
   

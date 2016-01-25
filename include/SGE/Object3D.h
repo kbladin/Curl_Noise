@@ -9,10 +9,10 @@
 
 //! An object positioned in 3D space.
 /*!
- This object can not be rendered by itself. It needs a child or children in
- form of meshes (TriangleMesh or LineMesh).
- All objects inheriting from Object3D can be added as child.
- */
+  This object can not be rendered by itself. It needs a child or children in
+  form of meshes (TriangleMesh or LineMesh).
+  All objects inheriting from Object3D can be added as child.
+*/
 class Object3D {
 public:
   Object3D() {};

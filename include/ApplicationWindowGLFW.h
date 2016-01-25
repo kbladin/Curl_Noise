@@ -19,11 +19,14 @@ public:
   ~ApplicationWindowGLFW();
 
   void run();
-
 private:
   bool initOpenGLContext();
   static void mousePosCallback(GLFWwindow * window, double x, double y);
-  static void mouseButtonCallback(GLFWwindow * window, int button, int action, int mods);
+  static void mouseButtonCallback(
+    GLFWwindow * window,
+    int button,
+    int action,
+    int mods);
   static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
   static void keyCallback(
     GLFWwindow * window,

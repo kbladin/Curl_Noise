@@ -46,8 +46,8 @@ protected:
 
 //! The actual program extending SimpleGraphicsEngine
 /*!
- Here, all objects can be added to the scene_ and input is handled outside of
- SimpleGraphicsEngine.
+  Here, all objects can be added to the scene_ and input is handled outside of
+  SimpleGraphicsEngine.
 */
 class MyEngine : public SimpleGraphicsEngine {
 public:

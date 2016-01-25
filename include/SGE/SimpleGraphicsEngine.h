@@ -35,11 +35,11 @@ private:
 
 //! This class manages all objects in the engine.
 /*!
- This class has the scene_ which can be used to add more objects by adding
- children to the scene.
- The scene_ has some predefined children such as a grid plane and axes.
- Extend this class to create a program to run.
- */
+  This class has the scene_ which can be used to add more objects by adding
+  children to the scene.
+  The scene_ has some predefined children such as a grid plane and axes.
+  Extend this class to create a program to run.
+*/
 class SimpleGraphicsEngine {
 public:
   SimpleGraphicsEngine(double time);

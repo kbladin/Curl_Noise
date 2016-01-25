@@ -16,51 +16,57 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
   time = 0;
   
   // Three shaders. One for each attribute
-  update_accelerations_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS");
-  update_velocities_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES");
-  update_positions_program_ID_ = ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS");
+  update_accelerations_program_ID_ =
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS");
+  update_velocities_program_ID_ =
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES");
+  update_positions_program_ID_ =
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS");
   
   // We want to render to three textures as well. One for each attrubute.
   // When updating. We sample from previous state and update these textures.
   glGenTextures(1, &acceleration_texture_to_render_);
   glBindTexture(GL_TEXTURE_2D, acceleration_texture_to_render_);
-  glTexImage2D(GL_TEXTURE_2D,
-               0,
-               GL_RGB,
-               size_,
-               size_,
-               0,
-               GL_RGB,
-               GL_FLOAT,
-               0);
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_RGB,
+    size_,
+    size_,
+    0,
+    GL_RGB,
+    GL_FLOAT,
+    0);
   // Need mipmap for some reason......
   glGenerateMipmap(GL_TEXTURE_2D);
   
   glGenTextures(1, &velocity_texture_to_render_);
   glBindTexture(GL_TEXTURE_2D, velocity_texture_to_render_);
-  glTexImage2D(GL_TEXTURE_2D,
-               0,
-               GL_RGB,
-               size_,
-               size_,
-               0,
-               GL_RGB,
-               GL_FLOAT,
-               0);
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_RGB,
+    size_,
+    size_,
+    0,
+    GL_RGB,
+    GL_FLOAT,
+    0);
   // Need mipmap for some reason......
   glGenerateMipmap(GL_TEXTURE_2D);
   
   glGenTextures(1, &position_texture_to_render_);
   glBindTexture(GL_TEXTURE_2D, position_texture_to_render_);
-  glTexImage2D(GL_TEXTURE_2D,
-               0,
-               GL_RGBA,
-               size_,
-               size_,
-               0,
-               GL_RGBA,
-               GL_FLOAT,
-               0);
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_RGBA,
+    size_,
+    size_,
+    0,
+    GL_RGBA,
+    GL_FLOAT,
+    0);
   // Need mipmap for some reason......
   glGenerateMipmap(GL_TEXTURE_2D);
   
@@ -86,17 +92,29 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
   
   glGenBuffers(1, &quad_VBO_);
   glBindBuffer(GL_ARRAY_BUFFER, quad_VBO_);
-  glBufferData(GL_ARRAY_BUFFER, quad_vertices_.size() * sizeof(glm::vec3), &quad_vertices_[0], GL_STATIC_DRAW);
+  glBufferData(
+    GL_ARRAY_BUFFER,
+    quad_vertices_.size() * sizeof(glm::vec3),
+    &quad_vertices_[0],
+    GL_STATIC_DRAW);
   
   glGenBuffers(1, &quad_element_buffer_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad_element_buffer_);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, quad_elements_.size() * sizeof(unsigned short), &quad_elements_[0] , GL_STATIC_DRAW);
+  glBufferData(
+    GL_ELEMENT_ARRAY_BUFFER,
+    quad_elements_.size() * sizeof(unsigned short),
+    &quad_elements_[0],
+    GL_STATIC_DRAW);
 
   // The frame buffers. One for each attribute
   // Acceleration
   glGenFramebuffers(1, &acceleration_frame_buffer_);
   glBindFramebuffer(GL_FRAMEBUFFER, acceleration_frame_buffer_);
-  glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,acceleration_texture_to_render_, 0);
+  glFramebufferTexture(
+    GL_FRAMEBUFFER,
+    GL_COLOR_ATTACHMENT0,
+    acceleration_texture_to_render_,
+    0);
 
   // Check that the framebuffer is ok
   if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
@@ -105,7 +123,11 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
   // Velocity
   glGenFramebuffers(1, &velocity_frame_buffer_);
   glBindFramebuffer(GL_FRAMEBUFFER, velocity_frame_buffer_);
-  glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,velocity_texture_to_render_, 0);
+  glFramebufferTexture(
+    GL_FRAMEBUFFER,
+    GL_COLOR_ATTACHMENT0,
+    velocity_texture_to_render_,
+    0);
 
   // Check that the framebuffer is ok
   if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
@@ -114,7 +136,11 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
   // Position
   glGenFramebuffers(1, &position_frame_buffer_);
   glBindFramebuffer(GL_FRAMEBUFFER, position_frame_buffer_);
-  glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,position_texture_to_render_, 0);
+  glFramebufferTexture(
+    GL_FRAMEBUFFER,
+    GL_COLOR_ATTACHMENT0,
+    position_texture_to_render_,
+    0);
 
   // Check that the framebuffer is ok
   if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
@@ -140,14 +166,6 @@ void ParticleSystem::render(glm::mat4 M)
 {
   material_->use();
 
-  //glEnable(GL_BLEND);
-  //glEnable(GL_DEPTH_TEST);
-  //glDepthMask(GL_FALSE);
-  //glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-  
-  //glEnable(GL_BLEND);
-  //glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-  
   if (material_->getProgramID() == 
       ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"))
     glDisable(GL_BLEND);
@@ -183,21 +201,42 @@ void ParticleSystem::updateAccelerations(float dt)
   glUseProgram(update_accelerations_program_ID_);
   
   // These should not be done every time....
-  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "dt"), dt);
-  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "time"), time);
-  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "size"), size_);
-  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "acceleration_sampler_2D"), 0);
-  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "velocity_sampler_2D"), 1);
-  glUniform1i(glGetUniformLocation(update_accelerations_program_ID_, "position_sampler_2D"), 2);
+  glUniform1f(
+    glGetUniformLocation(update_accelerations_program_ID_,"dt"),
+    dt);
+  glUniform1f(
+    glGetUniformLocation(update_accelerations_program_ID_,"time"),
+    time);
+  glUniform1i(
+    glGetUniformLocation(update_accelerations_program_ID_,"size"),
+    size_);
+  glUniform1i(
+    glGetUniformLocation(update_accelerations_program_ID_,"acceleration_sampler_2D"),
+    0);
+  glUniform1i(
+    glGetUniformLocation(update_accelerations_program_ID_,"velocity_sampler_2D"),
+    1);
+  glUniform1i(
+    glGetUniformLocation(update_accelerations_program_ID_,"position_sampler_2D"),
+    2);
   
   // Properties of the particle system
-  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "field_speed"), properties_.field_speed);
-  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "curl"), properties_.curl);
-  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "progression_rate"), properties_.progression_rate);
-  glUniform1f(glGetUniformLocation(update_accelerations_program_ID_, "length_scale"), properties_.length_scale);
+  glUniform1f(
+    glGetUniformLocation(update_accelerations_program_ID_, "field_speed"),
+    properties_.field_speed);
+  glUniform1f(
+    glGetUniformLocation(update_accelerations_program_ID_, "curl"),
+    properties_.curl);
+  glUniform1f(
+    glGetUniformLocation(update_accelerations_program_ID_, "progression_rate"),
+    properties_.progression_rate);
+  glUniform1f(
+    glGetUniformLocation(update_accelerations_program_ID_, "length_scale"),
+    properties_.length_scale);
   
   if (properties_.field_main_direction != glm::vec3(0,0,0))
-    properties_.field_main_direction = glm::normalize(properties_.field_main_direction);
+    properties_.field_main_direction =
+      glm::normalize(properties_.field_main_direction);
   else
     properties_.field_main_direction = glm::vec3(0,1,0);
   glUniform3f(
@@ -220,23 +259,21 @@ void ParticleSystem::updateAccelerations(float dt)
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, quad_VBO_);
   glVertexAttribPointer(
-                        0,                  // attribute
-                        3,                  // size
-                        GL_FLOAT,           // type
-                        GL_FALSE,           // normalized?
-                        0,                  // stride
-                        (void*)0            // array buffer offset
-                        );
+    0,          // attribute
+    3,          // size
+    GL_FLOAT,   // type
+    GL_FALSE,   // normalized?
+    0,          // stride
+    (void*)0);  // array buffer offset
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad_element_buffer_);
 
   glDisable(GL_BLEND);
   // Draw the quad
   glDrawElements(
-                 GL_TRIANGLES,      // mode
-                 quad_elements_.size(),    // count
-                 GL_UNSIGNED_SHORT,   // type
-                 (void*)0           // element array buffer offset
-                 );
+    GL_TRIANGLES,           // mode
+    quad_elements_.size(),  // count
+    GL_UNSIGNED_SHORT,      // type
+    (void*)0);              // element array buffer offset
   
   glDisableVertexAttribArray(0);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -250,11 +287,21 @@ void ParticleSystem::updateVelocities(float dt)
   
   glUseProgram(update_velocities_program_ID_);
   
-  glUniform1f(glGetUniformLocation(update_velocities_program_ID_, "dt"), dt);
-  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "size"), size_);
-  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "acceleration_sampler_2D"), 0);
-  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "velocity_sampler_2D"), 1);
-  glUniform1i(glGetUniformLocation(update_velocities_program_ID_, "position_sampler_2D"), 2);
+  glUniform1f(
+    glGetUniformLocation(update_velocities_program_ID_, "dt"),
+    dt);
+  glUniform1i(
+    glGetUniformLocation(update_velocities_program_ID_, "size"),
+    size_);
+  glUniform1i(
+    glGetUniformLocation(update_velocities_program_ID_, "acceleration_sampler_2D"),
+    0);
+  glUniform1i(
+    glGetUniformLocation(update_velocities_program_ID_, "velocity_sampler_2D"),
+    1);
+  glUniform1i(
+    glGetUniformLocation(update_velocities_program_ID_, "position_sampler_2D"),
+    2);
   
   // Acceleration from current state (so that we can integrate it, solve diff eq)
   glActiveTexture(GL_TEXTURE0);
@@ -271,23 +318,21 @@ void ParticleSystem::updateVelocities(float dt)
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, quad_VBO_);
   glVertexAttribPointer(
-                        0,                  // attribute
-                        3,                  // size
-                        GL_FLOAT,           // type
-                        GL_FALSE,           // normalized?
-                        0,                  // stride
-                        (void*)0            // array buffer offset
-                        );
+    0,          // attribute
+    3,          // size
+    GL_FLOAT,   // type
+    GL_FALSE,   // normalized?
+    0,          // stride
+    (void*)0);  // array buffer offset
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad_element_buffer_);
 
   glDisable(GL_BLEND);
   // Draw the quad
   glDrawElements(
-                 GL_TRIANGLES,      // mode
-                 quad_elements_.size(),    // count
-                 GL_UNSIGNED_SHORT,   // type
-                 (void*)0           // element array buffer offset
-                 );
+    GL_TRIANGLES,           // mode
+    quad_elements_.size(),  // count
+    GL_UNSIGNED_SHORT,      // type
+    (void*)0);              // element array buffer offset
   
   glDisableVertexAttribArray(0);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -301,15 +346,29 @@ void ParticleSystem::updatePositions(float dt)
   
   glUseProgram(update_positions_program_ID_);
   
-  glUniform1f(glGetUniformLocation(update_positions_program_ID_, "dt"), dt);
-  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "size"), size_);
-  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "acceleration_sampler_2D"), 0);
-  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "velocity_sampler_2D"), 1);
-  glUniform1i(glGetUniformLocation(update_positions_program_ID_, "position_sampler_2D"), 2);
+  glUniform1f(
+    glGetUniformLocation(update_positions_program_ID_, "dt"),
+    dt);
+  glUniform1i(
+    glGetUniformLocation(update_positions_program_ID_, "size"),
+    size_);
+  glUniform1i(
+    glGetUniformLocation(update_positions_program_ID_, "acceleration_sampler_2D"),
+    0);
+  glUniform1i(
+    glGetUniformLocation(update_positions_program_ID_, "velocity_sampler_2D"),
+    1);
+  glUniform1i(
+    glGetUniformLocation(update_positions_program_ID_, "position_sampler_2D"),
+    2);
   
   // Properties of the particle system
-  glUniform1f(glGetUniformLocation(update_positions_program_ID_, "inv_life_length_factor"), 1 / properties_.life_length_factor);
-  glUniform1f(glGetUniformLocation(update_positions_program_ID_, "emitter_size"), properties_.emitter_size);
+  glUniform1f(
+    glGetUniformLocation(update_positions_program_ID_, "inv_life_length_factor"),
+    1 / properties_.life_length_factor);
+  glUniform1f(
+    glGetUniformLocation(update_positions_program_ID_, "emitter_size"),
+    properties_.emitter_size);
   glUniform3f(
     glGetUniformLocation(update_positions_program_ID_, "emitter_position"),
     properties_.emitter_position.x,
@@ -331,23 +390,22 @@ void ParticleSystem::updatePositions(float dt)
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, quad_VBO_);
   glVertexAttribPointer(
-                        0,                  // attribute
-                        3,                  // size
-                        GL_FLOAT,           // type
-                        GL_FALSE,           // normalized?
-                        0,                  // stride
-                        (void*)0            // array buffer offset
-                        );
+    0,          // attribute
+    3,          // size
+    GL_FLOAT,   // type
+    GL_FALSE,   // normalized?
+    0,          // stride
+    (void*)0);  // array buffer offset
+
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad_element_buffer_);
   
   glDisable(GL_BLEND);
   // Draw the quad
   glDrawElements(
-                 GL_TRIANGLES,      // mode
-                 quad_elements_.size(),    // count
-                 GL_UNSIGNED_SHORT,   // type
-                 (void*)0           // element array buffer offset
-                 );
+    GL_TRIANGLES,           // mode
+    quad_elements_.size(),  // count
+    GL_UNSIGNED_SHORT,      // type
+    (void*)0);              // element array buffer offset
   
   glDisableVertexAttribArray(0);
   
@@ -379,19 +437,22 @@ void ParticleSystem::swapTextures()
   
   // We need to relink the texutes for rendering to the frame buffers.
   glBindFramebuffer(GL_FRAMEBUFFER, acceleration_frame_buffer_);
-  glFramebufferTexture(GL_FRAMEBUFFER,
-                       GL_COLOR_ATTACHMENT0,
-                       acceleration_texture_to_render_,
-                       0);
+  glFramebufferTexture(
+    GL_FRAMEBUFFER,
+    GL_COLOR_ATTACHMENT0,
+    acceleration_texture_to_render_,
+    0);
   glBindFramebuffer(GL_FRAMEBUFFER, velocity_frame_buffer_);
-  glFramebufferTexture(GL_FRAMEBUFFER,
-                       GL_COLOR_ATTACHMENT0,
-                       velocity_texture_to_render_,
-                       0);
+  glFramebufferTexture(
+    GL_FRAMEBUFFER,
+    GL_COLOR_ATTACHMENT0,
+    velocity_texture_to_render_,
+    0);
   glBindFramebuffer(GL_FRAMEBUFFER, position_frame_buffer_);
-  glFramebufferTexture(GL_FRAMEBUFFER,
-                       GL_COLOR_ATTACHMENT0,
-                       position_texture_to_render_,
-                       0);
+  glFramebufferTexture(
+    GL_FRAMEBUFFER,
+    GL_COLOR_ATTACHMENT0,
+    position_texture_to_render_,
+    0);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }

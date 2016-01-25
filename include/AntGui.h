@@ -22,13 +22,12 @@ public:
     PointCloudRenderingProperties* pc_rendering_properties,
     const char* name);
   void deleteTwBar(const char* name);
+  void render();
 
   int getWindowWidth();
   int getWindowHeight();
 
   void setWindowResolution(int width, int height);
-
-  void render();
 private:
   int window_width_;
   int window_height_;
