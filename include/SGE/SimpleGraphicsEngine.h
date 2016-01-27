@@ -1,10 +1,10 @@
 #ifndef SIMPLE_GRAPHICS_ENGINE_H
 #define SIMPLE_GRAPHICS_ENGINE_H
 
-#include "../../include/SGE/ShaderManager.h"
-#include "../../include/SGE/Object3D.h"
-#include "../../include/SGE/Mesh.h"
-#include "../../include/SGE/Camera.h"
+#include "SGE/ShaderManager.h"
+#include "SGE/Object3D.h"
+#include "SGE/Mesh.h"
+#include "SGE/Camera.h"
 
 #include <vector>
 #include <map>
@@ -18,17 +18,31 @@
 //! A light source defined in 3D space
 class LightSource : public Object3D {
 public:
-  LightSource(GLuint program_ID);
+  LightSource(
+    GLuint program_ID,
+    float intensity,
+    glm::vec3 color,
+    bool directional);
+  ~LightSource();
   virtual void render(glm::mat4 M);
   
   void setIntensity(float intensity);
   void setColor(glm::vec3 color);
 private:
+  const bool directional_;
   float intensity_;
   glm::vec3 color_;
+  // Counters to keep track on the number of light sources
+  // Each shader program has its own counter
+  // Directional_counter keeps track of the number of directional light
+  // sources while point_light_counter keeps track of the number of
+  // point light sources.
+  static std::map<GLuint, int> point_light_counters_;
+  static std::map<GLuint, int> directional_counters_;
 
   GLuint program_ID_;
   GLuint light_position_ID_;
+  GLuint light_direction_ID_;
   GLuint light_intensity_ID_;
   GLuint light_color_ID_;
 };

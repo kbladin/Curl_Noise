@@ -1,4 +1,4 @@
-#include "../include/ApplicationWindowGLFW.h"
+#include "ApplicationWindowGLFW.h"
 
 MyEngine* ApplicationWindowGLFW::engine_;
 AntGui* ApplicationWindowGLFW::ant_gui_;
@@ -140,7 +140,13 @@ void ApplicationWindowGLFW::keyCallback(
 {
   if (!TwEventKeyGLFW(key, action))
   {
-    //engine_->keyCallback(key, scancode, action, mods);
+    if (action == GLFW_PRESS)
+    {
+      if (key == GLFW_KEY_ESCAPE)
+      {
+        glfwSetWindowShouldClose(window, GL_TRUE);
+      }
+    }
   }
 }
 

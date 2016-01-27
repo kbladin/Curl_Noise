@@ -1,9 +1,9 @@
 #ifndef PARTICLE_SYSTEM_GPU_H
 #define PARTICLE_SYSTEM_GPU_H
 
-#include "../include/SGE/Object3D.h"
-#include "../include/SGE/Mesh.h"
-#include "../include/Material.h"
+#include "SGE/Object3D.h"
+#include "SGE/Mesh.h"
+#include "Material.h"
 
 struct ParticleSystemProperties {
   float field_speed;

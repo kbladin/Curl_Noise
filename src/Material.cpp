@@ -1,4 +1,4 @@
-#include "../include/Material.h"
+#include "Material.h"
 
 //! Create a material which is bound to a specific shader.
 /*!

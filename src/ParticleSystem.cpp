@@ -1,4 +1,4 @@
-#include "../include/ParticleSystem.h"
+#include "ParticleSystem.h"
 
 ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
 {
@@ -286,23 +286,71 @@ void ParticleSystem::updateVelocities(float dt)
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
   glUseProgram(update_velocities_program_ID_);
-  
+
+
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID_, "dt"),
+    glGetUniformLocation(update_velocities_program_ID_,"dt"),
     dt);
+  glUniform1f(
+    glGetUniformLocation(update_velocities_program_ID_,"time"),
+    time);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_, "size"),
+    glGetUniformLocation(update_velocities_program_ID_,"size"),
     size_);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_, "acceleration_sampler_2D"),
+    glGetUniformLocation(update_velocities_program_ID_,"acceleration_sampler_2D"),
     0);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_, "velocity_sampler_2D"),
+    glGetUniformLocation(update_velocities_program_ID_,"velocity_sampler_2D"),
     1);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_, "position_sampler_2D"),
+    glGetUniformLocation(update_velocities_program_ID_,"position_sampler_2D"),
     2);
   
+  // Properties of the particle system
+  glUniform1f(
+    glGetUniformLocation(update_velocities_program_ID_, "field_speed"),
+    properties_.field_speed);
+  glUniform1f(
+    glGetUniformLocation(update_velocities_program_ID_, "curl"),
+    properties_.curl);
+  glUniform1f(
+    glGetUniformLocation(update_velocities_program_ID_, "progression_rate"),
+    properties_.progression_rate);
+  glUniform1f(
+    glGetUniformLocation(update_velocities_program_ID_, "length_scale"),
+    properties_.length_scale);
+  
+  if (properties_.field_main_direction != glm::vec3(0,0,0))
+    properties_.field_main_direction =
+      glm::normalize(properties_.field_main_direction);
+  else
+    properties_.field_main_direction = glm::vec3(0,1,0);
+  glUniform3f(
+    glGetUniformLocation(update_velocities_program_ID_, "field_main_direction"),
+    properties_.field_main_direction.x,
+    properties_.field_main_direction.y,
+    properties_.field_main_direction.z);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Acceleration from current state (so that we can integrate it, solve diff eq)
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, acceleration_texture_to_render_);
@@ -416,7 +464,8 @@ void ParticleSystem::update(float dt)
 {
   const int sims_per_frame = 1;
   for (int i=0; i<sims_per_frame; i++) {
-    updateAccelerations(dt / sims_per_frame);
+    // For curl noise, velocities are updated directly
+    //updateAccelerations(dt / sims_per_frame);
     updateVelocities(dt / sims_per_frame);
     updatePositions(dt / sims_per_frame);
     swapTextures();

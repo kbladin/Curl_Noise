@@ -1,4 +1,4 @@
-#include "../../include/SGE/ShaderManager.h"
+#include "SGE/ShaderManager.h"
 
 ShaderManager* ShaderManager::instance_;
 

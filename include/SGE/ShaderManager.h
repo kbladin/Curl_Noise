@@ -1,7 +1,7 @@
 #ifndef SHADER_MANAGER_H
 #define SHADER_MANAGER_H
 
-#include "../../include/SGE/ShaderLoader.h"
+#include "SGE/ShaderLoader.h"
 
 #include <map>
 #include <iostream>

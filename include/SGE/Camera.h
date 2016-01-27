@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "../../include/SGE/Object3D.h"
+#include "SGE/Object3D.h"
 
 #include <gl/glew.h>
 

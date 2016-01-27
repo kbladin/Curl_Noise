@@ -1,4 +1,4 @@
-#include "../include/MyEngine.h"
+#include "MyEngine.h"
 
 MyBGObject3D::MyBGObject3D()
 {
@@ -44,9 +44,15 @@ void MyObject3D::render(glm::mat4 M)
 MyLightSource::MyLightSource()
 {
   phong_light_source = new LightSource(
-    ShaderManager::instance()->getShader("SHADER_PHONG"));
+    ShaderManager::instance()->getShader("SHADER_PHONG"),
+    10,
+    glm::vec3(1,1,1),
+    false);
   particle_light_source = new LightSource(
-    ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"));
+    ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"),
+    10,
+    glm::vec3(1,1,1),
+    false);
 }
 
 MyLightSource::~MyLightSource()
@@ -115,7 +121,7 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
     NULL,
     NULL,
     NULL,
-    "../shaders/point_cloud_programs/update_velocities.frag");
+    "../shaders/point_cloud_programs/update_velocities_curl_noise.frag");
   ShaderManager::instance()->loadShader(
     "SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS",
     "../shaders/point_cloud_programs/quad_passthrough.vert",

@@ -1,7 +1,7 @@
 #ifndef WINDOW_MANAGER_H
 #define WINDOW_MANAGER_H
 
-#include "../include/MyEngine.h"
+#include "MyEngine.h"
 
 #include <iostream>
 

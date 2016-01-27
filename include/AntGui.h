@@ -1,8 +1,8 @@
 #ifndef ANT_GUI_H
 #define ANT_GUI_H
 
-#include "../include/ParticleSystem.h"
-#include "../include/Material.h"
+#include "ParticleSystem.h"
+#include "Material.h"
 
 #include <map>
 #include <string>

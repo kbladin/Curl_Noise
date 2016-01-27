@@ -1,21 +1,52 @@
-#include "../../include/SGE/SimpleGraphicsEngine.h"
+#include "SGE/SimpleGraphicsEngine.h"
+
+std::map<GLuint, int> LightSource::point_light_counters_;
+std::map<GLuint, int> LightSource::directional_counters_;
 
 //! Creates a LightSource bound to a specific shader.
 /*!
   \param program_ID is the shader program that this LightSource will be bound
   to.
 */
-LightSource::LightSource(GLuint program_ID)
+LightSource::LightSource(
+    GLuint program_ID,
+    float intensity,
+    glm::vec3 color,
+    bool directional) : directional_(directional)
 {
-  intensity_ = 10.0f;
-  color_ = glm::vec3(1.0, 1.0, 1.0);
-  
-  program_ID_ = program_ID;
+  program_ID_ =   program_ID;
+  intensity_ =    intensity;
+  color_ =        color;
+
+  // Increment counter
+  if (directional_)
+  {
+    directional_counters_[program_ID_]++;
+  }
+  else
+  {
+    point_light_counters_[program_ID_]++;
+  }
   
   glUseProgram(program_ID_);
-  light_position_ID_ = glGetUniformLocation(program_ID_, "light_position");
+
+  light_position_ID_ =  glGetUniformLocation(program_ID_, "light_position");
+  light_direction_ID_ = glGetUniformLocation(program_ID_, "light_direction");
   light_intensity_ID_ = glGetUniformLocation(program_ID_, "light_intensity");
-  light_color_ID_ = glGetUniformLocation(program_ID_, "light_color");
+  light_color_ID_ =     glGetUniformLocation(program_ID_, "light_color");
+}
+
+LightSource::~LightSource()
+{
+  // Increment counter
+  if (directional_)
+  {
+    directional_counters_[program_ID_]--;
+  }
+  else
+  {
+    point_light_counters_[program_ID_]--;
+  }
 }
 
 //! Sets the intensity of the light source.
@@ -44,11 +75,19 @@ void LightSource::setColor(glm::vec3 color)
 void LightSource::render(glm::mat4 M)
 {
   Object3D::render(M * transform_matrix_);
-  
-  glm::vec4 position = M * transform_matrix_ * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
-  
-  glUseProgram(program_ID_);
-  glUniform3f(light_position_ID_,position.x,position.y, position.z);
+
+  glUseProgram(program_ID_);  
+  if (directional_)
+  { // Directional, upload direction and not position
+    glm::vec4 direction = M * transform_matrix_ * glm::vec4(0.0f, -1.0f, 0.0f, 0.0f);
+    glUniform3f(light_direction_ID_, direction.x, direction.y, direction.z);
+  }
+  else
+  { // Not directional, upload position
+    glm::vec4 position = M * transform_matrix_ * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+    glUniform3f(light_position_ID_, position.x, position.y, position.z);
+  }
+
   glUniform1f(light_intensity_ID_, intensity_);
   glUniform3f(light_color_ID_, color_.r, color_.g, color_.b);
 }

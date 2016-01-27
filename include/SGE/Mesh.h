@@ -1,8 +1,8 @@
 #ifndef MESH_H
 #define MESH_H
 
-#include "../../include/SGE/Object3D.h"
-#include "../../include/SGE/MeshLoader.h"
+#include "SGE/Object3D.h"
+#include "SGE/MeshLoader.h"
 
 #include <vector>
 

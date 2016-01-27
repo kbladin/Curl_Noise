@@ -1,4 +1,4 @@
-#include "../../include/SGE/Mesh.h"
+#include "SGE/Mesh.h"
 
 AbstractMesh::AbstractMesh()
 {

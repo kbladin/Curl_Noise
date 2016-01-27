@@ -1,4 +1,4 @@
-#include "../../include/SGE/MeshLoader.h"
+#include "SGE/MeshLoader.h"
 
 #include <iostream>
 

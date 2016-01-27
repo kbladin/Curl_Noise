@@ -1,4 +1,4 @@
-#include "../include/AntGui.h"
+#include "AntGui.h"
 
 //! Initializes AntTweakBar so that gui bars can be added
 AntGui::AntGui(int window_width, int window_height)

@@ -1,4 +1,4 @@
-#include "../../include/SGE/Camera.h"
+#include "SGE/Camera.h"
 
 //! Creates camera to render objects with the defined shader program attached.
 /*!

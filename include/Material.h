@@ -1,7 +1,7 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include "../include/SGE/ShaderManager.h"
+#include "SGE/ShaderManager.h"
 
 #include <gl/glew.h>
 

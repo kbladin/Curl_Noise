@@ -1,9 +1,9 @@
 #ifndef MY_ENGINE_H
 #define MY_ENGINE_H
 
-#include "../include/SGE/SimpleGraphicsEngine.h"
-#include "../include/ParticleSystem.h"
-#include "../include/AntGui.h"
+#include "SGE/SimpleGraphicsEngine.h"
+#include "ParticleSystem.h"
+#include "AntGui.h"
 
 #include <iostream>
 #include <sstream>
