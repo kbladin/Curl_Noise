@@ -36,6 +36,7 @@ private:
   const unsigned long size_;
   PointCloudMesh* mesh_;
   PointCloudMaterial* material_;
+  PointCloudMaterial* shadow_material_;
 
   GLuint update_accelerations_program_ID_;
   GLuint update_velocities_program_ID_;

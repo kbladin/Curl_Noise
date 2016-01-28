@@ -17,11 +17,10 @@ void main(){
     discard;
   color = vec4(particle_color, 0.8);
 
+  int n_colors = 3; // Number of colors to blend
+  float x = age * (n_colors - 1);
 
-  float l = age;
-  float norm = 0.5;
-  float x = l/norm;
-
+  // Transition from a blue color to particle_color
   vec4 c1 = vec4(0.0,0.0,1,1);
   vec4 c2 = vec4(particle_color, 1);
   vec4 c3 = vec4(particle_color, 0);

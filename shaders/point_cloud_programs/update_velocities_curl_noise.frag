@@ -197,8 +197,12 @@ vec3 potential(vec3 p)
 
   // Affect the field by a sphere
   // The closer to the sphere, the less of the original potential
-  // and the more of a tangental potential
-  alpha = abs((smoothstep(0.5, 0.5 + L, length(p))));
+  // and the more of a tangental potential.
+  // The variable d_0 determines the distance to the sphere when the
+  // particles start to become affected.
+  float d_0 = L * 0.5;
+  float sphere_radius = 0.5;
+  alpha = abs((smoothstep(sphere_radius, sphere_radius + d_0, length(p))));
   n = normalize(p);
   pot = (alpha) * pot + (1 - (alpha)) * n * dot(n, pot);
 
