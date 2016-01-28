@@ -44,7 +44,7 @@ void main(){
   }
 
   // Add age to particle
-  t += dt * inv_life_length_factor * 0.01;
+  t += dt * inv_life_length_factor * 0.1;
   // Write to output
   position_out = vec4(new_pos,t);
 }

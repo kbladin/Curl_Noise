@@ -3,6 +3,8 @@
 // Index to pick the current particle
 layout(location = 0) in vec2 index;
 
+out float age;
+
 // Acceleration, velocity and position of previous time step
 uniform sampler2D acceleration_sampler_2D;
 uniform sampler2D velocity_sampler_2D;
@@ -19,6 +21,7 @@ uniform float particle_radius;
 void main(){
   vec4 p_tmp = texelFetch( position_sampler_2D, ivec2(index), 0);
   vec3 p = p_tmp.xyz;
+  age = p_tmp.w;
   
   // Set camera position
   vec4 vertex_position_viewspace = V * M * vec4(p ,1);

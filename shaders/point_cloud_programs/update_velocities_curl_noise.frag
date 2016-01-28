@@ -176,15 +176,15 @@ vec3 potential(vec3 p)
   // Start with an empty field
   pot = vec3(0,0,0);
   // Add Noise in each direction
-  pot += 0.5 * L * beta * speed * vec3(
-    snoise(vec4(p.x, p.y,       p.z,      time * progression_rate * 0.1) / L),
-    snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate * 0.1) / L),
-    snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate * 0.1) / L));
+  pot += L * beta * speed * vec3(
+    snoise(vec4(p.x, p.y,       p.z,      time * progression_rate) / L),
+    snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate) / L),
+    snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate) / L));
   
-  pot += 0.5 * L * beta * speed * vec3(
-    snoise(vec4(p.x, p.y,       p.z,      time * progression_rate * 0.5) / L * 4),
-    snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate * 0.5) / L * 4),
-    snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate * 0.5) / L * 4));
+  //pot += 0.5 * L * beta * speed * vec3(
+  //  snoise(vec4(p.x, p.y,       p.z,      time * progression_rate * 0.5) / L * 4),
+  //  snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate * 0.5) / L * 4),
+  //  snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate * 0.5) / L * 4));
 
   // External directional field
   // Rotational potential gives a constant velocity field
@@ -198,9 +198,9 @@ vec3 potential(vec3 p)
   // Affect the field by a sphere
   // The closer to the sphere, the less of the original potential
   // and the more of a tangental potential
-  alpha = abs((smoothstep(0.5, 0.5+L, length(p))));
+  alpha = abs((smoothstep(0.5, 0.5 + L, length(p))));
   n = normalize(p);
-  pot = (alpha - 0.1) * pot + (1 - (alpha - 0.1)) * n * dot(n, pot);
+  pot = (alpha) * pot + (1 - (alpha)) * n * dot(n, pot);
 
   return pot;
 }

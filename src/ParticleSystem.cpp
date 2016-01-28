@@ -2,12 +2,12 @@
 
 ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
 {
-  properties_.field_speed = 0.1;
+  properties_.field_speed = 1.0;
   properties_.curl = 0.3;
-  properties_.progression_rate = 0.5;
+  properties_.progression_rate = 1.0;
   properties_.length_scale = 0.5;
-  properties_.life_length_factor = 0.2;
-  properties_.emitter_size = 0.2;
+  properties_.life_length_factor = 0.07;
+  properties_.emitter_size = 0.4;
   properties_.emitter_position = glm::vec3(0,-2,0);
   properties_.field_main_direction = glm::vec3(0,1,0);
 
@@ -331,25 +331,6 @@ void ParticleSystem::updateVelocities(float dt)
     properties_.field_main_direction.x,
     properties_.field_main_direction.y,
     properties_.field_main_direction.z);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Acceleration from current state (so that we can integrate it, solve diff eq)
   glActiveTexture(GL_TEXTURE0);

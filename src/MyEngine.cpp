@@ -143,7 +143,7 @@ ShaderManager::instance()->loadShader(
     NULL,
     NULL,
     "../shaders/point_cloud_programs/render_particles_additive.frag");
-  
+
   // Create cameras
   basic_cam_ = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_PHONG"),

@@ -101,7 +101,7 @@ void BackgroundMaterial::use() const
 //! Create a material which is bound to the UpdatePointCloud shader.
 PointCloudMaterial::PointCloudMaterial(unsigned long size)
 {
-  rendering_properties_.particle_color = glm::vec3(1,1,1);
+  rendering_properties_.particle_color = glm::vec3(1,0.5,0.2);
   rendering_properties_.particle_radius = 2;
   rendering_properties_.shader = ADDITIVE;
 
