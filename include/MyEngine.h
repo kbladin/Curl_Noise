@@ -21,14 +21,20 @@ protected:
   TriangleMesh* background_plane_;
 };
 
-class MyObject3D : public Object3D {
+class FieldBlockerSphere : public Object3D {
 public:
-  MyObject3D(const char* file_path);
-  ~MyObject3D();
+  FieldBlockerSphere();
+  ~FieldBlockerSphere();
   void render(glm::mat4 M);
-protected:
+private:
   Material* material_;
   TriangleMesh* mesh_;
+  
+  GLuint update_point_cloud_velocities_program_ID;
+  GLuint position_ID;
+  GLuint radius_ID;
+
+  float radius;
 };
 
 class MyLightSource : public Object3D {
@@ -73,7 +79,7 @@ private:
   void updateParticleEmitterPosition();
   // Objects to put in the scene
   MyBGObject3D* background_;
-  MyObject3D* sphere_;
+  FieldBlockerSphere* sphere_;
   ParticleSystem* point_cloud_;
   MyLightSource* lamp_;
   

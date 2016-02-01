@@ -156,6 +156,10 @@ uniform float progression_rate;
 uniform float length_scale;
 uniform vec3  field_main_direction;
 
+// Blocking sphere
+uniform vec3 sphere_position;
+uniform float sphere_radius;
+
 // Output
 out vec4 velocity_out;
 
@@ -176,15 +180,11 @@ vec3 potential(vec3 p)
   // Start with an empty field
   pot = vec3(0,0,0);
   // Add Noise in each direction
+  float progression_constant = 2;
   pot += L * beta * speed * vec3(
-    snoise(vec4(p.x, p.y,       p.z,      time * progression_rate) / L),
-    snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate) / L),
-    snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate) / L));
-  
-  //pot += 0.5 * L * beta * speed * vec3(
-  //  snoise(vec4(p.x, p.y,       p.z,      time * progression_rate * 0.5) / L * 4),
-  //  snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate * 0.5) / L * 4),
-  //  snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate * 0.5) / L * 4));
+    snoise(vec4(p.x, p.y,       p.z,      time * progression_rate * progression_constant) / L),
+    snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate * progression_constant) / L),
+    snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate * progression_constant) / L));
 
   // External directional field
   // Rotational potential gives a constant velocity field
@@ -201,8 +201,7 @@ vec3 potential(vec3 p)
   // The variable d_0 determines the distance to the sphere when the
   // particles start to become affected.
   float d_0 = L * 0.5;
-  float sphere_radius = 0.5;
-  alpha = abs((smoothstep(sphere_radius, sphere_radius + d_0, length(p))));
+  alpha = abs((smoothstep(sphere_radius, sphere_radius + d_0, length(p - sphere_position))));
   n = normalize(p);
   pot = (alpha) * pot + (1 - (alpha)) * n * dot(n, pot);
 

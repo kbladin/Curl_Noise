@@ -22,22 +22,39 @@ void MyBGObject3D::render(glm::mat4 M)
   background_plane_->render(M * transform_matrix_, material_->getProgramID());
 }
 
-MyObject3D::MyObject3D(const char* file_path)
+FieldBlockerSphere::FieldBlockerSphere()
 {
-  mesh_ = new TriangleMesh(file_path);
+  // Set the shader that updates particles velecities and get the handles
+  // to affect the position and radius of the blocking sphere
+  update_point_cloud_velocities_program_ID =
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES");
+  glUseProgram(update_point_cloud_velocities_program_ID);
+  position_ID = glGetUniformLocation(
+    update_point_cloud_velocities_program_ID,
+    "sphere_position");
+  radius_ID = glGetUniformLocation(
+    update_point_cloud_velocities_program_ID,
+    "sphere_radius");
+
+  // Create the mesh
+  mesh_ = new TriangleMesh("../data/meshes/icosphere.obj");
   mesh_->transform_matrix_ = glm::scale(glm::mat4(), 0.5f * glm::vec3(1.0f));
   material_ = new PhongMaterial();
 }
 
-MyObject3D::~MyObject3D()
+FieldBlockerSphere::~FieldBlockerSphere()
 {
   delete mesh_;
   delete material_;
 }
 
-void MyObject3D::render(glm::mat4 M)
+void FieldBlockerSphere::render(glm::mat4 M)
 {
   material_->use();
+  // Bind shader to send sphere position and size
+  glUseProgram(update_point_cloud_velocities_program_ID);
+  glUniform3f(position_ID, 0,0,0);
+  glUniform1f(radius_ID, 0.5);
   mesh_->render(M * transform_matrix_, material_->getProgramID());
 }
 
@@ -182,7 +199,7 @@ ShaderManager::instance()->loadShader(
   
   // Create objects
   background_ = new MyBGObject3D();
-  sphere_ = new MyObject3D("../data/meshes/icosphere.obj");
+  sphere_ = new FieldBlockerSphere();
   point_cloud_ = new ParticleSystem(200000);
   lamp_ = new MyLightSource();
   
