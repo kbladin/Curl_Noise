@@ -9,17 +9,19 @@
 
 typedef enum {
   CURL_NOISE,
-  CURL_NOISE2,
+  CURL_NOISE_VORTEX,
+  ATTRACTOR,
 } ParticleProgramEnum;
 
 struct ParticleSystemProperties {
   ParticleProgramEnum program;
   float field_speed;
-  float curl;
+  float noise_strength;
   float progression_rate;
   float length_scale;
   float life_length_factor;
   float emitter_size;
+  float vortex_radius;
   glm::vec3 emitter_position;
   glm::vec3 field_main_direction;
 };

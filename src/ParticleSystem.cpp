@@ -53,18 +53,26 @@ ParticleSystem::ParticleSystem(
       )));
   programs_.insert(
     std::pair<ParticleProgramEnum, ParticleProgram>(
-      CURL_NOISE2, ParticleProgram(
+      CURL_NOISE_VORTEX, ParticleProgram(
         0,
-        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES2"),
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES_VORTEX"),
         ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS")
+      )));
+  programs_.insert(
+    std::pair<ParticleProgramEnum, ParticleProgram>(
+      ATTRACTOR, ParticleProgram(
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS_GRAVITY"),
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES_STEP"),
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS_STEP")
       )));
 
   properties_.field_speed = 1.0;
-  properties_.curl = 0.3;
+  properties_.noise_strength = 0.3;
   properties_.progression_rate = 1.0;
   properties_.length_scale = 0.5;
   properties_.life_length_factor = 0.07;
   properties_.emitter_size = 0.4;
+  properties_.vortex_radius = 3;
   properties_.emitter_position = glm::vec3(0,-2,0);
   properties_.field_main_direction = glm::vec3(0,1,0);
   properties_.program = program;
@@ -209,7 +217,6 @@ ParticleSystem::~ParticleSystem()
   glDeleteTextures(1, &acceleration_texture_to_render_);
   glDeleteTextures(1, &velocity_texture_to_render_);
   glDeleteTextures(1, &position_texture_to_render_);
-  //glDeleteProgram(update_positions_program_ID_);
 }
 
 void ParticleSystem::render(glm::mat4 M)
@@ -268,14 +275,19 @@ void ParticleSystem::updateAccelerations(float dt)
     glGetUniformLocation(update_accelerations_program_ID, "field_speed"),
     properties_.field_speed);
   glUniform1f(
-    glGetUniformLocation(update_accelerations_program_ID, "curl"),
-    properties_.curl);
+    glGetUniformLocation(update_accelerations_program_ID, "noise_strength"),
+    properties_.noise_strength);
   glUniform1f(
     glGetUniformLocation(update_accelerations_program_ID, "progression_rate"),
     properties_.progression_rate);
   glUniform1f(
     glGetUniformLocation(update_accelerations_program_ID, "length_scale"),
     properties_.length_scale);
+  glUniform3f(
+    glGetUniformLocation(update_accelerations_program_ID, "emitter_position"),
+    properties_.emitter_position.x,
+    properties_.emitter_position.y,
+    properties_.emitter_position.z);
   
   if (properties_.field_main_direction != glm::vec3(0,0,0))
     properties_.field_main_direction =
@@ -357,14 +369,17 @@ void ParticleSystem::updateVelocities(float dt)
     glGetUniformLocation(update_velocities_program_ID, "field_speed"),
     properties_.field_speed);
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID, "curl"),
-    properties_.curl);
+    glGetUniformLocation(update_velocities_program_ID, "noise_strength"),
+    properties_.noise_strength);
   glUniform1f(
     glGetUniformLocation(update_velocities_program_ID, "progression_rate"),
     properties_.progression_rate);
   glUniform1f(
     glGetUniformLocation(update_velocities_program_ID, "length_scale"),
     properties_.length_scale);
+  glUniform1f(
+    glGetUniformLocation(update_velocities_program_ID, "vortex_radius"),
+    properties_.vortex_radius);
   
   if (properties_.field_main_direction != glm::vec3(0,0,0))
     properties_.field_main_direction =

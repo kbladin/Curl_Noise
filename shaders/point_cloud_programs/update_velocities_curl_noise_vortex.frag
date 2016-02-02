@@ -151,9 +151,10 @@ uniform float time; // Global time
 
 // Properties of the particle system
 uniform float field_speed;
-uniform float curl;
+uniform float noise_strength;
 uniform float progression_rate;
 uniform float length_scale;
+uniform float vortex_radius;
 uniform vec3  field_main_direction;
 
 // Blocking sphere
@@ -175,19 +176,26 @@ vec3 potential(vec3 p)
   
   L = length_scale;
   speed = field_speed;
-  beta = curl;
+  beta = noise_strength;
 
   // Start with an empty field
   pot = vec3(0,0,0);
 
-  // External directional field
-  // Rotational potential gives a constant velocity field
+  // Add Noise in each direction
+  float progression_constant = 2;
+  pot += L * beta * speed * vec3(
+    snoise(vec4(p.x, p.y,       p.z,      time * progression_rate * progression_constant) / L),
+    snoise(vec4(p.x, p.y + 43,  p.z,      time * progression_rate * progression_constant) / L),
+    snoise(vec4(p.x, p.y,       p.z + 43, time * progression_rate * progression_constant) / L));
+
+  // Vortex
   vec3 p_parallel = dot(field_main_direction, p) * field_main_direction;
   vec3 p_orthogonal = p - p_parallel;
-  vec3 pot_directional = cross(p_orthogonal, field_main_direction);
-
-  // Add the rotational potential
-  pot += (1 - beta) * speed * pot_directional;
+  float dist_to_axis = length(p_orthogonal);
+  
+  // Add the vortex potential
+  pot += (1 - smoothstep(0, vortex_radius, dist_to_axis)) *
+    (pow(vortex_radius, 2) - pow(dist_to_axis, 2)) / 2 * speed * field_main_direction;
 
   // Affect the field by a sphere
   // The closer to the sphere, the less of the original potential

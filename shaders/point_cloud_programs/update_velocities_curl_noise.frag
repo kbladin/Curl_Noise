@@ -151,7 +151,7 @@ uniform float time; // Global time
 
 // Properties of the particle system
 uniform float field_speed;
-uniform float curl;
+uniform float noise_strength;
 uniform float progression_rate;
 uniform float length_scale;
 uniform vec3  field_main_direction;
@@ -175,7 +175,7 @@ vec3 potential(vec3 p)
   
   L = length_scale;
   speed = field_speed;
-  beta = curl;
+  beta = noise_strength;
 
   // Start with an empty field
   pot = vec3(0,0,0);

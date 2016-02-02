@@ -30,10 +30,6 @@ private:
   Material* material_;
   TriangleMesh* mesh_;
   
-  GLuint update_point_cloud_velocities_program_ID;
-  GLuint position_ID;
-  GLuint radius_ID;
-
   float radius;
 };
 

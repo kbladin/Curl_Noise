@@ -24,18 +24,6 @@ void MyBGObject3D::render(glm::mat4 M)
 
 FieldBlockerSphere::FieldBlockerSphere()
 {
-  // Set the shader that updates particles velecities and get the handles
-  // to affect the position and radius of the blocking sphere
-  update_point_cloud_velocities_program_ID =
-    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES");
-  glUseProgram(update_point_cloud_velocities_program_ID);
-  position_ID = glGetUniformLocation(
-    update_point_cloud_velocities_program_ID,
-    "sphere_position");
-  radius_ID = glGetUniformLocation(
-    update_point_cloud_velocities_program_ID,
-    "sphere_radius");
-
   // Create the mesh
   mesh_ = new TriangleMesh("../data/meshes/icosphere.obj");
   mesh_->transform_matrix_ = glm::scale(glm::mat4(), 0.5f * glm::vec3(1.0f));
@@ -52,9 +40,21 @@ void FieldBlockerSphere::render(glm::mat4 M)
 {
   material_->use();
   // Bind shader to send sphere position and size
-  glUseProgram(update_point_cloud_velocities_program_ID);
-  glUniform3f(position_ID, 0,0,0);
-  glUniform1f(radius_ID, 0.5);
+  glUseProgram(ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES"));
+  glUniform3f(glGetUniformLocation(
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES"),
+    "sphere_position"), 0,0,0);
+  glUniform1f(glGetUniformLocation(
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES"),
+    "sphere_radius"), 0.5);
+
+  glUseProgram(ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES_VORTEX"));
+  glUniform3f(glGetUniformLocation(
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES_VORTEX"),
+    "sphere_position"), 0,0,0);
+  glUniform1f(glGetUniformLocation(
+    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES_VORTEX"),
+    "sphere_radius"), 0.5);
   mesh_->render(M * transform_matrix_, material_->getProgramID());
 }
 
@@ -104,6 +104,7 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
   // Now initialize objects in scene
   SimpleGraphicsEngine::initialize();
   // Load shaders
+  // Standard rendering shaders
   ShaderManager::instance()->loadShader(
     "SHADER_PHONG",
     "../shaders/phong.vert",
@@ -125,13 +126,15 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
     NULL,
     NULL,
     "../shaders/background.frag" );
+
+  // Point cloud update programs
   ShaderManager::instance()->loadShader(
     "SHADER_UPDATE_POINT_CLOUD_POSITIONS",
     "../shaders/point_cloud_programs/quad_passthrough.vert",
     NULL,
     NULL,
     NULL,
-    "../shaders/point_cloud_programs/update_positions.frag");
+    "../shaders/point_cloud_programs/update_positions_and_die.frag");
   ShaderManager::instance()->loadShader(
     "SHADER_UPDATE_POINT_CLOUD_VELOCITIES",
     "../shaders/point_cloud_programs/quad_passthrough.vert",
@@ -140,19 +143,35 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
     NULL,
     "../shaders/point_cloud_programs/update_velocities_curl_noise.frag");
   ShaderManager::instance()->loadShader(
-    "SHADER_UPDATE_POINT_CLOUD_VELOCITIES2",
+    "SHADER_UPDATE_POINT_CLOUD_VELOCITIES_VORTEX",
     "../shaders/point_cloud_programs/quad_passthrough.vert",
     NULL,
     NULL,
     NULL,
-    "../shaders/point_cloud_programs/update_velocities_curl_noise2.frag");
+    "../shaders/point_cloud_programs/update_velocities_curl_noise_vortex.frag");
   ShaderManager::instance()->loadShader(
-    "SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS",
+    "SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS_GRAVITY",
     "../shaders/point_cloud_programs/quad_passthrough.vert",
     NULL,
     NULL,
     NULL,
-    "../shaders/point_cloud_programs/update_accelerations_curl_noise.frag");
+    "../shaders/point_cloud_programs/update_accelerations_gravity.frag");
+  ShaderManager::instance()->loadShader(
+    "SHADER_UPDATE_POINT_CLOUD_VELOCITIES_STEP",
+    "../shaders/point_cloud_programs/quad_passthrough.vert",
+    NULL,
+    NULL,
+    NULL,
+    "../shaders/point_cloud_programs/update_velocities_step.frag");
+  ShaderManager::instance()->loadShader(
+    "SHADER_UPDATE_POINT_CLOUD_POSITIONS_STEP",
+    "../shaders/point_cloud_programs/quad_passthrough.vert",
+    NULL,
+    NULL,
+    NULL,
+    "../shaders/point_cloud_programs/update_positions_step.frag");
+  
+  // Point cloud rendering programs
   ShaderManager::instance()->loadShader(
     "SHADER_RENDER_POINT_CLOUD_PHONG",
     "../shaders/point_cloud_programs/render_particles_phong.vert",
@@ -160,7 +179,7 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
     NULL,
     NULL,
     "../shaders/point_cloud_programs/render_particles_phong.frag");
-ShaderManager::instance()->loadShader(
+  ShaderManager::instance()->loadShader(
     "SHADER_RENDER_POINT_CLOUD_ADDITIVE",
     "../shaders/point_cloud_programs/render_particles_additive.vert",
     NULL,
@@ -293,7 +312,7 @@ void MyEngine::keyCallback(
   int action,
   int mods)
 {
-  
+
 }
 
 ParticleSystemProperties* MyEngine::getParticleSystemPropertiesPointer()

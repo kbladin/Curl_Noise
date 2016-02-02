@@ -55,12 +55,13 @@ void AntGui::createParticleSystemPropertiesTwBar(
   // Create enum values
   TwEnumVal program_enum_val[] =
     {
-      {CURL_NOISE, "Curl Noise"},
-      {CURL_NOISE2, "Curl Noise2"},
+      {CURL_NOISE, "Directional Curl Noise"},
+      {CURL_NOISE_VORTEX, "Vortex Curl Noise"},
+      {ATTRACTOR, "Attractor"},
     };
   TwType program_type;
   // Define enum type
-  program_type = TwDefineEnum("program_type", program_enum_val, 2);
+  program_type = TwDefineEnum("program_type", program_enum_val, 3);
 
   // Add the variables
   TwAddVarRW(
@@ -80,10 +81,10 @@ void AntGui::createParticleSystemPropertiesTwBar(
     " help='Speed or flow of the vector field' ");
   TwAddVarRW(
     bar,
-    "curl",
+    "noise_strength",
     TW_TYPE_FLOAT,
-    &ps_properties->curl, 
-    " label='Curl'"
+    &ps_properties->noise_strength, 
+    " label='Noise strength'"
     " min=0 max=1 step=0.01"
     " keyIncr=d keyDecr=D"
     " help='The amount of noise used in the vector potential' ");
@@ -123,6 +124,15 @@ void AntGui::createParticleSystemPropertiesTwBar(
     " min=0.05 max=1 step=0.01"
     " keyIncr=s keyDecr=S"
     " help='Factor of emission area' ");
+  TwAddVarRW(
+    bar,
+    "vortex_radius",
+    TW_TYPE_FLOAT,
+    &ps_properties->vortex_radius,
+    " label='Vortex radius'"
+    " min=0.1 max=5 step=0.1"
+    " keyIncr=s keyDecr=S"
+    " help='Radius of the vortex used for the program *Vortex Curl Noise*' ");
   TwAddVarRW(
     bar,
     "field_main_direction",
