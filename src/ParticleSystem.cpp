@@ -1,7 +1,64 @@
 #include "ParticleSystem.h"
 
-ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
+ParticleProgram::ParticleProgram()
 {
+  update_accelerations_program_ID_ = 0;
+  update_velocities_program_ID_ = 0;
+  update_positions_program_ID_ = 0;
+}
+
+ParticleProgram::ParticleProgram(
+    GLuint update_accelerations_program_ID,
+    GLuint update_velocities_program_ID,
+    GLuint update_positions_program_ID)
+{
+  update_accelerations_program_ID_ = update_accelerations_program_ID;
+  update_velocities_program_ID_ = update_velocities_program_ID;
+  update_positions_program_ID_ = update_positions_program_ID;
+}
+
+ParticleProgram::~ParticleProgram()
+{
+
+}
+
+GLuint ParticleProgram::getUpdateAccelerationsProgramID()
+{
+  return update_accelerations_program_ID_;
+}
+
+GLuint ParticleProgram::getUpdateVelocitiesProgramID()
+{
+  return update_velocities_program_ID_;
+}
+
+GLuint ParticleProgram::getUpdatePositionsProgramID()
+{
+  return update_positions_program_ID_;
+}
+
+ParticleSystem::ParticleSystem(
+  unsigned long size,
+  ParticleProgramEnum program) :
+  
+  size_(int(sqrt(size)))
+{
+  // Insert all the possible programs in the map of the update programs
+  programs_.insert(
+    std::pair<ParticleProgramEnum, ParticleProgram>(
+      CURL_NOISE, ParticleProgram(
+        0,
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES"),
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS")
+      )));
+  programs_.insert(
+    std::pair<ParticleProgramEnum, ParticleProgram>(
+      CURL_NOISE2, ParticleProgram(
+        0,
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES2"),
+        ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS")
+      )));
+
   properties_.field_speed = 1.0;
   properties_.curl = 0.3;
   properties_.progression_rate = 1.0;
@@ -10,18 +67,11 @@ ParticleSystem::ParticleSystem(unsigned long size) : size_(int(sqrt(size)))
   properties_.emitter_size = 0.4;
   properties_.emitter_position = glm::vec3(0,-2,0);
   properties_.field_main_direction = glm::vec3(0,1,0);
+  properties_.program = program;
 
   material_ = new PointCloudMaterial(size_);
   mesh_ = new PointCloudMesh(size_);
   time = 0;
-  
-  // Three shaders. One for each attribute
-  update_accelerations_program_ID_ =
-    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS");
-  update_velocities_program_ID_ =
-    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES");
-  update_positions_program_ID_ =
-    ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_POSITIONS");
   
   // We want to render to three textures as well. One for each attrubute.
   // When updating. We sample from previous state and update these textures.
@@ -159,22 +209,12 @@ ParticleSystem::~ParticleSystem()
   glDeleteTextures(1, &acceleration_texture_to_render_);
   glDeleteTextures(1, &velocity_texture_to_render_);
   glDeleteTextures(1, &position_texture_to_render_);
-  glDeleteProgram(update_positions_program_ID_);
+  //glDeleteProgram(update_positions_program_ID_);
 }
 
 void ParticleSystem::render(glm::mat4 M)
 {
   material_->use();
-
-  if (material_->getProgramID() == 
-      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"))
-    glDisable(GL_BLEND);
-  else if (material_->getProgramID() == 
-      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"))
-  {
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-  }
 
   mesh_->render(M, material_->getProgramID());
 
@@ -198,40 +238,43 @@ void ParticleSystem::updateAccelerations(float dt)
   glViewport(0,0,size_,size_);
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
-  glUseProgram(update_accelerations_program_ID_);
+  GLuint update_accelerations_program_ID =
+    programs_[properties_.program].getUpdateAccelerationsProgramID();
+  
+  glUseProgram(update_accelerations_program_ID);
   
   // These should not be done every time....
   glUniform1f(
-    glGetUniformLocation(update_accelerations_program_ID_,"dt"),
+    glGetUniformLocation(update_accelerations_program_ID,"dt"),
     dt);
   glUniform1f(
-    glGetUniformLocation(update_accelerations_program_ID_,"time"),
+    glGetUniformLocation(update_accelerations_program_ID,"time"),
     time);
   glUniform1i(
-    glGetUniformLocation(update_accelerations_program_ID_,"size"),
+    glGetUniformLocation(update_accelerations_program_ID,"size"),
     size_);
   glUniform1i(
-    glGetUniformLocation(update_accelerations_program_ID_,"acceleration_sampler_2D"),
+    glGetUniformLocation(update_accelerations_program_ID,"acceleration_sampler_2D"),
     0);
   glUniform1i(
-    glGetUniformLocation(update_accelerations_program_ID_,"velocity_sampler_2D"),
+    glGetUniformLocation(update_accelerations_program_ID,"velocity_sampler_2D"),
     1);
   glUniform1i(
-    glGetUniformLocation(update_accelerations_program_ID_,"position_sampler_2D"),
+    glGetUniformLocation(update_accelerations_program_ID,"position_sampler_2D"),
     2);
   
   // Properties of the particle system
   glUniform1f(
-    glGetUniformLocation(update_accelerations_program_ID_, "field_speed"),
+    glGetUniformLocation(update_accelerations_program_ID, "field_speed"),
     properties_.field_speed);
   glUniform1f(
-    glGetUniformLocation(update_accelerations_program_ID_, "curl"),
+    glGetUniformLocation(update_accelerations_program_ID, "curl"),
     properties_.curl);
   glUniform1f(
-    glGetUniformLocation(update_accelerations_program_ID_, "progression_rate"),
+    glGetUniformLocation(update_accelerations_program_ID, "progression_rate"),
     properties_.progression_rate);
   glUniform1f(
-    glGetUniformLocation(update_accelerations_program_ID_, "length_scale"),
+    glGetUniformLocation(update_accelerations_program_ID, "length_scale"),
     properties_.length_scale);
   
   if (properties_.field_main_direction != glm::vec3(0,0,0))
@@ -240,7 +283,7 @@ void ParticleSystem::updateAccelerations(float dt)
   else
     properties_.field_main_direction = glm::vec3(0,1,0);
   glUniform3f(
-    glGetUniformLocation(update_accelerations_program_ID_, "field_main_direction"),
+    glGetUniformLocation(update_accelerations_program_ID, "field_main_direction"),
     properties_.field_main_direction.x,
     properties_.field_main_direction.y,
     properties_.field_main_direction.z);
@@ -284,41 +327,43 @@ void ParticleSystem::updateVelocities(float dt)
   glBindFramebuffer(GL_FRAMEBUFFER, velocity_frame_buffer_);
   glViewport(0,0,size_,size_);
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  
-  glUseProgram(update_velocities_program_ID_);
 
+  GLuint update_velocities_program_ID =
+    programs_[properties_.program].getUpdateVelocitiesProgramID();
+  
+  glUseProgram(update_velocities_program_ID);
 
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID_,"dt"),
+    glGetUniformLocation(update_velocities_program_ID,"dt"),
     dt);
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID_,"time"),
+    glGetUniformLocation(update_velocities_program_ID,"time"),
     time);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_,"size"),
+    glGetUniformLocation(update_velocities_program_ID,"size"),
     size_);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_,"acceleration_sampler_2D"),
+    glGetUniformLocation(update_velocities_program_ID,"acceleration_sampler_2D"),
     0);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_,"velocity_sampler_2D"),
+    glGetUniformLocation(update_velocities_program_ID,"velocity_sampler_2D"),
     1);
   glUniform1i(
-    glGetUniformLocation(update_velocities_program_ID_,"position_sampler_2D"),
+    glGetUniformLocation(update_velocities_program_ID,"position_sampler_2D"),
     2);
   
   // Properties of the particle system
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID_, "field_speed"),
+    glGetUniformLocation(update_velocities_program_ID, "field_speed"),
     properties_.field_speed);
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID_, "curl"),
+    glGetUniformLocation(update_velocities_program_ID, "curl"),
     properties_.curl);
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID_, "progression_rate"),
+    glGetUniformLocation(update_velocities_program_ID, "progression_rate"),
     properties_.progression_rate);
   glUniform1f(
-    glGetUniformLocation(update_velocities_program_ID_, "length_scale"),
+    glGetUniformLocation(update_velocities_program_ID, "length_scale"),
     properties_.length_scale);
   
   if (properties_.field_main_direction != glm::vec3(0,0,0))
@@ -327,7 +372,7 @@ void ParticleSystem::updateVelocities(float dt)
   else
     properties_.field_main_direction = glm::vec3(0,1,0);
   glUniform3f(
-    glGetUniformLocation(update_velocities_program_ID_, "field_main_direction"),
+    glGetUniformLocation(update_velocities_program_ID, "field_main_direction"),
     properties_.field_main_direction.x,
     properties_.field_main_direction.y,
     properties_.field_main_direction.z);
@@ -373,33 +418,36 @@ void ParticleSystem::updatePositions(float dt)
   glViewport(0,0,size_,size_);
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
-  glUseProgram(update_positions_program_ID_);
+  GLuint update_positions_program_ID =
+    programs_[properties_.program].getUpdatePositionsProgramID();
+
+  glUseProgram(update_positions_program_ID);
   
   glUniform1f(
-    glGetUniformLocation(update_positions_program_ID_, "dt"),
+    glGetUniformLocation(update_positions_program_ID, "dt"),
     dt);
   glUniform1i(
-    glGetUniformLocation(update_positions_program_ID_, "size"),
+    glGetUniformLocation(update_positions_program_ID, "size"),
     size_);
   glUniform1i(
-    glGetUniformLocation(update_positions_program_ID_, "acceleration_sampler_2D"),
+    glGetUniformLocation(update_positions_program_ID, "acceleration_sampler_2D"),
     0);
   glUniform1i(
-    glGetUniformLocation(update_positions_program_ID_, "velocity_sampler_2D"),
+    glGetUniformLocation(update_positions_program_ID, "velocity_sampler_2D"),
     1);
   glUniform1i(
-    glGetUniformLocation(update_positions_program_ID_, "position_sampler_2D"),
+    glGetUniformLocation(update_positions_program_ID, "position_sampler_2D"),
     2);
   
   // Properties of the particle system
   glUniform1f(
-    glGetUniformLocation(update_positions_program_ID_, "inv_life_length_factor"),
+    glGetUniformLocation(update_positions_program_ID, "inv_life_length_factor"),
     1 / properties_.life_length_factor);
   glUniform1f(
-    glGetUniformLocation(update_positions_program_ID_, "emitter_size"),
+    glGetUniformLocation(update_positions_program_ID, "emitter_size"),
     properties_.emitter_size);
   glUniform3f(
-    glGetUniformLocation(update_positions_program_ID_, "emitter_position"),
+    glGetUniformLocation(update_positions_program_ID, "emitter_position"),
     properties_.emitter_position.x,
     properties_.emitter_position.y,
     properties_.emitter_position.z);
@@ -441,14 +489,38 @@ void ParticleSystem::updatePositions(float dt)
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
+/*!
+  If the variable program in ParticleSystemProperties has been changed, the
+  programs that updates the particle system are updated.
+*/
+  /*
+void ParticleSystem::updateProgramIfNeeded()
+{
+  if (properties_.program_needs_update)
+  {
+    if (properties_.program == CURL_NOISE)
+    {
+      update_accelerations_program_ID_ = ShaderManager::instance()->getShader(
+        "SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS");
+      update_velocities_program_ID_ = ShaderManager::instance()->getShader(
+        "SHADER_UPDATE_POINT_CLOUD_VELOCITIES");
+      update_positions_program_ID_ = ShaderManager::instance()->getShader(
+        "SHADER_UPDATE_POINT_CLOUD_POSITIONS");
+    }
+    properties_.program_needs_update = false;
+  }
+}
+*/
 void ParticleSystem::update(float dt)
 {
   const int sims_per_frame = 1;
   for (int i=0; i<sims_per_frame; i++) {
-    // For curl noise, velocities are updated directly
-    //updateAccelerations(dt / sims_per_frame);
-    updateVelocities(dt / sims_per_frame);
-    updatePositions(dt / sims_per_frame);
+    if (programs_[properties_.program].getUpdateAccelerationsProgramID() != 0)
+      updateAccelerations(dt / sims_per_frame);
+    if (programs_[properties_.program].getUpdateVelocitiesProgramID() != 0)
+      updateVelocities(dt / sims_per_frame);
+    if (programs_[properties_.program].getUpdatePositionsProgramID() != 0)
+      updatePositions(dt / sims_per_frame);
     swapTextures();
     time += dt / sims_per_frame;
   }

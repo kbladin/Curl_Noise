@@ -140,6 +140,13 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
     NULL,
     "../shaders/point_cloud_programs/update_velocities_curl_noise.frag");
   ShaderManager::instance()->loadShader(
+    "SHADER_UPDATE_POINT_CLOUD_VELOCITIES2",
+    "../shaders/point_cloud_programs/quad_passthrough.vert",
+    NULL,
+    NULL,
+    NULL,
+    "../shaders/point_cloud_programs/update_velocities_curl_noise2.frag");
+  ShaderManager::instance()->loadShader(
     "SHADER_UPDATE_POINT_CLOUD_ACCELERATIONS",
     "../shaders/point_cloud_programs/quad_passthrough.vert",
     NULL,
@@ -200,7 +207,7 @@ ShaderManager::instance()->loadShader(
   // Create objects
   background_ = new MyBGObject3D();
   sphere_ = new FieldBlockerSphere();
-  point_cloud_ = new ParticleSystem(200000);
+  point_cloud_ = new ParticleSystem(200000, CURL_NOISE);
   lamp_ = new MyLightSource();
   
   // Connect nodes
@@ -286,7 +293,7 @@ void MyEngine::keyCallback(
   int action,
   int mods)
 {
-
+  
 }
 
 ParticleSystemProperties* MyEngine::getParticleSystemPropertiesPointer()

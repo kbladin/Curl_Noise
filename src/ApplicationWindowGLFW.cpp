@@ -138,16 +138,17 @@ void ApplicationWindowGLFW::keyCallback(
   int action,
   int mods)
 {
-  if (!TwEventKeyGLFW(key, action))
-  {
-    if (action == GLFW_PRESS)
-    {
-      if (key == GLFW_KEY_ESCAPE)
-      {
-        glfwSetWindowShouldClose(window, GL_TRUE);
-      }
-    }
-  }
+  //if (!TwEventKeyGLFW(key, action))
+  //{
+  //  if (action == GLFW_PRESS)
+  //  {
+  //    if (key == GLFW_KEY_ESCAPE)
+  //    {
+  //      glfwSetWindowShouldClose(window, GL_TRUE);
+  //    }
+  //  }
+  //}
+  engine_->keyCallback(key, scancode, action, mods);
 }
 
 void ApplicationWindowGLFW::windowSizeCallback(

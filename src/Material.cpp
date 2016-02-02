@@ -268,6 +268,16 @@ void PointCloudMaterial::use()
   glUniform1f(
     particle_radius_ID_,
     rendering_properties_.particle_radius);
+
+  if (getProgramID() == 
+      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"))
+    glDisable(GL_BLEND);
+  else if (getProgramID() == 
+      ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"))
+  {
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+  }
 }
 
 //! Returns the program ID of the shader of the Material.

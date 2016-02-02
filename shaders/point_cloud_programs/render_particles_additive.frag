@@ -20,7 +20,8 @@ void main(){
   int n_colors = 3; // Number of colors to blend
   float x = age * (n_colors - 1);
 
-  // Transition from a blue color to particle_color
+  // Transition from a blue color to particle_color.
+  // Blue makes the particles look like fire if particle_color is orange
   vec4 c1 = vec4(0.0,0.0,1,1);
   vec4 c2 = vec4(particle_color, 1);
   vec4 c3 = vec4(particle_color, 0);

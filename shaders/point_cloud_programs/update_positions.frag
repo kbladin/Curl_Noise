@@ -15,7 +15,7 @@ uniform vec3 emitter_position;
 
 out vec4 position_out;
 
-// Random random function..
+// Random random function
 float rand(vec2 co){
   return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 }

@@ -52,7 +52,23 @@ void AntGui::createParticleSystemPropertiesTwBar(
   // Add a text (the way to do it with Ant Tweak Bar)
   TwAddButton(bar, "comment1", NULL, NULL, " label='Behavior Properties' ");
 
+  // Create enum values
+  TwEnumVal program_enum_val[] =
+    {
+      {CURL_NOISE, "Curl Noise"},
+      {CURL_NOISE2, "Curl Noise2"},
+    };
+  TwType program_type;
+  // Define enum type
+  program_type = TwDefineEnum("program_type", program_enum_val, 2);
+
   // Add the variables
+  TwAddVarRW(
+    bar,
+    "Particle Program",
+    program_type,
+    &ps_properties->program,
+    NULL);
   TwAddVarRW(
     bar,
     "field_speed",

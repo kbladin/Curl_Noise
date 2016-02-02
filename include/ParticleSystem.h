@@ -5,7 +5,15 @@
 #include "SGE/Mesh.h"
 #include "Material.h"
 
+#include <map>
+
+typedef enum {
+  CURL_NOISE,
+  CURL_NOISE2,
+} ParticleProgramEnum;
+
 struct ParticleSystemProperties {
+  ParticleProgramEnum program;
   float field_speed;
   float curl;
   float progression_rate;
@@ -16,9 +24,29 @@ struct ParticleSystemProperties {
   glm::vec3 field_main_direction;
 };
 
+class ParticleProgram {
+public:
+  ParticleProgram();
+  ParticleProgram(
+    GLuint update_accelerations_program_ID,
+    GLuint update_velocities_program_ID,
+    GLuint updatpositions_program_ID);
+  ~ParticleProgram();
+
+  GLuint getUpdateAccelerationsProgramID();
+  GLuint getUpdateVelocitiesProgramID();
+  GLuint getUpdatePositionsProgramID();
+private:
+  GLuint update_accelerations_program_ID_;
+  GLuint update_velocities_program_ID_;
+  GLuint update_positions_program_ID_;
+};
+
 class ParticleSystem : public Object3D {
 public:
-  ParticleSystem(unsigned long size);
+  ParticleSystem(
+    unsigned long size,
+    ParticleProgramEnum program);
   ~ParticleSystem();
   void render(glm::mat4 M);
   void update(float dt);
@@ -38,10 +66,8 @@ private:
   PointCloudMaterial* material_;
   PointCloudMaterial* shadow_material_;
 
-  GLuint update_accelerations_program_ID_;
-  GLuint update_velocities_program_ID_;
-  GLuint update_positions_program_ID_;
-  
+  std::map<ParticleProgramEnum, ParticleProgram> programs_;
+
   GLuint acceleration_frame_buffer_;
   GLuint velocity_frame_buffer_;
   GLuint position_frame_buffer_;
