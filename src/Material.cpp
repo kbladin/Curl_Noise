@@ -101,7 +101,8 @@ void BackgroundMaterial::use() const
 //! Create a material which is bound to the UpdatePointCloud shader.
 PointCloudMaterial::PointCloudMaterial(unsigned long size)
 {
-  rendering_properties_.particle_color = glm::vec3(1,0.5,0.2);
+  rendering_properties_.particle_color1 = glm::vec3(0.5,0.5,1);
+  rendering_properties_.particle_color2 = glm::vec3(1,0.5,0.2);
   rendering_properties_.particle_radius = 2;
   rendering_properties_.shader = ADDITIVE;
 
@@ -235,8 +236,10 @@ void PointCloudMaterial::updateUniformIDs()
     glGetUniformLocation(program_ID, "velocity_sampler_2D");
   position_texture_sampler2D_ID_ =
     glGetUniformLocation(program_ID, "position_sampler_2D");
-  particle_color_ID_ =
-    glGetUniformLocation(program_ID, "particle_color");
+  particle_color1_ID_ =
+    glGetUniformLocation(program_ID, "particle_color1");
+  particle_color2_ID_ =
+    glGetUniformLocation(program_ID, "particle_color2");
   particle_radius_ID_ =
     glGetUniformLocation(program_ID, "particle_radius");
 }
@@ -247,6 +250,7 @@ void PointCloudMaterial::use()
   // Update IDs and use shader
   updateUniformIDs();
 
+  // Bind textures
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, acceleration_texture_to_sample_);
   glUniform1i(acceleration_texture_sampler2D_ID_, 0);
@@ -259,16 +263,22 @@ void PointCloudMaterial::use()
   glBindTexture(GL_TEXTURE_2D, position_texture_to_sample_);
   glUniform1i(position_texture_sampler2D_ID_, 2);
 
+  // Write uniforms
   glUniform3f(
-    particle_color_ID_,
-    rendering_properties_.particle_color.r,
-    rendering_properties_.particle_color.g,
-    rendering_properties_.particle_color.b);
-
+    particle_color1_ID_,
+    rendering_properties_.particle_color1.r,
+    rendering_properties_.particle_color1.g,
+    rendering_properties_.particle_color1.b);
+  glUniform3f(
+    particle_color2_ID_,
+    rendering_properties_.particle_color2.r,
+    rendering_properties_.particle_color2.g,
+    rendering_properties_.particle_color2.b);
   glUniform1f(
     particle_radius_ID_,
     rendering_properties_.particle_radius);
 
+  // Set blending mode depending on shader
   if (getProgramID() == 
       ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"))
     glDisable(GL_BLEND);

@@ -140,28 +140,26 @@ float smoothstep(float edge0, float edge1, float x)
   return x*x*(3 - 2*x);
 }
 
+// Out data
+out vec4 velocity_out;
+
+// Uniform data
 // From previous state
 uniform sampler2D position_sampler_2D;
 uniform sampler2D velocity_sampler_2D;
 // From current state
 uniform sampler2D acceleration_sampler_2D;
-
 uniform float dt; // Time step
 uniform float time; // Global time 
-
 // Properties of the particle system
 uniform float field_speed;
 uniform float noise_strength;
 uniform float progression_rate;
 uniform float length_scale;
 uniform vec3  field_main_direction;
-
 // Blocking sphere
 uniform vec3 sphere_position;
 uniform float sphere_radius;
-
-// Output
-out vec4 velocity_out;
 
 // The vector field potential has three components
 vec3 potential(vec3 p)
@@ -170,8 +168,8 @@ vec3 potential(vec3 p)
   float speed;  // field speed
   float alpha;  // Alpha as described by Bridson
   float beta;   // amount of curl noise compared to the constant field
-  vec3  n;       // Normal of closest surface
-  vec3  pot;     // Output potential
+  vec3  n;      // Normal of closest surface
+  vec3  pot;    // Output potential
   
   L = length_scale;
   speed = field_speed;
@@ -209,12 +207,11 @@ vec3 potential(vec3 p)
 }
 
 void main(){
-  //vec3 a = texelFetch( acceleration_sampler_2D,	ivec2(gl_FragCoord.xy), 0).xyz;
-  //vec3 v = texelFetch( velocity_sampler_2D,     ivec2(gl_FragCoord.xy), 0).xyz;
+  // Read position
   vec3 p = texelFetch( position_sampler_2D,     ivec2(gl_FragCoord.xy), 0).xyz;
 
   // Step length for approximating derivatives
-  float epsilon = 0.00001;
+  float epsilon = 0.0001;
   vec3 pot = potential(p);
 
   // Partial derivatives of different components of the potential

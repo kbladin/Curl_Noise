@@ -1,13 +1,14 @@
 #version 330 core
 
+// Out data
+out vec4 velocity_out;
+
+// Uniform data
 // From current state
 uniform sampler2D velocity_sampler_2D;
 // From previous state
 uniform sampler2D acceleration_sampler_2D;
-
 uniform float dt; // Time step
-
-out vec4 velocity_out;
 
 void main(){
   // Write output to fragment shader

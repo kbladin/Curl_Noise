@@ -164,10 +164,16 @@ void AntGui::createParticleSystemPropertiesTwBar(
     NULL);
   TwAddVarRW(
     bar,
-    "particle_color",
+    "particle_color1",
     TW_TYPE_COLOR3F,
-    &pc_rendering_properties->particle_color,
-    " label='Particle Color' ");
+    &pc_rendering_properties->particle_color1,
+    " label='Particle Color 1' ");
+  TwAddVarRW(
+    bar,
+    "particle_color2",
+    TW_TYPE_COLOR3F,
+    &pc_rendering_properties->particle_color2,
+    " label='Particle Color 2' ");
   TwAddVarRW(
     bar,
     "particle_radius",

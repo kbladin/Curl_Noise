@@ -68,7 +68,8 @@ typedef enum {
 } PointCloudShader;
 
 struct PointCloudRenderingProperties {
-  glm::vec3 particle_color;
+  glm::vec3 particle_color1;
+  glm::vec3 particle_color2;
   float particle_radius;
   PointCloudShader shader;
 };
@@ -93,7 +94,8 @@ private:
   void updateUniformIDs();
 
   // IDs for uniforms that can be changed
-  GLuint particle_color_ID_;
+  GLuint particle_color1_ID_;
+  GLuint particle_color2_ID_;
   GLuint particle_radius_ID_;
 
   // Textures to sample from

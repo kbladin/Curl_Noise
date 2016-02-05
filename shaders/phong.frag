@@ -8,12 +8,12 @@ in vec3 light_position_viewspace;
 // Fragment output
 out vec4 color;
 
+// Uniform data
 // Material properties
 uniform vec3  material_diffise_color;
 uniform vec3  material_specularColor;
 uniform float   material_specularity;
 uniform int   material_shinyness;
-
 // Light properties
 uniform float   light_intensity;
 uniform vec3  light_color;
@@ -26,6 +26,7 @@ void main(){
   vec3 n = normalize(normal_viewspace);
   vec3 r = reflect(l,n);
 
+  // Diffuse and reflected intensity
   float cos_theta = max(dot(-l,n),0);
   float cos_alpha = max(dot(v,-r),0);
 

@@ -1,19 +1,20 @@
 #version 330 core
 
+// Out data
+out vec4 position_out;
+
+// Uniform data
 // From previous state
 uniform sampler2D position_sampler_2D;
 // From current state
 uniform sampler2D velocity_sampler_2D;
 uniform sampler2D acceleration_sampler_2D;
-
-uniform float dt; // Time step
-
+// Time step
+uniform float dt;
 // Properties of the particle system
 uniform float inv_life_length_factor;
 uniform float emitter_size;
-uniform vec3 emitter_position;
-
-out vec4 position_out;
+uniform vec3  emitter_position;
 
 // Random random function
 float rand(vec2 co){
@@ -28,23 +29,22 @@ void main(){
   // The lifetime is stored in the fourth element of position
   vec4 p_tmp = texelFetch( position_sampler_2D, ivec2(gl_FragCoord.xy), 0);
   vec3 p = p_tmp.xyz;
-  float t = p_tmp.a;
+  float age = p_tmp.w;
 
   // Euler integration
   vec3 delta_p = v * dt;
   vec3 new_pos = p + delta_p;
 
-  // If particle is too old, reset position and give it a new life length
-  if(t >= 1)
-  {
-    new_pos.x = emitter_position.x + (fract(new_pos.x - 0.5) - 0.5) * emitter_size;
-    new_pos.y = emitter_position.y + (fract(new_pos.y - 0.5) - 0.5) * emitter_size;
-    new_pos.z = emitter_position.z + (fract(new_pos.z - 0.5) - 0.5) * emitter_size;
-    t = rand(new_pos.xy * 17);
-  }
+  // If particle is too old, reset position and decrease age
+  new_pos = age >= 1 ?
+    vec3(
+      emitter_position.x + (rand(new_pos.xy) - 0.5) *             emitter_size,
+      emitter_position.y + (rand(new_pos.yz) - 0.5) *             emitter_size,
+      emitter_position.z + (rand(vec2(new_pos.z, age--)) - 0.5) * emitter_size)
+    : new_pos;
 
   // Add age to particle
-  t += dt * inv_life_length_factor * 0.1;
+  age += dt * inv_life_length_factor * 0.1;
   // Write to output
-  position_out = vec4(new_pos,t);
+  position_out = vec4(new_pos,age);
 }
