@@ -97,12 +97,11 @@ void MyLightSource::setColor(glm::vec3 color)
 }
 
 MyEngine::MyEngine(int window_width, int window_height, double time) :
-  SimpleGraphicsEngine(time)
+  SimpleGraphicsEngine()
 {
   window_width_ = window_width;
-  window_height_ = window_height; 
-  // Now initialize objects in scene
-  SimpleGraphicsEngine::initialize();
+  window_height_ = window_height;
+  time_ = time;
   // Load shaders
   // Standard rendering shaders
   ShaderManager::instance()->loadShader(
@@ -275,12 +274,13 @@ void MyEngine::update(float time)
   dt_ = time - time_;
   time_ = time;
 
-  SimpleGraphicsEngine::update();
-  
   // Update particle system
   if (mouse_down_)
     updateParticleEmitterPosition();
   point_cloud_->update(dt_);
+
+  // Render
+  SimpleGraphicsEngine::render();
 }
 
 void MyEngine::mousePosCallback(double x, double y)
@@ -323,6 +323,11 @@ ParticleSystemProperties* MyEngine::getParticleSystemPropertiesPointer()
 PointCloudRenderingProperties* MyEngine::getPointCloudRenderingPropertiesPointer()
 {
   return point_cloud_->getPointCloudRenderingPropertiesPointer();
+}
+
+float MyEngine::getDt()
+{
+  return dt_;
 }
 
 void MyEngine::setWindowResolution(int width, int height)

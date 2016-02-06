@@ -69,6 +69,7 @@ public:
 
   ParticleSystemProperties* getParticleSystemPropertiesPointer();
   PointCloudRenderingProperties* getPointCloudRenderingPropertiesPointer();
+  float getDt();
 
   void setWindowResolution(int width, int height);
 private:
@@ -95,6 +96,10 @@ private:
   float mouse_x_;
   float mouse_y_;
   bool mouse_down_;
+
+  // Time
+  float time_;
+  float dt_;
 };
 
 #endif
