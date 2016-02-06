@@ -13,8 +13,8 @@ AntGui::AntGui(int window_width, int window_height)
   TwDefine(" GLOBAL fontsize=2 "); // use large font
   TwDefine(" GLOBAL fontresizable=false "); // font cannot be resized
 
-  window_width_ = window_width;
-  window_height_ = window_height;
+  _window_width = window_width;
+  _window_height = window_height;
 }
 
 //! Destructor
@@ -34,9 +34,9 @@ AntGui::~AntGui()
   \param name is the name of the tweak bar.
 */
 void AntGui::createParticleSystemPropertiesTwBar(
-  ParticleSystemProperties* ps_properties,
-  PointCloudRenderingProperties* pc_rendering_properties,
-  const char* name)
+  ParticleSystemProperties*       ps_properties,
+  PointCloudRenderingProperties*  pc_rendering_properties,
+  const char*                     name)
 {
   // Create a tweak bar
   TwBar* bar = TwNewBar(name);
@@ -185,7 +185,7 @@ void AntGui::createParticleSystemPropertiesTwBar(
     " help='Radius of each particle' ");
   
   // Push the tweak bar to the map
-  tweak_bars_[name] = bar;
+  _tweak_bars[name] = bar;
 }
 
 //! Deletes the tweak bar defined by name
@@ -194,24 +194,24 @@ void AntGui::createParticleSystemPropertiesTwBar(
 */
 void AntGui::deleteTwBar(const char* name)
 {
-  TwBar* bar = tweak_bars_[name];
+  TwBar* bar = _tweak_bars[name];
   if (bar)
   {
     TwDeleteBar(bar);
-    tweak_bars_.erase (name);
+    _tweak_bars.erase (name);
   }
 }
 
 //! Returns the window width in pixels
 int AntGui::getWindowWidth()
 {
-  return window_width_;
+  return _window_width;
 }
 
 //! Returns the window height in pixels
 int AntGui::getWindowHeight()
 {
-  return window_height_;
+  return _window_height;
 }
 
 //! Set resolution to new window width and height
@@ -221,14 +221,14 @@ int AntGui::getWindowHeight()
 */
 void AntGui::setWindowResolution(int width, int height)
 {
-  window_height_ = height;
-  window_width_ = width;
+  _window_height = height;
+  _window_width = width;
 }
 
 //! Renders the gui
 void AntGui::render()
 {
-  TwWindowSize(window_width_ * 2, window_height_ * 2);
+  TwWindowSize(_window_width * 2, _window_height * 2);
   // Draw tweak bars
   TwDraw();
 }

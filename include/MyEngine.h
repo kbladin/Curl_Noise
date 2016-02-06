@@ -1,5 +1,5 @@
-#ifndef MY_ENGINE_H
-#define MY_ENGINE_H
+#ifndef MY__engineH
+#define MY__engineH
 
 #include "SGE/SimpleGraphicsEngine.h"
 #include "ParticleSystem.h"
@@ -16,9 +16,9 @@ public:
   MyBGObject3D();
   ~MyBGObject3D();
   void render(glm::mat4 M);
-protected:
-  BackgroundMaterial* material_;
-  TriangleMesh* background_plane_;
+private:
+  BackgroundMaterial* _material;
+  TriangleMesh*       _background_plane;
 };
 
 class FieldBlockerSphere : public Object3D {
@@ -27,10 +27,10 @@ public:
   ~FieldBlockerSphere();
   void render(glm::mat4 M);
 private:
-  Material* material_;
-  TriangleMesh* mesh_;
+  Material*     _material;
+  TriangleMesh* _mesh;
   
-  float radius;
+  float _radius;
 };
 
 class MyLightSource : public Object3D {
@@ -38,12 +38,14 @@ public:
   MyLightSource();
   ~MyLightSource();
   void render(glm::mat4 M);
+
+  // Setters
   void setIntensity(float intensity);
   void setColor(glm::vec3 color);
-protected:
+private:
   // Need one light source for each shader it is used in
-  LightSource* phong_light_source;
-  LightSource* particle_light_source;
+  LightSource* _phong_light_source;
+  LightSource* _particle_light_source;
 };
 
 //! The actual program extending SimpleGraphicsEngine
@@ -67,39 +69,41 @@ public:
     int action,
     int mods);
 
+  // Getters
   ParticleSystemProperties* getParticleSystemPropertiesPointer();
   PointCloudRenderingProperties* getPointCloudRenderingPropertiesPointer();
   float getDt();
 
+  // Setters
   void setWindowResolution(int width, int height);
 private:
-  void updateParticleEmitterPosition();
+  void _updateParticleEmitterPosition();
   // Objects to put in the scene
-  MyBGObject3D* background_;
-  FieldBlockerSphere* sphere_;
-  ParticleSystem* point_cloud_;
-  MyLightSource* lamp_;
+  MyBGObject3D*       _background;
+  FieldBlockerSphere* _sphere;
+  ParticleSystem*     _point_cloud;
+  MyLightSource*      _lamp;
   
   // One camera for each render shader
   // (probably a bit faster than to change shader for one camera)
-  PerspectiveCamera* basic_cam_;
-  PerspectiveCamera* one_color_cam_;
-  PerspectiveCamera* point_cloud_phong_cam_;
-  PerspectiveCamera* point_cloud_additive_cam_;
-  OrthoCamera* background_ortho_cam_;
+  PerspectiveCamera*  _basic_cam;
+  PerspectiveCamera*  _one_color_cam;
+  PerspectiveCamera*  _point_cloud_phong_cam;
+  PerspectiveCamera*  _point_cloud_additive_cam;
+  OrthoCamera*        _background_ortho_cam;
   
   // Materials
-  BackgroundMaterial* background_material_;
-  OneColorMaterial* grid_mesh_material_;
+  BackgroundMaterial* _background_material;
+  OneColorMaterial*   _grid_mesh_material;
 
   // User interfacing
-  float mouse_x_;
-  float mouse_y_;
-  bool mouse_down_;
+  float _mouse_x;
+  float _mouse_y;
+  bool  _mouse_down;
 
   // Time
-  float time_;
-  float dt_;
+  float _time;
+  float _dt;
 };
 
 #endif

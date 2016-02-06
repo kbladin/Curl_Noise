@@ -39,9 +39,9 @@ public:
   GLuint getUpdateVelocitiesProgramID();
   GLuint getUpdatePositionsProgramID();
 private:
-  GLuint update_accelerations_program_ID_;
-  GLuint update_velocities_program_ID_;
-  GLuint update_positions_program_ID_;
+  GLuint _update_accelerations_program_ID;
+  GLuint _update_velocities_program_ID;
+  GLuint _update_positions_program_ID;
 };
 
 class ParticleSystem : public Object3D {
@@ -61,31 +61,32 @@ private:
   void updatePositions(float dt);
   void swapTextures();
 
-  ParticleSystemProperties properties_;
-  
-  const unsigned long size_;
-  PointCloudMesh* mesh_;
-  PointCloudMaterial* material_;
-  PointCloudMaterial* shadow_material_;
+  // OpenGL handles
+  std::map<ParticleProgramEnum, ParticleProgram> _programs;
 
-  std::map<ParticleProgramEnum, ParticleProgram> programs_;
+  GLuint _acceleration_frame_buffer;
+  GLuint _velocity_frame_buffer;
+  GLuint _position_frame_buffer;
+  
+  GLuint _acceleration_texture_to_render;
+  GLuint _velocity_texture_to_render;
+  GLuint _position_texture_to_render;
+  
+  GLuint _quad_VAO;
+  GLuint _quad_VBO;
+  GLuint _quad_element_buffer;
+  
+  // Data
+  ParticleSystemProperties _properties;
+  
+  const unsigned long _size;
+  PointCloudMesh*     _mesh;
+  PointCloudMaterial* _material;
+  
+  std::vector<glm::vec3> _quad_vertices;
+  std::vector<unsigned short> _quad_elements;
 
-  GLuint acceleration_frame_buffer_;
-  GLuint velocity_frame_buffer_;
-  GLuint position_frame_buffer_;
-  
-  GLuint acceleration_texture_to_render_;
-  GLuint velocity_texture_to_render_;
-  GLuint position_texture_to_render_;
-  
-  GLuint quad_VAO_;
-  GLuint quad_VBO_;
-  GLuint quad_element_buffer_;
-  
-  std::vector<glm::vec3> quad_vertices_;
-  std::vector<unsigned short> quad_elements_;
-
-  float time;
+  float _time;
 };
 
 #endif

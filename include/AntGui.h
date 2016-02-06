@@ -1,5 +1,5 @@
-#ifndef ANT_GUI_H
-#define ANT_GUI_H
+#ifndef _ant_guiH
+#define _ant_guiH
 
 #include "ParticleSystem.h"
 #include "Material.h"
@@ -18,21 +18,23 @@ public:
   ~AntGui();
 
   void createParticleSystemPropertiesTwBar(
-    ParticleSystemProperties* ps_properties,
-    PointCloudRenderingProperties* pc_rendering_properties,
-    const char* name);
+    ParticleSystemProperties*       ps_properties,
+    PointCloudRenderingProperties*  pc_rendering_properties,
+    const char*                     name);
   void deleteTwBar(const char* name);
   void render();
 
+  // Getters
   int getWindowWidth();
   int getWindowHeight();
 
+  // Setters
   void setWindowResolution(int width, int height);
 private:
-  int window_width_;
-  int window_height_;
-
-  std::map<std::string, TwBar*> tweak_bars_;
+  // Data
+  int _window_width;
+  int _window_height;
+  std::map<std::string, TwBar*> _tweak_bars;
 };
 
 #endif

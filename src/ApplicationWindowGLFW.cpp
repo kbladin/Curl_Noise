@@ -1,12 +1,12 @@
 #include "ApplicationWindowGLFW.h"
 
-MyEngine* ApplicationWindowGLFW::engine_;
-AntGui* ApplicationWindowGLFW::ant_gui_;
+MyEngine* ApplicationWindowGLFW::_engine;
+AntGui* ApplicationWindowGLFW::_ant_gui;
 
 ApplicationWindowGLFW::ApplicationWindowGLFW()
 {
-  delay_counter_ = 0;
-  frame_counter_ = 0;
+  _delay_counter = 0;
+  _frame_counter = 0;
 
   // First an OpenGL context needs to be created
   if (!initOpenGLContext())
@@ -16,31 +16,31 @@ ApplicationWindowGLFW::ApplicationWindowGLFW()
 
   int width;
   int height;
-  glfwGetWindowSize(window_, &width, &height);
+  glfwGetWindowSize(_window, &width, &height);
 
   // Create engine
-  engine_ = new MyEngine(width, height, glfwGetTime());
+  _engine = new MyEngine(width, height, glfwGetTime());
 
   // create the gui
-  ant_gui_ = new AntGui(width, height);
+  _ant_gui = new AntGui(width, height);
 
   // Add tweak bars to control properties in the engine
-  ant_gui_->createParticleSystemPropertiesTwBar(
-    engine_->getParticleSystemPropertiesPointer(),
-    engine_->getPointCloudRenderingPropertiesPointer(),
+  _ant_gui->createParticleSystemPropertiesTwBar(
+    _engine->getParticleSystemPropertiesPointer(),
+    _engine->getPointCloudRenderingPropertiesPointer(),
     "Particle System Properties");
   
   // Set callback functions
-  glfwSetCursorPosCallback(window_, mousePosCallback);
-  glfwSetMouseButtonCallback(window_, mouseButtonCallback);
-  glfwSetScrollCallback(window_, mouseScrollCallback);
-  glfwSetKeyCallback(window_, keyCallback);
-  glfwSetWindowSizeCallback(window_, windowSizeCallback);
+  glfwSetCursorPosCallback(_window, mousePosCallback);
+  glfwSetMouseButtonCallback(_window, mouseButtonCallback);
+  glfwSetScrollCallback(_window, mouseScrollCallback);
+  glfwSetKeyCallback(_window, keyCallback);
+  glfwSetWindowSizeCallback(_window, windowSizeCallback);
 }
 
 ApplicationWindowGLFW::~ApplicationWindowGLFW()
 {
-  delete ant_gui_;
+  delete _ant_gui;
   glfwTerminate();
 }
 
@@ -55,14 +55,14 @@ bool ApplicationWindowGLFW::initOpenGLContext()
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   // Create a windowed mode window and its OpenGL context
-  window_ = glfwCreateWindow(720, 480, "Curl Noise", NULL, NULL);
-  if (!window_)
+  _window = glfwCreateWindow(720, 480, "Curl Noise", NULL, NULL);
+  if (!_window)
   {
     glfwTerminate();
     return false;
   }
   // Make the window's context current
-  glfwMakeContextCurrent(window_);
+  glfwMakeContextCurrent(_window);
   printf("%s\n", glGetString(GL_VERSION));
   return true;
 }
@@ -70,29 +70,29 @@ bool ApplicationWindowGLFW::initOpenGLContext()
 //! Starts the main loop
 void ApplicationWindowGLFW::run()
 {
-  while (!glfwWindowShouldClose(window_))
+  while (!glfwWindowShouldClose(_window))
   {
     int width;
     int height;
 
-    engine_->update(glfwGetTime());
+    _engine->update(glfwGetTime());
 
     // Draw the gui
-    ant_gui_->render();
+    _ant_gui->render();
 
     // Print FPS on window
-    frame_counter_ ++;
-    delay_counter_ += engine_->getDt();  
+    _frame_counter ++;
+    _delay_counter += _engine->getDt();  
 
-    if (delay_counter_ >= 1.0) {
+    if (_delay_counter >= 1.0) {
       std::stringstream title;
-      title << "Curl Noise Demo by Kalle Bladin. " << frame_counter_ << " FPS";
-      glfwSetWindowTitle(window_, title.str().c_str());
-      frame_counter_ = 0;
-      delay_counter_ = 0;
+      title << "Curl Noise Demo by Kalle Bladin. " << _frame_counter << " FPS";
+      glfwSetWindowTitle(_window, title.str().c_str());
+      _frame_counter = 0;
+      _delay_counter = 0;
     }
 
-    glfwSwapBuffers(window_);
+    glfwSwapBuffers(_window);
     glfwPollEvents();
   }
 }
@@ -104,7 +104,7 @@ void ApplicationWindowGLFW::mousePosCallback(
 {
   if (!TwEventMousePosGLFW(x * 2,y * 2))
   {
-    engine_->mousePosCallback(x,y);
+    _engine->mousePosCallback(x,y);
   }
 }
 
@@ -117,9 +117,9 @@ void ApplicationWindowGLFW::mouseButtonCallback(
   if (!TwEventMouseButtonGLFW(button, action))
   {
     if (action == GLFW_PRESS)
-      engine_->mouseButtonPress();
+      _engine->mouseButtonPress();
     else if (action == GLFW_RELEASE)
-      engine_->mouseButtonRelease();
+      _engine->mouseButtonRelease();
   }
 }
 
@@ -128,7 +128,7 @@ void ApplicationWindowGLFW::mouseScrollCallback(
   double dx,
   double dy)
 {
-  engine_->mouseScrollCallback(dx, dy);
+  _engine->mouseScrollCallback(dx, dy);
 }
 
 void ApplicationWindowGLFW::keyCallback(
@@ -148,7 +148,7 @@ void ApplicationWindowGLFW::keyCallback(
   //    }
   //  }
   //}
-  engine_->keyCallback(key, scancode, action, mods);
+  _engine->keyCallback(key, scancode, action, mods);
 }
 
 void ApplicationWindowGLFW::windowSizeCallback(
@@ -156,6 +156,6 @@ void ApplicationWindowGLFW::windowSizeCallback(
   int width,
   int height)
 {
-  engine_->setWindowResolution(width, height);
-  ant_gui_->setWindowResolution(width, height);
+  _engine->setWindowResolution(width, height);
+  _ant_gui->setWindowResolution(width, height);
 }

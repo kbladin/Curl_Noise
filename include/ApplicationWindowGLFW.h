@@ -1,5 +1,5 @@
-#ifndef WINDOW_MANAGER_H
-#define WINDOW_MANAGER_H
+#ifndef _windowMANAGER_H
+#define _windowMANAGER_H
 
 #include "MyEngine.h"
 
@@ -20,28 +20,39 @@ public:
 
   void run();
 private:
+  // Functions
   bool initOpenGLContext();
-  static void mousePosCallback(GLFWwindow * window, double x, double y);
+  static void mousePosCallback(
+    GLFWwindow * window,
+    double x,
+    double y);
   static void mouseButtonCallback(
     GLFWwindow * window,
     int button,
     int action,
     int mods);
-  static void mouseScrollCallback(GLFWwindow * window, double dx, double dy);
+  static void mouseScrollCallback(
+    GLFWwindow * window,
+    double dx,
+    double dy);
   static void keyCallback(
     GLFWwindow * window,
     int key,
     int scancode,
     int action,
     int mods);
-  static void windowSizeCallback(GLFWwindow* window, int width, int height);
+  static void windowSizeCallback(
+    GLFWwindow* window,
+    int width,
+    int height);
 
-  GLFWwindow* window_;
-  static AntGui *ant_gui_;
-  static MyEngine* engine_;
+  // Data
+  GLFWwindow*       _window;
+  static AntGui*    _ant_gui;
+  static MyEngine*  _engine;
 
-  float delay_counter_;
-  int frame_counter_;
+  float _delay_counter;
+  int   _frame_counter;
 };
 
 #endif

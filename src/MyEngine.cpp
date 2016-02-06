@@ -2,9 +2,9 @@
 
 MyBGObject3D::MyBGObject3D()
 {
-  background_plane_ = new TriangleMesh();
-  material_ = new BackgroundMaterial();
-  background_plane_->initPlane(
+  _background_plane = new TriangleMesh();
+  _material = new BackgroundMaterial();
+  _background_plane->initPlane(
     glm::vec3(0,0,0),
     glm::vec3(0,0,1),
     glm::vec3(10,2,2));
@@ -12,33 +12,33 @@ MyBGObject3D::MyBGObject3D()
 
 MyBGObject3D::~MyBGObject3D()
 {
-  delete background_plane_;
-  delete material_;
+  delete _background_plane;
+  delete _material;
 }
 
 void MyBGObject3D::render(glm::mat4 M)
 {
-  material_->use();
-  background_plane_->render(M * transform_matrix_, material_->getProgramID());
+  _material->use();
+  _background_plane->render(M * transform_matrix, _material->getProgramID());
 }
 
 FieldBlockerSphere::FieldBlockerSphere()
 {
   // Create the mesh
-  mesh_ = new TriangleMesh("../data/meshes/icosphere.obj");
-  mesh_->transform_matrix_ = glm::scale(glm::mat4(), 0.5f * glm::vec3(1.0f));
-  material_ = new PhongMaterial();
+  _mesh = new TriangleMesh("../data/meshes/icosphere.obj");
+  _mesh->transform_matrix = glm::scale(glm::mat4(), 0.5f * glm::vec3(1.0f));
+  _material = new PhongMaterial();
 }
 
 FieldBlockerSphere::~FieldBlockerSphere()
 {
-  delete mesh_;
-  delete material_;
+  delete _mesh;
+  delete _material;
 }
 
 void FieldBlockerSphere::render(glm::mat4 M)
 {
-  material_->use();
+  _material->use();
   // Bind shader to send sphere position and size
   glUseProgram(ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES"));
   glUniform3f(glGetUniformLocation(
@@ -55,53 +55,50 @@ void FieldBlockerSphere::render(glm::mat4 M)
   glUniform1f(glGetUniformLocation(
     ShaderManager::instance()->getShader("SHADER_UPDATE_POINT_CLOUD_VELOCITIES_VORTEX"),
     "sphere_radius"), 0.5);
-  mesh_->render(M * transform_matrix_, material_->getProgramID());
+  _mesh->render(M * transform_matrix, _material->getProgramID());
 }
 
 MyLightSource::MyLightSource()
 {
-  phong_light_source = new LightSource(
+  _phong_light_source = new LightSource(
     ShaderManager::instance()->getShader("SHADER_PHONG"),
     10,
-    glm::vec3(1,1,1),
-    false);
-  particle_light_source = new LightSource(
+    glm::vec3(1,1,1));
+  _particle_light_source = new LightSource(
     ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"),
     10,
-    glm::vec3(1,1,1),
-    false);
+    glm::vec3(1,1,1));
 }
 
 MyLightSource::~MyLightSource()
 {
-  delete phong_light_source;
-  delete particle_light_source;
+  delete _phong_light_source;
+  delete _particle_light_source;
 }
 
 void MyLightSource::render(glm::mat4 M)
 {
-  phong_light_source->render(M * transform_matrix_);
-  particle_light_source->render(M * transform_matrix_);
+  _phong_light_source->render(M * transform_matrix);
+  _particle_light_source->render(M * transform_matrix);
 }
 
 void MyLightSource::setIntensity(float intensity)
 {
-  phong_light_source->setIntensity(intensity);
-  particle_light_source->setIntensity(intensity);
+  _phong_light_source->setIntensity(intensity);
+  _particle_light_source->setIntensity(intensity);
 }
 
 void MyLightSource::setColor(glm::vec3 color)
 {
-  phong_light_source->setColor(color);
-  particle_light_source->setColor(color);
+  _phong_light_source->setColor(color);
+  _particle_light_source->setColor(color);
 }
 
 MyEngine::MyEngine(int window_width, int window_height, double time) :
   SimpleGraphicsEngine()
 {
-  window_width_ = window_width;
-  window_height_ = window_height;
-  time_ = time;
+  SimpleGraphicsEngine::setWindowResolution(window_width, window_height);
+  _time = time;
   // Load shaders
   // Standard rendering shaders
   ShaderManager::instance()->loadShader(
@@ -187,34 +184,34 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
     "../shaders/point_cloud_programs/render_particles_additive.frag");
 
   // Create cameras
-  basic_cam_ = new PerspectiveCamera(
+  _basic_cam = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_PHONG"),
     window_width,
     window_height,
     45,
     0.01,
     100);
-  one_color_cam_ = new PerspectiveCamera(
+  _one_color_cam = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_ONE_COLOR"),
     window_width,
     window_height,
     45,
     0.01,
     100);
-  background_ortho_cam_ = new OrthoCamera(
+  _background_ortho_cam = new OrthoCamera(
     ShaderManager::instance()->getShader("SHADER_BACKGROUND"),
     window_width,
     window_height,
     100,
     100);
-  point_cloud_phong_cam_ = new PerspectiveCamera(
+  _point_cloud_phong_cam = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_PHONG"),
     window_width,
     window_height,
     45,
     0.01,
     100);
-  point_cloud_additive_cam_ = new PerspectiveCamera(
+  _point_cloud_additive_cam = new PerspectiveCamera(
     ShaderManager::instance()->getShader("SHADER_RENDER_POINT_CLOUD_ADDITIVE"),
     window_width,
     window_height,
@@ -223,61 +220,60 @@ MyEngine::MyEngine(int window_width, int window_height, double time) :
     100);
   
   // Create objects
-  background_ = new MyBGObject3D();
-  sphere_ = new FieldBlockerSphere();
-  point_cloud_ = new ParticleSystem(200000, CURL_NOISE);
-  lamp_ = new MyLightSource();
+  _background = new MyBGObject3D();
+  _sphere = new FieldBlockerSphere();
+  _point_cloud = new ParticleSystem(200000, CURL_NOISE);
+  _lamp = new MyLightSource();
   
   // Connect nodes
-  camera_->addChild(basic_cam_);
-  camera_->addChild(one_color_cam_);
-  camera_->addChild(point_cloud_phong_cam_);
-  camera_->addChild(point_cloud_additive_cam_);
-  viewspace_ortho_camera_->addChild(background_ortho_cam_);
+  camera->addChild(_basic_cam);
+  camera->addChild(_one_color_cam);
+  camera->addChild(_point_cloud_phong_cam);
+  camera->addChild(_point_cloud_additive_cam);
+  viewspace_ortho_camera->addChild(_background_ortho_cam);
 
   // Add to scene
-  scene_->addChild(point_cloud_);
-  scene_->addChild(sphere_);
-  scene_->addChild(lamp_);
-  background_space_->addChild(background_);
+  scene->addChild(_point_cloud);
+  scene->addChild(_sphere);
+  scene->addChild(_lamp);
+  background_space->addChild(_background);
 
   // Set camera transform
-  camera_->transform_matrix_ = glm::translate(glm::vec3(0.0f,0.0f,-3.0f));
-  camera_->transform_matrix_ =
-    camera_->transform_matrix_ *
+  camera->transform_matrix = glm::translate(glm::vec3(0.0f,0.0f,-3.0f));
+  camera->transform_matrix =
+    camera->transform_matrix *
     glm::rotate(glm::mat4(), 0.3f, glm::vec3(1,0,0));
 
   // Set lamp transform
-  lamp_->transform_matrix_ = glm::translate(glm::vec3(3.0f,3.0f,3.0f));
+  _lamp->transform_matrix = glm::translate(glm::vec3(3.0f,3.0f,3.0f));
 }
 
 MyEngine::~MyEngine()
 {
-  delete point_cloud_;
+  delete _point_cloud;
   
-  delete basic_cam_;
-  delete one_color_cam_;
-  delete viewspace_ortho_camera_;
-  delete background_ortho_cam_;
-  delete point_cloud_phong_cam_;
-  delete point_cloud_additive_cam_;
+  delete _basic_cam;
+  delete _one_color_cam;
+  delete _background_ortho_cam;
+  delete _point_cloud_phong_cam;
+  delete _point_cloud_additive_cam;
   
-  delete grid_mesh_material_;
+  delete _grid_mesh_material;
 
-  delete background_;
-  delete sphere_;
-  delete lamp_;
+  delete _background;
+  delete _sphere;
+  delete _lamp;
 }
 
 void MyEngine::update(float time)
 {
-  dt_ = time - time_;
-  time_ = time;
+  _dt = time - _time;
+  _time = time;
 
   // Update particle system
-  if (mouse_down_)
-    updateParticleEmitterPosition();
-  point_cloud_->update(dt_);
+  if (_mouse_down)
+    _updateParticleEmitterPosition();
+  _point_cloud->update(_dt);
 
   // Render
   SimpleGraphicsEngine::render();
@@ -285,24 +281,24 @@ void MyEngine::update(float time)
 
 void MyEngine::mousePosCallback(double x, double y)
 {
-  mouse_x_ = x;
-  mouse_y_ = y;
+  _mouse_x = x;
+  _mouse_y = y;
 }
 
 void MyEngine::mouseButtonPress()
 {
-  mouse_down_ = true;
+  _mouse_down = true;
 }
 
 void MyEngine::mouseButtonRelease()
 {
-  mouse_down_ = false;
+  _mouse_down = false;
 }
 
 void MyEngine::mouseScrollCallback(double dx, double dy)
 {
-  camera_->transform_matrix_ =
-    camera_->transform_matrix_ *
+  camera->transform_matrix =
+    camera->transform_matrix *
     glm::rotate(glm::mat4(), 0.1f * float(dx), glm::vec3(0,1,0));
 }
 
@@ -317,52 +313,55 @@ void MyEngine::keyCallback(
 
 ParticleSystemProperties* MyEngine::getParticleSystemPropertiesPointer()
 {
-  return point_cloud_->getPropertiesPointer();
+  return _point_cloud->getPropertiesPointer();
 }
 
 PointCloudRenderingProperties* MyEngine::getPointCloudRenderingPropertiesPointer()
 {
-  return point_cloud_->getPointCloudRenderingPropertiesPointer();
+  return _point_cloud->getPointCloudRenderingPropertiesPointer();
 }
 
 float MyEngine::getDt()
 {
-  return dt_;
+  return _dt;
 }
 
 void MyEngine::setWindowResolution(int width, int height)
 {
   SimpleGraphicsEngine::setWindowResolution(width, height);
-  basic_cam_->setResolution(width, height);
-  one_color_cam_->setResolution(width, height);
-  point_cloud_phong_cam_->setResolution(width, height);
-  point_cloud_additive_cam_->setResolution(width, height);
-  background_ortho_cam_->setResolution(width, height);
+  _basic_cam->setResolution(width, height);
+  _one_color_cam->setResolution(width, height);
+  _point_cloud_phong_cam->setResolution(width, height);
+  _point_cloud_additive_cam->setResolution(width, height);
+  _background_ortho_cam->setResolution(width, height);
 }
 
-void MyEngine::updateParticleEmitterPosition()
+void MyEngine::_updateParticleEmitterPosition()
 {
   // The unProject() function returns a vector in world-space which
   // defines a direction out of the frustum depending on which pixel
   // we shoot the ray from. "from" will be on the near-viewplane
   // and "to" will be on the far-viewplane.
   
-  glm::mat4 P = basic_cam_->getProjectionTransform();
-  glm::mat4 V = camera_->transform_matrix_;
+  glm::mat4 P = _basic_cam->getProjectionTransform();
+  glm::mat4 V = camera->transform_matrix;
+
+  int width = SimpleGraphicsEngine::getWindowWidth();
+  int height = SimpleGraphicsEngine::getWindowHeight();
 
   glm::vec3 from = glm::unProject(
-    glm::vec3(mouse_x_, window_height_ - mouse_y_, 0.0f),
+    glm::vec3(_mouse_x, height - _mouse_y, 0.0f),
     V,
     P,
-    glm::vec4(0, 0, window_width_, window_height_));
+    glm::vec4(0, 0, width, height));
   glm::vec3 to = glm::unProject(
-    glm::vec3(mouse_x_, window_height_ - mouse_y_, 1.0f),
+    glm::vec3(_mouse_x, height - _mouse_y, 1.0f),
     V,
     P,
-    glm::vec4(0, 0, window_width_, window_height_));
+    glm::vec4(0, 0, width, height));
 
   ParticleSystemProperties* particle_properties =
-    point_cloud_->getPropertiesPointer();
+    _point_cloud->getPropertiesPointer();
 
   particle_properties->emitter_position = from + glm::normalize((to - from)) * 3.5f;
 }
